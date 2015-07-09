@@ -35,7 +35,8 @@ SWIGINTERN void handle_gamer_exceptions()
   // all logic_error subclasses
   catch (std::logic_error &e) 
   {
-    PyErr_SetString(PyExc_StandardError, const_cast<char*>(e.what()));
+//    PyErr_SetString(PyExc_StandardError, const_cast<char*>(e.what()));
+    PyErr_SetString(PyExc_RuntimeError, const_cast<char*>(e.what()));
   }
 
   // all runtime_error subclasses

@@ -1820,7 +1820,8 @@ class blenderHelper(Helper):
         elif vertices is None and faces != None :
             bpy.ops.mesh.delete(type='FACE')
         elif vertices != None and faces != None :
-            bpy.ops.mesh.delete(type='ALL')
+#            bpy.ops.mesh.delete(type='ALL')
+            bpy.ops.mesh.delete()
         else :
             bpy.ops.object.mode_set(mode='OBJECT')
             return
@@ -1831,7 +1832,8 @@ class blenderHelper(Helper):
         if faces is None or len(faces) == 0 :
             #faces = [[0,1,2],] *  len(mesh.faces)
             #me.faces.foreach_get(f,'vertices')
-            faces = [list(f.vertices) for f in mesh.faces]
+#            faces = [list(f.vertices) for f in mesh.faces]
+            faces = [list(f.vertices) for f in mesh.polygons]
         elif len(faces[0]) == 2 :
             newF = [(f[0],f[1],f[1]) for f in faces]
             faces = newF
@@ -2342,7 +2344,8 @@ class blenderHelper(Helper):
 
     def getMeshFaces(self, poly, selected = False):
         mesh = self.checkIsMesh(poly)
-        mfaces = mesh.faces
+#        mfaces = mesh.faces
+        mfaces = mesh.polygons
         if selected :
             mfaces_indice = [face.index for face in mesh.faces
                              if face.select and not face.hide]

@@ -1141,13 +1141,13 @@ class GamerUI(uiadaptor):
         # if we want higher order
         if self.getVal(self.tetparams["higher_order"]):
             if self.getVal(self.tetparams["dolfin_format"]):
-                print "Dolfin output is not support for higher order mesh formats"
+                print ("Dolfin output is not supported for higher order mesh formats")
                 self.setVal(self.tetparams["dolfin_format"], False)
             if self.getVal(self.tetparams["mcsf_format"]):
-                print "FEtk output is not support for higher order mesh formats"
+                print ("FEtk output is not supported for higher order mesh formats")
                 self.setVal(self.tetparams["mcsf_format"], False)
             if self.getVal(self.tetparams["carp_format"]):
-                print "Carp output is not support for higher order mesh formats"
+                print ("Carp output is not supported for higher order mesh formats")
                 self.setVal(self.tetparams["carp_format"], False)
         self.updateViewer()
             
@@ -1240,7 +1240,8 @@ class GamerUI(uiadaptor):
             self._set_boundary_faces(boundary, new_faces)
         
         bmesh = self.helper.getMeshFrom(obj)
-        bmesh.faces.delete(True, faces_remove)
+#        bmesh.faces.delete(True, faces_remove)
+        bpy.ops.mesh.delete(type='FACE')
 
         # Ensure editmode is off
         editmode = self.helper.toggleEditMode()
@@ -1266,32 +1267,41 @@ class GamerUI(uiadaptor):
         nquads = 0
     
         # Remove free vertices
-        vert_users = np.zeros(len(bmesh.verts))
-        for f in bmesh.faces:
-            f.sel = 0
-            for v in f:
-                vert_users[v.index] += 1
-            if len(f) == 4:
+#        vert_users = np.zeros(len(bmesh.verts))
+        vert_users = np.zeros(len(bmesh.vertices))
+        for f in bmesh.polygons:
+            f.select = 0
+            for v in f.vertices:
+                vert_users[v] += 1
+            if len(f.vertices) == 4:
                 nquads += 1
-                f.sel = 1
+                f.select = 1
                 
         if nquads:
             myprint("Found %d quads"%nquads)
+
+        # Convert selected quads to triangles
+#        bmesh.quadToTriangle()
+        bpy.ops.mesh.quads_convert_to_tris()
+    
     
         for e in bmesh.edges:
-            for v in e: 
-                vert_users[v.index] += 1
+            for v in e.vertices: 
+                vert_users[v] += 1
         
         verts_free = (vert_users==0).nonzero()[0].tolist()
     	
         if verts_free:
+            for v in verts_free:
+              bmesh.vertices[v].select = 1
+#            bmesh.verts.delete(verts_free)
+            bpy.ops.mesh.delete(type='VERT')
             myprint("Removed %s vertices"%len(verts_free))
-            bmesh.verts.delete(verts_free)
         
         # Remove edges with no face connected to it
         edges = set() 
     	
-        for f in bmesh.faces:
+        for f in bmesh.polygons:
             for edkey in f.edge_keys:
                 edges.add(edkey)
     	
@@ -1300,18 +1310,18 @@ class GamerUI(uiadaptor):
             if e.key not in edges:
                 edges_free.append(e)
         if edges_free:
-            bmesh.edges.delete(edges_free)
+            for e in edges_free:
+                bmesh.edges[e].select = 1
+#            bmesh.edges.delete(edges_free)
+            bpy.ops.mesh.delete(type='EDGE')
             myprint("Removed %s edges"%len(edges_free))
-    
-        # Convert selected quads to triangles
-        bmesh.quadToTriangle()
     
         # Check for non-manifolds and open edges
         edge_map = dict((edge.key, []) for edge in bmesh.edges)
         
-        for face in bmesh.faces:
+        for face in bmesh.polygons:
             # Unselect all faces
-            face.sel = 0
+            face.select = 0
             for edge in face.edge_keys:
                 edge_map[tuple(sorted(edge))].append(face.index)
         
@@ -1338,7 +1348,7 @@ class GamerUI(uiadaptor):
         for edge in non_manifold_edges:
             for face in edge_map[edge]:
                 open_face_edges = [face_edge for face_edge in \
-                                   bmesh.faces[face].edge_keys\
+                                   bmesh.polygons[face].edge_keys\
                                    if face_edge in open_edges]
                 if len(open_face_edges) == 2:
                     myprint("Found a totally open face")
@@ -1352,8 +1362,8 @@ class GamerUI(uiadaptor):
                                 open_vertices_map[vert_id].pop\
                                             (1-open_edge.index(vert_id))
                 if len(open_face_edges) == 1:
-                    bmesh.faces[face].sel = 1
-                    myprint("Found a complex connected face. Selects it!")
+                    bmesh.polygons[face].select = 1
+                    myprint("Found a complex connected face. Selected it!")
 
         #for vert, edges in open_vertices_map:
         #print open_vertices_map
@@ -1378,21 +1388,21 @@ class GamerUI(uiadaptor):
             for vert0, verts in open_vertices_map.items():
                 edges = [tuple(sorted([vert0, vert1])) for vert1 in verts]
                 for edge in edges:
-                    bmesh.faces[edge_map[edge][0]].sel = 1
+                    bmesh.polygons[edge_map[edge][0]].select = 1
         
         # Free and add faces
         bmesh.faces.delete(1, free_faces)
         bmesh.faces.extend(add_faces)
                 
         # Remove free vertices
-        vert_users = np.zeros(len(bmesh.verts))
-        for f in bmesh.faces:
-            for v in f:
-                vert_users[v.index] += 1
+        vert_users = np.zeros(len(bmesh.vertices))
+        for f in bmesh.polygons:
+            for v in f.vertices:
+                vert_users[v] += 1
     
         for e in bmesh.edges:
             for v in e: 
-                vert_users[v.index] += 1
+                vert_users[v] += 1
         
         verts_free = (vert_users==0).nonzero()[0].tolist()
     	
@@ -1401,8 +1411,8 @@ class GamerUI(uiadaptor):
             bmesh.verts.delete(verts_free)
     
         # Harmonize the normals
-        for face in bmesh.faces:
-            face.sel = 1
+        for face in bmesh.polygons:
+            face.select = 1
         myprint("Recalculate normals")
         bmesh.recalcNormals(0)
         
@@ -1767,7 +1777,7 @@ class GamerUI(uiadaptor):
             gvert.x = co[0] + translation[0]
             gvert.y = co[1] + translation[1]
             gvert.z = co[2] + translation[2]
-            gvert.sel = sel
+            gvert.sel = bool(sel)
 
         # Check we have vertices selected
         if check_for_vertex_selection and not selected_vertices:
