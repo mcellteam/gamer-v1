@@ -1,0 +1,428 @@
+\section{Vcom class}
+\label{a00024}\index{Vcom class@{Vcom class}}
+
+
+Virtual (currently just MPI) communications layer.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf sVcom}
+\begin{DoxyCompactList}\small\item\em Contains public data members for Vcom class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file {\bf vcom.h}
+
+
+\begin{DoxyCompactList}\small\item\em Class Vcom: virtual (currently just MPI) communications layer. \item\end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf sVcom} {\bf Vcom}
+\begin{DoxyCompactList}\small\item\em Declaration of the Vcom class as the Vcom structure. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf Vcom\_\-init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em The Vmp initializer. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-finalize} (void)
+\begin{DoxyCompactList}\small\item\em The Vmp finalizer. \item\end{DoxyCompactList}\item 
+{\bf Vcom} $\ast$ {\bf Vcom\_\-ctor} (int commtype)
+\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes MPI. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-ctor2} ({\bf Vcom} $\ast$thee, int commtype)
+\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes MPI. This is broken into two parts to be callable from FORTRAN. \item\end{DoxyCompactList}\item 
+void {\bf Vcom\_\-dtor} ({\bf Vcom} $\ast$$\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destroy the communications object. \item\end{DoxyCompactList}\item 
+void {\bf Vcom\_\-dtor2} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destroy the communications object. This is broken into two parts to be callable from FORTRAN. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-send} ({\bf Vcom} $\ast$thee, int des, void $\ast$buf, int len, int type, int block)
+\begin{DoxyCompactList}\small\item\em Send a buffer. Returns 1 on success. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-recv} ({\bf Vcom} $\ast$thee, int src, void $\ast$buf, int len, int type, int block)
+\begin{DoxyCompactList}\small\item\em Receive a (character) buffer. \par
+ The blocking flag is present, but not used. All receives are assumed to be blocking. A non-\/blocking receive would be $\ast$very$\ast$ ugly to implement (signals or something?). \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-getCount} ({\bf Vcom} $\ast$thee, int src, int $\ast$length, int type)
+\begin{DoxyCompactList}\small\item\em Perform a blocking probe to get the length (in number of items of specified type) of an incoming message and place it in the argument ``length". \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-reduce} ({\bf Vcom} $\ast$thee, void $\ast$sendbuf, void $\ast$recvbuf, int length, int type, int op)
+\begin{DoxyCompactList}\small\item\em Perform a reduction of the data across all processors. This is equivalent (and in the case of MPI is identical to) MPI\_\-Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-size} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Get the number of PEs in communicator. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-resize} ({\bf Vcom} $\ast$thee, int newsize)
+\begin{DoxyCompactList}\small\item\em Resize (shrink) the communications group to include only newsize number of processors. \par
+ Obsolete processes are given rank of -\/1 and size of 0. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-rank} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Get the ID of the local PE. \item\end{DoxyCompactList}\item 
+int {\bf Vcom\_\-barr} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Synchronization barrier. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Virtual (currently just MPI) communications layer. 
+
+\subsection{Typedef Documentation}
+\index{Vcom@{Vcom}!Vcom@{Vcom}}
+\index{Vcom@{Vcom}!Vcom@{Vcom}}
+\subsubsection[{Vcom}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf sVcom} {\bf Vcom}}\label{a00024_ga820c01ebd185aba8388ae8ed1147bd28}
+
+
+Declaration of the Vcom class as the Vcom structure. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+\subsection{Function Documentation}
+\index{Vcom@{Vcom}!Vcom\_\-barr@{Vcom\_\-barr}}
+\index{Vcom\_\-barr@{Vcom\_\-barr}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-barr}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-barr (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00024_ga93383b73062cd592a6752565fb1a6cdf}
+
+
+Synchronization barrier. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-ctor@{Vcom\_\-ctor}}
+\index{Vcom\_\-ctor@{Vcom\_\-ctor}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vcom}$\ast$ Vcom\_\-ctor (
+\begin{DoxyParamCaption}
+\item[{int}]{ commtype}
+\end{DoxyParamCaption}
+)}\label{a00024_gab0fe4866e57bde795a1612a0c6c25845}
+
+
+Construct the communications object. This routine sets up data members of class and initializes MPI. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Pointer to the new allocated communications object. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em commtype}]type of communications object \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-ctor2@{Vcom\_\-ctor2}}
+\index{Vcom\_\-ctor2@{Vcom\_\-ctor2}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-ctor2}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-ctor2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee, }
+\item[{int}]{ commtype}
+\end{DoxyParamCaption}
+)}\label{a00024_ga2c81bdd58a94b739bc1b240afb5e2203}
+
+
+Construct the communications object. This routine sets up data members of class and initializes MPI. This is broken into two parts to be callable from FORTRAN. 
+
+\begin{DoxyAuthor}{Authors}
+Nathan Baker and Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the new allocated communications object. \item[{\em commtype}]type of communications object \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-dtor@{Vcom\_\-dtor}}
+\index{Vcom\_\-dtor@{Vcom\_\-dtor}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vcom\_\-dtor (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$$\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00024_ga9b51803f417c4ce15ed961f643bb1cf0}
+
+
+Destroy the communications object. 
+
+\begin{DoxyAuthor}{Authors}
+Nathan Baker and Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object. \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-dtor2@{Vcom\_\-dtor2}}
+\index{Vcom\_\-dtor2@{Vcom\_\-dtor2}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-dtor2}]{\setlength{\rightskip}{0pt plus 5cm}void Vcom\_\-dtor2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00024_gafd89d6360a1fa93e6a5ccd6441511003}
+
+
+Destroy the communications object. This is broken into two parts to be callable from FORTRAN. 
+
+\begin{DoxyAuthor}{Authors}
+Nathan Baker and Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object. \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-finalize@{Vcom\_\-finalize}}
+\index{Vcom\_\-finalize@{Vcom\_\-finalize}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-finalize}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-finalize (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00024_ga87b053d37ce352967167af68a8a3c0d8}
+
+
+The Vmp finalizer. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+\index{Vcom@{Vcom}!Vcom\_\-getCount@{Vcom\_\-getCount}}
+\index{Vcom\_\-getCount@{Vcom\_\-getCount}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-getCount}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-getCount (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee, }
+\item[{int}]{ src, }
+\item[{int $\ast$}]{ length, }
+\item[{int}]{ type}
+\end{DoxyParamCaption}
+)}\label{a00024_gaf5d0ecbc5915dfa9b48224f7a70c9916}
+
+
+Perform a blocking probe to get the length (in number of items of specified type) of an incoming message and place it in the argument ``length". 
+
+\begin{DoxyAuthor}{Author}
+Nathan Baker 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object. \item[{\em src}]rank of receiving processor \item[{\em length}]Pointer to perform a blocking probe \item[{\em type}]type of items in message. \par
+ 0 =$>$ MPI\_\-BYTE, 1 =$>$ MPI\_\-INT, 2 =$>$ MPI\_\-DOUBLE, 3 =$>$ MPI\_\-CHAR \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-init@{Vcom\_\-init}}
+\index{Vcom\_\-init@{Vcom\_\-init}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-init (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{ argc, }
+\item[{char $\ast$$\ast$$\ast$}]{ argv}
+\end{DoxyParamCaption}
+)}\label{a00024_ga6846ecfd2733b3de784a995927aaaba2}
+
+
+The Vmp initializer. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em argc}]number of the command line arguments \item[{\em argv}]the command line arguments \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-rank@{Vcom\_\-rank}}
+\index{Vcom\_\-rank@{Vcom\_\-rank}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-rank}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-rank (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00024_ga0b74c7becd865db338bc67a31ecb9c5c}
+
+
+Get the ID of the local PE. 
+
+\begin{DoxyAuthor}{Authors}
+Nathan Baker and Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Get the ID of the local PE 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-recv@{Vcom\_\-recv}}
+\index{Vcom\_\-recv@{Vcom\_\-recv}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-recv}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-recv (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee, }
+\item[{int}]{ src, }
+\item[{void $\ast$}]{ buf, }
+\item[{int}]{ len, }
+\item[{int}]{ type, }
+\item[{int}]{ block}
+\end{DoxyParamCaption}
+)}\label{a00024_ga9d0c8f9c3dcd65a9f461d8bfc7817e66}
+
+
+Receive a (character) buffer. \par
+ The blocking flag is present, but not used. All receives are assumed to be blocking. A non-\/blocking receive would be $\ast$very$\ast$ ugly to implement (signals or something?). 
+
+\begin{DoxyAuthor}{Authors}
+Nathan Baker and Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if successful 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object. \item[{\em src}]rank of receiving processor \item[{\em buf}]pointer to buffer of previously allocated memory \item[{\em len}]number of items (of declared type) in buffer \item[{\em type}]type of items in message. \par
+ 0 =$>$ MPI\_\-BYTE, 1 =$>$ MPI\_\-INT, 2 =$>$ MPI\_\-DOUBLE, 3 =$>$ MPI\_\-CHAR \item[{\em block}]toggles blocking on (=1) and off (=0) \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-reduce@{Vcom\_\-reduce}}
+\index{Vcom\_\-reduce@{Vcom\_\-reduce}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-reduce}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-reduce (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee, }
+\item[{void $\ast$}]{ sendbuf, }
+\item[{void $\ast$}]{ recvbuf, }
+\item[{int}]{ length, }
+\item[{int}]{ type, }
+\item[{int}]{ op}
+\end{DoxyParamCaption}
+)}\label{a00024_ga3ca5e19921a4eb7b38554bda4df1fa19}
+
+
+Perform a reduction of the data across all processors. This is equivalent (and in the case of MPI is identical to) MPI\_\-Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Baker 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object \item[{\em sendbuf}]buffer containing `length` items of the specified type to be operated on \item[{\em recvbuf}]buffer containing `length` items of the specified type after operation \item[{\em length}]number of items \item[{\em type}]type of items in message \par
+ 0 =$>$ MPI\_\-BYTE, 1 =$>$ MPI\_\-INT, 2 =$>$ MPI\_\-DOUBLE, 3 =$>$ MPI\_\-CHAR \item[{\em op}]operation to perform \par
+ 0 =$>$ MPI\_\-SUM, 1 =$>$ MPI\_\-PROD, 2 =$>$ MPI\_\-MIN, 3 =$>$ MPI\_\-MAX \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-resize@{Vcom\_\-resize}}
+\index{Vcom\_\-resize@{Vcom\_\-resize}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-resize}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-resize (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee, }
+\item[{int}]{ newsize}
+\end{DoxyParamCaption}
+)}\label{a00024_ga184e2fcc4f26351475b5448fbe506ea1}
+
+
+Resize (shrink) the communications group to include only newsize number of processors. \par
+ Obsolete processes are given rank of -\/1 and size of 0. 
+
+\begin{DoxyAuthor}{Author}
+Nathan Baker 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if successful 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object \item[{\em newsize}]number of processors \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-send@{Vcom\_\-send}}
+\index{Vcom\_\-send@{Vcom\_\-send}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-send (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee, }
+\item[{int}]{ des, }
+\item[{void $\ast$}]{ buf, }
+\item[{int}]{ len, }
+\item[{int}]{ type, }
+\item[{int}]{ block}
+\end{DoxyParamCaption}
+)}\label{a00024_gaf8bfc9f3adb8a9ab879fb727a7131d6b}
+
+
+Send a buffer. Returns 1 on success. 
+
+\begin{DoxyAuthor}{Authors}
+Nathan Baker and Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if successful 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object. \item[{\em des}]rank of receiving processor \item[{\em buf}]buffer containing message \item[{\em len}]number of items (of declared type) in buffer \item[{\em type}]type of items in message. \par
+ 0 =$>$ MPI\_\-BYTE, 1 =$>$ MPI\_\-INT, 2 =$>$ MPI\_\-DOUBLE, 3 =$>$ MPI\_\-CHAR \item[{\em block}]toggles blocking on (=1) and off (=0) \end{DoxyParams}
+\index{Vcom@{Vcom}!Vcom\_\-size@{Vcom\_\-size}}
+\index{Vcom\_\-size@{Vcom\_\-size}!Vcom@{Vcom}}
+\subsubsection[{Vcom\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf Vcom} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00024_ga2d0360979d6715b199291cc25879fd7b}
+
+
+Get the number of PEs in communicator. 
+
+\begin{DoxyAuthor}{Authors}
+Nathan Baker Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vcom: Non-\/Inlineable methods (vcom.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Number of PEs or -\/1 if error 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the communications object \end{DoxyParams}

@@ -1,0 +1,118 @@
+\section{vset.h File Reference}
+\label{a00020}\index{vset.h@{vset.h}}
+
+
+Class Vset: a dynamic set object.  
+
+
+{\ttfamily \#include $<$maloc/maloc\_\-base.h$>$}\par
+{\ttfamily \#include $<$maloc/vnm.h$>$}\par
+{\ttfamily \#include $<$maloc/vmem.h$>$}\par
+Include dependency graph for vset.h:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{a00051}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{a00052}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf sVset}
+\begin{DoxyCompactList}\small\item\em Contains public data members for Vset class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf Vset\_\-num}(thee)~((thee)-\/$>$numT)
+\begin{DoxyCompactList}\small\item\em the global \char`\"{}T\char`\"{} counter -\/-\/ how many \char`\"{}T\char`\"{}s in list \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-access}(thee, i)
+\begin{DoxyCompactList}\small\item\em Access an object in an arbitrary place in the list. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-create}(thee)
+\begin{DoxyCompactList}\small\item\em Create an object on the end of the list. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-first}(thee)
+\begin{DoxyCompactList}\small\item\em Return the first object in the set. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-last}(thee)
+\begin{DoxyCompactList}\small\item\em Return the last object in the set. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-next}(thee)
+\begin{DoxyCompactList}\small\item\em Return the next object in the set. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-prev}(thee)
+\begin{DoxyCompactList}\small\item\em Return the prev object in the set. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-peekFirst}(thee)
+\begin{DoxyCompactList}\small\item\em Return the first object in the set. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-peekLast}(thee)
+\begin{DoxyCompactList}\small\item\em Return the last object in the set. \item\end{DoxyCompactList}\item 
+\#define {\bf Vset\_\-destroy}(thee)
+\begin{DoxyCompactList}\small\item\em Free up the object currently on the end of the list. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf sVset} {\bf Vset}
+\begin{DoxyCompactList}\small\item\em Declaration of the Vset class as the Vset structure. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Vset} $\ast$ {\bf Vset\_\-ctor} ({\bf Vmem} $\ast$vmem, const char $\ast$tname, int tsize, int tmaxNum, int ioKey)
+\begin{DoxyCompactList}\small\item\em Construct the set object. \item\end{DoxyCompactList}\item 
+void {\bf Vset\_\-dtor} ({\bf Vset} $\ast$$\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destroy the set object. \item\end{DoxyCompactList}\item 
+char $\ast$ {\bf Vset\_\-createLast} ({\bf Vset} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Create an object on the end of the list. \item\end{DoxyCompactList}\item 
+void {\bf Vset\_\-destroyLast} ({\bf Vset} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Free up the object currently on the end of the list. \item\end{DoxyCompactList}\item 
+void {\bf Vset\_\-initData} ({\bf Vset} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Initialize the Vset data (thee). \item\end{DoxyCompactList}\item 
+void {\bf Vset\_\-reset} ({\bf Vset} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Release all Ram controlled by this (thee) and re-\/initialize. \item\end{DoxyCompactList}\item 
+void {\bf Vset\_\-check} ({\bf Vset} $\ast$thee, int $\ast$tnum, int $\ast$tsize, int $\ast$tVecUse, int $\ast$tVecMal, int $\ast$tVecOhd)
+\begin{DoxyCompactList}\small\item\em Get and return the RAM Control Block (thee) information. \item\end{DoxyCompactList}\item 
+void {\bf Vset\_\-memChk} ({\bf Vset} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Print the exact current malloc usage. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class Vset: a dynamic set object. \begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+None 
+\end{DoxyNote}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Id:}
+\doxyref{vset.h}{p.}{a00020},v 1.20 2010/08/12 05:40:37 fetk Exp 
+\end{DoxyParagraph}
+
+
+\begin{DoxyAttention}{Attention}
+\begin{DoxyVerb}
+ *
+ * MALOC = < Minimal Abstraction Layer for Object-oriented C >
+ * Copyright (C) 1994-- Michael Holst
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ * 
+ *  \end{DoxyVerb}
+ 
+\end{DoxyAttention}

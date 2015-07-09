@@ -1,0 +1,53 @@
+\section{sVmem Struct Reference}
+\label{a00003}\index{sVmem@{sVmem}}
+
+
+Contains public data members for Vmem class.  
+
+
+
+
+{\ttfamily \#include $<$vmem.h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char {\bf name} [VMAX\_\-ARGLEN]
+\item 
+size\_\-t {\bf mallocBytes}
+\item 
+size\_\-t {\bf freeBytes}
+\item 
+size\_\-t {\bf highWater}
+\item 
+size\_\-t {\bf mallocAreas}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains public data members for Vmem class. \begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+
+
+\subsection{Member Data Documentation}
+\index{sVmem@{sVmem}!freeBytes@{freeBytes}}
+\index{freeBytes@{freeBytes}!sVmem@{sVmem}}
+\subsubsection[{freeBytes}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf sVmem::freeBytes}}\label{a00003_ab27fc8fe9d21afcea1873ad370fd908b}
+total size of all freed malloc areas of class \index{sVmem@{sVmem}!highWater@{highWater}}
+\index{highWater@{highWater}!sVmem@{sVmem}}
+\subsubsection[{highWater}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf sVmem::highWater}}\label{a00003_af47cf8b9bda257c19cf2866e14be131d}
+high-\/water malloc bytemark for this class \index{sVmem@{sVmem}!mallocAreas@{mallocAreas}}
+\index{mallocAreas@{mallocAreas}!sVmem@{sVmem}}
+\subsubsection[{mallocAreas}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf sVmem::mallocAreas}}\label{a00003_ae161cd7c0816a71607ec41138b4a4eeb}
+total number of individual malloc areas \index{sVmem@{sVmem}!mallocBytes@{mallocBytes}}
+\index{mallocBytes@{mallocBytes}!sVmem@{sVmem}}
+\subsubsection[{mallocBytes}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf sVmem::mallocBytes}}\label{a00003_adb77dfe4ee8fe6d881a6852d012c2108}
+total size of all current malloc areas of class \index{sVmem@{sVmem}!name@{name}}
+\index{name@{name}!sVmem@{sVmem}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVmem::name}[VMAX\_\-ARGLEN]}\label{a00003_a76245b6f5a271d5d5cc9cd40dc9f76cb}
+name of class we manage malloc areas for 
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+{\bf vmem.h}\end{DoxyCompactItemize}

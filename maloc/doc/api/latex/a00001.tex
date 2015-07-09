@@ -1,0 +1,80 @@
+\section{sVcom Struct Reference}
+\label{a00001}\index{sVcom@{sVcom}}
+
+
+Contains public data members for Vcom class.  
+
+
+
+
+{\ttfamily \#include $<$vcom.h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf mpi\_\-rank}
+\begin{DoxyCompactList}\small\item\em Local PE rank from MPI. \item\end{DoxyCompactList}\item 
+int {\bf mpi\_\-size}
+\begin{DoxyCompactList}\small\item\em Total number of PEs in this communicator from MPI. \item\end{DoxyCompactList}\item 
+int {\bf type}
+\begin{DoxyCompactList}\small\item\em Communication type. \par
+ 0 = not initialized \par
+ 1 = Message Passing Interface 1.1. \item\end{DoxyCompactList}\item 
+int {\bf error}
+\begin{DoxyCompactList}\small\item\em note if any error has occurred on this vcom device \item\end{DoxyCompactList}\item 
+void $\ast$ {\bf core}
+\begin{DoxyCompactList}\small\item\em Private MPI core. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains public data members for Vcom class. \begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+None 
+\end{DoxyNote}
+
+
+\subsection{Member Data Documentation}
+\index{sVcom@{sVcom}!core@{core}}
+\index{core@{core}!sVcom@{sVcom}}
+\subsubsection[{core}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf sVcom::core}}\label{a00001_ad4591b88c95fd3620d40f5568331c1f7}
+
+
+Private MPI core. 
+
+\index{sVcom@{sVcom}!error@{error}}
+\index{error@{error}!sVcom@{sVcom}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVcom::error}}\label{a00001_a0ccb38a7bc2fdb78dfb05987b5e86f18}
+
+
+note if any error has occurred on this vcom device 
+
+\index{sVcom@{sVcom}!mpi\_\-rank@{mpi\_\-rank}}
+\index{mpi\_\-rank@{mpi\_\-rank}!sVcom@{sVcom}}
+\subsubsection[{mpi\_\-rank}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVcom::mpi\_\-rank}}\label{a00001_ae5090990cb02c43ed4ed25ecc1901ee2}
+
+
+Local PE rank from MPI. 
+
+\index{sVcom@{sVcom}!mpi\_\-size@{mpi\_\-size}}
+\index{mpi\_\-size@{mpi\_\-size}!sVcom@{sVcom}}
+\subsubsection[{mpi\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVcom::mpi\_\-size}}\label{a00001_a3370f33a730258e5174ba59b4b595cda}
+
+
+Total number of PEs in this communicator from MPI. 
+
+\index{sVcom@{sVcom}!type@{type}}
+\index{type@{type}!sVcom@{sVcom}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVcom::type}}\label{a00001_a060d49d499bd19965c61974be24423ba}
+
+
+Communication type. \par
+ 0 = not initialized \par
+ 1 = Message Passing Interface 1.1. 
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+{\bf vcom.h}\end{DoxyCompactItemize}

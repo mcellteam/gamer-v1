@@ -1,0 +1,464 @@
+\section{Vmem class}
+\label{a00029}\index{Vmem class@{Vmem class}}
+
+
+This class provides a safe logged version of malloc and free.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf sVmem}
+\begin{DoxyCompactList}\small\item\em Contains public data members for Vmem class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file {\bf vmem.h}
+
+
+\begin{DoxyCompactList}\small\item\em Class Vmem: A safer, object-\/oriented, malloc/free object. \item\end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf sVmem} {\bf Vmem}
+\begin{DoxyCompactList}\small\item\em Declaration of the Vmem class as the Vmem structure. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\_\-t {\bf Vmem\_\-bytesTotal} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas (current footprint). \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-mallocBytesTotal} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all Vmem malloc allocations. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-freeBytesTotal} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all Vmem free calls. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-highWaterTotal} (void)
+\begin{DoxyCompactList}\small\item\em Return the high-\/water byte mark (largest footprint). \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-mallocAreasTotal} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas by groups. \item\end{DoxyCompactList}\item 
+void {\bf Vmem\_\-printTotal} (void)
+\begin{DoxyCompactList}\small\item\em Print current memory statistics for all Vmem malloc/free areas. \item\end{DoxyCompactList}\item 
+{\bf Vmem} $\ast$ {\bf Vmem\_\-ctor} (char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Construct the dynamic memory allocation logging object. \item\end{DoxyCompactList}\item 
+void {\bf Vmem\_\-dtor} ({\bf Vmem} $\ast$$\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destruct the dynamic memory allocation logging object. \item\end{DoxyCompactList}\item 
+void $\ast$ {\bf Vmem\_\-malloc} ({\bf Vmem} $\ast$thee, size\_\-t num, size\_\-t size)
+\begin{DoxyCompactList}\small\item\em A safe logged version of malloc. \item\end{DoxyCompactList}\item 
+void {\bf Vmem\_\-free} ({\bf Vmem} $\ast$thee, size\_\-t num, size\_\-t size, void $\ast$$\ast$ram)
+\begin{DoxyCompactList}\small\item\em A safe logged version of free. \item\end{DoxyCompactList}\item 
+void $\ast$ {\bf Vmem\_\-realloc} ({\bf Vmem} $\ast$thee, size\_\-t num, size\_\-t size, void $\ast$$\ast$ram, size\_\-t newNum)
+\begin{DoxyCompactList}\small\item\em A safe logged version of realloc (usually a bad idea to use this). \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-bytes} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total of all ACTIVE malloc areas used by Vmem object. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-mallocBytes} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total of all mallocs performed by Vmem object. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-freeBytes} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total of all frees performed by Vmem object. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-highWater} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return high-\/water malloc bytemark hit by Vmem object. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf Vmem\_\-mallocAreas} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total number of individual active malloc areas. \item\end{DoxyCompactList}\item 
+void {\bf Vmem\_\-print} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Print current memory stats associated with this Vmem object. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class provides a safe logged version of malloc and free. This class provides a safe logged version of malloc and free, with all standard routines supported with Vmem variants. 
+
+\subsection{Typedef Documentation}
+\index{Vmem@{Vmem}!Vmem@{Vmem}}
+\index{Vmem@{Vmem}!Vmem@{Vmem}}
+\subsubsection[{Vmem}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf sVmem} {\bf Vmem}}\label{a00029_ga10a4d5e0b8931714c130ebb889adc715}
+
+
+Declaration of the Vmem class as the Vmem structure. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{Vmem@{Vmem}!Vmem\_\-bytes@{Vmem\_\-bytes}}
+\index{Vmem\_\-bytes@{Vmem\_\-bytes}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-bytes}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-bytes (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00029_ga93a38736d54ecb245769c91307ae628b}
+
+
+Return total of all ACTIVE malloc areas used by Vmem object. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total of all ACTIVE malloc areas used by Vmem object 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-bytesTotal@{Vmem\_\-bytesTotal}}
+\index{Vmem\_\-bytesTotal@{Vmem\_\-bytesTotal}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-bytesTotal}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-bytesTotal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00029_ga44ded885fceb61c63eff32282ff3613c}
+
+
+Return total of all active Vmem malloc areas (current footprint). 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total of all active Vmem malloc areas (current footprint) 
+\end{DoxyReturn}
+\index{Vmem@{Vmem}!Vmem\_\-ctor@{Vmem\_\-ctor}}
+\index{Vmem\_\-ctor@{Vmem\_\-ctor}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vmem}$\ast$ Vmem\_\-ctor (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{ name}
+\end{DoxyParamCaption}
+)}\label{a00029_ga0f93d2df792541c77e9bbd296e4ffab5}
+
+
+Construct the dynamic memory allocation logging object. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Pointer to a newly created Vmem object 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]Pointer to the object name \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-dtor@{Vmem\_\-dtor}}
+\index{Vmem\_\-dtor@{Vmem\_\-dtor}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vmem\_\-dtor (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$$\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00029_gabcacb07a3b303fcd6c1346d3eb73dc99}
+
+
+Destruct the dynamic memory allocation logging object. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-free@{Vmem\_\-free}}
+\index{Vmem\_\-free@{Vmem\_\-free}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void Vmem\_\-free (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee, }
+\item[{size\_\-t}]{ num, }
+\item[{size\_\-t}]{ size, }
+\item[{void $\ast$$\ast$}]{ ram}
+\end{DoxyParamCaption}
+)}\label{a00029_ga004bb397117fc5a8df173a72b4b44c8e}
+
+
+A safe logged version of free. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \item[{\em num}]number of the allocated address \item[{\em size}]size of one allocated address \item[{\em ram}]Pointer to pointer of the reallocated memory \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-freeBytes@{Vmem\_\-freeBytes}}
+\index{Vmem\_\-freeBytes@{Vmem\_\-freeBytes}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-freeBytes}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-freeBytes (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00029_ga1c3448d45887c034bbb1e84f37547bc8}
+
+
+Return total of all frees performed by Vmem object. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total of all frees performed by Vmem object 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-freeBytesTotal@{Vmem\_\-freeBytesTotal}}
+\index{Vmem\_\-freeBytesTotal@{Vmem\_\-freeBytesTotal}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-freeBytesTotal}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-freeBytesTotal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00029_ga4d727b4c55abdd7703daa3556cd3fa45}
+
+
+Return total of all Vmem free calls. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total of all Vmem free calls 
+\end{DoxyReturn}
+\index{Vmem@{Vmem}!Vmem\_\-highWater@{Vmem\_\-highWater}}
+\index{Vmem\_\-highWater@{Vmem\_\-highWater}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-highWater}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-highWater (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00029_ga3c61c6e2d77355f0d3a5c3bc025d948b}
+
+
+Return high-\/water malloc bytemark hit by Vmem object. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+high-\/water malloc bytemark hit by Vmem object 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-highWaterTotal@{Vmem\_\-highWaterTotal}}
+\index{Vmem\_\-highWaterTotal@{Vmem\_\-highWaterTotal}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-highWaterTotal}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-highWaterTotal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00029_ga8b4fae23f1b03b2aa63fd85570e04664}
+
+
+Return the high-\/water byte mark (largest footprint). 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+the high-\/water byte mark (largest footprint) 
+\end{DoxyReturn}
+\index{Vmem@{Vmem}!Vmem\_\-malloc@{Vmem\_\-malloc}}
+\index{Vmem\_\-malloc@{Vmem\_\-malloc}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-malloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ Vmem\_\-malloc (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee, }
+\item[{size\_\-t}]{ num, }
+\item[{size\_\-t}]{ size}
+\end{DoxyParamCaption}
+)}\label{a00029_ga293cb49b55a750f34058890fab6a5d49}
+
+
+A safe logged version of malloc. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Void pointer to a new malloc area 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \item[{\em num}]number of the allocated address \item[{\em size}]size of one allocated address \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-mallocAreas@{Vmem\_\-mallocAreas}}
+\index{Vmem\_\-mallocAreas@{Vmem\_\-mallocAreas}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-mallocAreas}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-mallocAreas (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00029_ga022188a4a85cec8bdfdd388a67531077}
+
+
+Return total number of individual active malloc areas. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total number of individual active malloc areas 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-mallocAreasTotal@{Vmem\_\-mallocAreasTotal}}
+\index{Vmem\_\-mallocAreasTotal@{Vmem\_\-mallocAreasTotal}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-mallocAreasTotal}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-mallocAreasTotal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00029_ga0c97ea1eeffc74bc0384b855d7386d38}
+
+
+Return total of all active Vmem malloc areas by groups. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total of all active Vmem malloc areas by groups 
+\end{DoxyReturn}
+\index{Vmem@{Vmem}!Vmem\_\-mallocBytes@{Vmem\_\-mallocBytes}}
+\index{Vmem\_\-mallocBytes@{Vmem\_\-mallocBytes}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-mallocBytes}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-mallocBytes (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00029_gac1b7e996a5bac5079f6f4f8631de9ecc}
+
+
+Return total of all mallocs performed by Vmem object. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total of all mallocs performed by Vmem object 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-mallocBytesTotal@{Vmem\_\-mallocBytesTotal}}
+\index{Vmem\_\-mallocBytesTotal@{Vmem\_\-mallocBytesTotal}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-mallocBytesTotal}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t Vmem\_\-mallocBytesTotal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00029_gad315925d7d4d8383089ef1a095a46342}
+
+
+Return total of all Vmem malloc allocations. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+total of all Vmem malloc allocations 
+\end{DoxyReturn}
+\index{Vmem@{Vmem}!Vmem\_\-print@{Vmem\_\-print}}
+\index{Vmem\_\-print@{Vmem\_\-print}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}void Vmem\_\-print (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00029_gaa3f66ad34c4c68093ba6bec24ae6f325}
+
+
+Print current memory stats associated with this Vmem object. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \end{DoxyParams}
+\index{Vmem@{Vmem}!Vmem\_\-printTotal@{Vmem\_\-printTotal}}
+\index{Vmem\_\-printTotal@{Vmem\_\-printTotal}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-printTotal}]{\setlength{\rightskip}{0pt plus 5cm}void Vmem\_\-printTotal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00029_ga0f10d3a26a130bfb9091f4b814e36b56}
+
+
+Print current memory statistics for all Vmem malloc/free areas. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\index{Vmem@{Vmem}!Vmem\_\-realloc@{Vmem\_\-realloc}}
+\index{Vmem\_\-realloc@{Vmem\_\-realloc}!Vmem@{Vmem}}
+\subsubsection[{Vmem\_\-realloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ Vmem\_\-realloc (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmem} $\ast$}]{ thee, }
+\item[{size\_\-t}]{ num, }
+\item[{size\_\-t}]{ size, }
+\item[{void $\ast$$\ast$}]{ ram, }
+\item[{size\_\-t}]{ newNum}
+\end{DoxyParamCaption}
+)}\label{a00029_ga7bfa4a02baa60c38778db85b59a3df70}
+
+
+A safe logged version of realloc (usually a bad idea to use this). 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmem: Non-\/Inlineable methods (vmem.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Void pointer to a new malloc area 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmem object \item[{\em num}]number of the allocated address \item[{\em size}]size of one allocated address \item[{\em ram}]Pointer to pointer of the reallocated memory \item[{\em newNum}]number of the reallocated address \end{DoxyParams}

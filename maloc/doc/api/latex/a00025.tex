@@ -1,0 +1,274 @@
+\section{Vmp class}
+\label{a00025}\index{Vmp class@{Vmp class}}
+
+
+A Virtual MPI communication layer object.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf sVmp}
+\begin{DoxyCompactList}\small\item\em Contains public data members for Vmp class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file {\bf vmp.h}
+
+
+\begin{DoxyCompactList}\small\item\em Class Vmp: a Virtual MPI communication layer object. \item\end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf sVmp} {\bf Vmp}
+\begin{DoxyCompactList}\small\item\em Declaration of the Vmp class as teh Vmp structure. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf Vmp\_\-init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em The Vmp initializer. \item\end{DoxyCompactList}\item 
+int {\bf Vmp\_\-finalize} (void)
+\begin{DoxyCompactList}\small\item\em The Vmp finalizer. \item\end{DoxyCompactList}\item 
+{\bf Vmp} $\ast$ {\bf Vmp\_\-ctor} (void)
+\begin{DoxyCompactList}\small\item\em The Vmp constructor. \item\end{DoxyCompactList}\item 
+void {\bf Vmp\_\-dtor} ({\bf Vmp} $\ast$$\ast$thee)
+\begin{DoxyCompactList}\small\item\em The Vmp destructor. \item\end{DoxyCompactList}\item 
+int {\bf Vmp\_\-rank} ({\bf Vmp} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return my processor ID. \item\end{DoxyCompactList}\item 
+int {\bf Vmp\_\-size} ({\bf Vmp} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return the number of processors involved. \item\end{DoxyCompactList}\item 
+int {\bf Vmp\_\-barr} ({\bf Vmp} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em An MPI barrier. \item\end{DoxyCompactList}\item 
+int {\bf Vmp\_\-send} ({\bf Vmp} $\ast$thee, int des, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An MPI blocking send. \item\end{DoxyCompactList}\item 
+int {\bf Vmp\_\-recv} ({\bf Vmp} $\ast$thee, int src, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An MPI blocking receive. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Virtual MPI communication layer object. 
+
+\subsection{Typedef Documentation}
+\index{Vmp@{Vmp}!Vmp@{Vmp}}
+\index{Vmp@{Vmp}!Vmp@{Vmp}}
+\subsubsection[{Vmp}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf sVmp} {\bf Vmp}}\label{a00025_ga1592e34b3071e22d7fcd50f1679d6ad3}
+
+
+Declaration of the Vmp class as teh Vmp structure. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{Vmp@{Vmp}!Vmp\_\-barr@{Vmp\_\-barr}}
+\index{Vmp\_\-barr@{Vmp\_\-barr}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-barr}]{\setlength{\rightskip}{0pt plus 5cm}int Vmp\_\-barr (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmp} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00025_ga9fffcb9ce0156d89586bfd1405b3488e}
+
+
+An MPI barrier. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmp object \end{DoxyParams}
+\index{Vmp@{Vmp}!Vmp\_\-ctor@{Vmp\_\-ctor}}
+\index{Vmp\_\-ctor@{Vmp\_\-ctor}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vmp}$\ast$ Vmp\_\-ctor (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00025_gab3474378cae4f187a08064290a7bc23c}
+
+
+The Vmp constructor. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+\index{Vmp@{Vmp}!Vmp\_\-dtor@{Vmp\_\-dtor}}
+\index{Vmp\_\-dtor@{Vmp\_\-dtor}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vmp\_\-dtor (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmp} $\ast$$\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00025_ga9afe35a3bee7572eda0c46aab12ad58a}
+
+
+The Vmp destructor. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to pointer of Vmp object \end{DoxyParams}
+\index{Vmp@{Vmp}!Vmp\_\-finalize@{Vmp\_\-finalize}}
+\index{Vmp\_\-finalize@{Vmp\_\-finalize}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-finalize}]{\setlength{\rightskip}{0pt plus 5cm}int Vmp\_\-finalize (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{a00025_ga18e91b02dbce0cacf5146fa0f01aca47}
+
+
+The Vmp finalizer. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+\index{Vmp@{Vmp}!Vmp\_\-init@{Vmp\_\-init}}
+\index{Vmp\_\-init@{Vmp\_\-init}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int Vmp\_\-init (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{ argc, }
+\item[{char $\ast$$\ast$$\ast$}]{ argv}
+\end{DoxyParamCaption}
+)}\label{a00025_ga45e1307da5143b3066f75b08dbddfc8c}
+
+
+The Vmp initializer. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em argc}]number of the command line arguments \item[{\em argv}]the command line arguments \end{DoxyParams}
+\index{Vmp@{Vmp}!Vmp\_\-rank@{Vmp\_\-rank}}
+\index{Vmp\_\-rank@{Vmp\_\-rank}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-rank}]{\setlength{\rightskip}{0pt plus 5cm}int Vmp\_\-rank (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmp} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00025_ga552506a098aff62d06adc34c7b896d26}
+
+
+Return my processor ID. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmp object \end{DoxyParams}
+\index{Vmp@{Vmp}!Vmp\_\-recv@{Vmp\_\-recv}}
+\index{Vmp\_\-recv@{Vmp\_\-recv}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-recv}]{\setlength{\rightskip}{0pt plus 5cm}int Vmp\_\-recv (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmp} $\ast$}]{ thee, }
+\item[{int}]{ src, }
+\item[{char $\ast$}]{ buf, }
+\item[{int}]{ bufsize}
+\end{DoxyParamCaption}
+)}\label{a00025_ga61f69e46851adb8a5b4dad5cabe860be}
+
+
+An MPI blocking receive. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmp object \item[{\em src}]rank of receiving processor \item[{\em buf}]buffer containing message \item[{\em bufsize}]number of items (of declared type) in buffer \end{DoxyParams}
+\index{Vmp@{Vmp}!Vmp\_\-send@{Vmp\_\-send}}
+\index{Vmp\_\-send@{Vmp\_\-send}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}int Vmp\_\-send (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmp} $\ast$}]{ thee, }
+\item[{int}]{ des, }
+\item[{char $\ast$}]{ buf, }
+\item[{int}]{ bufsize}
+\end{DoxyParamCaption}
+)}\label{a00025_ga3f6bc7fb6e386edac47df9d9efe5ca7b}
+
+
+An MPI blocking send. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmp object \item[{\em des}]rank of receiving processor \item[{\em buf}]buffer containing message \item[{\em bufsize}]number of items (of declared type) in buffer \end{DoxyParams}
+\index{Vmp@{Vmp}!Vmp\_\-size@{Vmp\_\-size}}
+\index{Vmp\_\-size@{Vmp\_\-size}!Vmp@{Vmp}}
+\subsubsection[{Vmp\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int Vmp\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf Vmp} $\ast$}]{ thee}
+\end{DoxyParamCaption}
+)}\label{a00025_gae3fefc943dd5c0585f01597a33649b11}
+
+
+Return the number of processors involved. 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+Class Vmp: Non-\/inlineable method (vmp.c) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Success enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thee}]Pointer to the Vmp object \end{DoxyParams}

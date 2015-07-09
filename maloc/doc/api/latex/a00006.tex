@@ -1,0 +1,164 @@
+\section{sVset Struct Reference}
+\label{a00006}\index{sVset@{sVset}}
+
+
+Contains public data members for Vset class.  
+
+
+
+
+{\ttfamily \#include $<$vset.h$>$}
+
+
+
+Collaboration diagram for sVset:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=96pt]{a00062}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Vmem} $\ast$ {\bf vmem}
+\begin{DoxyCompactList}\small\item\em the memory manager \item\end{DoxyCompactList}\item 
+int {\bf iMadeVmem}
+\begin{DoxyCompactList}\small\item\em did i make vmem or was it inherited \item\end{DoxyCompactList}\item 
+int {\bf curT}
+\begin{DoxyCompactList}\small\item\em the current \char`\"{}T\char`\"{} object in our collection \item\end{DoxyCompactList}\item 
+char {\bf nameT} [VMAX\_\-ARGLEN]
+\begin{DoxyCompactList}\small\item\em name of object we are managing \item\end{DoxyCompactList}\item 
+int {\bf sizeT}
+\begin{DoxyCompactList}\small\item\em size of the object in bytes \item\end{DoxyCompactList}\item 
+int {\bf numBlocks}
+\begin{DoxyCompactList}\small\item\em total number of allocated blocks \item\end{DoxyCompactList}\item 
+int {\bf numT}
+\begin{DoxyCompactList}\small\item\em the global \char`\"{}T\char`\"{} counter -\/-\/ how many \char`\"{}T\char`\"{}s in list \item\end{DoxyCompactList}\item 
+int {\bf prtT}
+\begin{DoxyCompactList}\small\item\em for i/o at appropriate block creation/deletion \item\end{DoxyCompactList}\item 
+int {\bf maxObjects}
+\begin{DoxyCompactList}\small\item\em number of objects to manage (user specified) \item\end{DoxyCompactList}\item 
+int {\bf blockPower}
+\begin{DoxyCompactList}\small\item\em power of 2 for blocksize (e.g., =10, or =16) \item\end{DoxyCompactList}\item 
+int {\bf blockSize}
+\begin{DoxyCompactList}\small\item\em blocksize is 2$^\wedge$(blockPower) \item\end{DoxyCompactList}\item 
+int {\bf blockMax}
+\begin{DoxyCompactList}\small\item\em num blocks = blockMax=(maxObjects/blockSize) \item\end{DoxyCompactList}\item 
+int {\bf blockModulo}
+\begin{DoxyCompactList}\small\item\em =blockSize-\/1; for determining which block fast \item\end{DoxyCompactList}\item 
+char $\ast$$\ast$ {\bf table}
+\begin{DoxyCompactList}\small\item\em list of pointers to blocks of storage we manage \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains public data members for Vset class. \begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+
+
+\subsection{Member Data Documentation}
+\index{sVset@{sVset}!blockMax@{blockMax}}
+\index{blockMax@{blockMax}!sVset@{sVset}}
+\subsubsection[{blockMax}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::blockMax}}\label{a00006_aa9dd2d95c9e71f01b9f6a0e8c240621a}
+
+
+num blocks = blockMax=(maxObjects/blockSize) 
+
+\index{sVset@{sVset}!blockModulo@{blockModulo}}
+\index{blockModulo@{blockModulo}!sVset@{sVset}}
+\subsubsection[{blockModulo}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::blockModulo}}\label{a00006_a0b9f1625bf97c1abae2db0346295855b}
+
+
+=blockSize-\/1; for determining which block fast 
+
+\index{sVset@{sVset}!blockPower@{blockPower}}
+\index{blockPower@{blockPower}!sVset@{sVset}}
+\subsubsection[{blockPower}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::blockPower}}\label{a00006_add65a271783642c1f7b8b3d872341752}
+
+
+power of 2 for blocksize (e.g., =10, or =16) 
+
+\index{sVset@{sVset}!blockSize@{blockSize}}
+\index{blockSize@{blockSize}!sVset@{sVset}}
+\subsubsection[{blockSize}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::blockSize}}\label{a00006_a5882d40eb0e55fce8c7a8ca9c81bd762}
+
+
+blocksize is 2$^\wedge$(blockPower) 
+
+\index{sVset@{sVset}!curT@{curT}}
+\index{curT@{curT}!sVset@{sVset}}
+\subsubsection[{curT}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::curT}}\label{a00006_a9ae2055f85dfdf8a38382e2411e998aa}
+
+
+the current \char`\"{}T\char`\"{} object in our collection 
+
+\index{sVset@{sVset}!iMadeVmem@{iMadeVmem}}
+\index{iMadeVmem@{iMadeVmem}!sVset@{sVset}}
+\subsubsection[{iMadeVmem}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::iMadeVmem}}\label{a00006_a3e514600e95b3a94ba65bd4954965b97}
+
+
+did i make vmem or was it inherited 
+
+\index{sVset@{sVset}!maxObjects@{maxObjects}}
+\index{maxObjects@{maxObjects}!sVset@{sVset}}
+\subsubsection[{maxObjects}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::maxObjects}}\label{a00006_ae969fd9a7dc5ba70e7011267464813b8}
+
+
+number of objects to manage (user specified) 
+
+\index{sVset@{sVset}!nameT@{nameT}}
+\index{nameT@{nameT}!sVset@{sVset}}
+\subsubsection[{nameT}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVset::nameT}[VMAX\_\-ARGLEN]}\label{a00006_a3c0d8879ad1e04fbeefde96afa3d6f18}
+
+
+name of object we are managing 
+
+\index{sVset@{sVset}!numBlocks@{numBlocks}}
+\index{numBlocks@{numBlocks}!sVset@{sVset}}
+\subsubsection[{numBlocks}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::numBlocks}}\label{a00006_a7c8f23f767a2a19c9e3f25367908d73c}
+
+
+total number of allocated blocks 
+
+\index{sVset@{sVset}!numT@{numT}}
+\index{numT@{numT}!sVset@{sVset}}
+\subsubsection[{numT}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::numT}}\label{a00006_af1009ccf64c7ca388fca7f81c4fdd003}
+
+
+the global \char`\"{}T\char`\"{} counter -\/-\/ how many \char`\"{}T\char`\"{}s in list 
+
+\index{sVset@{sVset}!prtT@{prtT}}
+\index{prtT@{prtT}!sVset@{sVset}}
+\subsubsection[{prtT}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::prtT}}\label{a00006_a8a9db3d22f89bd9b7ea2fdab710d885f}
+
+
+for i/o at appropriate block creation/deletion 
+
+\index{sVset@{sVset}!sizeT@{sizeT}}
+\index{sizeT@{sizeT}!sVset@{sVset}}
+\subsubsection[{sizeT}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVset::sizeT}}\label{a00006_ab82de1c9f9c98179619094b92ffb4052}
+
+
+size of the object in bytes 
+
+\index{sVset@{sVset}!table@{table}}
+\index{table@{table}!sVset@{sVset}}
+\subsubsection[{table}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ {\bf sVset::table}}\label{a00006_a644cf781925192d072fa752cf2d08e13}
+
+
+list of pointers to blocks of storage we manage 
+
+\index{sVset@{sVset}!vmem@{vmem}}
+\index{vmem@{vmem}!sVset@{sVset}}
+\subsubsection[{vmem}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vmem}$\ast$ {\bf sVset::vmem}}\label{a00006_a8af7fe493b077ad70164626b317e5d39}
+
+
+the memory manager 
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+{\bf vset.h}\end{DoxyCompactItemize}

@@ -1,0 +1,110 @@
+\section{vsh.h File Reference}
+\label{a00021}\index{vsh.h@{vsh.h}}
+
+
+Header file for vsh, a bourne-\/compatible shell.  
+
+
+{\ttfamily \#include $<$maloc/maloc\_\-base.h$>$}\par
+{\ttfamily \#include $<$maloc/vsys.h$>$}\par
+Include dependency graph for vsh.h:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{a00053}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=113pt]{a00054}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf sVsh}
+\begin{DoxyCompactList}\small\item\em Contains public data members for Vsh class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf sVsh} {\bf Vsh}
+\begin{DoxyCompactList}\small\item\em Declaration of the Vsh class as the Vsh structure. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Vsh} $\ast$ {\bf Vsh\_\-ctor} ({\bf Vmem} $\ast$vmem, int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Create the shell. \item\end{DoxyCompactList}\item 
+void {\bf Vsh\_\-dtor} ({\bf Vsh} $\ast$$\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destroy the shell. \item\end{DoxyCompactList}\item 
+int {\bf Vsh\_\-shell} ({\bf Vsh} $\ast$thee, char $\ast$pPR, void $\ast$pthee, int($\ast$builtin)(void $\ast$thee, int argc, char $\ast$$\ast$argv))
+\begin{DoxyCompactList}\small\item\em A bash-\/like shell with user-\/definable extensions. \item\end{DoxyCompactList}\item 
+int {\bf Vsh\_\-putenv} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const char $\ast$valu)
+\begin{DoxyCompactList}\small\item\em Place a variable with a value in the environment. \item\end{DoxyCompactList}\item 
+int {\bf Vsh\_\-putenvInfo} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const char $\ast$valu)
+\begin{DoxyCompactList}\small\item\em Place a variable with an info string in the environment. \item\end{DoxyCompactList}\item 
+int {\bf Vsh\_\-putenvInt} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const int valu)
+\begin{DoxyCompactList}\small\item\em Place a variable with a value (integer) in the environment. \item\end{DoxyCompactList}\item 
+int {\bf Vsh\_\-putenvReal} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const double valu)
+\begin{DoxyCompactList}\small\item\em Place a variable with a value (real) in the environment. \item\end{DoxyCompactList}\item 
+char $\ast$ {\bf Vsh\_\-getenv} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+\begin{DoxyCompactList}\small\item\em Get a value of variable in the environment. \item\end{DoxyCompactList}\item 
+char $\ast$ {\bf Vsh\_\-getenvInfo} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+\begin{DoxyCompactList}\small\item\em Get info associated with a variable in the environment. \item\end{DoxyCompactList}\item 
+int {\bf Vsh\_\-getenvInt} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+\begin{DoxyCompactList}\small\item\em Get a value of variable in the environment as an integer. \item\end{DoxyCompactList}\item 
+double {\bf Vsh\_\-getenvReal} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+\begin{DoxyCompactList}\small\item\em Get a value of variable in the environment as a real. \item\end{DoxyCompactList}\item 
+void {\bf Vsh\_\-remove} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+\begin{DoxyCompactList}\small\item\em Remove a variable from the environment. \item\end{DoxyCompactList}\item 
+void {\bf Vsh\_\-wipe} ({\bf Vsh} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Wipe the environment. \item\end{DoxyCompactList}\item 
+void {\bf Vsh\_\-memChk} ({\bf Vsh} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Print the exact current malloc usage. \item\end{DoxyCompactList}\item 
+{\bf Vio} $\ast$ {\bf Vsh\_\-ioSetup} ({\bf Vsh} $\ast$thee, char $\ast$key)
+\begin{DoxyCompactList}\small\item\em Setup for an I/O command. \item\end{DoxyCompactList}\item 
+void {\bf Vsh\_\-ioCleanup} ({\bf Vsh} $\ast$thee, {\bf Vio} $\ast$$\ast$sock)
+\begin{DoxyCompactList}\small\item\em Cleanup an I/O command. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file for vsh, a bourne-\/compatible shell. \begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+None 
+\end{DoxyNote}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyParagraph}{Id:}
+\doxyref{vsh.h}{p.}{a00021},v 1.30 2010/08/12 05:40:29 fetk Exp 
+\end{DoxyParagraph}
+
+
+\begin{DoxyAttention}{Attention}
+\begin{DoxyVerb}
+ *
+ * MALOC = < Minimal Abstraction Layer for Object-oriented C >
+ * Copyright (C) 1994-- Michael Holst
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ *  \end{DoxyVerb}
+ 
+\end{DoxyAttention}

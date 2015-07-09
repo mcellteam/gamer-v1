@@ -1,0 +1,138 @@
+\section{sVio Struct Reference}
+\label{a00002}\index{sVio@{sVio}}
+
+
+Contains public data members for Vio class.  
+
+
+
+
+{\ttfamily \#include $<$vio.h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf VIOtype} {\bf type}
+\item 
+{\bf VIOfrmt} {\bf frmt}
+\item 
+{\bf VIOrwkey} {\bf rwkey}
+\item 
+char {\bf file} [VMAX\_\-ARGLEN]
+\item 
+char {\bf lhost} [VMAX\_\-ARGLEN]
+\item 
+char {\bf rhost} [VMAX\_\-ARGLEN]
+\item 
+int {\bf error}
+\item 
+int {\bf dirty}
+\item 
+FILE $\ast$ {\bf fp}
+\item 
+int {\bf so}
+\item 
+int {\bf soc}
+\item 
+void $\ast$ {\bf name}
+\item 
+void $\ast$ {\bf axdr}
+\item 
+char {\bf whiteChars} [VMAX\_\-ARGNUM]
+\item 
+char {\bf commChars} [VMAX\_\-ARGNUM]
+\item 
+char {\bf ioBuffer} [VMAX\_\-BUFSIZE]
+\item 
+int {\bf ioBufferLen}
+\item 
+char {\bf putBuffer} [VMAX\_\-BUFSIZE]
+\item 
+int {\bf putBufferLen}
+\item 
+char $\ast$ {\bf VIObuffer}
+\item 
+int {\bf VIObufferLen}
+\item 
+int {\bf VIObufferPtr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains public data members for Vio class. \begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+
+
+\subsection{Member Data Documentation}
+\index{sVio@{sVio}!axdr@{axdr}}
+\index{axdr@{axdr}!sVio@{sVio}}
+\subsubsection[{axdr}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf sVio::axdr}}\label{a00002_acdd32890033cf340b8749afe256647f9}
+ASC/XDR structure pointer (ASC,XDR) \index{sVio@{sVio}!commChars@{commChars}}
+\index{commChars@{commChars}!sVio@{sVio}}
+\subsubsection[{commChars}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVio::commChars}[VMAX\_\-ARGNUM]}\label{a00002_a58c30e0df43f9853024a3d617f62ee33}
+comment character set (ASC,XDR) \index{sVio@{sVio}!dirty@{dirty}}
+\index{dirty@{dirty}!sVio@{sVio}}
+\subsubsection[{dirty}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::dirty}}\label{a00002_a72fb31f8402b0529548f19d2fef80dc6}
+dirty read bit -\/-\/ have we read file yet (FILE) \index{sVio@{sVio}!error@{error}}
+\index{error@{error}!sVio@{sVio}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::error}}\label{a00002_af77cb7bb4dafab6b485a881732e7b8f9}
+note if any error has occurred on this vio device \index{sVio@{sVio}!file@{file}}
+\index{file@{file}!sVio@{sVio}}
+\subsubsection[{file}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVio::file}[VMAX\_\-ARGLEN]}\label{a00002_ab8b3817815f2c248fb0e781944a43b17}
+file or device name (FILE,BUFF,UNIX,INET) \index{sVio@{sVio}!fp@{fp}}
+\index{fp@{fp}!sVio@{sVio}}
+\subsubsection[{fp}]{\setlength{\rightskip}{0pt plus 5cm}FILE$\ast$ {\bf sVio::fp}}\label{a00002_a6ac2f825edaf90c684faebbb17ad67d4}
+file pointer (SDIO,FILE) \index{sVio@{sVio}!frmt@{frmt}}
+\index{frmt@{frmt}!sVio@{sVio}}
+\subsubsection[{frmt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf VIOfrmt} {\bf sVio::frmt}}\label{a00002_a6c29ebe4584937b74a3c0b449310f1ac}
+data format. VIO\_\-NO\_\-FRMT = not initialized. VIO\_\-ASC = ASCII (FILE,BUFF,UNIX,INET). VIO\_\-XDR = BINARY (FILE,BUFF,UNIX,INET). \index{sVio@{sVio}!ioBuffer@{ioBuffer}}
+\index{ioBuffer@{ioBuffer}!sVio@{sVio}}
+\subsubsection[{ioBuffer}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVio::ioBuffer}[VMAX\_\-BUFSIZE]}\label{a00002_aa782f06576338c4bf32af13ffa76b455}
+I/O buffer (ASC,XDR) \index{sVio@{sVio}!ioBufferLen@{ioBufferLen}}
+\index{ioBufferLen@{ioBufferLen}!sVio@{sVio}}
+\subsubsection[{ioBufferLen}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::ioBufferLen}}\label{a00002_a319b82ac4590beb7b7971822fc5ab471}
+I/O buffer length (ASC,XDR) \index{sVio@{sVio}!lhost@{lhost}}
+\index{lhost@{lhost}!sVio@{sVio}}
+\subsubsection[{lhost}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVio::lhost}[VMAX\_\-ARGLEN]}\label{a00002_a8bb72a4f63380102527e19b592f70acc}
+local hostname (me) (UNIX,INET) \index{sVio@{sVio}!name@{name}}
+\index{name@{name}!sVio@{sVio}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf sVio::name}}\label{a00002_ab949cc025dba7a425e9a483d7b9452be}
+\&sockaddr\_\-un or \&sockaddr\_\-in (UNIX,INET) \index{sVio@{sVio}!putBuffer@{putBuffer}}
+\index{putBuffer@{putBuffer}!sVio@{sVio}}
+\subsubsection[{putBuffer}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVio::putBuffer}[VMAX\_\-BUFSIZE]}\label{a00002_a026eee4ab9d1413ac7dec57bcba4cff9}
+final write buffer (ASC,XDR) \index{sVio@{sVio}!putBufferLen@{putBufferLen}}
+\index{putBufferLen@{putBufferLen}!sVio@{sVio}}
+\subsubsection[{putBufferLen}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::putBufferLen}}\label{a00002_ad68b54648906734b80b93205cfb22812}
+final write buffer length (ASC,XDR) \index{sVio@{sVio}!rhost@{rhost}}
+\index{rhost@{rhost}!sVio@{sVio}}
+\subsubsection[{rhost}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVio::rhost}[VMAX\_\-ARGLEN]}\label{a00002_af3eaf81b391a451956735215da0f6b55}
+remote hostname (other guy) (UNIX,INET) \index{sVio@{sVio}!rwkey@{rwkey}}
+\index{rwkey@{rwkey}!sVio@{sVio}}
+\subsubsection[{rwkey}]{\setlength{\rightskip}{0pt plus 5cm}{\bf VIOrwkey} {\bf sVio::rwkey}}\label{a00002_a46b6d2de5b885ef6850e74dbf69230c5}
+r/w key. VIO\_\-NO\_\-R = not initialized. VIO\_\-R = read (FILE,BUFF,UNIX,INET) VIO\_\-W = write (FILE,BUFF,UNIX,INET) \index{sVio@{sVio}!so@{so}}
+\index{so@{so}!sVio@{sVio}}
+\subsubsection[{so}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::so}}\label{a00002_af100e7b153d174650215657e74e0360f}
+primary unix domain or inet socket (UNIX,INET) \index{sVio@{sVio}!soc@{soc}}
+\index{soc@{soc}!sVio@{sVio}}
+\subsubsection[{soc}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::soc}}\label{a00002_a846bff280f1fad2f64708f80dd824d72}
+subsocket created for socket reading (UNIX,INET) \index{sVio@{sVio}!type@{type}}
+\index{type@{type}!sVio@{sVio}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf VIOtype} {\bf sVio::type}}\label{a00002_a10ff01c784656edf59de7290943d2bb8}
+file (or device) type. VIO\_\-NO\_\-TYPE = not initialized. VIO\_\-SDIO = standard I/O. VIO\_\-FILE = file I/O. VIO\_\-BUFF = buffer I/O. VIO\_\-UNIX = UNIX (domain) socket I/O. VIO\_\-INET = INET (network) socket I/O. \index{sVio@{sVio}!VIObuffer@{VIObuffer}}
+\index{VIObuffer@{VIObuffer}!sVio@{sVio}}
+\subsubsection[{VIObuffer}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf sVio::VIObuffer}}\label{a00002_ad05a71a18ce91d54c9e90f6f24a6e0d5}
+(BUFF) \index{sVio@{sVio}!VIObufferLen@{VIObufferLen}}
+\index{VIObufferLen@{VIObufferLen}!sVio@{sVio}}
+\subsubsection[{VIObufferLen}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::VIObufferLen}}\label{a00002_aaa457bd84691d96861e3c7792006517c}
+(BUFF) \index{sVio@{sVio}!VIObufferPtr@{VIObufferPtr}}
+\index{VIObufferPtr@{VIObufferPtr}!sVio@{sVio}}
+\subsubsection[{VIObufferPtr}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVio::VIObufferPtr}}\label{a00002_a615098ef767bb9dd01bd2629b1b8d8be}
+(BUFF) \index{sVio@{sVio}!whiteChars@{whiteChars}}
+\index{whiteChars@{whiteChars}!sVio@{sVio}}
+\subsubsection[{whiteChars}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVio::whiteChars}[VMAX\_\-ARGNUM]}\label{a00002_aa478abe4d4059c9b597ffc3181b9460e}
+white space character set (ASC) 
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+{\bf vio.h}\end{DoxyCompactItemize}
