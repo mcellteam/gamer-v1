@@ -1,21 +1,19 @@
-\section{vmem.h File Reference}
-\label{a00015}\index{vmem.h@{vmem.h}}
+\section{vmem.\+h File Reference}
+\label{a00015}\index{vmem.\+h@{vmem.\+h}}
 
 
-Class Vmem: A safer, object-\/oriented, malloc/free object.  
+Class Vmem\+: A safer, object-\/oriented, malloc/free object.  
 
 
-{\ttfamily \#include $<$maloc/maloc\_\-base.h$>$}\par
-Include dependency graph for vmem.h:
-\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
+Include dependency graph for vmem.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=400pt]{a00041}
+\includegraphics[width=350pt]{a00041}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,54 +23,56 @@ This graph shows which files directly or indirectly include this file:
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf sVmem}
-\begin{DoxyCompactList}\small\item\em Contains public data members for Vmem class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+struct {\bf s\+Vmem}
+\begin{DoxyCompactList}\small\item\em Contains public data members for Vmem class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf sVmem} {\bf Vmem}
-\begin{DoxyCompactList}\small\item\em Declaration of the Vmem class as the Vmem structure. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+typedef struct {\bf s\+Vmem} {\bf Vmem}
+\begin{DoxyCompactList}\small\item\em Declaration of the Vmem class as the Vmem structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-size\_\-t {\bf Vmem\_\-bytesTotal} (void)
-\begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas (current footprint). \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-mallocBytesTotal} (void)
-\begin{DoxyCompactList}\small\item\em Return total of all Vmem malloc allocations. \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-freeBytesTotal} (void)
-\begin{DoxyCompactList}\small\item\em Return total of all Vmem free calls. \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-highWaterTotal} (void)
-\begin{DoxyCompactList}\small\item\em Return the high-\/water byte mark (largest footprint). \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-mallocAreasTotal} (void)
-\begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas by groups. \item\end{DoxyCompactList}\item 
-void {\bf Vmem\_\-printTotal} (void)
-\begin{DoxyCompactList}\small\item\em Print current memory statistics for all Vmem malloc/free areas. \item\end{DoxyCompactList}\item 
-{\bf Vmem} $\ast$ {\bf Vmem\_\-ctor} (char $\ast$name)
-\begin{DoxyCompactList}\small\item\em Construct the dynamic memory allocation logging object. \item\end{DoxyCompactList}\item 
-void {\bf Vmem\_\-dtor} ({\bf Vmem} $\ast$$\ast$thee)
-\begin{DoxyCompactList}\small\item\em Destruct the dynamic memory allocation logging object. \item\end{DoxyCompactList}\item 
-void $\ast$ {\bf Vmem\_\-malloc} ({\bf Vmem} $\ast$thee, size\_\-t num, size\_\-t size)
-\begin{DoxyCompactList}\small\item\em A safe logged version of malloc. \item\end{DoxyCompactList}\item 
-void {\bf Vmem\_\-free} ({\bf Vmem} $\ast$thee, size\_\-t num, size\_\-t size, void $\ast$$\ast$ram)
-\begin{DoxyCompactList}\small\item\em A safe logged version of free. \item\end{DoxyCompactList}\item 
-void $\ast$ {\bf Vmem\_\-realloc} ({\bf Vmem} $\ast$thee, size\_\-t num, size\_\-t size, void $\ast$$\ast$ram, size\_\-t newNum)
-\begin{DoxyCompactList}\small\item\em A safe logged version of realloc (usually a bad idea to use this). \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-bytes} ({\bf Vmem} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return total of all ACTIVE malloc areas used by Vmem object. \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-mallocBytes} ({\bf Vmem} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return total of all mallocs performed by Vmem object. \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-freeBytes} ({\bf Vmem} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return total of all frees performed by Vmem object. \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-highWater} ({\bf Vmem} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return high-\/water malloc bytemark hit by Vmem object. \item\end{DoxyCompactList}\item 
-size\_\-t {\bf Vmem\_\-mallocAreas} ({\bf Vmem} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return total number of individual active malloc areas. \item\end{DoxyCompactList}\item 
-void {\bf Vmem\_\-print} ({\bf Vmem} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Print current memory stats associated with this Vmem object. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+size\+\_\+t {\bf Vmem\+\_\+bytes\+Total} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas (current footprint) \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Bytes\+Total} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all Vmem malloc allocations. \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+free\+Bytes\+Total} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all Vmem free calls. \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+high\+Water\+Total} (void)
+\begin{DoxyCompactList}\small\item\em Return the high-\/water byte mark (largest footprint) \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Areas\+Total} (void)
+\begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas by groups. \end{DoxyCompactList}\item 
+void {\bf Vmem\+\_\+print\+Total} (void)
+\begin{DoxyCompactList}\small\item\em Print current memory statistics for all Vmem malloc/free areas. \end{DoxyCompactList}\item 
+{\bf Vmem} $\ast$ {\bf Vmem\+\_\+ctor} (char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Construct the dynamic memory allocation logging object. \end{DoxyCompactList}\item 
+void {\bf Vmem\+\_\+dtor} ({\bf Vmem} $\ast$$\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destruct the dynamic memory allocation logging object. \end{DoxyCompactList}\item 
+void $\ast$ {\bf Vmem\+\_\+malloc} ({\bf Vmem} $\ast$thee, size\+\_\+t num, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em A safe logged version of malloc. \end{DoxyCompactList}\item 
+void {\bf Vmem\+\_\+free} ({\bf Vmem} $\ast$thee, size\+\_\+t num, size\+\_\+t size, void $\ast$$\ast$ram)
+\begin{DoxyCompactList}\small\item\em A safe logged version of free. \end{DoxyCompactList}\item 
+void $\ast$ {\bf Vmem\+\_\+realloc} ({\bf Vmem} $\ast$thee, size\+\_\+t num, size\+\_\+t size, void $\ast$$\ast$ram, size\+\_\+t new\+Num)
+\begin{DoxyCompactList}\small\item\em A safe logged version of realloc (usually a bad idea to use this) \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+bytes} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total of all A\+C\+T\+I\+V\+E malloc areas used by Vmem object. \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Bytes} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total of all mallocs performed by Vmem object. \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+free\+Bytes} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total of all frees performed by Vmem object. \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+high\+Water} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return high-\/water malloc bytemark hit by Vmem object. \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Areas} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total number of individual active malloc areas. \end{DoxyCompactList}\item 
+void {\bf Vmem\+\_\+print} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Print current memory stats associated with this Vmem object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vmem: A safer, object-\/oriented, malloc/free object. \begin{DoxyAuthor}{Author}
+Class Vmem\+: A safer, object-\/oriented, malloc/free object. 
+
+\begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
@@ -81,31 +81,30 @@ None
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id:}
-\doxyref{vmem.h}{p.}{a00015},v 1.21 2010/08/12 05:40:36 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{vmem.\+h}{p.}{a00015},v 1.\+21 2010/08/12 05\+:40\+:36 fetk Exp 
 \end{DoxyParagraph}
 
 
 \begin{DoxyAttention}{Attention}
-\begin{DoxyVerb}
- *
- * MALOC = < Minimal Abstraction Layer for Object-oriented C >
- * Copyright (C) 1994-- Michael Holst
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- * 
- * \end{DoxyVerb}
+\begin{DoxyVerb}*
+* MALOC = < Minimal Abstraction Layer for Object-oriented C >
+* Copyright (C) 1994-- Michael Holst
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+* 
+* \end{DoxyVerb}
  
 \end{DoxyAttention}

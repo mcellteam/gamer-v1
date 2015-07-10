@@ -1,5 +1,5 @@
-\section{sVsh Struct Reference}
-\label{a00007}\index{sVsh@{sVsh}}
+\section{s\+Vsh Struct Reference}
+\label{a00007}\index{s\+Vsh@{s\+Vsh}}
 
 
 Contains public data members for Vsh class.  
@@ -7,212 +7,213 @@ Contains public data members for Vsh class.
 
 
 
-{\ttfamily \#include $<$vsh.h$>$}
+{\ttfamily \#include $<$vsh.\+h$>$}
 
 
 
-Collaboration diagram for sVsh:
-\nopagebreak
+Collaboration diagram for s\+Vsh\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=96pt]{a00064}
+\includegraphics[width=99pt]{a00065}
 \end{center}
 \end{figure}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 {\bf Vmem} $\ast$ {\bf vmem}
-\begin{DoxyCompactList}\small\item\em the memory manager \item\end{DoxyCompactList}\item 
-int {\bf iMadeVmem}
-\begin{DoxyCompactList}\small\item\em did i make vmem or was it inherited \item\end{DoxyCompactList}\item 
-char {\bf processArgs}
-\begin{DoxyCompactList}\small\item\em whether the shell should process (argc,argv) \item\end{DoxyCompactList}\item 
-int {\bf envValuLen}
-\begin{DoxyCompactList}\small\item\em number of environment variables \item\end{DoxyCompactList}\item 
-int {\bf envInfoLen}
-\begin{DoxyCompactList}\small\item\em number of environment variable help strings \item\end{DoxyCompactList}\item 
-char $\ast$$\ast$ {\bf envValu}
-\begin{DoxyCompactList}\small\item\em the environment variables \item\end{DoxyCompactList}\item 
-char $\ast$$\ast$ {\bf envInfo}
-\begin{DoxyCompactList}\small\item\em the environment variable help strings \item\end{DoxyCompactList}\item 
-FILE $\ast$ {\bf inUnit}
-\begin{DoxyCompactList}\small\item\em input unit \item\end{DoxyCompactList}\item 
-FILE $\ast$ {\bf scUnit}
-\begin{DoxyCompactList}\small\item\em script input unit \item\end{DoxyCompactList}\item 
-FILE $\ast$ {\bf clUnit}
-\begin{DoxyCompactList}\small\item\em input unit \item\end{DoxyCompactList}\item 
-FILE $\ast$ {\bf cinUnit}
-\begin{DoxyCompactList}\small\item\em input unit \item\end{DoxyCompactList}\item 
-char {\bf cinName} [VMAX\_\-ARGLEN]
-\begin{DoxyCompactList}\small\item\em input unit \item\end{DoxyCompactList}\item 
-char {\bf PR} [VMAX\_\-ARGLEN]
-\begin{DoxyCompactList}\small\item\em minimal prompt (just the binary name) \item\end{DoxyCompactList}\item 
-char {\bf PR\_\-PATH} [VMAX\_\-ARGLEN]
-\begin{DoxyCompactList}\small\item\em full prompt (user,hostname,path,etc) \item\end{DoxyCompactList}\item 
-char {\bf PR\_\-EXIT} [VMAX\_\-ARGLEN]
-\begin{DoxyCompactList}\small\item\em the exit print string \item\end{DoxyCompactList}\item 
-int {\bf cmdKey}
-\begin{DoxyCompactList}\small\item\em external supershell command key \item\end{DoxyCompactList}\item 
-void $\ast$ {\bf Ext\_\-thee}
-\begin{DoxyCompactList}\small\item\em external supershell object \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em the memory manager \end{DoxyCompactList}\item 
+int {\bf i\+Made\+Vmem}
+\begin{DoxyCompactList}\small\item\em did i make vmem or was it inherited \end{DoxyCompactList}\item 
+char {\bf process\+Args}
+\begin{DoxyCompactList}\small\item\em whether the shell should process (argc,argv) \end{DoxyCompactList}\item 
+int {\bf env\+Valu\+Len}
+\begin{DoxyCompactList}\small\item\em number of environment variables \end{DoxyCompactList}\item 
+int {\bf env\+Info\+Len}
+\begin{DoxyCompactList}\small\item\em number of environment variable help strings \end{DoxyCompactList}\item 
+char $\ast$$\ast$ {\bf env\+Valu}
+\begin{DoxyCompactList}\small\item\em the environment variables \end{DoxyCompactList}\item 
+char $\ast$$\ast$ {\bf env\+Info}
+\begin{DoxyCompactList}\small\item\em the environment variable help strings \end{DoxyCompactList}\item 
+F\+I\+L\+E $\ast$ {\bf in\+Unit}
+\begin{DoxyCompactList}\small\item\em input unit \end{DoxyCompactList}\item 
+F\+I\+L\+E $\ast$ {\bf sc\+Unit}
+\begin{DoxyCompactList}\small\item\em script input unit \end{DoxyCompactList}\item 
+F\+I\+L\+E $\ast$ {\bf cl\+Unit}
+\begin{DoxyCompactList}\small\item\em input unit \end{DoxyCompactList}\item 
+F\+I\+L\+E $\ast$ {\bf cin\+Unit}
+\begin{DoxyCompactList}\small\item\em input unit \end{DoxyCompactList}\item 
+char {\bf cin\+Name} [{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]
+\begin{DoxyCompactList}\small\item\em input unit \end{DoxyCompactList}\item 
+char {\bf P\+R} [{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]
+\begin{DoxyCompactList}\small\item\em minimal prompt (just the binary name) \end{DoxyCompactList}\item 
+char {\bf P\+R\+\_\+\+P\+A\+T\+H} [{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]
+\begin{DoxyCompactList}\small\item\em full prompt (user,hostname,path,etc) \end{DoxyCompactList}\item 
+char {\bf P\+R\+\_\+\+E\+X\+I\+T} [{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]
+\begin{DoxyCompactList}\small\item\em the exit print string \end{DoxyCompactList}\item 
+int {\bf cmd\+Key}
+\begin{DoxyCompactList}\small\item\em external supershell command key \end{DoxyCompactList}\item 
+void $\ast$ {\bf Ext\+\_\+thee}
+\begin{DoxyCompactList}\small\item\em external supershell object \end{DoxyCompactList}\item 
 char $\ast$ {\bf buf}
-\begin{DoxyCompactList}\small\item\em internal buffer \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em internal buffer \end{DoxyCompactList}\item 
 int {\bf bufsize}
-\begin{DoxyCompactList}\small\item\em internal buffer size \item\end{DoxyCompactList}\item 
-int($\ast$ {\bf Ext\_\-builtin} )(void $\ast$thee, int argc, char $\ast$$\ast$argv)
-\begin{DoxyCompactList}\small\item\em external supershell builtin function \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em internal buffer size \end{DoxyCompactList}\item 
+int($\ast$ {\bf Ext\+\_\+builtin} )(void $\ast$thee, int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em external supershell builtin function \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Contains public data members for Vsh class. \begin{DoxyAuthor}{Author}
+Contains public data members for Vsh class. 
+
+\begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 
 
 \subsection{Member Data Documentation}
-\index{sVsh@{sVsh}!buf@{buf}}
-\index{buf@{buf}!sVsh@{sVsh}}
-\subsubsection[{buf}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf sVsh::buf}}\label{a00007_a54d6581a859ce3e568994a2acb34eeca}
+\index{s\+Vsh@{s\+Vsh}!buf@{buf}}
+\index{buf@{buf}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{buf}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ s\+Vsh\+::buf}\label{a00007_a54d6581a859ce3e568994a2acb34eeca}
 
 
 internal buffer 
 
-\index{sVsh@{sVsh}!bufsize@{bufsize}}
-\index{bufsize@{bufsize}!sVsh@{sVsh}}
-\subsubsection[{bufsize}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVsh::bufsize}}\label{a00007_a3178ea2c169d30c7de2db923c6fc1472}
+\index{s\+Vsh@{s\+Vsh}!bufsize@{bufsize}}
+\index{bufsize@{bufsize}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{bufsize}]{\setlength{\rightskip}{0pt plus 5cm}int s\+Vsh\+::bufsize}\label{a00007_a3178ea2c169d30c7de2db923c6fc1472}
 
 
 internal buffer size 
 
-\index{sVsh@{sVsh}!cinName@{cinName}}
-\index{cinName@{cinName}!sVsh@{sVsh}}
-\subsubsection[{cinName}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVsh::cinName}[VMAX\_\-ARGLEN]}\label{a00007_a4f656d4cfedad44dfa387f941aaf1f70}
+\index{s\+Vsh@{s\+Vsh}!cin\+Name@{cin\+Name}}
+\index{cin\+Name@{cin\+Name}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{cin\+Name}]{\setlength{\rightskip}{0pt plus 5cm}char s\+Vsh\+::cin\+Name[{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]}\label{a00007_a4f656d4cfedad44dfa387f941aaf1f70}
 
 
 input unit 
 
-\index{sVsh@{sVsh}!cinUnit@{cinUnit}}
-\index{cinUnit@{cinUnit}!sVsh@{sVsh}}
-\subsubsection[{cinUnit}]{\setlength{\rightskip}{0pt plus 5cm}FILE$\ast$ {\bf sVsh::cinUnit}}\label{a00007_aafb169c1a906339713936d6434f1aab2}
+\index{s\+Vsh@{s\+Vsh}!cin\+Unit@{cin\+Unit}}
+\index{cin\+Unit@{cin\+Unit}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{cin\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ s\+Vsh\+::cin\+Unit}\label{a00007_aafb169c1a906339713936d6434f1aab2}
 
 
 input unit 
 
-\index{sVsh@{sVsh}!clUnit@{clUnit}}
-\index{clUnit@{clUnit}!sVsh@{sVsh}}
-\subsubsection[{clUnit}]{\setlength{\rightskip}{0pt plus 5cm}FILE$\ast$ {\bf sVsh::clUnit}}\label{a00007_a61c33aa2071b43a85120b75d3984eeb3}
+\index{s\+Vsh@{s\+Vsh}!cl\+Unit@{cl\+Unit}}
+\index{cl\+Unit@{cl\+Unit}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{cl\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ s\+Vsh\+::cl\+Unit}\label{a00007_a61c33aa2071b43a85120b75d3984eeb3}
 
 
 input unit 
 
-\index{sVsh@{sVsh}!cmdKey@{cmdKey}}
-\index{cmdKey@{cmdKey}!sVsh@{sVsh}}
-\subsubsection[{cmdKey}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVsh::cmdKey}}\label{a00007_aa246875bf82605333f30af61afe3ed54}
+\index{s\+Vsh@{s\+Vsh}!cmd\+Key@{cmd\+Key}}
+\index{cmd\+Key@{cmd\+Key}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{cmd\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int s\+Vsh\+::cmd\+Key}\label{a00007_aa246875bf82605333f30af61afe3ed54}
 
 
 external supershell command key 
 
-\index{sVsh@{sVsh}!envInfo@{envInfo}}
-\index{envInfo@{envInfo}!sVsh@{sVsh}}
-\subsubsection[{envInfo}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ {\bf sVsh::envInfo}}\label{a00007_a4b13b56b6059a20538b0eca39b1872b0}
+\index{s\+Vsh@{s\+Vsh}!env\+Info@{env\+Info}}
+\index{env\+Info@{env\+Info}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{env\+Info}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ s\+Vsh\+::env\+Info}\label{a00007_a4b13b56b6059a20538b0eca39b1872b0}
 
 
 the environment variable help strings 
 
-\index{sVsh@{sVsh}!envInfoLen@{envInfoLen}}
-\index{envInfoLen@{envInfoLen}!sVsh@{sVsh}}
-\subsubsection[{envInfoLen}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVsh::envInfoLen}}\label{a00007_a9f3e8263b78fe0574642e64ee6e30998}
+\index{s\+Vsh@{s\+Vsh}!env\+Info\+Len@{env\+Info\+Len}}
+\index{env\+Info\+Len@{env\+Info\+Len}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{env\+Info\+Len}]{\setlength{\rightskip}{0pt plus 5cm}int s\+Vsh\+::env\+Info\+Len}\label{a00007_a9f3e8263b78fe0574642e64ee6e30998}
 
 
 number of environment variable help strings 
 
-\index{sVsh@{sVsh}!envValu@{envValu}}
-\index{envValu@{envValu}!sVsh@{sVsh}}
-\subsubsection[{envValu}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ {\bf sVsh::envValu}}\label{a00007_a651413ef7fd726eef389669cff1f3e10}
+\index{s\+Vsh@{s\+Vsh}!env\+Valu@{env\+Valu}}
+\index{env\+Valu@{env\+Valu}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{env\+Valu}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ s\+Vsh\+::env\+Valu}\label{a00007_a651413ef7fd726eef389669cff1f3e10}
 
 
 the environment variables 
 
-\index{sVsh@{sVsh}!envValuLen@{envValuLen}}
-\index{envValuLen@{envValuLen}!sVsh@{sVsh}}
-\subsubsection[{envValuLen}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVsh::envValuLen}}\label{a00007_a6f5d3a3bfe8edef74e14262dca64eb19}
+\index{s\+Vsh@{s\+Vsh}!env\+Valu\+Len@{env\+Valu\+Len}}
+\index{env\+Valu\+Len@{env\+Valu\+Len}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{env\+Valu\+Len}]{\setlength{\rightskip}{0pt plus 5cm}int s\+Vsh\+::env\+Valu\+Len}\label{a00007_a6f5d3a3bfe8edef74e14262dca64eb19}
 
 
 number of environment variables 
 
-\index{sVsh@{sVsh}!Ext\_\-builtin@{Ext\_\-builtin}}
-\index{Ext\_\-builtin@{Ext\_\-builtin}!sVsh@{sVsh}}
-\subsubsection[{Ext\_\-builtin}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ {\bf sVsh::Ext\_\-builtin})(void $\ast$thee, int argc, char $\ast$$\ast$argv)}\label{a00007_a1ede7298d7d963598ff09330b4dabf65}
+\index{s\+Vsh@{s\+Vsh}!Ext\+\_\+builtin@{Ext\+\_\+builtin}}
+\index{Ext\+\_\+builtin@{Ext\+\_\+builtin}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{Ext\+\_\+builtin}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ s\+Vsh\+::\+Ext\+\_\+builtin) (void $\ast$thee, int argc, char $\ast$$\ast$argv)}\label{a00007_af6a657bde089d08b55bea2bbb88ad3bc}
 
 
 external supershell builtin function 
 
-\index{sVsh@{sVsh}!Ext\_\-thee@{Ext\_\-thee}}
-\index{Ext\_\-thee@{Ext\_\-thee}!sVsh@{sVsh}}
-\subsubsection[{Ext\_\-thee}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf sVsh::Ext\_\-thee}}\label{a00007_aca365034a12a00d62f79aea0e74c24c0}
+\index{s\+Vsh@{s\+Vsh}!Ext\+\_\+thee@{Ext\+\_\+thee}}
+\index{Ext\+\_\+thee@{Ext\+\_\+thee}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{Ext\+\_\+thee}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ s\+Vsh\+::\+Ext\+\_\+thee}\label{a00007_aca365034a12a00d62f79aea0e74c24c0}
 
 
 external supershell object 
 
-\index{sVsh@{sVsh}!iMadeVmem@{iMadeVmem}}
-\index{iMadeVmem@{iMadeVmem}!sVsh@{sVsh}}
-\subsubsection[{iMadeVmem}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf sVsh::iMadeVmem}}\label{a00007_a4d9333d357f6b00cb9d6a9152835385a}
+\index{s\+Vsh@{s\+Vsh}!i\+Made\+Vmem@{i\+Made\+Vmem}}
+\index{i\+Made\+Vmem@{i\+Made\+Vmem}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{i\+Made\+Vmem}]{\setlength{\rightskip}{0pt plus 5cm}int s\+Vsh\+::i\+Made\+Vmem}\label{a00007_a4d9333d357f6b00cb9d6a9152835385a}
 
 
 did i make vmem or was it inherited 
 
-\index{sVsh@{sVsh}!inUnit@{inUnit}}
-\index{inUnit@{inUnit}!sVsh@{sVsh}}
-\subsubsection[{inUnit}]{\setlength{\rightskip}{0pt plus 5cm}FILE$\ast$ {\bf sVsh::inUnit}}\label{a00007_a71b219a119b8ea2d6a8e8310fff87ad5}
+\index{s\+Vsh@{s\+Vsh}!in\+Unit@{in\+Unit}}
+\index{in\+Unit@{in\+Unit}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{in\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ s\+Vsh\+::in\+Unit}\label{a00007_a71b219a119b8ea2d6a8e8310fff87ad5}
 
 
 input unit 
 
-\index{sVsh@{sVsh}!PR@{PR}}
-\index{PR@{PR}!sVsh@{sVsh}}
-\subsubsection[{PR}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVsh::PR}[VMAX\_\-ARGLEN]}\label{a00007_ad8d9d3a62f8a4a3cb4378aa58df6c976}
+\index{s\+Vsh@{s\+Vsh}!P\+R@{P\+R}}
+\index{P\+R@{P\+R}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{P\+R}]{\setlength{\rightskip}{0pt plus 5cm}char s\+Vsh\+::\+P\+R[{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]}\label{a00007_ad8d9d3a62f8a4a3cb4378aa58df6c976}
 
 
 minimal prompt (just the binary name) 
 
-\index{sVsh@{sVsh}!PR\_\-EXIT@{PR\_\-EXIT}}
-\index{PR\_\-EXIT@{PR\_\-EXIT}!sVsh@{sVsh}}
-\subsubsection[{PR\_\-EXIT}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVsh::PR\_\-EXIT}[VMAX\_\-ARGLEN]}\label{a00007_a5973c822b71c353f131271631bbb43d0}
+\index{s\+Vsh@{s\+Vsh}!P\+R\+\_\+\+E\+X\+I\+T@{P\+R\+\_\+\+E\+X\+I\+T}}
+\index{P\+R\+\_\+\+E\+X\+I\+T@{P\+R\+\_\+\+E\+X\+I\+T}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{P\+R\+\_\+\+E\+X\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}char s\+Vsh\+::\+P\+R\+\_\+\+E\+X\+I\+T[{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]}\label{a00007_a5973c822b71c353f131271631bbb43d0}
 
 
 the exit print string 
 
-\index{sVsh@{sVsh}!PR\_\-PATH@{PR\_\-PATH}}
-\index{PR\_\-PATH@{PR\_\-PATH}!sVsh@{sVsh}}
-\subsubsection[{PR\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVsh::PR\_\-PATH}[VMAX\_\-ARGLEN]}\label{a00007_a3d143e1a14f7ccd95292039d17679c17}
+\index{s\+Vsh@{s\+Vsh}!P\+R\+\_\+\+P\+A\+T\+H@{P\+R\+\_\+\+P\+A\+T\+H}}
+\index{P\+R\+\_\+\+P\+A\+T\+H@{P\+R\+\_\+\+P\+A\+T\+H}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{P\+R\+\_\+\+P\+A\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}char s\+Vsh\+::\+P\+R\+\_\+\+P\+A\+T\+H[{\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]}\label{a00007_a3d143e1a14f7ccd95292039d17679c17}
 
 
 full prompt (user,hostname,path,etc) 
 
-\index{sVsh@{sVsh}!processArgs@{processArgs}}
-\index{processArgs@{processArgs}!sVsh@{sVsh}}
-\subsubsection[{processArgs}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf sVsh::processArgs}}\label{a00007_a4787c933c7915d6c1f8500e8d97abe7c}
+\index{s\+Vsh@{s\+Vsh}!process\+Args@{process\+Args}}
+\index{process\+Args@{process\+Args}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{process\+Args}]{\setlength{\rightskip}{0pt plus 5cm}char s\+Vsh\+::process\+Args}\label{a00007_a4787c933c7915d6c1f8500e8d97abe7c}
 
 
 whether the shell should process (argc,argv) 
 
-\index{sVsh@{sVsh}!scUnit@{scUnit}}
-\index{scUnit@{scUnit}!sVsh@{sVsh}}
-\subsubsection[{scUnit}]{\setlength{\rightskip}{0pt plus 5cm}FILE$\ast$ {\bf sVsh::scUnit}}\label{a00007_a471927ccabdbbb75601d1d406e8cbc76}
+\index{s\+Vsh@{s\+Vsh}!sc\+Unit@{sc\+Unit}}
+\index{sc\+Unit@{sc\+Unit}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{sc\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ s\+Vsh\+::sc\+Unit}\label{a00007_a471927ccabdbbb75601d1d406e8cbc76}
 
 
 script input unit 
 
-\index{sVsh@{sVsh}!vmem@{vmem}}
-\index{vmem@{vmem}!sVsh@{sVsh}}
-\subsubsection[{vmem}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vmem}$\ast$ {\bf sVsh::vmem}}\label{a00007_a6ff199aeb0841047c1c4cd0a42f3c23a}
+\index{s\+Vsh@{s\+Vsh}!vmem@{vmem}}
+\index{vmem@{vmem}!s\+Vsh@{s\+Vsh}}
+\subsubsection[{vmem}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vmem}$\ast$ s\+Vsh\+::vmem}\label{a00007_a6ff199aeb0841047c1c4cd0a42f3c23a}
 
 
 the memory manager 
 
 
 
-The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-{\bf vsh.h}\end{DoxyCompactItemize}
+{\bf vsh.\+h}\end{DoxyCompactItemize}

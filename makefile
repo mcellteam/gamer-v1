@@ -1,36 +1,40 @@
 SHELL = /bin/sh
-PREFIX = $(PWD)/gamer_install
-FETK_INCLUDE = $(PREFIX)/include
-FETK_LIBRARY = $(PREFIX)/lib
-PYTHON = /opt/local/bin/python3.4
-LDFLAGS = -L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib
-# DYLD_LIBRARY_PATH = $(PREFIX)/lib:$DYLD_LIBRARY_PATH
-# PYTHONPATH = $(PREFIX)/lib/python3.4/site-packages:$PYTHONPATH
+BUILD_DIR = $(PWD)/gamer_build
+export FETK_INCLUDE = $(BUILD_DIR)/include
+export FETK_LIBRARY = $(BUILD_DIR)/lib
+export PYTHON = /opt/local/bin/python3.4
+LDFLAGS = \"-L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib\"
+INSTALL_DIR = ~/Library/Application\ Support/Blender/2.75
 
-.PHONY: all
+# DYLD_LIBRARY_PATH = $(BUILD_DIR)/lib:$DYLD_LIBRARY_PATH
+# PYTHONPATH = $(BUILD_DIR)/lib/python3.4/site-packages:$PYTHONPATH
+
 all: maloc gamer gamer_swig gamer_tools upy
 
-.PHONY: maloc
+.PHONY: maloc gamer upy
+
 maloc:
-	@ cd maloc ; ./configure --prefix=$(PREFIX) ; $(MAKE) ; $(MAKE) install
+	@ cd maloc ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
 
-.PHONY: gamer
-gamer: maloc
-	@ cd gamer ; ./configure --prefix=$(PREFIX) ; $(MAKE) ; $(MAKE) install
+gamer:
+	@ cd gamer ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
 
-.PHONY: gamer_swig
-gamer_swig: gamer
-	@ cd gamer/swig ; ./configure --prefix=$(PREFIX) LDFLAGS="-L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib" ; $(MAKE) ; $(MAKE) install
+gamer_swig:
+	@ cd gamer/swig ; ./configure --prefix=$(BUILD_DIR) LDFLAGS=$(LDFLAGS) ; $(MAKE) ; $(MAKE) install
 
-.PHONY: gamer_tools
-gamer_tools: gamer
-	@ cd gamer/tools/ImproveSurfMesh ; ./configure --prefix=$(PREFIX) ; $(MAKE) ; $(MAKE) install
-	@ cd gamer/tools/MolecularMesh ; ./configure --prefix=$(PREFIX) ; $(MAKE) ; $(MAKE) install
-	@ cd gamer/tools/GenerateMesh ; ./configure --prefix=$(PREFIX) ; $(MAKE) ; $(MAKE) install
+gamer_tools:
+	@ cd gamer/tools/ImproveSurfMesh ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
+	@ cd gamer/tools/MolecularMesh ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
+	@ cd gamer/tools/GenerateMesh ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
 
-.PHONY: upy
 upy:
-	@ cd upy ; $(PYTHON) setup.py install --prefix=$(PREFIX)
+	@ cd upy ; $(PYTHON) setup.py install --prefix=$(BUILD_DIR)
+
+install:
+	@ mkdir -p $(INSTALL_DIR)
+	@ cp ./gamer/tools/blender/mesh_gamer_addon.py $(INSTALL_DIR)/scripts/addons/
+	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/gamer $(INSTALL_DIR)/scripts/modules/
+	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/upy $(INSTALL_DIR)/scripts/modules/
 
 clean:
 	@ cd maloc; $(MAKE) clean
@@ -42,4 +46,4 @@ clean:
 	@ cd upy; rm -rf build
 
 distclean: clean
-	rm -rf gamer_install
+	rm -rf $(BUILD_DIR)

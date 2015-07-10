@@ -1,147 +1,146 @@
-\section{vpred.h File Reference}
-\label{a00019}\index{vpred.h@{vpred.h}}
+\section{vpred.\+h File Reference}
+\label{a00019}\index{vpred.\+h@{vpred.\+h}}
 
 
 Header file for the Geometric Predicates.  
 
 
-{\ttfamily \#include $<$maloc/maloc\_\-base.h$>$}\par
-Include dependency graph for vpred.h:
-\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
+Include dependency graph for vpred.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=400pt]{a00049}
+\includegraphics[width=350pt]{a00049}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=224pt]{a00050}
 \end{center}
 \end{figure}
-\subsection*{Defines}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define {\bf INEXACT}
-\begin{DoxyCompactList}\small\item\em Parameters and constants \char`\"{}INEXACT\char`\"{}. \item\end{DoxyCompactList}\item 
-\#define {\bf REAL}~double
-\begin{DoxyCompactList}\small\item\em float or double \item\end{DoxyCompactList}\item 
-\#define {\bf REALPRINT}~doubleprint
-\begin{DoxyCompactList}\small\item\em Print the bit representation of a double. \item\end{DoxyCompactList}\item 
-\#define {\bf REALRAND}~doublerand
-\begin{DoxyCompactList}\small\item\em Generate a double with random 53-\/bit significand and a random exponent in [0, 511]. \item\end{DoxyCompactList}\item 
-\#define {\bf NARROWRAND}~narrowdoublerand
-\begin{DoxyCompactList}\small\item\em Generate a double with random 53-\/bit significand and a random exponent in [0, 7]. \item\end{DoxyCompactList}\item 
-\#define {\bf UNIFORMRAND}~uniformdoublerand
-\begin{DoxyCompactList}\small\item\em Generate a double with random 53-\/bit significand. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define {\bf I\+N\+E\+X\+A\+C\+T}~/$\ast$ Nothing $\ast$/
+\begin{DoxyCompactList}\small\item\em Parameters and constants \char`\"{}\+I\+N\+E\+X\+A\+C\+T\char`\"{}. \end{DoxyCompactList}\item 
+\#define {\bf R\+E\+A\+L}~double
+\begin{DoxyCompactList}\small\item\em float or double \end{DoxyCompactList}\item 
+\#define {\bf R\+E\+A\+L\+P\+R\+I\+N\+T}~doubleprint
+\begin{DoxyCompactList}\small\item\em Print the bit representation of a double. \end{DoxyCompactList}\item 
+\#define {\bf R\+E\+A\+L\+R\+A\+N\+D}~doublerand
+\begin{DoxyCompactList}\small\item\em Generate a double with random 53-\/bit significand and a random exponent in [0, 511]. \end{DoxyCompactList}\item 
+\#define {\bf N\+A\+R\+R\+O\+W\+R\+A\+N\+D}~narrowdoublerand
+\begin{DoxyCompactList}\small\item\em Generate a double with random 53-\/bit significand and a random exponent in [0, 7]. \end{DoxyCompactList}\item 
+\#define {\bf U\+N\+I\+F\+O\+R\+M\+R\+A\+N\+D}~uniformdoublerand
+\begin{DoxyCompactList}\small\item\em Generate a double with random 53-\/bit significand. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bf Vpred\_\-exactinit} (void)
-\begin{DoxyCompactList}\small\item\em Initialize the variables used for exact arithmetic. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-orient2d} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc)
-\begin{DoxyCompactList}\small\item\em Adaptive exact 2D orientation test. Robust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-orient2dfast} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc)
-\begin{DoxyCompactList}\small\item\em Approximate 2D orientation test. Nonrobust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-orient2dexact} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc)
-\begin{DoxyCompactList}\small\item\em Exact 2D orientation test. Robust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-orient3d} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd)
-\begin{DoxyCompactList}\small\item\em Adaptive exact 3D orientation test. Robust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-orient3dfast} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd)
-\begin{DoxyCompactList}\small\item\em Approximate 3D orientation test. Nonrobust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-orient3dexact} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd)
-\begin{DoxyCompactList}\small\item\em Exact 3D orientation test. Robust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-incircle} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd)
-\begin{DoxyCompactList}\small\item\em Adaptive exact 2D incircle test. Robust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-incirclefast} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd)
-\begin{DoxyCompactList}\small\item\em Approximate 2D incircle test. Nonrobust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-incircleexact} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd)
-\begin{DoxyCompactList}\small\item\em Exact 2D incircle test. Robust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-insphere} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd, REAL $\ast$pe)
-\begin{DoxyCompactList}\small\item\em Adaptive exact 3D insphere test. Robust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-inspherefast} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd, REAL $\ast$pe)
-\begin{DoxyCompactList}\small\item\em Approximate 3D insphere test. Nonrobust. \item\end{DoxyCompactList}\item 
-REAL {\bf Vpred\_\-insphereexact} (REAL $\ast$pa, REAL $\ast$pb, REAL $\ast$pc, REAL $\ast$pd, REAL $\ast$pe)
-\begin{DoxyCompactList}\small\item\em Exact 3D insphere test. Robust. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+void {\bf Vpred\+\_\+exactinit} (void)
+\begin{DoxyCompactList}\small\item\em Initialize the variables used for exact arithmetic. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+orient2d} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc)
+\begin{DoxyCompactList}\small\item\em Adaptive exact 2\+D orientation test. Robust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+orient2dfast} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc)
+\begin{DoxyCompactList}\small\item\em Approximate 2\+D orientation test. Nonrobust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+orient2dexact} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc)
+\begin{DoxyCompactList}\small\item\em Exact 2\+D orientation test. Robust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+orient3d} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd)
+\begin{DoxyCompactList}\small\item\em Adaptive exact 3\+D orientation test. Robust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+orient3dfast} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd)
+\begin{DoxyCompactList}\small\item\em Approximate 3\+D orientation test. Nonrobust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+orient3dexact} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd)
+\begin{DoxyCompactList}\small\item\em Exact 3\+D orientation test. Robust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+incircle} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd)
+\begin{DoxyCompactList}\small\item\em Adaptive exact 2\+D incircle test. Robust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+incirclefast} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd)
+\begin{DoxyCompactList}\small\item\em Approximate 2\+D incircle test. Nonrobust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+incircleexact} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd)
+\begin{DoxyCompactList}\small\item\em Exact 2\+D incircle test. Robust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+insphere} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd, {\bf R\+E\+A\+L} $\ast$pe)
+\begin{DoxyCompactList}\small\item\em Adaptive exact 3\+D insphere test. Robust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+inspherefast} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd, {\bf R\+E\+A\+L} $\ast$pe)
+\begin{DoxyCompactList}\small\item\em Approximate 3\+D insphere test. Nonrobust. \end{DoxyCompactList}\item 
+{\bf R\+E\+A\+L} {\bf Vpred\+\_\+insphereexact} ({\bf R\+E\+A\+L} $\ast$pa, {\bf R\+E\+A\+L} $\ast$pb, {\bf R\+E\+A\+L} $\ast$pc, {\bf R\+E\+A\+L} $\ast$pd, {\bf R\+E\+A\+L} $\ast$pe)
+\begin{DoxyCompactList}\small\item\em Exact 3\+D insphere test. Robust. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Header file for the Geometric Predicates. \begin{DoxyVersion}{Version}
+Header file for the Geometric Predicates. 
+
+\begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id:}
-\doxyref{vpred.h}{p.}{a00019},v 1.4 2010/08/12 05:40:37 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{vpred.\+h}{p.}{a00019},v 1.\+4 2010/08/12 05\+:40\+:37 fetk Exp 
 \end{DoxyParagraph}
 \begin{DoxyAuthor}{Author}
 Michael Holst
 \end{DoxyAuthor}
 \begin{DoxyAttention}{Attention}
-\begin{DoxyVerb}
- *
- * MALOC = < Minimal Abstraction Layer for Object-oriented C >
- * Copyright (C) 1994-- Michael Holst
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- * 
- *  \end{DoxyVerb}
+\begin{DoxyVerb}*
+* MALOC = < Minimal Abstraction Layer for Object-oriented C >
+* Copyright (C) 1994-- Michael Holst
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+* 
+*  \end{DoxyVerb}
  
 \end{DoxyAttention}
 
 
-\subsection{Define Documentation}
-\index{vpred.h@{vpred.h}!INEXACT@{INEXACT}}
-\index{INEXACT@{INEXACT}!vpred.h@{vpred.h}}
-\subsubsection[{INEXACT}]{\setlength{\rightskip}{0pt plus 5cm}\#define INEXACT}\label{a00019_ad49beae4f708cdfe26352d865ed2eb95}
+\subsection{Macro Definition Documentation}
+\index{vpred.\+h@{vpred.\+h}!I\+N\+E\+X\+A\+C\+T@{I\+N\+E\+X\+A\+C\+T}}
+\index{I\+N\+E\+X\+A\+C\+T@{I\+N\+E\+X\+A\+C\+T}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{I\+N\+E\+X\+A\+C\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+E\+X\+A\+C\+T~/$\ast$ Nothing $\ast$/}\label{a00019_ad49beae4f708cdfe26352d865ed2eb95}
 
 
-Parameters and constants \char`\"{}INEXACT\char`\"{}. 
+Parameters and constants \char`\"{}\+I\+N\+E\+X\+A\+C\+T\char`\"{}. 
 
-\index{vpred.h@{vpred.h}!NARROWRAND@{NARROWRAND}}
-\index{NARROWRAND@{NARROWRAND}!vpred.h@{vpred.h}}
-\subsubsection[{NARROWRAND}]{\setlength{\rightskip}{0pt plus 5cm}\#define NARROWRAND~narrowdoublerand}\label{a00019_a573b0e3df6fc0f000607eca1c5569f68}
+\index{vpred.\+h@{vpred.\+h}!N\+A\+R\+R\+O\+W\+R\+A\+N\+D@{N\+A\+R\+R\+O\+W\+R\+A\+N\+D}}
+\index{N\+A\+R\+R\+O\+W\+R\+A\+N\+D@{N\+A\+R\+R\+O\+W\+R\+A\+N\+D}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{N\+A\+R\+R\+O\+W\+R\+A\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+A\+R\+R\+O\+W\+R\+A\+N\+D~narrowdoublerand}\label{a00019_a573b0e3df6fc0f000607eca1c5569f68}
 
 
 Generate a double with random 53-\/bit significand and a random exponent in [0, 7]. 
 
-\index{vpred.h@{vpred.h}!REAL@{REAL}}
-\index{REAL@{REAL}!vpred.h@{vpred.h}}
-\subsubsection[{REAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define REAL~double}\label{a00019_a4b654506f18b8bfd61ad2a29a7e38c25}
+\index{vpred.\+h@{vpred.\+h}!R\+E\+A\+L@{R\+E\+A\+L}}
+\index{R\+E\+A\+L@{R\+E\+A\+L}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{R\+E\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+L~double}\label{a00019_a4b654506f18b8bfd61ad2a29a7e38c25}
 
 
 float or double 
 
-\index{vpred.h@{vpred.h}!REALPRINT@{REALPRINT}}
-\index{REALPRINT@{REALPRINT}!vpred.h@{vpred.h}}
-\subsubsection[{REALPRINT}]{\setlength{\rightskip}{0pt plus 5cm}\#define REALPRINT~doubleprint}\label{a00019_a08c32ee2465d67f098ab09bdf0e2eb59}
+\index{vpred.\+h@{vpred.\+h}!R\+E\+A\+L\+P\+R\+I\+N\+T@{R\+E\+A\+L\+P\+R\+I\+N\+T}}
+\index{R\+E\+A\+L\+P\+R\+I\+N\+T@{R\+E\+A\+L\+P\+R\+I\+N\+T}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{R\+E\+A\+L\+P\+R\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+L\+P\+R\+I\+N\+T~doubleprint}\label{a00019_a08c32ee2465d67f098ab09bdf0e2eb59}
 
 
 Print the bit representation of a double. 
 
-\index{vpred.h@{vpred.h}!REALRAND@{REALRAND}}
-\index{REALRAND@{REALRAND}!vpred.h@{vpred.h}}
-\subsubsection[{REALRAND}]{\setlength{\rightskip}{0pt plus 5cm}\#define REALRAND~doublerand}\label{a00019_a810b77dd5b3d884e1d2641a2e597df22}
+\index{vpred.\+h@{vpred.\+h}!R\+E\+A\+L\+R\+A\+N\+D@{R\+E\+A\+L\+R\+A\+N\+D}}
+\index{R\+E\+A\+L\+R\+A\+N\+D@{R\+E\+A\+L\+R\+A\+N\+D}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{R\+E\+A\+L\+R\+A\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+L\+R\+A\+N\+D~doublerand}\label{a00019_a810b77dd5b3d884e1d2641a2e597df22}
 
 
 Generate a double with random 53-\/bit significand and a random exponent in [0, 511]. 
 
-\index{vpred.h@{vpred.h}!UNIFORMRAND@{UNIFORMRAND}}
-\index{UNIFORMRAND@{UNIFORMRAND}!vpred.h@{vpred.h}}
-\subsubsection[{UNIFORMRAND}]{\setlength{\rightskip}{0pt plus 5cm}\#define UNIFORMRAND~uniformdoublerand}\label{a00019_a151c130268f15ea9975886f0750f3079}
+\index{vpred.\+h@{vpred.\+h}!U\+N\+I\+F\+O\+R\+M\+R\+A\+N\+D@{U\+N\+I\+F\+O\+R\+M\+R\+A\+N\+D}}
+\index{U\+N\+I\+F\+O\+R\+M\+R\+A\+N\+D@{U\+N\+I\+F\+O\+R\+M\+R\+A\+N\+D}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{U\+N\+I\+F\+O\+R\+M\+R\+A\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+N\+I\+F\+O\+R\+M\+R\+A\+N\+D~uniformdoublerand}\label{a00019_a151c130268f15ea9975886f0750f3079}
 
 
 Generate a double with random 53-\/bit significand. 
@@ -149,9 +148,9 @@ Generate a double with random 53-\/bit significand.
 
 
 \subsection{Function Documentation}
-\index{vpred.h@{vpred.h}!Vpred\_\-exactinit@{Vpred\_\-exactinit}}
-\index{Vpred\_\-exactinit@{Vpred\_\-exactinit}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-exactinit}]{\setlength{\rightskip}{0pt plus 5cm}void Vpred\_\-exactinit (
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+exactinit@{Vpred\+\_\+exactinit}}
+\index{Vpred\+\_\+exactinit@{Vpred\+\_\+exactinit}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+exactinit}]{\setlength{\rightskip}{0pt plus 5cm}void Vpred\+\_\+exactinit (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -161,245 +160,341 @@ Generate a double with random 53-\/bit significand.
 Initialize the variables used for exact arithmetic. 
 
 \begin{DoxyNote}{Note}
-`epsilon' is the largest power of two such that 1.0 + epsilon = 1.0 in floating-\/point arithmetic. `epsilon' bounds the relative roundoff error. It is used for floating-\/point error analysis. `splitter' is used to split floating-\/point numbers into two half-\/ length significands for exact multiplication. I imagine that a highly optimizing compiler might be too smart for its own good, and somehow cause this routine to fail, if it pretends that floating-\/point arithmetic is too much like real arithmetic. Don't change this routine unless you fully understand it. 
+`epsilon\textquotesingle{} is the largest power of two such that 1.\+0 + epsilon = 1.\+0 in floating-\/point arithmetic. `epsilon\textquotesingle{} bounds the relative roundoff error. It is used for floating-\/point error analysis. `splitter\textquotesingle{} is used to split floating-\/point numbers into two half-\/ length significands for exact multiplication. I imagine that a highly optimizing compiler might be too smart for its own good, and somehow cause this routine to fail, if it pretends that floating-\/point arithmetic is too much like real arithmetic. Don\textquotesingle{}t change this routine unless you fully understand it. 
 \end{DoxyNote}
-\index{vpred.h@{vpred.h}!Vpred\_\-incircle@{Vpred\_\-incircle}}
-\index{Vpred\_\-incircle@{Vpred\_\-incircle}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-incircle}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-incircle (
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+incircle@{Vpred\+\_\+incircle}}
+\index{Vpred\+\_\+incircle@{Vpred\+\_\+incircle}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+incircle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+incircle (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd}
 \end{DoxyParamCaption}
 )}\label{a00019_add3df6a8e6fa33d79b0af9054a675241}
 
 
-Adaptive exact 2D incircle test. Robust. 
+Adaptive exact 2\+D incircle test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pd lies inside the circle passing through pa, pb, and pc; a negative value if it lies outside; and zero if the four points are cocircular. The points pa, pb, and pc must be in counterclockwise order, or the sign of the result will be reversed. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-incircleexact@{Vpred\_\-incircleexact}}
-\index{Vpred\_\-incircleexact@{Vpred\_\-incircleexact}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-incircleexact}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-incircleexact (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+incircleexact@{Vpred\+\_\+incircleexact}}
+\index{Vpred\+\_\+incircleexact@{Vpred\+\_\+incircleexact}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+incircleexact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+incircleexact (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd}
 \end{DoxyParamCaption}
 )}\label{a00019_aa4e7d7af15ac70194aad8a5d7fdbe0fb}
 
 
-Exact 2D incircle test. Robust. 
+Exact 2\+D incircle test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pd lies inside the circle passing through pa, pb, and pc; a negative value if it lies outside; and zero if the four points are cocircular. The points pa, pb, and pc must be in counterclockwise order, or the sign of the result will be reversed. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-incirclefast@{Vpred\_\-incirclefast}}
-\index{Vpred\_\-incirclefast@{Vpred\_\-incirclefast}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-incirclefast}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-incirclefast (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+incirclefast@{Vpred\+\_\+incirclefast}}
+\index{Vpred\+\_\+incirclefast@{Vpred\+\_\+incirclefast}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+incirclefast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+incirclefast (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd}
 \end{DoxyParamCaption}
 )}\label{a00019_adda50e6f7416902e79bf391adc0f191d}
 
 
-Approximate 2D incircle test. Nonrobust. 
+Approximate 2\+D incircle test. Nonrobust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pd lies inside the circle passing through pa, pb, and pc; a negative value if it lies outside; and zero if the four points are cocircular. The points pa, pb, and pc must be in counterclockwise order, or the sign of the result will be reversed. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-insphere@{Vpred\_\-insphere}}
-\index{Vpred\_\-insphere@{Vpred\_\-insphere}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-insphere}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-insphere (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+insphere@{Vpred\+\_\+insphere}}
+\index{Vpred\+\_\+insphere@{Vpred\+\_\+insphere}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+insphere}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+insphere (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd, }
-\item[{REAL $\ast$}]{ pe}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pe}
 \end{DoxyParamCaption}
 )}\label{a00019_ac4811e37c08e6aa1069066be5d77c9f1}
 
 
-Adaptive exact 3D insphere test. Robust. 
+Adaptive exact 3\+D insphere test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pe lies inside the sphere passing through pa, pb, pc, and pd; a negative value if it lies outside; and zero if the five points are cospherical. The points pa, pb, pc, and pd must be ordered so that they have a positive orientation (as defined by orient3d()), or the sign of the result will be reversed. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \item[{\em pe}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-insphereexact@{Vpred\_\-insphereexact}}
-\index{Vpred\_\-insphereexact@{Vpred\_\-insphereexact}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-insphereexact}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-insphereexact (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+{\em pe} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+insphereexact@{Vpred\+\_\+insphereexact}}
+\index{Vpred\+\_\+insphereexact@{Vpred\+\_\+insphereexact}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+insphereexact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+insphereexact (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd, }
-\item[{REAL $\ast$}]{ pe}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pe}
 \end{DoxyParamCaption}
 )}\label{a00019_a7a354011003573a544c661bc8c9629bb}
 
 
-Exact 3D insphere test. Robust. 
+Exact 3\+D insphere test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pe lies inside the sphere passing through pa, pb, pc, and pd; a negative value if it lies outside; and zero if the five points are cospherical. The points pa, pb, pc, and pd must be ordered so that they have a positive orientation (as defined by orient3d()), or the sign of the result will be reversed. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \item[{\em pe}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-inspherefast@{Vpred\_\-inspherefast}}
-\index{Vpred\_\-inspherefast@{Vpred\_\-inspherefast}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-inspherefast}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-inspherefast (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+{\em pe} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+inspherefast@{Vpred\+\_\+inspherefast}}
+\index{Vpred\+\_\+inspherefast@{Vpred\+\_\+inspherefast}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+inspherefast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+inspherefast (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd, }
-\item[{REAL $\ast$}]{ pe}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pe}
 \end{DoxyParamCaption}
 )}\label{a00019_a584298eaa7bbdc87d619555403c7d061}
 
 
-Approximate 3D insphere test. Nonrobust. 
+Approximate 3\+D insphere test. Nonrobust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pe lies inside the sphere passing through pa, pb, pc, and pd; a negative value if it lies outside; and zero if the five points are cospherical. The points pa, pb, pc, and pd must be ordered so that they have a positive orientation (as defined by orient3d()), or the sign of the result will be reversed. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \item[{\em pe}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-orient2d@{Vpred\_\-orient2d}}
-\index{Vpred\_\-orient2d@{Vpred\_\-orient2d}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-orient2d}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-orient2d (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+{\em pe} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+orient2d@{Vpred\+\_\+orient2d}}
+\index{Vpred\+\_\+orient2d@{Vpred\+\_\+orient2d}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+orient2d}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+orient2d (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc}
 \end{DoxyParamCaption}
 )}\label{a00019_a0bc8c96f96cc9ad2a6fa911e6f426f75}
 
 
-Adaptive exact 2D orientation test. Robust. 
+Adaptive exact 2\+D orientation test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the points pa, pb, and pc occur in counterclockwise order; a negative value if they occur in clockwise order; and zero if they are collinear. The result is also a rough approximation of twice the signed area of the triangle defined by the three points. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-orient2dexact@{Vpred\_\-orient2dexact}}
-\index{Vpred\_\-orient2dexact@{Vpred\_\-orient2dexact}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-orient2dexact}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-orient2dexact (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+orient2dexact@{Vpred\+\_\+orient2dexact}}
+\index{Vpred\+\_\+orient2dexact@{Vpred\+\_\+orient2dexact}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+orient2dexact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+orient2dexact (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc}
 \end{DoxyParamCaption}
 )}\label{a00019_acc0ab2f55dd3e1132e1bb34bb64d14e1}
 
 
-Exact 2D orientation test. Robust. 
+Exact 2\+D orientation test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the points pa, pb, and pc occur in counterclockwise order; a negative value if they occur in clockwise order; and zero if they are collinear. The result is also a rough approximation of twice the signed area of the triangle defined by the three points. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-orient2dfast@{Vpred\_\-orient2dfast}}
-\index{Vpred\_\-orient2dfast@{Vpred\_\-orient2dfast}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-orient2dfast}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-orient2dfast (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+orient2dfast@{Vpred\+\_\+orient2dfast}}
+\index{Vpred\+\_\+orient2dfast@{Vpred\+\_\+orient2dfast}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+orient2dfast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+orient2dfast (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc}
 \end{DoxyParamCaption}
 )}\label{a00019_ac486c720889544acae5950a94be4876e}
 
 
-Approximate 2D orientation test. Nonrobust. 
+Approximate 2\+D orientation test. Nonrobust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the points pa, pb, and pc occur in counterclockwise order; a negative value if they occur in clockwise order; and zero if they are collinear. The result is also a rough approximation of twice the signed area of the triangle defined by the three points. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-orient3d@{Vpred\_\-orient3d}}
-\index{Vpred\_\-orient3d@{Vpred\_\-orient3d}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-orient3d}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-orient3d (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+orient3d@{Vpred\+\_\+orient3d}}
+\index{Vpred\+\_\+orient3d@{Vpred\+\_\+orient3d}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+orient3d}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+orient3d (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd}
 \end{DoxyParamCaption}
 )}\label{a00019_a69ab7e33e86529fdf82c56a4d0086af6}
 
 
-Adaptive exact 3D orientation test. Robust. 
+Adaptive exact 3\+D orientation test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pd lies below the plane passing through pa, pb, and pc; \char`\"{}below\char`\"{} is defined so that pa, pb, and pc appear in counterclockwise order when viewed from above the plane. Returns a negative value if pd lies above the plane. Returns zero if the points are coplanar. The result is also a rough approximation of six times the signed volume of the tetrahedron defined by the four points. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-orient3dexact@{Vpred\_\-orient3dexact}}
-\index{Vpred\_\-orient3dexact@{Vpred\_\-orient3dexact}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-orient3dexact}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-orient3dexact (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+orient3dexact@{Vpred\+\_\+orient3dexact}}
+\index{Vpred\+\_\+orient3dexact@{Vpred\+\_\+orient3dexact}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+orient3dexact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+orient3dexact (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd}
 \end{DoxyParamCaption}
 )}\label{a00019_a4fd309b85b6eba9b2b949e8cd408d077}
 
 
-Exact 3D orientation test. Robust. 
+Exact 3\+D orientation test. Robust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pd lies below the plane passing through pa, pb, and pc; \char`\"{}below\char`\"{} is defined so that pa, pb, and pc appear in counterclockwise order when viewed from above the plane. Returns a negative value if pd lies above the plane. Returns zero if the points are coplanar. The result is also a rough approximation of six times the signed volume of the tetrahedron defined by the four points. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \end{DoxyParams}
-\index{vpred.h@{vpred.h}!Vpred\_\-orient3dfast@{Vpred\_\-orient3dfast}}
-\index{Vpred\_\-orient3dfast@{Vpred\_\-orient3dfast}!vpred.h@{vpred.h}}
-\subsubsection[{Vpred\_\-orient3dfast}]{\setlength{\rightskip}{0pt plus 5cm}REAL Vpred\_\-orient3dfast (
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}
+\index{vpred.\+h@{vpred.\+h}!Vpred\+\_\+orient3dfast@{Vpred\+\_\+orient3dfast}}
+\index{Vpred\+\_\+orient3dfast@{Vpred\+\_\+orient3dfast}!vpred.\+h@{vpred.\+h}}
+\subsubsection[{Vpred\+\_\+orient3dfast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+A\+L} Vpred\+\_\+orient3dfast (
 \begin{DoxyParamCaption}
-\item[{REAL $\ast$}]{ pa, }
-\item[{REAL $\ast$}]{ pb, }
-\item[{REAL $\ast$}]{ pc, }
-\item[{REAL $\ast$}]{ pd}
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pa, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pb, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pc, }
+\item[{{\bf R\+E\+A\+L} $\ast$}]{pd}
 \end{DoxyParamCaption}
 )}\label{a00019_a20697c6349d030052c71e083c23348cb}
 
 
-Approximate 3D orientation test. Nonrobust. 
+Approximate 3\+D orientation test. Nonrobust. 
 
 \begin{DoxyReturn}{Returns}
 a positive value if the point pd lies below the plane passing through pa, pb, and pc; \char`\"{}below\char`\"{} is defined so that pa, pb, and pc appear in counterclockwise order when viewed from above the plane. Returns a negative value if pd lies above the plane. Returns zero if the points are coplanar. The result is also a rough approximation of six times the signed volume of the tetrahedron defined by the four points. 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em pa}]Pointer to a real parameter \item[{\em pb}]Pointer to a real parameter \item[{\em pc}]Pointer to a real parameter \item[{\em pd}]Pointer to a real parameter \end{DoxyParams}
+{\em pa} & Pointer to a real parameter \\
+\hline
+{\em pb} & Pointer to a real parameter \\
+\hline
+{\em pc} & Pointer to a real parameter \\
+\hline
+{\em pd} & Pointer to a real parameter \\
+\hline
+\end{DoxyParams}

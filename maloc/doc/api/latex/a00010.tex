@@ -1,336 +1,331 @@
-\section{maloc\_\-base.h File Reference}
-\label{a00010}\index{maloc\_\-base.h@{maloc\_\-base.h}}
+\section{maloc\+\_\+base.\+h File Reference}
+\label{a00010}\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
 
 
-The base (or foundation) header for MALOC.  
+The base (or foundation) header for M\+A\+L\+O\+C.  
 
 
-{\ttfamily \#include $<$assert.h$>$}\par
-{\ttfamily \#include $<$ctype.h$>$}\par
-{\ttfamily \#include $<$errno.h$>$}\par
-{\ttfamily \#include $<$float.h$>$}\par
-{\ttfamily \#include $<$limits.h$>$}\par
-{\ttfamily \#include $<$locale.h$>$}\par
-{\ttfamily \#include $<$math.h$>$}\par
-{\ttfamily \#include $<$signal.h$>$}\par
-{\ttfamily \#include $<$stdarg.h$>$}\par
-{\ttfamily \#include $<$stddef.h$>$}\par
-{\ttfamily \#include $<$stdio.h$>$}\par
-{\ttfamily \#include $<$stdlib.h$>$}\par
-{\ttfamily \#include $<$string.h$>$}\par
-{\ttfamily \#include $<$time.h$>$}\par
-{\ttfamily \#include $<$setjmp.h$>$}\par
-Include dependency graph for maloc\_\-base.h:
-\nopagebreak
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$ctype.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
+{\ttfamily \#include $<$limits.\+h$>$}\\*
+{\ttfamily \#include $<$locale.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+{\ttfamily \#include $<$stddef.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$setjmp.\+h$>$}\\*
+Include dependency graph for maloc\+\_\+base.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=400pt]{a00033}
+\includegraphics[width=350pt]{a00033}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=400pt]{a00034}
+\includegraphics[width=350pt]{a00034}
 \end{center}
 \end{figure}
-\subsection*{Defines}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define {\bf CLOCKS\_\-PER\_\-SEC}~60
-\begin{DoxyCompactList}\small\item\em Fix to broken $<$time.h$>$ on old SunOS. \item\end{DoxyCompactList}\item 
-\#define {\bf \_\-\_\-FAVOR\_\-BSD}
-\begin{DoxyCompactList}\small\item\em Linux: uses sigsetjmp as the setjmp function. \item\end{DoxyCompactList}\item 
-\#define {\bf \_\-BSD\_\-SIGNALS}
-\begin{DoxyCompactList}\small\item\em IRIX: uses sigsetjmp as the setjmp function. \item\end{DoxyCompactList}\item 
-\#define {\bf VCC}
-\begin{DoxyCompactList}\small\item\em Setup so this include file (and subsequent) will work for both C and C++. \item\end{DoxyCompactList}\item 
+\#define {\bf C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C}~60
+\begin{DoxyCompactList}\small\item\em Fix to broken $<$time.\+h$>$ on old Sun\+O\+S. \end{DoxyCompactList}\item 
+\#define {\bf \+\_\+\+\_\+\+F\+A\+V\+O\+R\+\_\+\+B\+S\+D}
+\begin{DoxyCompactList}\small\item\em Linux\+: uses sigsetjmp as the setjmp function. \end{DoxyCompactList}\item 
+\#define {\bf \+\_\+\+B\+S\+D\+\_\+\+S\+I\+G\+N\+A\+L\+S}
+\begin{DoxyCompactList}\small\item\em I\+R\+I\+X\+: uses sigsetjmp as the setjmp function. \end{DoxyCompactList}\item 
+\#define {\bf V\+C\+C}
+\begin{DoxyCompactList}\small\item\em Setup so this include file (and subsequent) will work for both C and C++. \end{DoxyCompactList}\item 
 \#define {\bf extern}
-\begin{DoxyCompactList}\small\item\em Setup so this include file (and subsequent) will work for both C and C++. \item\end{DoxyCompactList}\item 
-\#define {\bf VPRIVATE}~static
-\begin{DoxyCompactList}\small\item\em Mimic C++ \char`\"{}Private\char`\"{} type modifier. \item\end{DoxyCompactList}\item 
-\#define {\bf VPUBLIC}~/$\ast$empty$\ast$/
-\begin{DoxyCompactList}\small\item\em Mimic C++ \char`\"{}Public\char`\"{} type modifier. \item\end{DoxyCompactList}\item 
-\#define {\bf VWARN1}(file, lineno)~(fprintf(stderr,\char`\"{}VWARN: ASSERTION FAILURE! filename \%s, line \%u$\backslash$n\char`\"{}, (file), (lineno)), 0)
-\begin{DoxyCompactList}\small\item\em Slick assertion macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VASSERT1}(file, lineno)~(fprintf(stderr,\char`\"{}VASSERT: ASSERTION FAILURE! filename \%s, line \%u$\backslash$n\char`\"{}, (file), (lineno)), exit(1), 0)
-\begin{DoxyCompactList}\small\item\em Slick assertion macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VASSERT2}(file, lineno)~(fprintf(stderr,\char`\"{}VASSERT: ASSERTION FAILURE! filename \%s, line \%u$\backslash$n\char`\"{}, (file), (lineno)), abort(), 0)
-\begin{DoxyCompactList}\small\item\em Slick assertion macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VASSERT3}(file, lineno, ex)~(fprintf(stderr,\char`\"{}VASSERT: ASSERTION FAILURE!  filename \%s, line \%u, (\%s)$\backslash$n\char`\"{}, (file), (lineno), (\#ex)), abort(), 0)
-\begin{DoxyCompactList}\small\item\em Slick assertion macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VWARN}(ex)~((void) ((ex) ? 0 : VWARN1(\_\-\_\-FILE\_\-\_\-, \_\-\_\-LINE\_\-\_\-)))
-\begin{DoxyCompactList}\small\item\em Slick assertion macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VASSERT}(ex)~((void) ((ex) ? 0 : VASSERT3(\_\-\_\-FILE\_\-\_\-, \_\-\_\-LINE\_\-\_\-, ex)))
-\begin{DoxyCompactList}\small\item\em Slick assertion macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR0}(x)~if (!(x)) goto VERROR0
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR1}(x)~if (!(x)) goto VERROR1
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR2}(x)~if (!(x)) goto VERROR2
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR3}(x)~if (!(x)) goto VERROR3
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR4}(x)~if (!(x)) goto VERROR4
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR5}(x)~if (!(x)) goto VERROR5
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR6}(x)~if (!(x)) goto VERROR6
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR7}(x)~if (!(x)) goto VERROR7
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR8}(x)~if (!(x)) goto VERROR8
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VJMPERR9}(x)~if (!(x)) goto VERROR9
-\begin{DoxyCompactList}\small\item\em A userful error handling macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VPI}~3.14159265358979323846
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VLARGE}~1.0e+9
-\begin{DoxyCompactList}\small\item\em Global constant. 1e9 just fits into 32-\/bit signed int. \item\end{DoxyCompactList}\item 
-\#define {\bf VSMALL}~1.0e-\/9
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VVLARGE}~1.0e+15
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VVSMALL}~1.0e-\/15
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VPRTKEY}~10000
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VPTRSIZE}~4
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VMAX\_\-ARGNUM}~50
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VMAX\_\-ARGLEN}~1024
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VMAX\_\-BUFSIZE}~8192
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VMAX\_\-OBJECTS}~1073741824
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VBLOCK\_\-POWER}~14
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VNULL}~NULL
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VINULL}~-\/1
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VTRUE}~1
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VFALSE}~0
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VSTDMODE}~0600
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VNULL\_\-STRING}~\char`\"{}$\backslash$0\char`\"{}
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VBLANK\_\-STRING}~\char`\"{} \char`\"{}
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VNEWLINE\_\-STRING}~\char`\"{}$\backslash$n\char`\"{}
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VNULL\_\-SYMBOL}~'$\backslash$0'
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VBLANK\_\-SYMBOL}~' '
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VNEWLINE\_\-SYMBOL}~'$\backslash$n'
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VRDIN\_\-SYMBOL}~'$<$'
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VRDOUT\_\-SYMBOL}~'$>$'
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VPIPE\_\-SYMBOL}~'$|$'
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VDELIM\_\-SET}~\char`\"{} $>$$<$$|$\&\char`\"{}
-\begin{DoxyCompactList}\small\item\em Global constant. \item\end{DoxyCompactList}\item 
-\#define {\bf VABS}(x)~((x) $>$= 0 ? (x) : -\/(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VMIN2}(x, y)~((x) $<$= (y) ? (x) : (y))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VMAX2}(x, y)~((x) $>$= (y) ? (x) : (y))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VSIGN}(x, y)~((y) $>$= 0 ? (VABS(x)) : (-\/VABS(x)))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VODD}(x)~((x)\&1)
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VEVEN}(x)~(!((x)\&1))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VZERO}(x)~((x)==0)
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VPOS}(x)~((x)$>$0)
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VNEG}(x)~((x)$<$0)
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VEVENP}(x)~(VEVEN(x) \&\& VPOS(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VEVENN}(x)~(VEVEN(x) \&\& VNEG(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VSQRT}(x)~(sqrt(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VSQR}(x)~((x)$\ast$(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VSIN}(x)~(sin(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VCOS}(x)~(cos(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VTAN}(x)~(tan(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VASIN}(x)~(asin(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VACOS}(x)~(acos(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VATAN}(x)~(atan(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VSINH}(x)~(sinh(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VCOSH}(x)~(cosh(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VTANH}(x)~(tanh(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VEXP}(x)~(exp(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VLOG}(x)~(log(x))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VPOW}(x, y)~(pow(x,y))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VRINT}(x)~((int)(floor((x)+0.5)))
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VRAND}~(rand())
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VRANDMAX}~(RAND\_\-MAX)
-\begin{DoxyCompactList}\small\item\em Mathematical macro. \item\end{DoxyCompactList}\item 
-\#define {\bf VINLINE\_\-MALOC}
-\begin{DoxyCompactList}\small\item\em Inlining via macros for speed. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Setup so this include file (and subsequent) will work for both C and C++. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+R\+I\+V\+A\+T\+E}~static
+\begin{DoxyCompactList}\small\item\em Mimic C++ \char`\"{}\+Private\char`\"{} type modifier. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+U\+B\+L\+I\+C}~/$\ast$empty$\ast$/
+\begin{DoxyCompactList}\small\item\em Mimic C++ \char`\"{}\+Public\char`\"{} type modifier. \end{DoxyCompactList}\item 
+\#define {\bf V\+W\+A\+R\+N1}(file,  lineno)~(fprintf(stderr,\char`\"{}V\+W\+A\+R\+N\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E! filename \%s, line \%u\textbackslash{}n\char`\"{}, (file), (lineno)), 0)
+\begin{DoxyCompactList}\small\item\em Slick assertion macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+S\+S\+E\+R\+T1}(file,  lineno)~(fprintf(stderr,\char`\"{}V\+A\+S\+S\+E\+R\+T\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E! filename \%s, line \%u\textbackslash{}n\char`\"{}, (file), (lineno)), exit(1), 0)
+\begin{DoxyCompactList}\small\item\em Slick assertion macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+S\+S\+E\+R\+T2}(file,  lineno)~(fprintf(stderr,\char`\"{}V\+A\+S\+S\+E\+R\+T\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E! filename \%s, line \%u\textbackslash{}n\char`\"{}, (file), (lineno)), abort(), 0)
+\begin{DoxyCompactList}\small\item\em Slick assertion macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+S\+S\+E\+R\+T3}(file,  lineno,  ex)~(fprintf(stderr,\char`\"{}V\+A\+S\+S\+E\+R\+T\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E!  filename \%s, line \%u, (\%s)\textbackslash{}n\char`\"{}, (file), (lineno), (\#ex)), abort(), 0)
+\begin{DoxyCompactList}\small\item\em Slick assertion macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+W\+A\+R\+N}(ex)~((void) ((ex) ? 0 \+: {\bf V\+W\+A\+R\+N1}(\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+)))
+\begin{DoxyCompactList}\small\item\em Slick assertion macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+S\+S\+E\+R\+T}(ex)~((void) ((ex) ? 0 \+: {\bf V\+A\+S\+S\+E\+R\+T3}(\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, ex)))
+\begin{DoxyCompactList}\small\item\em Slick assertion macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R0}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R0
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R1}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R1
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R2}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R2
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R3}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R3
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R4}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R4
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R5}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R5
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R6}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R6
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R7}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R7
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R8}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R8
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+J\+M\+P\+E\+R\+R9}(x)~if (!(x)) goto V\+E\+R\+R\+O\+R9
+\begin{DoxyCompactList}\small\item\em A userful error handling macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+I}~3.\+14159265358979323846
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+L\+A\+R\+G\+E}~1.\+0e+9
+\begin{DoxyCompactList}\small\item\em Global constant. 1e9 just fits into 32-\/bit signed int. \end{DoxyCompactList}\item 
+\#define {\bf V\+S\+M\+A\+L\+L}~1.\+0e-\/9
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+V\+L\+A\+R\+G\+E}~1.\+0e+15
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+V\+S\+M\+A\+L\+L}~1.\+0e-\/15
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+R\+T\+K\+E\+Y}~10000
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+T\+R\+S\+I\+Z\+E}~4
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+N\+U\+M}~50
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}~1024
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+M\+A\+X\+\_\+\+B\+U\+F\+S\+I\+Z\+E}~8192
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+T\+S}~1073741824    /$\ast$ (1$<$$<$31) = 2$^\wedge$31 $\ast$/
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+B\+L\+O\+C\+K\+\_\+\+P\+O\+W\+E\+R}~14
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+N\+U\+L\+L}~N\+U\+L\+L
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+I\+N\+U\+L\+L}~-\/1
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+T\+R\+U\+E}~1
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+F\+A\+L\+S\+E}~0
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+S\+T\+D\+M\+O\+D\+E}~0600
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+N\+U\+L\+L\+\_\+\+S\+T\+R\+I\+N\+G}~\char`\"{}\textbackslash{}0\char`\"{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+B\+L\+A\+N\+K\+\_\+\+S\+T\+R\+I\+N\+G}~\char`\"{} \char`\"{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+T\+R\+I\+N\+G}~\char`\"{}\textbackslash{}n\char`\"{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+N\+U\+L\+L\+\_\+\+S\+Y\+M\+B\+O\+L}~\textquotesingle{}\textbackslash{}0\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+B\+L\+A\+N\+K\+\_\+\+S\+Y\+M\+B\+O\+L}~\textquotesingle{} \textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+Y\+M\+B\+O\+L}~\textquotesingle{}\textbackslash{}n\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+R\+D\+I\+N\+\_\+\+S\+Y\+M\+B\+O\+L}~\textquotesingle{}$<$\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+R\+D\+O\+U\+T\+\_\+\+S\+Y\+M\+B\+O\+L}~\textquotesingle{}$>$\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+I\+P\+E\+\_\+\+S\+Y\+M\+B\+O\+L}~\textquotesingle{}$\vert$\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+D\+E\+L\+I\+M\+\_\+\+S\+E\+T}~\char`\"{} $>$$<$$\vert$\&\char`\"{}
+\begin{DoxyCompactList}\small\item\em Global constant. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+B\+S}(x)~((x) $>$= 0 ? (x) \+: -\/(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+M\+I\+N2}(x,  y)~((x) $<$= (y) ? (x) \+: (y))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+M\+A\+X2}(x,  y)~((x) $>$= (y) ? (x) \+: (y))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+S\+I\+G\+N}(x,  y)~((y) $>$= 0 ? ({\bf V\+A\+B\+S}(x)) \+: (-\/{\bf V\+A\+B\+S}(x)))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+O\+D\+D}(x)~((x)\&1)
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+E\+V\+E\+N}(x)~(!((x)\&1))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+Z\+E\+R\+O}(x)~((x)==0)
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+O\+S}(x)~((x)$>$0)
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+N\+E\+G}(x)~((x)$<$0)
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+E\+V\+E\+N\+P}(x)~({\bf V\+E\+V\+E\+N}(x) \&\& {\bf V\+P\+O\+S}(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+E\+V\+E\+N\+N}(x)~({\bf V\+E\+V\+E\+N}(x) \&\& {\bf V\+N\+E\+G}(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+S\+Q\+R\+T}(x)~(sqrt(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+S\+Q\+R}(x)~((x)$\ast$(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+S\+I\+N}(x)~(sin(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+C\+O\+S}(x)~(cos(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+T\+A\+N}(x)~(tan(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+S\+I\+N}(x)~(asin(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+C\+O\+S}(x)~(acos(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+A\+T\+A\+N}(x)~(atan(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+S\+I\+N\+H}(x)~(sinh(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+C\+O\+S\+H}(x)~(cosh(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+T\+A\+N\+H}(x)~(tanh(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+E\+X\+P}(x)~(exp(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+L\+O\+G}(x)~(log(x))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+P\+O\+W}(x,  y)~(pow(x,y))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+R\+I\+N\+T}(x)~((int)(floor((x)+0.\+5)))
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+R\+A\+N\+D}~(rand())
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+R\+A\+N\+D\+M\+A\+X}~(R\+A\+N\+D\+\_\+\+M\+A\+X)
+\begin{DoxyCompactList}\small\item\em Mathematical macro. \end{DoxyCompactList}\item 
+\#define {\bf V\+I\+N\+L\+I\+N\+E\+\_\+\+M\+A\+L\+O\+C}
+\begin{DoxyCompactList}\small\item\em Inlining via macros for speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-The base (or foundation) header for MALOC. \begin{DoxyAuthor}{Author}
+The base (or foundation) header for M\+A\+L\+O\+C. 
+
+\begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-This header sets things up correctly for using ISO/ANSI-\/C. The following macros affect the behavior of the header: \begin{DoxyVerb}
-     Inlining for speed:  (Normal C functions if VINLINE_XXX not defined.)    
-     ------------------
-     -DVINLINE_VNM : Enables macro replacement of time-critical funcs in VNM.
-    \end{DoxyVerb}
+This header sets things up correctly for using I\+S\+O/\+A\+N\+S\+I-\/\+C. The following macros affect the behavior of the header\+: \begin{DoxyVerb}    Inlining for speed:  (Normal C functions if VINLINE_XXX not defined.)    
+    ------------------
+    -DVINLINE_VNM : Enables macro replacement of time-critical funcs in VNM.\end{DoxyVerb}
 
 \end{DoxyNote}
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id:}
-\doxyref{maloc\_\-base.h}{p.}{a00010},v 1.33 2010/08/12 05:40:16 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{maloc\+\_\+base.\+h}{p.}{a00010},v 1.\+33 2010/08/12 05\+:40\+:16 fetk Exp 
 \end{DoxyParagraph}
 
 
 \begin{DoxyAttention}{Attention}
-\begin{DoxyVerb}
- *
- * MALOC = < Minimal Abstraction Layer for Object-oriented C >
- * Copyright (C) 1994-- Michael Holst
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- * 
- *  \end{DoxyVerb}
+\begin{DoxyVerb}*
+* MALOC = < Minimal Abstraction Layer for Object-oriented C >
+* Copyright (C) 1994-- Michael Holst
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+* 
+*  \end{DoxyVerb}
  
 \end{DoxyAttention}
 
 
-\subsection{Define Documentation}
-\index{maloc\_\-base.h@{maloc\_\-base.h}!\_\-\_\-FAVOR\_\-BSD@{\_\-\_\-FAVOR\_\-BSD}}
-\index{\_\-\_\-FAVOR\_\-BSD@{\_\-\_\-FAVOR\_\-BSD}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{\_\-\_\-FAVOR\_\-BSD}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-FAVOR\_\-BSD}\label{a00010_a0e25ec3d9c374c5e6dceeb9341baf766}
+\subsection{Macro Definition Documentation}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!\+\_\+\+\_\+\+F\+A\+V\+O\+R\+\_\+\+B\+S\+D@{\+\_\+\+\_\+\+F\+A\+V\+O\+R\+\_\+\+B\+S\+D}}
+\index{\+\_\+\+\_\+\+F\+A\+V\+O\+R\+\_\+\+B\+S\+D@{\+\_\+\+\_\+\+F\+A\+V\+O\+R\+\_\+\+B\+S\+D}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{\+\_\+\+\_\+\+F\+A\+V\+O\+R\+\_\+\+B\+S\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+\_\+\+F\+A\+V\+O\+R\+\_\+\+B\+S\+D}\label{a00010_a0e25ec3d9c374c5e6dceeb9341baf766}
 
 
-Linux: uses sigsetjmp as the setjmp function. 
-
-\begin{DoxyNote}{Note}
-\begin{DoxyVerb}
- * Problems using setjmp/longjmp for use in the MC-shell.
- *
- * Problem:  Some implementations of ISO-C "setjmp/longjmp"  do not return
- *           the interrupt mask to its pre-jump state after returning.
- *           The behavior this produces is for example you can capture a
- *           single CTRL-C, but that is it; the mask for CTRL-C is wiped
- *           after the first interrupt is handled.
- *
- * Solution: Use the "sigsetjmp/siglongjmp" extensions provided by most
- *           UNIX variants.  You just have to set an appropriate macro
- *           before including <setjmp.h> to get sigsetjmp rather than
- *           setjmp behavior.
- *
- * Notes:    You can run into trouble (e.g. some versions of Linux) if
- *           you set some of these special signal macros before some of
- *           the other ISO-C headers.  Therefore, we only set the macros
- *           just before including <setjmp.h> as the final ISO-C header.
- * \end{DoxyVerb}
- 
-\end{DoxyNote}
-\index{maloc\_\-base.h@{maloc\_\-base.h}!\_\-BSD\_\-SIGNALS@{\_\-BSD\_\-SIGNALS}}
-\index{\_\-BSD\_\-SIGNALS@{\_\-BSD\_\-SIGNALS}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{\_\-BSD\_\-SIGNALS}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-BSD\_\-SIGNALS}\label{a00010_a0efe403ab8687e820c8b6ea5a275d1a9}
-
-
-IRIX: uses sigsetjmp as the setjmp function. 
+Linux\+: uses sigsetjmp as the setjmp function. 
 
 \begin{DoxyNote}{Note}
-\begin{DoxyVerb}
- * Problems using setjmp/longjmp for use in the MC-shell.
- *
- * Problem:  Some implementations of ISO-C "setjmp/longjmp"  do not return
- *           the interrupt mask to its pre-jump state after returning.
- *           The behavior this produces is for example you can capture a
- *           single CTRL-C, but that is it; the mask for CTRL-C is wiped
- *           after the first interrupt is handled.
- *
- * Solution: Use the "sigsetjmp/siglongjmp" extensions provided by most
- *           UNIX variants.  You just have to set an appropriate macro
- *           before including <setjmp.h> to get sigsetjmp rather than
- *           setjmp behavior.
- *
- * Notes:    You can run into trouble (e.g. some versions of Linux) if
- *           you set some of these special signal macros before some of
- *           the other ISO-C headers.  Therefore, we only set the macros
- *           just before including <setjmp.h> as the final ISO-C header.
- * \end{DoxyVerb}
+\begin{DoxyVerb}* Problems using setjmp/longjmp for use in the MC-shell.
+*
+* Problem:  Some implementations of ISO-C "setjmp/longjmp"  do not return
+*           the interrupt mask to its pre-jump state after returning.
+*           The behavior this produces is for example you can capture a
+*           single CTRL-C, but that is it; the mask for CTRL-C is wiped
+*           after the first interrupt is handled.
+*
+* Solution: Use the "sigsetjmp/siglongjmp" extensions provided by most
+*           UNIX variants.  You just have to set an appropriate macro
+*           before including <setjmp.h> to get sigsetjmp rather than
+*           setjmp behavior.
+*
+* Notes:    You can run into trouble (e.g. some versions of Linux) if
+*           you set some of these special signal macros before some of
+*           the other ISO-C headers.  Therefore, we only set the macros
+*           just before including <setjmp.h> as the final ISO-C header.
+* \end{DoxyVerb}
  
 \end{DoxyNote}
-\index{maloc\_\-base.h@{maloc\_\-base.h}!CLOCKS\_\-PER\_\-SEC@{CLOCKS\_\-PER\_\-SEC}}
-\index{CLOCKS\_\-PER\_\-SEC@{CLOCKS\_\-PER\_\-SEC}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{CLOCKS\_\-PER\_\-SEC}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLOCKS\_\-PER\_\-SEC~60}\label{a00010_a3d9fc3c745d0880902fe3ea3d5d5f71e}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!\+\_\+\+B\+S\+D\+\_\+\+S\+I\+G\+N\+A\+L\+S@{\+\_\+\+B\+S\+D\+\_\+\+S\+I\+G\+N\+A\+L\+S}}
+\index{\+\_\+\+B\+S\+D\+\_\+\+S\+I\+G\+N\+A\+L\+S@{\+\_\+\+B\+S\+D\+\_\+\+S\+I\+G\+N\+A\+L\+S}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{\+\_\+\+B\+S\+D\+\_\+\+S\+I\+G\+N\+A\+L\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+B\+S\+D\+\_\+\+S\+I\+G\+N\+A\+L\+S}\label{a00010_a0efe403ab8687e820c8b6ea5a275d1a9}
 
 
-Fix to broken $<$time.h$>$ on old SunOS. 
+I\+R\+I\+X\+: uses sigsetjmp as the setjmp function. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!extern@{extern}}
-\index{extern@{extern}!maloc_base.h@{maloc\_\-base.h}}
+\begin{DoxyNote}{Note}
+\begin{DoxyVerb}* Problems using setjmp/longjmp for use in the MC-shell.
+*
+* Problem:  Some implementations of ISO-C "setjmp/longjmp"  do not return
+*           the interrupt mask to its pre-jump state after returning.
+*           The behavior this produces is for example you can capture a
+*           single CTRL-C, but that is it; the mask for CTRL-C is wiped
+*           after the first interrupt is handled.
+*
+* Solution: Use the "sigsetjmp/siglongjmp" extensions provided by most
+*           UNIX variants.  You just have to set an appropriate macro
+*           before including <setjmp.h> to get sigsetjmp rather than
+*           setjmp behavior.
+*
+* Notes:    You can run into trouble (e.g. some versions of Linux) if
+*           you set some of these special signal macros before some of
+*           the other ISO-C headers.  Therefore, we only set the macros
+*           just before including <setjmp.h> as the final ISO-C header.
+* \end{DoxyVerb}
+ 
+\end{DoxyNote}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C@{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C}}
+\index{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C@{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C~60}\label{a00010_a3d9fc3c745d0880902fe3ea3d5d5f71e}
+
+
+Fix to broken $<$time.\+h$>$ on old Sun\+O\+S. 
+
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!extern@{extern}}
+\index{extern@{extern}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
 \subsubsection[{extern}]{\setlength{\rightskip}{0pt plus 5cm}\#define extern}\label{a00010_a2a624a765564411c0db3a2bee940f8bc}
 
 
 Setup so this include file (and subsequent) will work for both C and C++. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VABS@{VABS}}
-\index{VABS@{VABS}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VABS}]{\setlength{\rightskip}{0pt plus 5cm}\#define VABS(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+B\+S@{V\+A\+B\+S}}
+\index{V\+A\+B\+S@{V\+A\+B\+S}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+B\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+B\+S(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~((x) $>$= 0 ? (x) : -\/(x))}\label{a00010_a6a6283ab8af6569d4955242614b9427b}
+)~((x) $>$= 0 ? (x) \+: -\/(x))}\label{a00010_a6a6283ab8af6569d4955242614b9427b}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VACOS@{VACOS}}
-\index{VACOS@{VACOS}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VACOS}]{\setlength{\rightskip}{0pt plus 5cm}\#define VACOS(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+C\+O\+S@{V\+A\+C\+O\+S}}
+\index{V\+A\+C\+O\+S@{V\+A\+C\+O\+S}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+C\+O\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+C\+O\+S(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -339,9 +334,9 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VASIN@{VASIN}}
-\index{VASIN@{VASIN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VASIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VASIN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+S\+I\+N@{V\+A\+S\+I\+N}}
+\index{V\+A\+S\+I\+N@{V\+A\+S\+I\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+S\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+S\+I\+N(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -350,57 +345,57 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VASSERT@{VASSERT}}
-\index{VASSERT@{VASSERT}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VASSERT}]{\setlength{\rightskip}{0pt plus 5cm}\#define VASSERT(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+S\+S\+E\+R\+T@{V\+A\+S\+S\+E\+R\+T}}
+\index{V\+A\+S\+S\+E\+R\+T@{V\+A\+S\+S\+E\+R\+T}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+S\+S\+E\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+S\+S\+E\+R\+T(
 \begin{DoxyParamCaption}
 \item[{}]{ex}
 \end{DoxyParamCaption}
-)~((void) ((ex) ? 0 : VASSERT3(\_\-\_\-FILE\_\-\_\-, \_\-\_\-LINE\_\-\_\-, ex)))}\label{a00010_a0e080eee9e9eefed6f35db9fa4609e6a}
+)~((void) ((ex) ? 0 \+: {\bf V\+A\+S\+S\+E\+R\+T3}(\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, ex)))}\label{a00010_a0e080eee9e9eefed6f35db9fa4609e6a}
 
 
 Slick assertion macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VASSERT1@{VASSERT1}}
-\index{VASSERT1@{VASSERT1}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VASSERT1}]{\setlength{\rightskip}{0pt plus 5cm}\#define VASSERT1(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+S\+S\+E\+R\+T1@{V\+A\+S\+S\+E\+R\+T1}}
+\index{V\+A\+S\+S\+E\+R\+T1@{V\+A\+S\+S\+E\+R\+T1}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+S\+S\+E\+R\+T1}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+S\+S\+E\+R\+T1(
 \begin{DoxyParamCaption}
 \item[{}]{file, }
 \item[{}]{lineno}
 \end{DoxyParamCaption}
-)~(fprintf(stderr,\char`\"{}VASSERT: ASSERTION FAILURE! filename \%s, line \%u$\backslash$n\char`\"{}, (file), (lineno)), exit(1), 0)}\label{a00010_a7944addb8188e6853c788d9a9e4fffe1}
+)~(fprintf(stderr,\char`\"{}V\+A\+S\+S\+E\+R\+T\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E! filename \%s, line \%u\textbackslash{}n\char`\"{}, (file), (lineno)), exit(1), 0)}\label{a00010_a7944addb8188e6853c788d9a9e4fffe1}
 
 
 Slick assertion macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VASSERT2@{VASSERT2}}
-\index{VASSERT2@{VASSERT2}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VASSERT2}]{\setlength{\rightskip}{0pt plus 5cm}\#define VASSERT2(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+S\+S\+E\+R\+T2@{V\+A\+S\+S\+E\+R\+T2}}
+\index{V\+A\+S\+S\+E\+R\+T2@{V\+A\+S\+S\+E\+R\+T2}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+S\+S\+E\+R\+T2}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+S\+S\+E\+R\+T2(
 \begin{DoxyParamCaption}
 \item[{}]{file, }
 \item[{}]{lineno}
 \end{DoxyParamCaption}
-)~(fprintf(stderr,\char`\"{}VASSERT: ASSERTION FAILURE! filename \%s, line \%u$\backslash$n\char`\"{}, (file), (lineno)), abort(), 0)}\label{a00010_a560710e925cc860ac762681c5bca74ce}
+)~(fprintf(stderr,\char`\"{}V\+A\+S\+S\+E\+R\+T\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E! filename \%s, line \%u\textbackslash{}n\char`\"{}, (file), (lineno)), abort(), 0)}\label{a00010_a560710e925cc860ac762681c5bca74ce}
 
 
 Slick assertion macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VASSERT3@{VASSERT3}}
-\index{VASSERT3@{VASSERT3}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VASSERT3}]{\setlength{\rightskip}{0pt plus 5cm}\#define VASSERT3(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+S\+S\+E\+R\+T3@{V\+A\+S\+S\+E\+R\+T3}}
+\index{V\+A\+S\+S\+E\+R\+T3@{V\+A\+S\+S\+E\+R\+T3}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+S\+S\+E\+R\+T3}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+S\+S\+E\+R\+T3(
 \begin{DoxyParamCaption}
 \item[{}]{file, }
 \item[{}]{lineno, }
 \item[{}]{ex}
 \end{DoxyParamCaption}
-)~(fprintf(stderr,\char`\"{}VASSERT: ASSERTION FAILURE!  filename \%s, line \%u, (\%s)$\backslash$n\char`\"{}, (file), (lineno), (\#ex)), abort(), 0)}\label{a00010_a4730588ec0772a42d7718d78a9e22ef0}
+)~(fprintf(stderr,\char`\"{}V\+A\+S\+S\+E\+R\+T\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E!  filename \%s, line \%u, (\%s)\textbackslash{}n\char`\"{}, (file), (lineno), (\#ex)), abort(), 0)}\label{a00010_a4730588ec0772a42d7718d78a9e22ef0}
 
 
 Slick assertion macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VATAN@{VATAN}}
-\index{VATAN@{VATAN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VATAN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VATAN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+A\+T\+A\+N@{V\+A\+T\+A\+N}}
+\index{V\+A\+T\+A\+N@{V\+A\+T\+A\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+A\+T\+A\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+T\+A\+N(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -409,37 +404,37 @@ Slick assertion macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VBLANK\_\-STRING@{VBLANK\_\-STRING}}
-\index{VBLANK\_\-STRING@{VBLANK\_\-STRING}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VBLANK\_\-STRING}]{\setlength{\rightskip}{0pt plus 5cm}\#define VBLANK\_\-STRING~\char`\"{} \char`\"{}}\label{a00010_a6ac0734fc799654d0bf8e6a979ddd574}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+B\+L\+A\+N\+K\+\_\+\+S\+T\+R\+I\+N\+G@{V\+B\+L\+A\+N\+K\+\_\+\+S\+T\+R\+I\+N\+G}}
+\index{V\+B\+L\+A\+N\+K\+\_\+\+S\+T\+R\+I\+N\+G@{V\+B\+L\+A\+N\+K\+\_\+\+S\+T\+R\+I\+N\+G}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+B\+L\+A\+N\+K\+\_\+\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+B\+L\+A\+N\+K\+\_\+\+S\+T\+R\+I\+N\+G~\char`\"{} \char`\"{}}\label{a00010_a6ac0734fc799654d0bf8e6a979ddd574}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VBLANK\_\-SYMBOL@{VBLANK\_\-SYMBOL}}
-\index{VBLANK\_\-SYMBOL@{VBLANK\_\-SYMBOL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VBLANK\_\-SYMBOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VBLANK\_\-SYMBOL~' '}\label{a00010_ab0c8a6f3a74aaef96673f4493e3c8e96}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+B\+L\+A\+N\+K\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+B\+L\+A\+N\+K\+\_\+\+S\+Y\+M\+B\+O\+L}}
+\index{V\+B\+L\+A\+N\+K\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+B\+L\+A\+N\+K\+\_\+\+S\+Y\+M\+B\+O\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+B\+L\+A\+N\+K\+\_\+\+S\+Y\+M\+B\+O\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+B\+L\+A\+N\+K\+\_\+\+S\+Y\+M\+B\+O\+L~\textquotesingle{} \textquotesingle{}}\label{a00010_ab0c8a6f3a74aaef96673f4493e3c8e96}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VBLOCK\_\-POWER@{VBLOCK\_\-POWER}}
-\index{VBLOCK\_\-POWER@{VBLOCK\_\-POWER}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VBLOCK\_\-POWER}]{\setlength{\rightskip}{0pt plus 5cm}\#define VBLOCK\_\-POWER~14}\label{a00010_a86db19adfd56589a7440929e19c85204}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+B\+L\+O\+C\+K\+\_\+\+P\+O\+W\+E\+R@{V\+B\+L\+O\+C\+K\+\_\+\+P\+O\+W\+E\+R}}
+\index{V\+B\+L\+O\+C\+K\+\_\+\+P\+O\+W\+E\+R@{V\+B\+L\+O\+C\+K\+\_\+\+P\+O\+W\+E\+R}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+B\+L\+O\+C\+K\+\_\+\+P\+O\+W\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+B\+L\+O\+C\+K\+\_\+\+P\+O\+W\+E\+R~14}\label{a00010_a86db19adfd56589a7440929e19c85204}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VCC@{VCC}}
-\index{VCC@{VCC}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VCC}]{\setlength{\rightskip}{0pt plus 5cm}\#define VCC}\label{a00010_a122557a0293deb12253eb7a4dba4e4f6}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+C\+C@{V\+C\+C}}
+\index{V\+C\+C@{V\+C\+C}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+C\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+C\+C}\label{a00010_a122557a0293deb12253eb7a4dba4e4f6}
 
 
 Setup so this include file (and subsequent) will work for both C and C++. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VCOS@{VCOS}}
-\index{VCOS@{VCOS}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VCOS}]{\setlength{\rightskip}{0pt plus 5cm}\#define VCOS(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+C\+O\+S@{V\+C\+O\+S}}
+\index{V\+C\+O\+S@{V\+C\+O\+S}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+C\+O\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+C\+O\+S(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -448,9 +443,9 @@ Setup so this include file (and subsequent) will work for both C and C++.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VCOSH@{VCOSH}}
-\index{VCOSH@{VCOSH}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VCOSH}]{\setlength{\rightskip}{0pt plus 5cm}\#define VCOSH(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+C\+O\+S\+H@{V\+C\+O\+S\+H}}
+\index{V\+C\+O\+S\+H@{V\+C\+O\+S\+H}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+C\+O\+S\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+C\+O\+S\+H(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -459,16 +454,16 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VDELIM\_\-SET@{VDELIM\_\-SET}}
-\index{VDELIM\_\-SET@{VDELIM\_\-SET}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VDELIM\_\-SET}]{\setlength{\rightskip}{0pt plus 5cm}\#define VDELIM\_\-SET~\char`\"{} $>$$<$$|$\&\char`\"{}}\label{a00010_abd65219a8fa4b48051a6a803bc3a8a35}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+D\+E\+L\+I\+M\+\_\+\+S\+E\+T@{V\+D\+E\+L\+I\+M\+\_\+\+S\+E\+T}}
+\index{V\+D\+E\+L\+I\+M\+\_\+\+S\+E\+T@{V\+D\+E\+L\+I\+M\+\_\+\+S\+E\+T}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+D\+E\+L\+I\+M\+\_\+\+S\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+D\+E\+L\+I\+M\+\_\+\+S\+E\+T~\char`\"{} $>$$<$$\vert$\&\char`\"{}}\label{a00010_abd65219a8fa4b48051a6a803bc3a8a35}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VEVEN@{VEVEN}}
-\index{VEVEN@{VEVEN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VEVEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VEVEN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+E\+V\+E\+N@{V\+E\+V\+E\+N}}
+\index{V\+E\+V\+E\+N@{V\+E\+V\+E\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+E\+V\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+V\+E\+N(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -477,31 +472,31 @@ Global constant.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VEVENN@{VEVENN}}
-\index{VEVENN@{VEVENN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VEVENN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VEVENN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+E\+V\+E\+N\+N@{V\+E\+V\+E\+N\+N}}
+\index{V\+E\+V\+E\+N\+N@{V\+E\+V\+E\+N\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+E\+V\+E\+N\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+V\+E\+N\+N(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~(VEVEN(x) \&\& VNEG(x))}\label{a00010_a46a23197242d6a42f62453da40182bee}
+)~({\bf V\+E\+V\+E\+N}(x) \&\& {\bf V\+N\+E\+G}(x))}\label{a00010_a46a23197242d6a42f62453da40182bee}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VEVENP@{VEVENP}}
-\index{VEVENP@{VEVENP}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VEVENP}]{\setlength{\rightskip}{0pt plus 5cm}\#define VEVENP(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+E\+V\+E\+N\+P@{V\+E\+V\+E\+N\+P}}
+\index{V\+E\+V\+E\+N\+P@{V\+E\+V\+E\+N\+P}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+E\+V\+E\+N\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+V\+E\+N\+P(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~(VEVEN(x) \&\& VPOS(x))}\label{a00010_a81312fd2c5003fffee4e81c79a930102}
+)~({\bf V\+E\+V\+E\+N}(x) \&\& {\bf V\+P\+O\+S}(x))}\label{a00010_a81312fd2c5003fffee4e81c79a930102}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VEXP@{VEXP}}
-\index{VEXP@{VEXP}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VEXP}]{\setlength{\rightskip}{0pt plus 5cm}\#define VEXP(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+E\+X\+P@{V\+E\+X\+P}}
+\index{V\+E\+X\+P@{V\+E\+X\+P}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+E\+X\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+X\+P(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -510,147 +505,147 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VFALSE@{VFALSE}}
-\index{VFALSE@{VFALSE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VFALSE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VFALSE~0}\label{a00010_a185da450c2763e9823a32161e590bfec}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+F\+A\+L\+S\+E@{V\+F\+A\+L\+S\+E}}
+\index{V\+F\+A\+L\+S\+E@{V\+F\+A\+L\+S\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+F\+A\+L\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+F\+A\+L\+S\+E~0}\label{a00010_a185da450c2763e9823a32161e590bfec}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VINLINE\_\-MALOC@{VINLINE\_\-MALOC}}
-\index{VINLINE\_\-MALOC@{VINLINE\_\-MALOC}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VINLINE\_\-MALOC}]{\setlength{\rightskip}{0pt plus 5cm}\#define VINLINE\_\-MALOC}\label{a00010_a49d1a8aed48d93304fa66bf8c3d1e4e0}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+I\+N\+L\+I\+N\+E\+\_\+\+M\+A\+L\+O\+C@{V\+I\+N\+L\+I\+N\+E\+\_\+\+M\+A\+L\+O\+C}}
+\index{V\+I\+N\+L\+I\+N\+E\+\_\+\+M\+A\+L\+O\+C@{V\+I\+N\+L\+I\+N\+E\+\_\+\+M\+A\+L\+O\+C}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+I\+N\+L\+I\+N\+E\+\_\+\+M\+A\+L\+O\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+I\+N\+L\+I\+N\+E\+\_\+\+M\+A\+L\+O\+C}\label{a00010_a49d1a8aed48d93304fa66bf8c3d1e4e0}
 
 
 Inlining via macros for speed. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VINULL@{VINULL}}
-\index{VINULL@{VINULL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VINULL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VINULL~-\/1}\label{a00010_a2c64cf285d31e078dfd3b33541b0854b}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+I\+N\+U\+L\+L@{V\+I\+N\+U\+L\+L}}
+\index{V\+I\+N\+U\+L\+L@{V\+I\+N\+U\+L\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+I\+N\+U\+L\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+I\+N\+U\+L\+L~-\/1}\label{a00010_a2c64cf285d31e078dfd3b33541b0854b}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR0@{VJMPERR0}}
-\index{VJMPERR0@{VJMPERR0}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR0}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR0(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R0@{V\+J\+M\+P\+E\+R\+R0}}
+\index{V\+J\+M\+P\+E\+R\+R0@{V\+J\+M\+P\+E\+R\+R0}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R0}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R0(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR0}\label{a00010_a35d9a55e32cfba7f8baaec15ee365acb}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R0}\label{a00010_a35d9a55e32cfba7f8baaec15ee365acb}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR1@{VJMPERR1}}
-\index{VJMPERR1@{VJMPERR1}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR1}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR1(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R1@{V\+J\+M\+P\+E\+R\+R1}}
+\index{V\+J\+M\+P\+E\+R\+R1@{V\+J\+M\+P\+E\+R\+R1}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R1}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R1(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR1}\label{a00010_a801fb314155d03fde428d6dc89cf2658}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R1}\label{a00010_a801fb314155d03fde428d6dc89cf2658}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR2@{VJMPERR2}}
-\index{VJMPERR2@{VJMPERR2}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR2}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR2(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R2@{V\+J\+M\+P\+E\+R\+R2}}
+\index{V\+J\+M\+P\+E\+R\+R2@{V\+J\+M\+P\+E\+R\+R2}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R2}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R2(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR2}\label{a00010_abffcc18dc38e5b068b1efc4829a8488f}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R2}\label{a00010_abffcc18dc38e5b068b1efc4829a8488f}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR3@{VJMPERR3}}
-\index{VJMPERR3@{VJMPERR3}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR3}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR3(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R3@{V\+J\+M\+P\+E\+R\+R3}}
+\index{V\+J\+M\+P\+E\+R\+R3@{V\+J\+M\+P\+E\+R\+R3}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R3}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R3(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR3}\label{a00010_a8c0935adf9f3d96f63f78576ec06a65f}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R3}\label{a00010_a8c0935adf9f3d96f63f78576ec06a65f}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR4@{VJMPERR4}}
-\index{VJMPERR4@{VJMPERR4}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR4}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR4(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R4@{V\+J\+M\+P\+E\+R\+R4}}
+\index{V\+J\+M\+P\+E\+R\+R4@{V\+J\+M\+P\+E\+R\+R4}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R4}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R4(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR4}\label{a00010_a84d776c30f6bc2a303ee610e4a5fbc9a}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R4}\label{a00010_a84d776c30f6bc2a303ee610e4a5fbc9a}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR5@{VJMPERR5}}
-\index{VJMPERR5@{VJMPERR5}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR5}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR5(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R5@{V\+J\+M\+P\+E\+R\+R5}}
+\index{V\+J\+M\+P\+E\+R\+R5@{V\+J\+M\+P\+E\+R\+R5}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R5}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R5(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR5}\label{a00010_aa7116fe5abea3b472305732ab411e776}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R5}\label{a00010_aa7116fe5abea3b472305732ab411e776}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR6@{VJMPERR6}}
-\index{VJMPERR6@{VJMPERR6}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR6}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR6(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R6@{V\+J\+M\+P\+E\+R\+R6}}
+\index{V\+J\+M\+P\+E\+R\+R6@{V\+J\+M\+P\+E\+R\+R6}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R6}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R6(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR6}\label{a00010_af3c223a83ee1fed008ad98b7f1ded3e7}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R6}\label{a00010_af3c223a83ee1fed008ad98b7f1ded3e7}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR7@{VJMPERR7}}
-\index{VJMPERR7@{VJMPERR7}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR7}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR7(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R7@{V\+J\+M\+P\+E\+R\+R7}}
+\index{V\+J\+M\+P\+E\+R\+R7@{V\+J\+M\+P\+E\+R\+R7}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R7}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R7(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR7}\label{a00010_ac648424c8472947581f55483790f3733}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R7}\label{a00010_ac648424c8472947581f55483790f3733}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR8@{VJMPERR8}}
-\index{VJMPERR8@{VJMPERR8}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR8}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR8(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R8@{V\+J\+M\+P\+E\+R\+R8}}
+\index{V\+J\+M\+P\+E\+R\+R8@{V\+J\+M\+P\+E\+R\+R8}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R8}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R8(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR8}\label{a00010_a4398f657db69c05ebc37541d0ce61889}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R8}\label{a00010_a4398f657db69c05ebc37541d0ce61889}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VJMPERR9@{VJMPERR9}}
-\index{VJMPERR9@{VJMPERR9}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VJMPERR9}]{\setlength{\rightskip}{0pt plus 5cm}\#define VJMPERR9(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+J\+M\+P\+E\+R\+R9@{V\+J\+M\+P\+E\+R\+R9}}
+\index{V\+J\+M\+P\+E\+R\+R9@{V\+J\+M\+P\+E\+R\+R9}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+J\+M\+P\+E\+R\+R9}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+J\+M\+P\+E\+R\+R9(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~if (!(x)) goto VERROR9}\label{a00010_ac371ae69ae3e54d49d18936f13157435}
+)~if (!(x)) goto V\+E\+R\+R\+O\+R9}\label{a00010_ac371ae69ae3e54d49d18936f13157435}
 
 
 A userful error handling macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VLARGE@{VLARGE}}
-\index{VLARGE@{VLARGE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VLARGE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VLARGE~1.0e+9}\label{a00010_aa85fa01fd188d474dad2b8690c47e2ed}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+L\+A\+R\+G\+E@{V\+L\+A\+R\+G\+E}}
+\index{V\+L\+A\+R\+G\+E@{V\+L\+A\+R\+G\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+L\+A\+R\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+L\+A\+R\+G\+E~1.\+0e+9}\label{a00010_aa85fa01fd188d474dad2b8690c47e2ed}
 
 
 Global constant. 1e9 just fits into 32-\/bit signed int. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VLOG@{VLOG}}
-\index{VLOG@{VLOG}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VLOG}]{\setlength{\rightskip}{0pt plus 5cm}\#define VLOG(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+L\+O\+G@{V\+L\+O\+G}}
+\index{V\+L\+O\+G@{V\+L\+O\+G}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+L\+O\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+L\+O\+G(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -659,61 +654,61 @@ Global constant. 1e9 just fits into 32-\/bit signed int.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VMAX2@{VMAX2}}
-\index{VMAX2@{VMAX2}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VMAX2}]{\setlength{\rightskip}{0pt plus 5cm}\#define VMAX2(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+M\+A\+X2@{V\+M\+A\+X2}}
+\index{V\+M\+A\+X2@{V\+M\+A\+X2}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+M\+A\+X2}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M\+A\+X2(
 \begin{DoxyParamCaption}
 \item[{}]{x, }
 \item[{}]{y}
 \end{DoxyParamCaption}
-)~((x) $>$= (y) ? (x) : (y))}\label{a00010_a290e41f505fcb748fc5435c6c23124a5}
+)~((x) $>$= (y) ? (x) \+: (y))}\label{a00010_a290e41f505fcb748fc5435c6c23124a5}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VMAX\_\-ARGLEN@{VMAX\_\-ARGLEN}}
-\index{VMAX\_\-ARGLEN@{VMAX\_\-ARGLEN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VMAX\_\-ARGLEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VMAX\_\-ARGLEN~1024}\label{a00010_ab11f66c5fd184e20cd21c417a5a69abd}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N@{V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}}
+\index{V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N@{V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M\+A\+X\+\_\+\+A\+R\+G\+L\+E\+N~1024}\label{a00010_ab11f66c5fd184e20cd21c417a5a69abd}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VMAX\_\-ARGNUM@{VMAX\_\-ARGNUM}}
-\index{VMAX\_\-ARGNUM@{VMAX\_\-ARGNUM}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VMAX\_\-ARGNUM}]{\setlength{\rightskip}{0pt plus 5cm}\#define VMAX\_\-ARGNUM~50}\label{a00010_a15b1b0d60ed3a20d22f2502448a461d9}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+M\+A\+X\+\_\+\+A\+R\+G\+N\+U\+M@{V\+M\+A\+X\+\_\+\+A\+R\+G\+N\+U\+M}}
+\index{V\+M\+A\+X\+\_\+\+A\+R\+G\+N\+U\+M@{V\+M\+A\+X\+\_\+\+A\+R\+G\+N\+U\+M}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+M\+A\+X\+\_\+\+A\+R\+G\+N\+U\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M\+A\+X\+\_\+\+A\+R\+G\+N\+U\+M~50}\label{a00010_a15b1b0d60ed3a20d22f2502448a461d9}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VMAX\_\-BUFSIZE@{VMAX\_\-BUFSIZE}}
-\index{VMAX\_\-BUFSIZE@{VMAX\_\-BUFSIZE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VMAX\_\-BUFSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VMAX\_\-BUFSIZE~8192}\label{a00010_a1dfc31b781bd0215ba5e6823a20d31c3}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+M\+A\+X\+\_\+\+B\+U\+F\+S\+I\+Z\+E@{V\+M\+A\+X\+\_\+\+B\+U\+F\+S\+I\+Z\+E}}
+\index{V\+M\+A\+X\+\_\+\+B\+U\+F\+S\+I\+Z\+E@{V\+M\+A\+X\+\_\+\+B\+U\+F\+S\+I\+Z\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+M\+A\+X\+\_\+\+B\+U\+F\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M\+A\+X\+\_\+\+B\+U\+F\+S\+I\+Z\+E~8192}\label{a00010_a1dfc31b781bd0215ba5e6823a20d31c3}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VMAX\_\-OBJECTS@{VMAX\_\-OBJECTS}}
-\index{VMAX\_\-OBJECTS@{VMAX\_\-OBJECTS}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VMAX\_\-OBJECTS}]{\setlength{\rightskip}{0pt plus 5cm}\#define VMAX\_\-OBJECTS~1073741824}\label{a00010_ad95ae6d30cd0e4ceaf872dc886b269b2}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+T\+S@{V\+M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+T\+S}}
+\index{V\+M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+T\+S@{V\+M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+T\+S}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+T\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M\+A\+X\+\_\+\+O\+B\+J\+E\+C\+T\+S~1073741824    /$\ast$ (1$<$$<$31) = 2$^\wedge$31 $\ast$/}\label{a00010_ad95ae6d30cd0e4ceaf872dc886b269b2}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VMIN2@{VMIN2}}
-\index{VMIN2@{VMIN2}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VMIN2}]{\setlength{\rightskip}{0pt plus 5cm}\#define VMIN2(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+M\+I\+N2@{V\+M\+I\+N2}}
+\index{V\+M\+I\+N2@{V\+M\+I\+N2}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+M\+I\+N2}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+M\+I\+N2(
 \begin{DoxyParamCaption}
 \item[{}]{x, }
 \item[{}]{y}
 \end{DoxyParamCaption}
-)~((x) $<$= (y) ? (x) : (y))}\label{a00010_ab0e57329dc36caa1029a5f24cfaa11f7}
+)~((x) $<$= (y) ? (x) \+: (y))}\label{a00010_ab0e57329dc36caa1029a5f24cfaa11f7}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VNEG@{VNEG}}
-\index{VNEG@{VNEG}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VNEG}]{\setlength{\rightskip}{0pt plus 5cm}\#define VNEG(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+N\+E\+G@{V\+N\+E\+G}}
+\index{V\+N\+E\+G@{V\+N\+E\+G}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+N\+E\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+N\+E\+G(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -722,44 +717,44 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VNEWLINE\_\-STRING@{VNEWLINE\_\-STRING}}
-\index{VNEWLINE\_\-STRING@{VNEWLINE\_\-STRING}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VNEWLINE\_\-STRING}]{\setlength{\rightskip}{0pt plus 5cm}\#define VNEWLINE\_\-STRING~\char`\"{}$\backslash$n\char`\"{}}\label{a00010_af2750993825fc5b1778ce25a3175eabd}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+T\+R\+I\+N\+G@{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+T\+R\+I\+N\+G}}
+\index{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+T\+R\+I\+N\+G@{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+T\+R\+I\+N\+G}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+T\+R\+I\+N\+G~\char`\"{}\textbackslash{}n\char`\"{}}\label{a00010_af2750993825fc5b1778ce25a3175eabd}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VNEWLINE\_\-SYMBOL@{VNEWLINE\_\-SYMBOL}}
-\index{VNEWLINE\_\-SYMBOL@{VNEWLINE\_\-SYMBOL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VNEWLINE\_\-SYMBOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VNEWLINE\_\-SYMBOL~'$\backslash$n'}\label{a00010_abea6f48b8e59ba9861130a384bd3aec6}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+Y\+M\+B\+O\+L}}
+\index{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+Y\+M\+B\+O\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+Y\+M\+B\+O\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+N\+E\+W\+L\+I\+N\+E\+\_\+\+S\+Y\+M\+B\+O\+L~\textquotesingle{}\textbackslash{}n\textquotesingle{}}\label{a00010_abea6f48b8e59ba9861130a384bd3aec6}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VNULL@{VNULL}}
-\index{VNULL@{VNULL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VNULL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VNULL~NULL}\label{a00010_a2bb1f7730df2c23d8940135b65d2c781}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+N\+U\+L\+L@{V\+N\+U\+L\+L}}
+\index{V\+N\+U\+L\+L@{V\+N\+U\+L\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+N\+U\+L\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+N\+U\+L\+L~N\+U\+L\+L}\label{a00010_a2bb1f7730df2c23d8940135b65d2c781}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VNULL\_\-STRING@{VNULL\_\-STRING}}
-\index{VNULL\_\-STRING@{VNULL\_\-STRING}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VNULL\_\-STRING}]{\setlength{\rightskip}{0pt plus 5cm}\#define VNULL\_\-STRING~\char`\"{}$\backslash$0\char`\"{}}\label{a00010_ab8cbbfa234e1095b237085887e887d36}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+N\+U\+L\+L\+\_\+\+S\+T\+R\+I\+N\+G@{V\+N\+U\+L\+L\+\_\+\+S\+T\+R\+I\+N\+G}}
+\index{V\+N\+U\+L\+L\+\_\+\+S\+T\+R\+I\+N\+G@{V\+N\+U\+L\+L\+\_\+\+S\+T\+R\+I\+N\+G}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+N\+U\+L\+L\+\_\+\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+N\+U\+L\+L\+\_\+\+S\+T\+R\+I\+N\+G~\char`\"{}\textbackslash{}0\char`\"{}}\label{a00010_ab8cbbfa234e1095b237085887e887d36}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VNULL\_\-SYMBOL@{VNULL\_\-SYMBOL}}
-\index{VNULL\_\-SYMBOL@{VNULL\_\-SYMBOL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VNULL\_\-SYMBOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VNULL\_\-SYMBOL~'$\backslash$0'}\label{a00010_accb185d30e2bcf018d17820fbc4b40fd}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+N\+U\+L\+L\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+N\+U\+L\+L\+\_\+\+S\+Y\+M\+B\+O\+L}}
+\index{V\+N\+U\+L\+L\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+N\+U\+L\+L\+\_\+\+S\+Y\+M\+B\+O\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+N\+U\+L\+L\+\_\+\+S\+Y\+M\+B\+O\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+N\+U\+L\+L\+\_\+\+S\+Y\+M\+B\+O\+L~\textquotesingle{}\textbackslash{}0\textquotesingle{}}\label{a00010_accb185d30e2bcf018d17820fbc4b40fd}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VODD@{VODD}}
-\index{VODD@{VODD}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VODD}]{\setlength{\rightskip}{0pt plus 5cm}\#define VODD(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+O\+D\+D@{V\+O\+D\+D}}
+\index{V\+O\+D\+D@{V\+O\+D\+D}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+O\+D\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+O\+D\+D(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -768,23 +763,23 @@ Global constant.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPI@{VPI}}
-\index{VPI@{VPI}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPI}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPI~3.14159265358979323846}\label{a00010_a50941df90c3271d685f4b22f3eb1a9f8}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+I@{V\+P\+I}}
+\index{V\+P\+I@{V\+P\+I}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+I}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+I~3.\+14159265358979323846}\label{a00010_a50941df90c3271d685f4b22f3eb1a9f8}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPIPE\_\-SYMBOL@{VPIPE\_\-SYMBOL}}
-\index{VPIPE\_\-SYMBOL@{VPIPE\_\-SYMBOL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPIPE\_\-SYMBOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPIPE\_\-SYMBOL~'$|$'}\label{a00010_a3e7f4228d0009d0085013b9b52d4b57d}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+I\+P\+E\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+P\+I\+P\+E\+\_\+\+S\+Y\+M\+B\+O\+L}}
+\index{V\+P\+I\+P\+E\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+P\+I\+P\+E\+\_\+\+S\+Y\+M\+B\+O\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+I\+P\+E\+\_\+\+S\+Y\+M\+B\+O\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+I\+P\+E\+\_\+\+S\+Y\+M\+B\+O\+L~\textquotesingle{}$\vert$\textquotesingle{}}\label{a00010_a3e7f4228d0009d0085013b9b52d4b57d}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPOS@{VPOS}}
-\index{VPOS@{VPOS}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPOS}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPOS(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+O\+S@{V\+P\+O\+S}}
+\index{V\+P\+O\+S@{V\+P\+O\+S}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+O\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+O\+S(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -793,9 +788,9 @@ Global constant.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPOW@{VPOW}}
-\index{VPOW@{VPOW}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPOW}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPOW(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+O\+W@{V\+P\+O\+W}}
+\index{V\+P\+O\+W@{V\+P\+O\+W}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+O\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+O\+W(
 \begin{DoxyParamCaption}
 \item[{}]{x, }
 \item[{}]{y}
@@ -805,88 +800,88 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPRIVATE@{VPRIVATE}}
-\index{VPRIVATE@{VPRIVATE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPRIVATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPRIVATE~static}\label{a00010_ae2fc4d8bc102f1fcdcdd54c2338ea4bd}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+R\+I\+V\+A\+T\+E@{V\+P\+R\+I\+V\+A\+T\+E}}
+\index{V\+P\+R\+I\+V\+A\+T\+E@{V\+P\+R\+I\+V\+A\+T\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+R\+I\+V\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+R\+I\+V\+A\+T\+E~static}\label{a00010_ae2fc4d8bc102f1fcdcdd54c2338ea4bd}
 
 
-Mimic C++ \char`\"{}Private\char`\"{} type modifier. 
+Mimic C++ \char`\"{}\+Private\char`\"{} type modifier. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPRTKEY@{VPRTKEY}}
-\index{VPRTKEY@{VPRTKEY}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPRTKEY}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPRTKEY~10000}\label{a00010_a4f0d87f3004ad0579cfde937398b903c}
-
-
-Global constant. 
-
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPTRSIZE@{VPTRSIZE}}
-\index{VPTRSIZE@{VPTRSIZE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPTRSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPTRSIZE~4}\label{a00010_a89f496884cc1b9244becf0de085cb500}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+R\+T\+K\+E\+Y@{V\+P\+R\+T\+K\+E\+Y}}
+\index{V\+P\+R\+T\+K\+E\+Y@{V\+P\+R\+T\+K\+E\+Y}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+R\+T\+K\+E\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+R\+T\+K\+E\+Y~10000}\label{a00010_a4f0d87f3004ad0579cfde937398b903c}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VPUBLIC@{VPUBLIC}}
-\index{VPUBLIC@{VPUBLIC}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VPUBLIC}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPUBLIC~/$\ast$empty$\ast$/}\label{a00010_a40b754bab6d662ab872265b448caf4fc}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+T\+R\+S\+I\+Z\+E@{V\+P\+T\+R\+S\+I\+Z\+E}}
+\index{V\+P\+T\+R\+S\+I\+Z\+E@{V\+P\+T\+R\+S\+I\+Z\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+T\+R\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+T\+R\+S\+I\+Z\+E~4}\label{a00010_a89f496884cc1b9244becf0de085cb500}
 
 
-Mimic C++ \char`\"{}Public\char`\"{} type modifier. 
+Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VRAND@{VRAND}}
-\index{VRAND@{VRAND}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VRAND}]{\setlength{\rightskip}{0pt plus 5cm}\#define VRAND~(rand())}\label{a00010_a646cee349664e037b9065d09b331c77d}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+P\+U\+B\+L\+I\+C@{V\+P\+U\+B\+L\+I\+C}}
+\index{V\+P\+U\+B\+L\+I\+C@{V\+P\+U\+B\+L\+I\+C}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+P\+U\+B\+L\+I\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+U\+B\+L\+I\+C~/$\ast$empty$\ast$/}\label{a00010_a40b754bab6d662ab872265b448caf4fc}
+
+
+Mimic C++ \char`\"{}\+Public\char`\"{} type modifier. 
+
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+R\+A\+N\+D@{V\+R\+A\+N\+D}}
+\index{V\+R\+A\+N\+D@{V\+R\+A\+N\+D}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+R\+A\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+R\+A\+N\+D~(rand())}\label{a00010_a646cee349664e037b9065d09b331c77d}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VRANDMAX@{VRANDMAX}}
-\index{VRANDMAX@{VRANDMAX}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VRANDMAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define VRANDMAX~(RAND\_\-MAX)}\label{a00010_a9907643e15a16f66f4b00769edd53909}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+R\+A\+N\+D\+M\+A\+X@{V\+R\+A\+N\+D\+M\+A\+X}}
+\index{V\+R\+A\+N\+D\+M\+A\+X@{V\+R\+A\+N\+D\+M\+A\+X}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+R\+A\+N\+D\+M\+A\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+R\+A\+N\+D\+M\+A\+X~(R\+A\+N\+D\+\_\+\+M\+A\+X)}\label{a00010_a9907643e15a16f66f4b00769edd53909}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VRDIN\_\-SYMBOL@{VRDIN\_\-SYMBOL}}
-\index{VRDIN\_\-SYMBOL@{VRDIN\_\-SYMBOL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VRDIN\_\-SYMBOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VRDIN\_\-SYMBOL~'$<$'}\label{a00010_ace267de7e362209e9912f7dd86ec6358}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+R\+D\+I\+N\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+R\+D\+I\+N\+\_\+\+S\+Y\+M\+B\+O\+L}}
+\index{V\+R\+D\+I\+N\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+R\+D\+I\+N\+\_\+\+S\+Y\+M\+B\+O\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+R\+D\+I\+N\+\_\+\+S\+Y\+M\+B\+O\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+R\+D\+I\+N\+\_\+\+S\+Y\+M\+B\+O\+L~\textquotesingle{}$<$\textquotesingle{}}\label{a00010_ace267de7e362209e9912f7dd86ec6358}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VRDOUT\_\-SYMBOL@{VRDOUT\_\-SYMBOL}}
-\index{VRDOUT\_\-SYMBOL@{VRDOUT\_\-SYMBOL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VRDOUT\_\-SYMBOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VRDOUT\_\-SYMBOL~'$>$'}\label{a00010_a70b709f9de1f84988c12f4cc018f811b}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+R\+D\+O\+U\+T\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+R\+D\+O\+U\+T\+\_\+\+S\+Y\+M\+B\+O\+L}}
+\index{V\+R\+D\+O\+U\+T\+\_\+\+S\+Y\+M\+B\+O\+L@{V\+R\+D\+O\+U\+T\+\_\+\+S\+Y\+M\+B\+O\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+R\+D\+O\+U\+T\+\_\+\+S\+Y\+M\+B\+O\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+R\+D\+O\+U\+T\+\_\+\+S\+Y\+M\+B\+O\+L~\textquotesingle{}$>$\textquotesingle{}}\label{a00010_a70b709f9de1f84988c12f4cc018f811b}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VRINT@{VRINT}}
-\index{VRINT@{VRINT}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VRINT}]{\setlength{\rightskip}{0pt plus 5cm}\#define VRINT(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+R\+I\+N\+T@{V\+R\+I\+N\+T}}
+\index{V\+R\+I\+N\+T@{V\+R\+I\+N\+T}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+R\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+R\+I\+N\+T(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
-)~((int)(floor((x)+0.5)))}\label{a00010_aeac6d37dd0315ecb13a9f1f3f835ce46}
+)~((int)(floor((x)+0.\+5)))}\label{a00010_aeac6d37dd0315ecb13a9f1f3f835ce46}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VSIGN@{VSIGN}}
-\index{VSIGN@{VSIGN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VSIGN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VSIGN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+S\+I\+G\+N@{V\+S\+I\+G\+N}}
+\index{V\+S\+I\+G\+N@{V\+S\+I\+G\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+S\+I\+G\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+S\+I\+G\+N(
 \begin{DoxyParamCaption}
 \item[{}]{x, }
 \item[{}]{y}
 \end{DoxyParamCaption}
-)~((y) $>$= 0 ? (VABS(x)) : (-\/VABS(x)))}\label{a00010_a07b46444293918f05c95070465520ed7}
+)~((y) $>$= 0 ? ({\bf V\+A\+B\+S}(x)) \+: (-\/{\bf V\+A\+B\+S}(x)))}\label{a00010_a07b46444293918f05c95070465520ed7}
 
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VSIN@{VSIN}}
-\index{VSIN@{VSIN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VSIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VSIN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+S\+I\+N@{V\+S\+I\+N}}
+\index{V\+S\+I\+N@{V\+S\+I\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+S\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+S\+I\+N(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -895,9 +890,9 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VSINH@{VSINH}}
-\index{VSINH@{VSINH}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VSINH}]{\setlength{\rightskip}{0pt plus 5cm}\#define VSINH(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+S\+I\+N\+H@{V\+S\+I\+N\+H}}
+\index{V\+S\+I\+N\+H@{V\+S\+I\+N\+H}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+S\+I\+N\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+S\+I\+N\+H(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -906,16 +901,16 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VSMALL@{VSMALL}}
-\index{VSMALL@{VSMALL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VSMALL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VSMALL~1.0e-\/9}\label{a00010_a9de33470243d86f36615e15a77261ede}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+S\+M\+A\+L\+L@{V\+S\+M\+A\+L\+L}}
+\index{V\+S\+M\+A\+L\+L@{V\+S\+M\+A\+L\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+S\+M\+A\+L\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+S\+M\+A\+L\+L~1.\+0e-\/9}\label{a00010_a9de33470243d86f36615e15a77261ede}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VSQR@{VSQR}}
-\index{VSQR@{VSQR}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VSQR}]{\setlength{\rightskip}{0pt plus 5cm}\#define VSQR(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+S\+Q\+R@{V\+S\+Q\+R}}
+\index{V\+S\+Q\+R@{V\+S\+Q\+R}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+S\+Q\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+S\+Q\+R(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -924,9 +919,9 @@ Global constant.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VSQRT@{VSQRT}}
-\index{VSQRT@{VSQRT}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VSQRT}]{\setlength{\rightskip}{0pt plus 5cm}\#define VSQRT(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+S\+Q\+R\+T@{V\+S\+Q\+R\+T}}
+\index{V\+S\+Q\+R\+T@{V\+S\+Q\+R\+T}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+S\+Q\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+S\+Q\+R\+T(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -935,16 +930,16 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VSTDMODE@{VSTDMODE}}
-\index{VSTDMODE@{VSTDMODE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VSTDMODE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VSTDMODE~0600}\label{a00010_acac748db87f0801549811e218abbf443}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+S\+T\+D\+M\+O\+D\+E@{V\+S\+T\+D\+M\+O\+D\+E}}
+\index{V\+S\+T\+D\+M\+O\+D\+E@{V\+S\+T\+D\+M\+O\+D\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+S\+T\+D\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+S\+T\+D\+M\+O\+D\+E~0600}\label{a00010_acac748db87f0801549811e218abbf443}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VTAN@{VTAN}}
-\index{VTAN@{VTAN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VTAN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VTAN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+T\+A\+N@{V\+T\+A\+N}}
+\index{V\+T\+A\+N@{V\+T\+A\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+T\+A\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+T\+A\+N(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -953,9 +948,9 @@ Global constant.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VTANH@{VTANH}}
-\index{VTANH@{VTANH}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VTANH}]{\setlength{\rightskip}{0pt plus 5cm}\#define VTANH(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+T\+A\+N\+H@{V\+T\+A\+N\+H}}
+\index{V\+T\+A\+N\+H@{V\+T\+A\+N\+H}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+T\+A\+N\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+T\+A\+N\+H(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}
@@ -964,53 +959,53 @@ Mathematical macro.
 
 Mathematical macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VTRUE@{VTRUE}}
-\index{VTRUE@{VTRUE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VTRUE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VTRUE~1}\label{a00010_a2078a6c029ec8613f0f6414373dee144}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+T\+R\+U\+E@{V\+T\+R\+U\+E}}
+\index{V\+T\+R\+U\+E@{V\+T\+R\+U\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+T\+R\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+T\+R\+U\+E~1}\label{a00010_a2078a6c029ec8613f0f6414373dee144}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VVLARGE@{VVLARGE}}
-\index{VVLARGE@{VVLARGE}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VVLARGE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VVLARGE~1.0e+15}\label{a00010_a22865218f9906e8799208b4cbb9fda57}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+V\+L\+A\+R\+G\+E@{V\+V\+L\+A\+R\+G\+E}}
+\index{V\+V\+L\+A\+R\+G\+E@{V\+V\+L\+A\+R\+G\+E}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+V\+L\+A\+R\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+V\+L\+A\+R\+G\+E~1.\+0e+15}\label{a00010_a22865218f9906e8799208b4cbb9fda57}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VVSMALL@{VVSMALL}}
-\index{VVSMALL@{VVSMALL}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VVSMALL}]{\setlength{\rightskip}{0pt plus 5cm}\#define VVSMALL~1.0e-\/15}\label{a00010_a9d4025ef411cefdc1bc4c73c6d3e6549}
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+V\+S\+M\+A\+L\+L@{V\+V\+S\+M\+A\+L\+L}}
+\index{V\+V\+S\+M\+A\+L\+L@{V\+V\+S\+M\+A\+L\+L}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+V\+S\+M\+A\+L\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+V\+S\+M\+A\+L\+L~1.\+0e-\/15}\label{a00010_a9d4025ef411cefdc1bc4c73c6d3e6549}
 
 
 Global constant. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VWARN@{VWARN}}
-\index{VWARN@{VWARN}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VWARN}]{\setlength{\rightskip}{0pt plus 5cm}\#define VWARN(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+W\+A\+R\+N@{V\+W\+A\+R\+N}}
+\index{V\+W\+A\+R\+N@{V\+W\+A\+R\+N}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+W\+A\+R\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+W\+A\+R\+N(
 \begin{DoxyParamCaption}
 \item[{}]{ex}
 \end{DoxyParamCaption}
-)~((void) ((ex) ? 0 : VWARN1(\_\-\_\-FILE\_\-\_\-, \_\-\_\-LINE\_\-\_\-)))}\label{a00010_af2b2257356b76b6e606de23f6a03f9ee}
+)~((void) ((ex) ? 0 \+: {\bf V\+W\+A\+R\+N1}(\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+)))}\label{a00010_af2b2257356b76b6e606de23f6a03f9ee}
 
 
 Slick assertion macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VWARN1@{VWARN1}}
-\index{VWARN1@{VWARN1}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VWARN1}]{\setlength{\rightskip}{0pt plus 5cm}\#define VWARN1(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+W\+A\+R\+N1@{V\+W\+A\+R\+N1}}
+\index{V\+W\+A\+R\+N1@{V\+W\+A\+R\+N1}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+W\+A\+R\+N1}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+W\+A\+R\+N1(
 \begin{DoxyParamCaption}
 \item[{}]{file, }
 \item[{}]{lineno}
 \end{DoxyParamCaption}
-)~(fprintf(stderr,\char`\"{}VWARN: ASSERTION FAILURE! filename \%s, line \%u$\backslash$n\char`\"{}, (file), (lineno)), 0)}\label{a00010_ab9ac054d25a0e3da447261d9bba39dc3}
+)~(fprintf(stderr,\char`\"{}V\+W\+A\+R\+N\+: A\+S\+S\+E\+R\+T\+I\+O\+N F\+A\+I\+L\+U\+R\+E! filename \%s, line \%u\textbackslash{}n\char`\"{}, (file), (lineno)), 0)}\label{a00010_ab9ac054d25a0e3da447261d9bba39dc3}
 
 
 Slick assertion macro. 
 
-\index{maloc\_\-base.h@{maloc\_\-base.h}!VZERO@{VZERO}}
-\index{VZERO@{VZERO}!maloc_base.h@{maloc\_\-base.h}}
-\subsubsection[{VZERO}]{\setlength{\rightskip}{0pt plus 5cm}\#define VZERO(
+\index{maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}!V\+Z\+E\+R\+O@{V\+Z\+E\+R\+O}}
+\index{V\+Z\+E\+R\+O@{V\+Z\+E\+R\+O}!maloc\+\_\+base.\+h@{maloc\+\_\+base.\+h}}
+\subsubsection[{V\+Z\+E\+R\+O}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+Z\+E\+R\+O(
 \begin{DoxyParamCaption}
 \item[{}]{x}
 \end{DoxyParamCaption}

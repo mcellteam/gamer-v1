@@ -1,126 +1,126 @@
-\section{vnm.h File Reference}
-\label{a00018}\index{vnm.h@{vnm.h}}
+\section{vnm.\+h File Reference}
+\label{a00018}\index{vnm.\+h@{vnm.\+h}}
 
 
-Header file for an ISO C [V]irtual [N]umerical [M]achine.  
+Header file for an I\+S\+O C [V]irtual [N]umerical [M]achine.  
 
 
-{\ttfamily \#include $<$maloc/maloc\_\-base.h$>$}\par
-Include dependency graph for vnm.h:
-\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
+Include dependency graph for vnm.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=400pt]{a00047}
+\includegraphics[width=350pt]{a00047}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=230pt]{a00048}
 \end{center}
 \end{figure}
-\subsection*{Defines}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define {\bf VPOW\_\-SAFE}(x, y)~(Vnm\_\-powsafe(x,y))
-\begin{DoxyCompactList}\small\item\em A safe VPOW function (avoids division by zero). \item\end{DoxyCompactList}\item 
-\#define {\bf VTIMERS}~100
-\begin{DoxyCompactList}\small\item\em the maiximal timer constant \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define {\bf V\+P\+O\+W\+\_\+\+S\+A\+F\+E}(x,  y)~({\bf Vnm\+\_\+powsafe}(x,y))
+\begin{DoxyCompactList}\small\item\em A safe V\+P\+O\+W function (avoids division by zero) \end{DoxyCompactList}\item 
+\#define {\bf V\+T\+I\+M\+E\+R\+S}~100
+\begin{DoxyCompactList}\small\item\em the maiximal timer constant \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vnm\_\-sigInt} (void)
-\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Return the signal interrupt flag. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-sigIntSet} (void)
-\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Set the signal interrupt flag. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-sigIntClear} (void)
-\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Clear the signal interrupt flag. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-jmpOk} (void)
-\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Return the \char`\"{}ok-\/to-\/jump\char`\"{} flag. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-jmpOkSet} (void)
-\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Set the \char`\"{}okay-\/to-\/jump\char`\"{} flag. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-jmpOkClear} (void)
-\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Clear the \char`\"{}okay-\/to-\/jump\char`\"{} flag. \item\end{DoxyCompactList}\item 
-jmp\_\-buf $\ast$ {\bf Vnm\_\-signalInit} (void)
-\begin{DoxyCompactList}\small\item\em Initialize the signal handling data structures. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-regHand} (void)
-\begin{DoxyCompactList}\small\item\em Register the signal handler with the operating system. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-sigHand} (int num)
-\begin{DoxyCompactList}\small\item\em Handle events such as SIGINT. We must have first been registered with \char`\"{}Vnm\_\-signalInit\char`\"{}. \item\end{DoxyCompactList}\item 
-double {\bf Vnm\_\-powsafe} (double x, double y)
-\begin{DoxyCompactList}\small\item\em A safe VPOW function (avoids division by zero). \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-typeChk} (void)
-\begin{DoxyCompactList}\small\item\em Check out the sizes of various datatypes. \item\end{DoxyCompactList}\item 
-double {\bf Vnm\_\-epsmac} (void)
-\begin{DoxyCompactList}\small\item\em Computes the unit roundoff of the machine in single precision. This is defined as the smallest positive machine number u such that 1.0d0 + u .ne. 1.0d0 (in single precision). \par
-\par
- A safe hardcoded machine epsilon as alternative:\par
- double value; \par
- value = 1.0e-\/9; \par
- return value;. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-gentokens} (char $\ast$buf, char $\ast$$\ast$argv, const int argvmax, const char $\ast$white, const char $\ast$comment)
-\begin{DoxyCompactList}\small\item\em Generate an [argv,argc] pair from a character string \char`\"{}buf\char`\"{} (assumed NULL-\/terminated) in which tokens are separated by whitespace \char`\"{}white\char`\"{} with possible comments \char`\"{}comment\char`\"{} occuring. THE INPUT STRING IS MODIFIED HERE! \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-tstart} (int timer, const char $\ast$name)
-\begin{DoxyCompactList}\small\item\em Starts the timer on the particular machine. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-tstop} (int timer, const char $\ast$name)
-\begin{DoxyCompactList}\small\item\em Stops the timer on the particular machine. \item\end{DoxyCompactList}\item 
-char $\ast$ {\bf Vnm\_\-getuser} (char $\ast$user, int usermax)
-\begin{DoxyCompactList}\small\item\em Ask the system for the username. \item\end{DoxyCompactList}\item 
-char $\ast$ {\bf Vnm\_\-getos} (char $\ast$os, int osmax)
-\begin{DoxyCompactList}\small\item\em Ask the system for the operating system name. \item\end{DoxyCompactList}\item 
-char $\ast$ {\bf Vnm\_\-gethost} (char $\ast$host, int hostmax)
-\begin{DoxyCompactList}\small\item\em Ask the system for the hostname. \item\end{DoxyCompactList}\item 
-char $\ast$ {\bf Vnm\_\-gethome} (char $\ast$path, int pathmax)
-\begin{DoxyCompactList}\small\item\em Ask the system for the home directory. \item\end{DoxyCompactList}\item 
-char $\ast$ {\bf Vnm\_\-getcwd} (char $\ast$path, int pathmax)
-\begin{DoxyCompactList}\small\item\em Ask the system for the current working directory. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-chdir} (const char $\ast$path)
-\begin{DoxyCompactList}\small\item\em Interact with the system to change the working directory. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-mkdir} (const char $\ast$path)
-\begin{DoxyCompactList}\small\item\em Interact with the system to make a new directory. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-system} (const char $\ast$cmd)
-\begin{DoxyCompactList}\small\item\em An improved ANSI-\/C \char`\"{}system\char`\"{} call. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-systemBack} (const char $\ast$cmd)
-\begin{DoxyCompactList}\small\item\em A background variant of the ANSI-\/C \char`\"{}system\char`\"{} call. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-systemKill} (const char $\ast$cmd)
-\begin{DoxyCompactList}\small\item\em Something like a UNIX \char`\"{}killall\char`\"{} call. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-exec} (int argc, char $\ast$$\ast$argv)
-\begin{DoxyCompactList}\small\item\em An improved UNIX \char`\"{}exec\char`\"{} call. This routine does not return except on error. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-sleep} (int nusecs)
-\begin{DoxyCompactList}\small\item\em Implement a sleep function with microsecond resolution. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-ioTag} (void)
-\begin{DoxyCompactList}\small\item\em Return my I/O tag. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-nTags} (void)
-\begin{DoxyCompactList}\small\item\em Return the total number of tags. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-setIoTag} (int myTag, int numTags)
-\begin{DoxyCompactList}\small\item\em Set my id. \item\end{DoxyCompactList}\item 
-FILE $\ast$ {\bf Vnm\_\-open} (const int unit)
-\begin{DoxyCompactList}\small\item\em Open an I/O console. \item\end{DoxyCompactList}\item 
-int {\bf Vnm\_\-close} (const int unit)
-\begin{DoxyCompactList}\small\item\em Close an I/O console. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-flush} (const int unit)
-\begin{DoxyCompactList}\small\item\em Attempt to flush the specified i/o stream. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-redirect} (const int flag)
-\begin{DoxyCompactList}\small\item\em Set/unset the redirect flag for UNIT zero. When redirected, I/O goes to the {\tt file:} \$\{MCSH\_\-HOME\}/io.mc. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-print} (const int unit, const char $\ast$format,...)
-\begin{DoxyCompactList}\small\item\em External interface to the console i/o routine. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-tprint} (const int unit, const char $\ast$format,...)
-\begin{DoxyCompactList}\small\item\em Add our ioTag to Vnm\_\-print output. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-qsort} (int $\ast$u, int size)
-\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-qsortOrd} (int $\ast$u, int $\ast$ord, int size)
-\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-dqsort} (double $\ast$u, int size)
-\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \item\end{DoxyCompactList}\item 
-void {\bf Vnm\_\-dqsortOrd} (double $\ast$u, int $\ast$ord, int size)
-\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+int {\bf Vnm\+\_\+sig\+Int} (void)
+\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Return the signal interrupt flag. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+sig\+Int\+Set} (void)
+\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Set the signal interrupt flag. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+sig\+Int\+Clear} (void)
+\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Clear the signal interrupt flag. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+jmp\+Ok} (void)
+\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Return the \char`\"{}ok-\/to-\/jump\char`\"{} flag. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+jmp\+Ok\+Set} (void)
+\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Set the \char`\"{}okay-\/to-\/jump\char`\"{} flag. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+jmp\+Ok\+Clear} (void)
+\begin{DoxyCompactList}\small\item\em Signal and setjmp handling routine. Clear the \char`\"{}okay-\/to-\/jump\char`\"{} flag. \end{DoxyCompactList}\item 
+jmp\+\_\+buf $\ast$ {\bf Vnm\+\_\+signal\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize the signal handling data structures. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+reg\+Hand} (void)
+\begin{DoxyCompactList}\small\item\em Register the signal handler with the operating system. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+sig\+Hand} (int num)
+\begin{DoxyCompactList}\small\item\em Handle events such as S\+I\+G\+I\+N\+T. We must have first been registered with \char`\"{}\+Vnm\+\_\+signal\+Init\char`\"{}. \end{DoxyCompactList}\item 
+double {\bf Vnm\+\_\+powsafe} (double x, double y)
+\begin{DoxyCompactList}\small\item\em A safe V\+P\+O\+W function (avoids division by zero). \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+type\+Chk} (void)
+\begin{DoxyCompactList}\small\item\em Check out the sizes of various datatypes. \end{DoxyCompactList}\item 
+double {\bf Vnm\+\_\+epsmac} (void)
+\begin{DoxyCompactList}\small\item\em Computes the unit roundoff of the machine in single precision. This is defined as the smallest positive machine number u such that 1.\+0d0 + u .ne. 1.\+0d0 (in single precision). ~\newline
+~\newline
+ A safe hardcoded machine epsilon as alternative\+:~\newline
+ double value; ~\newline
+ value = 1.\+0e-\/9; ~\newline
+ return value;. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+gentokens} (char $\ast$buf, char $\ast$$\ast$argv, const int argvmax, const char $\ast$white, const char $\ast$comment)
+\begin{DoxyCompactList}\small\item\em Generate an [argv,argc] pair from a character string \char`\"{}buf\char`\"{} (assumed N\+U\+L\+L-\/terminated) in which tokens are separated by whitespace \char`\"{}white\char`\"{} with possible comments \char`\"{}comment\char`\"{} occuring. T\+H\+E I\+N\+P\+U\+T S\+T\+R\+I\+N\+G I\+S M\+O\+D\+I\+F\+I\+E\+D H\+E\+R\+E! \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+tstart} (int timer, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Starts the timer on the particular machine. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+tstop} (int timer, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Stops the timer on the particular machine. \end{DoxyCompactList}\item 
+char $\ast$ {\bf Vnm\+\_\+getuser} (char $\ast$user, int usermax)
+\begin{DoxyCompactList}\small\item\em Ask the system for the username. \end{DoxyCompactList}\item 
+char $\ast$ {\bf Vnm\+\_\+getos} (char $\ast$os, int osmax)
+\begin{DoxyCompactList}\small\item\em Ask the system for the operating system name. \end{DoxyCompactList}\item 
+char $\ast$ {\bf Vnm\+\_\+gethost} (char $\ast$host, int hostmax)
+\begin{DoxyCompactList}\small\item\em Ask the system for the hostname. \end{DoxyCompactList}\item 
+char $\ast$ {\bf Vnm\+\_\+gethome} (char $\ast$path, int pathmax)
+\begin{DoxyCompactList}\small\item\em Ask the system for the home directory. \end{DoxyCompactList}\item 
+char $\ast$ {\bf Vnm\+\_\+getcwd} (char $\ast$path, int pathmax)
+\begin{DoxyCompactList}\small\item\em Ask the system for the current working directory. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+chdir} (const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em Interact with the system to change the working directory. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+mkdir} (const char $\ast$path)
+\begin{DoxyCompactList}\small\item\em Interact with the system to make a new directory. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+system} (const char $\ast$cmd)
+\begin{DoxyCompactList}\small\item\em An improved A\+N\+S\+I-\/\+C \char`\"{}system\char`\"{} call. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+system\+Back} (const char $\ast$cmd)
+\begin{DoxyCompactList}\small\item\em A background variant of the A\+N\+S\+I-\/\+C \char`\"{}system\char`\"{} call. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+system\+Kill} (const char $\ast$cmd)
+\begin{DoxyCompactList}\small\item\em Something like a U\+N\+I\+X \char`\"{}killall\char`\"{} call. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+exec} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em An improved U\+N\+I\+X \char`\"{}exec\char`\"{} call. This routine does not return except on error. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+sleep} (int nusecs)
+\begin{DoxyCompactList}\small\item\em Implement a sleep function with microsecond resolution. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+io\+Tag} (void)
+\begin{DoxyCompactList}\small\item\em Return my I/\+O tag. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+n\+Tags} (void)
+\begin{DoxyCompactList}\small\item\em Return the total number of tags. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+set\+Io\+Tag} (int my\+Tag, int num\+Tags)
+\begin{DoxyCompactList}\small\item\em Set my id. \end{DoxyCompactList}\item 
+F\+I\+L\+E $\ast$ {\bf Vnm\+\_\+open} (const int unit)
+\begin{DoxyCompactList}\small\item\em Open an I/\+O console. \end{DoxyCompactList}\item 
+int {\bf Vnm\+\_\+close} (const int unit)
+\begin{DoxyCompactList}\small\item\em Close an I/\+O console. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+flush} (const int unit)
+\begin{DoxyCompactList}\small\item\em Attempt to flush the specified i/o stream. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+redirect} (const int flag)
+\begin{DoxyCompactList}\small\item\em Set/unset the redirect flag for U\+N\+I\+T zero. When redirected, I/\+O goes to the file\+: \$\{M\+C\+S\+H\+\_\+\+H\+O\+M\+E\}/io.mc. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+print} (const int unit, const char $\ast$format,...)
+\begin{DoxyCompactList}\small\item\em External interface to the console i/o routine. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+tprint} (const int unit, const char $\ast$format,...)
+\begin{DoxyCompactList}\small\item\em Add our io\+Tag to Vnm\+\_\+print output. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+qsort} (int $\ast$u, int size)
+\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+qsort\+Ord} (int $\ast$u, int $\ast$ord, int size)
+\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+dqsort} (double $\ast$u, int size)
+\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \end{DoxyCompactList}\item 
+void {\bf Vnm\+\_\+dqsort\+Ord} (double $\ast$u, int $\ast$ord, int size)
+\begin{DoxyCompactList}\small\item\em Front-\/end to quick sort integer array from [-\/large] to [+large]. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Header file for an ISO C [V]irtual [N]umerical [M]achine. \begin{DoxyAuthor}{Author}
+Header file for an I\+S\+O C [V]irtual [N]umerical [M]achine. 
+
+\begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
@@ -129,55 +129,54 @@ None
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id:}
-\doxyref{vnm.h}{p.}{a00018},v 1.22 2010/08/12 05:40:36 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{vnm.\+h}{p.}{a00018},v 1.\+22 2010/08/12 05\+:40\+:36 fetk Exp 
 \end{DoxyParagraph}
 
 
 \begin{DoxyAttention}{Attention}
-\begin{DoxyVerb}
- *
- * MALOC = < Minimal Abstraction Layer for Object-oriented C >
- * Copyright (C) 1994-- Michael Holst
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- * 
- *  \end{DoxyVerb}
+\begin{DoxyVerb}*
+* MALOC = < Minimal Abstraction Layer for Object-oriented C >
+* Copyright (C) 1994-- Michael Holst
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+* 
+*  \end{DoxyVerb}
  
 \end{DoxyAttention}
 
 
-\subsection{Define Documentation}
-\index{vnm.h@{vnm.h}!VPOW\_\-SAFE@{VPOW\_\-SAFE}}
-\index{VPOW\_\-SAFE@{VPOW\_\-SAFE}!vnm.h@{vnm.h}}
-\subsubsection[{VPOW\_\-SAFE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPOW\_\-SAFE(
+\subsection{Macro Definition Documentation}
+\index{vnm.\+h@{vnm.\+h}!V\+P\+O\+W\+\_\+\+S\+A\+F\+E@{V\+P\+O\+W\+\_\+\+S\+A\+F\+E}}
+\index{V\+P\+O\+W\+\_\+\+S\+A\+F\+E@{V\+P\+O\+W\+\_\+\+S\+A\+F\+E}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{V\+P\+O\+W\+\_\+\+S\+A\+F\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+O\+W\+\_\+\+S\+A\+F\+E(
 \begin{DoxyParamCaption}
 \item[{}]{x, }
 \item[{}]{y}
 \end{DoxyParamCaption}
-)~(Vnm\_\-powsafe(x,y))}\label{a00018_ad7c91b8e4ceddff38851300876c7c9e7}
+)~({\bf Vnm\+\_\+powsafe}(x,y))}\label{a00018_ad7c91b8e4ceddff38851300876c7c9e7}
 
 
-A safe VPOW function (avoids division by zero). 
+A safe V\+P\+O\+W function (avoids division by zero) 
 
 \begin{DoxyNote}{Note}
 Useful constants and functions (timers, epsilon, token generators, i/o) 
 \end{DoxyNote}
-\index{vnm.h@{vnm.h}!VTIMERS@{VTIMERS}}
-\index{VTIMERS@{VTIMERS}!vnm.h@{vnm.h}}
-\subsubsection[{VTIMERS}]{\setlength{\rightskip}{0pt plus 5cm}\#define VTIMERS~100}\label{a00018_adff08ccefac6ec8e551662478f350e7f}
+\index{vnm.\+h@{vnm.\+h}!V\+T\+I\+M\+E\+R\+S@{V\+T\+I\+M\+E\+R\+S}}
+\index{V\+T\+I\+M\+E\+R\+S@{V\+T\+I\+M\+E\+R\+S}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{V\+T\+I\+M\+E\+R\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+T\+I\+M\+E\+R\+S~100}\label{a00018_adff08ccefac6ec8e551662478f350e7f}
 
 
 the maiximal timer constant 
@@ -188,11 +187,11 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 
 
 \subsection{Function Documentation}
-\index{vnm.h@{vnm.h}!Vnm\_\-chdir@{Vnm\_\-chdir}}
-\index{Vnm\_\-chdir@{Vnm\_\-chdir}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-chdir}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-chdir (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+chdir@{Vnm\+\_\+chdir}}
+\index{Vnm\+\_\+chdir@{Vnm\+\_\+chdir}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+chdir}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+chdir (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{ path}
+\item[{const char $\ast$}]{path}
 \end{DoxyParamCaption}
 )}\label{a00018_aae7852bc441c93b9dd7969d8b7c4b515}
 
@@ -210,17 +209,19 @@ Success enumeration
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em path}]Pointer to the path \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-close@{Vnm\_\-close}}
-\index{Vnm\_\-close@{Vnm\_\-close}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-close (
+{\em path} & Pointer to the path \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+close@{Vnm\+\_\+close}}
+\index{Vnm\+\_\+close@{Vnm\+\_\+close}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+close}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+close (
 \begin{DoxyParamCaption}
-\item[{const int}]{ unit}
+\item[{const int}]{unit}
 \end{DoxyParamCaption}
 )}\label{a00018_a0865f47c73cd78d4abcdc86027b3fbbd}
 
 
-Close an I/O console. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. 
+Close an I/\+O console. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -233,13 +234,15 @@ Success enumeration
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em unit}]index for the file unit \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-dqsort@{Vnm\_\-dqsort}}
-\index{Vnm\_\-dqsort@{Vnm\_\-dqsort}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-dqsort}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-dqsort (
+{\em unit} & index for the file unit \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+dqsort@{Vnm\+\_\+dqsort}}
+\index{Vnm\+\_\+dqsort@{Vnm\+\_\+dqsort}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+dqsort}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+dqsort (
 \begin{DoxyParamCaption}
-\item[{double $\ast$}]{ u, }
-\item[{int}]{ size}
+\item[{double $\ast$}]{u, }
+\item[{int}]{size}
 \end{DoxyParamCaption}
 )}\label{a00018_af5dd29bb1fb767ab5cd50a16115c90e2}
 
@@ -257,14 +260,18 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em u}]Pointer to quick sort integer array \item[{\em size}]size of the integer array \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-dqsortOrd@{Vnm\_\-dqsortOrd}}
-\index{Vnm\_\-dqsortOrd@{Vnm\_\-dqsortOrd}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-dqsortOrd}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-dqsortOrd (
+{\em u} & Pointer to quick sort integer array \\
+\hline
+{\em size} & size of the integer array \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+dqsort\+Ord@{Vnm\+\_\+dqsort\+Ord}}
+\index{Vnm\+\_\+dqsort\+Ord@{Vnm\+\_\+dqsort\+Ord}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+dqsort\+Ord}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+dqsort\+Ord (
 \begin{DoxyParamCaption}
-\item[{double $\ast$}]{ u, }
-\item[{int $\ast$}]{ ord, }
-\item[{int}]{ size}
+\item[{double $\ast$}]{u, }
+\item[{int $\ast$}]{ord, }
+\item[{int}]{size}
 \end{DoxyParamCaption}
 )}\label{a00018_a77193dca4dcddfd1ef609f2c50e39a45}
 
@@ -282,21 +289,27 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em u}]Pointer to quick sort integer array \item[{\em ord}]Pointer to reordered array \item[{\em size}]size of the integer array \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-epsmac@{Vnm\_\-epsmac}}
-\index{Vnm\_\-epsmac@{Vnm\_\-epsmac}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-epsmac}]{\setlength{\rightskip}{0pt plus 5cm}double Vnm\_\-epsmac (
+{\em u} & Pointer to quick sort integer array \\
+\hline
+{\em ord} & Pointer to reordered array \\
+\hline
+{\em size} & size of the integer array \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+epsmac@{Vnm\+\_\+epsmac}}
+\index{Vnm\+\_\+epsmac@{Vnm\+\_\+epsmac}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+epsmac}]{\setlength{\rightskip}{0pt plus 5cm}double Vnm\+\_\+epsmac (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
 )}\label{a00018_ac0948dac8295ff4702a3d15b72920823}
 
 
-Computes the unit roundoff of the machine in single precision. This is defined as the smallest positive machine number u such that 1.0d0 + u .ne. 1.0d0 (in single precision). \par
-\par
- A safe hardcoded machine epsilon as alternative:\par
- double value; \par
- value = 1.0e-\/9; \par
+Computes the unit roundoff of the machine in single precision. This is defined as the smallest positive machine number u such that 1.\+0d0 + u .ne. 1.\+0d0 (in single precision). ~\newline
+~\newline
+ A safe hardcoded machine epsilon as alternative\+:~\newline
+ double value; ~\newline
+ value = 1.\+0e-\/9; ~\newline
  return value;. 
 
 \begin{DoxyAuthor}{Author}
@@ -308,17 +321,17 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 the unit roundoff of the machine in single precision. 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-exec@{Vnm\_\-exec}}
-\index{Vnm\_\-exec@{Vnm\_\-exec}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-exec}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-exec (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+exec@{Vnm\+\_\+exec}}
+\index{Vnm\+\_\+exec@{Vnm\+\_\+exec}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+exec}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+exec (
 \begin{DoxyParamCaption}
-\item[{int}]{ argc, }
-\item[{char $\ast$$\ast$}]{ argv}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
 \end{DoxyParamCaption}
 )}\label{a00018_a754abd42c8c75dcc3a092fda5700c44b}
 
 
-An improved UNIX \char`\"{}exec\char`\"{} call. This routine does not return except on error. 
+An improved U\+N\+I\+X \char`\"{}exec\char`\"{} call. This routine does not return except on error. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -331,17 +344,21 @@ no return except on error
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em argc}]number of the command line arguments \item[{\em argv}]the command line arguments \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-flush@{Vnm\_\-flush}}
-\index{Vnm\_\-flush@{Vnm\_\-flush}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-flush}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-flush (
+{\em argc} & number of the command line arguments \\
+\hline
+{\em argv} & the command line arguments \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+flush@{Vnm\+\_\+flush}}
+\index{Vnm\+\_\+flush@{Vnm\+\_\+flush}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+flush}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+flush (
 \begin{DoxyParamCaption}
-\item[{const int}]{ unit}
+\item[{const int}]{unit}
 \end{DoxyParamCaption}
 )}\label{a00018_a6eed22efc46e1bfbd34b54db20422cc6}
 
 
-Attempt to flush the specified i/o stream. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. 
+Attempt to flush the specified i/o stream. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -354,48 +371,60 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em unit}]index for the file unit \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-gentokens@{Vnm\_\-gentokens}}
-\index{Vnm\_\-gentokens@{Vnm\_\-gentokens}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-gentokens}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-gentokens (
+{\em unit} & index for the file unit \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+gentokens@{Vnm\+\_\+gentokens}}
+\index{Vnm\+\_\+gentokens@{Vnm\+\_\+gentokens}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+gentokens}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+gentokens (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{ buf, }
-\item[{char $\ast$$\ast$}]{ argv, }
-\item[{const int}]{ argvmax, }
-\item[{const char $\ast$}]{ white, }
-\item[{const char $\ast$}]{ comment}
+\item[{char $\ast$}]{buf, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{const int}]{argvmax, }
+\item[{const char $\ast$}]{white, }
+\item[{const char $\ast$}]{comment}
 \end{DoxyParamCaption}
 )}\label{a00018_ac4ab27601589fe7256bf75c9b642fadd}
 
 
-Generate an [argv,argc] pair from a character string \char`\"{}buf\char`\"{} (assumed NULL-\/terminated) in which tokens are separated by whitespace \char`\"{}white\char`\"{} with possible comments \char`\"{}comment\char`\"{} occuring. THE INPUT STRING IS MODIFIED HERE! 
+Generate an [argv,argc] pair from a character string \char`\"{}buf\char`\"{} (assumed N\+U\+L\+L-\/terminated) in which tokens are separated by whitespace \char`\"{}white\char`\"{} with possible comments \char`\"{}comment\char`\"{} occuring. T\+H\+E I\+N\+P\+U\+T S\+T\+R\+I\+N\+G I\+S M\+O\+D\+I\+F\+I\+E\+D H\+E\+R\+E! 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Useful constants and functions (timers, epsilon, token generators, i/o)\par
-\par
- Again, the input string \char`\"{}buf\char`\"{} IS MODIFIED; white space characters (defined in the input string \char`\"{}white\char`\"{}) are replaced by the NULL character '$\backslash$0'. The output \char`\"{}argv\char`\"{} is simply a list of pointers to the start of the tokens in \char`\"{}buf\char`\"{}, which are NULL-\/terminated after we replace the white space with NULLs. \par
-\par
- We follow convention and \char`\"{}NULL\char`\"{}-\/terminate \char`\"{}argv\char`\"{} by setting the pointer following the last token to \char`\"{}VNULL\char`\"{}. The return value is \char`\"{}argc\char`\"{}, the number of tokens found (not including the terminating NULL pointer). For safety you must pass in the maximal length of argv in the parameter \char`\"{}argvmax\char`\"{}.\par
-\par
- If we encounter a token which begins with a comment character (defined in the input string \char`\"{}comment\char`\"{}), then we ignore the rest of the tokens in the input buffer \char`\"{}buf\char`\"{}. This is suitable for parsing shell languages such as sh/ksh/bash which have comments that start with e.g. \char`\"{}\#\char`\"{} and continue until a newline.\par
-\par
- We DO NOT use the C library function strtok in this routine. (There are some bad implementations of strtok around apparently; the internal state variables maintained by strtok can get very messed up if you use strtok in multiple places in a code.) 
+Useful constants and functions (timers, epsilon, token generators, i/o)~\newline
+~\newline
+ Again, the input string \char`\"{}buf\char`\"{} I\+S M\+O\+D\+I\+F\+I\+E\+D; white space characters (defined in the input string \char`\"{}white\char`\"{}) are replaced by the N\+U\+L\+L character \textquotesingle{}\textbackslash{}0\textquotesingle{}. The output \char`\"{}argv\char`\"{} is simply a list of pointers to the start of the tokens in \char`\"{}buf\char`\"{}, which are N\+U\+L\+L-\/terminated after we replace the white space with N\+U\+L\+Ls. ~\newline
+~\newline
+ We follow convention and \char`\"{}\+N\+U\+L\+L\char`\"{}-\/terminate \char`\"{}argv\char`\"{} by setting the pointer following the last token to \char`\"{}\+V\+N\+U\+L\+L\char`\"{}. The return value is \char`\"{}argc\char`\"{}, the number of tokens found (not including the terminating N\+U\+L\+L pointer). For safety you must pass in the maximal length of argv in the parameter \char`\"{}argvmax\char`\"{}.~\newline
+~\newline
+ If we encounter a token which begins with a comment character (defined in the input string \char`\"{}comment\char`\"{}), then we ignore the rest of the tokens in the input buffer \char`\"{}buf\char`\"{}. This is suitable for parsing shell languages such as sh/ksh/bash which have comments that start with e.\+g. \char`\"{}\#\char`\"{} and continue until a newline.~\newline
+~\newline
+ We D\+O N\+O\+T use the C library function strtok in this routine. (There are some bad implementations of strtok around apparently; the internal state variables maintained by strtok can get very messed up if you use strtok in multiple places in a code.) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 number of tokens 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em buf}]buffer containing message \item[{\em argv}]the command line arguments \item[{\em argvmax}]maximal number of the command line arguments \item[{\em white}]Pointer to the input string \item[{\em comment}]token which begins with a comment character \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-getcwd@{Vnm\_\-getcwd}}
-\index{Vnm\_\-getcwd@{Vnm\_\-getcwd}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-getcwd}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\_\-getcwd (
+{\em buf} & buffer containing message \\
+\hline
+{\em argv} & the command line arguments \\
+\hline
+{\em argvmax} & maximal number of the command line arguments \\
+\hline
+{\em white} & Pointer to the input string \\
+\hline
+{\em comment} & token which begins with a comment character \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+getcwd@{Vnm\+\_\+getcwd}}
+\index{Vnm\+\_\+getcwd@{Vnm\+\_\+getcwd}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+getcwd}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\+\_\+getcwd (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{ path, }
-\item[{int}]{ pathmax}
+\item[{char $\ast$}]{path, }
+\item[{int}]{pathmax}
 \end{DoxyParamCaption}
 )}\label{a00018_a2a4f1dc46ffecd87eb268ea9194bad03}
 
@@ -406,26 +435,30 @@ Ask the system for the current working directory.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Useful constants and functions (timers, epsilon, token generators, i/o)\par
-\par
- Consider it an error if we can't return something useful; therefore we will VASSERT(path!=VNULL) before returning. \par
-\par
- Note that unlike Vnm\_\-gethome, a call to Vnm\_\-getcwd returns the current directory, possibly modified from call to call.\par
-\par
- I.e., calls to Vnm\_\-chdir can change the current working directory; Vnm\_\-getcwd returns the current directory, whatever that might be. 
+Useful constants and functions (timers, epsilon, token generators, i/o)~\newline
+~\newline
+ Consider it an error if we can\textquotesingle{}t return something useful; therefore we will V\+A\+S\+S\+E\+R\+T(path!=V\+N\+U\+L\+L) before returning. ~\newline
+~\newline
+ Note that unlike Vnm\+\_\+gethome, a call to Vnm\+\_\+getcwd returns the current directory, possibly modified from call to call.~\newline
+~\newline
+ I.\+e., calls to Vnm\+\_\+chdir can change the current working directory; Vnm\+\_\+getcwd returns the current directory, whatever that might be. 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the current working directory 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em path}]Pointer to the path \item[{\em pathmax}]index for the size of path \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-gethome@{Vnm\_\-gethome}}
-\index{Vnm\_\-gethome@{Vnm\_\-gethome}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-gethome}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\_\-gethome (
+{\em path} & Pointer to the path \\
+\hline
+{\em pathmax} & index for the size of path \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+gethome@{Vnm\+\_\+gethome}}
+\index{Vnm\+\_\+gethome@{Vnm\+\_\+gethome}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+gethome}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\+\_\+gethome (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{ path, }
-\item[{int}]{ pathmax}
+\item[{char $\ast$}]{path, }
+\item[{int}]{pathmax}
 \end{DoxyParamCaption}
 )}\label{a00018_a91487bd659791ee680b0b6a4650d3bb1}
 
@@ -436,29 +469,33 @@ Ask the system for the home directory.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Useful constants and functions (timers, epsilon, token generators, i/o)\par
-\par
- The following preference order is used to set the home directory: \par
-\par
- MCSH\_\-HOME (the user must define this in his environment) \par
- CWD (always defined as the current working directory) \par
-\par
- We consider it an error if we can't return something useful; therefore we will VASSERT(path!=VNULL) before returning.\par
-\par
- We settle on a home directory the first time we are called, and then we simply return this fixed home directory forever. In other words, the first call to Vnm\_\-gethome, regardless of who makes the call, establishes the home directory for everyone else (as long as everyone goes through Vnm\_\-gethome!). 
+Useful constants and functions (timers, epsilon, token generators, i/o)~\newline
+~\newline
+ The following preference order is used to set the home directory\+: ~\newline
+~\newline
+ M\+C\+S\+H\+\_\+\+H\+O\+M\+E (the user must define this in his environment) ~\newline
+ C\+W\+D (always defined as the current working directory) ~\newline
+~\newline
+ We consider it an error if we can\textquotesingle{}t return something useful; therefore we will V\+A\+S\+S\+E\+R\+T(path!=V\+N\+U\+L\+L) before returning.~\newline
+~\newline
+ We settle on a home directory the first time we are called, and then we simply return this fixed home directory forever. In other words, the first call to Vnm\+\_\+gethome, regardless of who makes the call, establishes the home directory for everyone else (as long as everyone goes through Vnm\+\_\+gethome!). 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the home directory 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em path}]Pointer to the path \item[{\em pathmax}]index for the size of path \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-gethost@{Vnm\_\-gethost}}
-\index{Vnm\_\-gethost@{Vnm\_\-gethost}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-gethost}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\_\-gethost (
+{\em path} & Pointer to the path \\
+\hline
+{\em pathmax} & index for the size of path \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+gethost@{Vnm\+\_\+gethost}}
+\index{Vnm\+\_\+gethost@{Vnm\+\_\+gethost}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+gethost}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\+\_\+gethost (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{ host, }
-\item[{int}]{ hostmax}
+\item[{char $\ast$}]{host, }
+\item[{int}]{hostmax}
 \end{DoxyParamCaption}
 )}\label{a00018_afd1fc5ab933eab6ea1b28935c37bcad9}
 
@@ -476,13 +513,17 @@ the hostname
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em host}]Pointer to the hostname. \item[{\em hostmax}]index for maximal size of host name \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-getos@{Vnm\_\-getos}}
-\index{Vnm\_\-getos@{Vnm\_\-getos}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-getos}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\_\-getos (
+{\em host} & Pointer to the hostname. \\
+\hline
+{\em hostmax} & index for maximal size of host name \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+getos@{Vnm\+\_\+getos}}
+\index{Vnm\+\_\+getos@{Vnm\+\_\+getos}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+getos}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\+\_\+getos (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{ os, }
-\item[{int}]{ osmax}
+\item[{char $\ast$}]{os, }
+\item[{int}]{osmax}
 \end{DoxyParamCaption}
 )}\label{a00018_a6485dca93aa622f7291d49dbec989b7b}
 
@@ -500,13 +541,17 @@ the operating system name
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em os}]Pointer to the OS type \item[{\em osmax}]index for maximal size of OS name \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-getuser@{Vnm\_\-getuser}}
-\index{Vnm\_\-getuser@{Vnm\_\-getuser}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-getuser}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\_\-getuser (
+{\em os} & Pointer to the O\+S type \\
+\hline
+{\em osmax} & index for maximal size of O\+S name \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+getuser@{Vnm\+\_\+getuser}}
+\index{Vnm\+\_\+getuser@{Vnm\+\_\+getuser}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+getuser}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vnm\+\_\+getuser (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{ user, }
-\item[{int}]{ usermax}
+\item[{char $\ast$}]{user, }
+\item[{int}]{usermax}
 \end{DoxyParamCaption}
 )}\label{a00018_a688a4351e45ae4607d7c4313dd738eb0}
 
@@ -524,17 +569,21 @@ the username of the system
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em user}]Pointer to the username of the system \item[{\em usermax}]index for maximal size of user name \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-ioTag@{Vnm\_\-ioTag}}
-\index{Vnm\_\-ioTag@{Vnm\_\-ioTag}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-ioTag}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-ioTag (
+{\em user} & Pointer to the username of the system \\
+\hline
+{\em usermax} & index for maximal size of user name \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+io\+Tag@{Vnm\+\_\+io\+Tag}}
+\index{Vnm\+\_\+io\+Tag@{Vnm\+\_\+io\+Tag}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+io\+Tag}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+io\+Tag (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
 )}\label{a00018_a1f1c6ac80fc4f4cb4a8524d98d7d2458}
 
 
-Return my I/O tag. 
+Return my I/\+O tag. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -543,11 +592,11 @@ Michael Holst
 Useful constants and functions (timers, epsilon, token generators, i/o) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-my I/O tag. 
+my I/\+O tag. 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-jmpOk@{Vnm\_\-jmpOk}}
-\index{Vnm\_\-jmpOk@{Vnm\_\-jmpOk}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-jmpOk}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-jmpOk (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+jmp\+Ok@{Vnm\+\_\+jmp\+Ok}}
+\index{Vnm\+\_\+jmp\+Ok@{Vnm\+\_\+jmp\+Ok}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+jmp\+Ok}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+jmp\+Ok (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -565,9 +614,9 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 \char`\"{}ok-\/to-\/jump\char`\"{} flag. 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-jmpOkClear@{Vnm\_\-jmpOkClear}}
-\index{Vnm\_\-jmpOkClear@{Vnm\_\-jmpOkClear}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-jmpOkClear}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-jmpOkClear (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+jmp\+Ok\+Clear@{Vnm\+\_\+jmp\+Ok\+Clear}}
+\index{Vnm\+\_\+jmp\+Ok\+Clear@{Vnm\+\_\+jmp\+Ok\+Clear}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+jmp\+Ok\+Clear}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+jmp\+Ok\+Clear (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -585,9 +634,9 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-jmpOkSet@{Vnm\_\-jmpOkSet}}
-\index{Vnm\_\-jmpOkSet@{Vnm\_\-jmpOkSet}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-jmpOkSet}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-jmpOkSet (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+jmp\+Ok\+Set@{Vnm\+\_\+jmp\+Ok\+Set}}
+\index{Vnm\+\_\+jmp\+Ok\+Set@{Vnm\+\_\+jmp\+Ok\+Set}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+jmp\+Ok\+Set}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+jmp\+Ok\+Set (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -605,11 +654,11 @@ Michael Holst
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-mkdir@{Vnm\_\-mkdir}}
-\index{Vnm\_\-mkdir@{Vnm\_\-mkdir}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-mkdir}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-mkdir (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+mkdir@{Vnm\+\_\+mkdir}}
+\index{Vnm\+\_\+mkdir@{Vnm\+\_\+mkdir}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+mkdir}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+mkdir (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{ path}
+\item[{const char $\ast$}]{path}
 \end{DoxyParamCaption}
 )}\label{a00018_a02865e9071a5f335a5435cf50f1466cf}
 
@@ -627,10 +676,12 @@ Success enumeration
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em path}]Pointer to the path \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-nTags@{Vnm\_\-nTags}}
-\index{Vnm\_\-nTags@{Vnm\_\-nTags}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-nTags}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-nTags (
+{\em path} & Pointer to the path \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+n\+Tags@{Vnm\+\_\+n\+Tags}}
+\index{Vnm\+\_\+n\+Tags@{Vnm\+\_\+n\+Tags}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+n\+Tags}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+n\+Tags (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -648,40 +699,39 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 total number of tags. 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-open@{Vnm\_\-open}}
-\index{Vnm\_\-open@{Vnm\_\-open}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}FILE$\ast$ Vnm\_\-open (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+open@{Vnm\+\_\+open}}
+\index{Vnm\+\_\+open@{Vnm\+\_\+open}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ Vnm\+\_\+open (
 \begin{DoxyParamCaption}
-\item[{const int}]{ unit}
+\item[{const int}]{unit}
 \end{DoxyParamCaption}
 )}\label{a00018_a6be8c2ef20e5031aa95d88993a5a24cf}
 
 
-Open an I/O console. 
+Open an I/\+O console. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Useful constants and functions (timers, epsilon, token generators, i/o) \begin{DoxyVerb}
-   We MUST NOT use VASSERT (or Vnm_print!) in this routine.   
+Useful constants and functions (timers, epsilon, token generators, i/o) \begin{DoxyVerb}We MUST NOT use VASSERT (or Vnm_print!) in this routine.   
 
-   The following codes are used:                                               
+The following codes are used:                                               
 
-   unit#      C output unit      
-   -------    -------------                                                
+unit#      C output unit      
+-------    -------------                                                
 
-   unit==0    garbage   -- Non-interactive i/o; lots of stuff                        
-                           (can be redirected to ${MCSH_HOME/io.mc)
-   
-   unit==1    stdout    -- standard output (Interactive I/O)            
+unit==0    garbage   -- Non-interactive i/o; lots of stuff                        
+                        (can be redirected to ${MCSH_HOME/io.mc)
 
-   unit==2    stderr    -- standard error (IMPORTANT interactive I/O)          
+unit==1    stdout    -- standard output (Interactive I/O)            
 
-   unit==3    history   -- History file ${MCSH_HOME}/hist.mcsh                       
+unit==2    stderr    -- standard error (IMPORTANT interactive I/O)          
 
-   unit==else /dev/null -- Error...                                
-   \end{DoxyVerb}
+unit==3    history   -- History file ${MCSH_HOME}/hist.mcsh                       
+
+unit==else /dev/null -- Error...                                
+\end{DoxyVerb}
  
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
@@ -689,18 +739,20 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em unit}]index for the file unit \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-powsafe@{Vnm\_\-powsafe}}
-\index{Vnm\_\-powsafe@{Vnm\_\-powsafe}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-powsafe}]{\setlength{\rightskip}{0pt plus 5cm}double Vnm\_\-powsafe (
+{\em unit} & index for the file unit \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+powsafe@{Vnm\+\_\+powsafe}}
+\index{Vnm\+\_\+powsafe@{Vnm\+\_\+powsafe}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+powsafe}]{\setlength{\rightskip}{0pt plus 5cm}double Vnm\+\_\+powsafe (
 \begin{DoxyParamCaption}
-\item[{double}]{ x, }
-\item[{double}]{ y}
+\item[{double}]{x, }
+\item[{double}]{y}
 \end{DoxyParamCaption}
 )}\label{a00018_a332011becdeb7cbfbe3ec0e2ce8b9411}
 
 
-A safe VPOW function (avoids division by zero). 
+A safe V\+P\+O\+W function (avoids division by zero). 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -709,23 +761,27 @@ Michael Holst
 Useful constants and functions (timers, epsilon, token generators, i/o) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-output value of a VPOW function 
+output value of a V\+P\+O\+W function 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em x}]input parameter \item[{\em y}]input parameter \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-print@{Vnm\_\-print}}
-\index{Vnm\_\-print@{Vnm\_\-print}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-print (
+{\em x} & input parameter \\
+\hline
+{\em y} & input parameter \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+print@{Vnm\+\_\+print}}
+\index{Vnm\+\_\+print@{Vnm\+\_\+print}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+print}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+print (
 \begin{DoxyParamCaption}
-\item[{const int}]{ unit, }
-\item[{const char $\ast$}]{ format, }
-\item[{}]{ ...}
+\item[{const int}]{unit, }
+\item[{const char $\ast$}]{format, }
+\item[{}]{...}
 \end{DoxyParamCaption}
 )}\label{a00018_a2156e6285a0346c0c5d2f797cefa6370}
 
 
-External interface to the console i/o routine. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. 
+External interface to the console i/o routine. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -738,13 +794,17 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em unit}]index for the file unit \item[{\em format}]Pointer to the print format \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-qsort@{Vnm\_\-qsort}}
-\index{Vnm\_\-qsort@{Vnm\_\-qsort}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-qsort}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-qsort (
+{\em unit} & index for the file unit \\
+\hline
+{\em format} & Pointer to the print format \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+qsort@{Vnm\+\_\+qsort}}
+\index{Vnm\+\_\+qsort@{Vnm\+\_\+qsort}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+qsort}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+qsort (
 \begin{DoxyParamCaption}
-\item[{int $\ast$}]{ u, }
-\item[{int}]{ size}
+\item[{int $\ast$}]{u, }
+\item[{int}]{size}
 \end{DoxyParamCaption}
 )}\label{a00018_ad979a4023c7e02c6ca2f4ce7694ef0f5}
 
@@ -762,14 +822,18 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em u}]Pointer to quick sort integer array \item[{\em size}]size of the integer array \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-qsortOrd@{Vnm\_\-qsortOrd}}
-\index{Vnm\_\-qsortOrd@{Vnm\_\-qsortOrd}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-qsortOrd}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-qsortOrd (
+{\em u} & Pointer to quick sort integer array \\
+\hline
+{\em size} & size of the integer array \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+qsort\+Ord@{Vnm\+\_\+qsort\+Ord}}
+\index{Vnm\+\_\+qsort\+Ord@{Vnm\+\_\+qsort\+Ord}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+qsort\+Ord}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+qsort\+Ord (
 \begin{DoxyParamCaption}
-\item[{int $\ast$}]{ u, }
-\item[{int $\ast$}]{ ord, }
-\item[{int}]{ size}
+\item[{int $\ast$}]{u, }
+\item[{int $\ast$}]{ord, }
+\item[{int}]{size}
 \end{DoxyParamCaption}
 )}\label{a00018_a4db1b2dcbc0e09e1cfdccc5ca65678a5}
 
@@ -790,17 +854,23 @@ Michael Holst
 \end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em u}]Pointer to quick sort integer array \item[{\em ord}]Pointer to reordered array \item[{\em size}]size of the integer array \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-redirect@{Vnm\_\-redirect}}
-\index{Vnm\_\-redirect@{Vnm\_\-redirect}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-redirect}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-redirect (
+{\em u} & Pointer to quick sort integer array \\
+\hline
+{\em ord} & Pointer to reordered array \\
+\hline
+{\em size} & size of the integer array \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+redirect@{Vnm\+\_\+redirect}}
+\index{Vnm\+\_\+redirect@{Vnm\+\_\+redirect}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+redirect}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+redirect (
 \begin{DoxyParamCaption}
-\item[{const int}]{ flag}
+\item[{const int}]{flag}
 \end{DoxyParamCaption}
 )}\label{a00018_ae485b8057ba4616289c3410593416b90}
 
 
-Set/unset the redirect flag for UNIT zero. When redirected, I/O goes to the {\tt file:} \$\{MCSH\_\-HOME\}/io.mc. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. 
+Set/unset the redirect flag for U\+N\+I\+T zero. When redirected, I/\+O goes to the file\+: \$\{M\+C\+S\+H\+\_\+\+H\+O\+M\+E\}/io.mc. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -813,10 +883,12 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em flag}]index for the redirect flag \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-regHand@{Vnm\_\-regHand}}
-\index{Vnm\_\-regHand@{Vnm\_\-regHand}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-regHand}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-regHand (
+{\em flag} & index for the redirect flag \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+reg\+Hand@{Vnm\+\_\+reg\+Hand}}
+\index{Vnm\+\_\+reg\+Hand@{Vnm\+\_\+reg\+Hand}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+reg\+Hand}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+reg\+Hand (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -834,12 +906,12 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-setIoTag@{Vnm\_\-setIoTag}}
-\index{Vnm\_\-setIoTag@{Vnm\_\-setIoTag}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-setIoTag}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-setIoTag (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+set\+Io\+Tag@{Vnm\+\_\+set\+Io\+Tag}}
+\index{Vnm\+\_\+set\+Io\+Tag@{Vnm\+\_\+set\+Io\+Tag}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+set\+Io\+Tag}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+set\+Io\+Tag (
 \begin{DoxyParamCaption}
-\item[{int}]{ myTag, }
-\item[{int}]{ numTags}
+\item[{int}]{my\+Tag, }
+\item[{int}]{num\+Tags}
 \end{DoxyParamCaption}
 )}\label{a00018_a215f7126050010e46e44128be79d13c1}
 
@@ -857,17 +929,21 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em myTag}]index for the tag \item[{\em numTags}]number of tags \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-sigHand@{Vnm\_\-sigHand}}
-\index{Vnm\_\-sigHand@{Vnm\_\-sigHand}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-sigHand}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-sigHand (
+{\em my\+Tag} & index for the tag \\
+\hline
+{\em num\+Tags} & number of tags \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+sig\+Hand@{Vnm\+\_\+sig\+Hand}}
+\index{Vnm\+\_\+sig\+Hand@{Vnm\+\_\+sig\+Hand}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+sig\+Hand}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+sig\+Hand (
 \begin{DoxyParamCaption}
-\item[{int}]{ num}
+\item[{int}]{num}
 \end{DoxyParamCaption}
 )}\label{a00018_a081eeccbff0977847b18b2a2e7e63278}
 
 
-Handle events such as SIGINT. We must have first been registered with \char`\"{}Vnm\_\-signalInit\char`\"{}. 
+Handle events such as S\+I\+G\+I\+N\+T. We must have first been registered with \char`\"{}\+Vnm\+\_\+signal\+Init\char`\"{}. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -878,9 +954,9 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-sigInt@{Vnm\_\-sigInt}}
-\index{Vnm\_\-sigInt@{Vnm\_\-sigInt}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-sigInt}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-sigInt (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+sig\+Int@{Vnm\+\_\+sig\+Int}}
+\index{Vnm\+\_\+sig\+Int@{Vnm\+\_\+sig\+Int}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+sig\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+sig\+Int (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -898,9 +974,9 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 Signal interrupt flag. 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-sigIntClear@{Vnm\_\-sigIntClear}}
-\index{Vnm\_\-sigIntClear@{Vnm\_\-sigIntClear}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-sigIntClear}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-sigIntClear (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+sig\+Int\+Clear@{Vnm\+\_\+sig\+Int\+Clear}}
+\index{Vnm\+\_\+sig\+Int\+Clear@{Vnm\+\_\+sig\+Int\+Clear}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+sig\+Int\+Clear}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+sig\+Int\+Clear (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -918,9 +994,9 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-sigIntSet@{Vnm\_\-sigIntSet}}
-\index{Vnm\_\-sigIntSet@{Vnm\_\-sigIntSet}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-sigIntSet}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-sigIntSet (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+sig\+Int\+Set@{Vnm\+\_\+sig\+Int\+Set}}
+\index{Vnm\+\_\+sig\+Int\+Set@{Vnm\+\_\+sig\+Int\+Set}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+sig\+Int\+Set}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+sig\+Int\+Set (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -938,9 +1014,9 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-signalInit@{Vnm\_\-signalInit}}
-\index{Vnm\_\-signalInit@{Vnm\_\-signalInit}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-signalInit}]{\setlength{\rightskip}{0pt plus 5cm}jmp\_\-buf$\ast$ Vnm\_\-signalInit (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+signal\+Init@{Vnm\+\_\+signal\+Init}}
+\index{Vnm\+\_\+signal\+Init@{Vnm\+\_\+signal\+Init}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+signal\+Init}]{\setlength{\rightskip}{0pt plus 5cm}jmp\+\_\+buf$\ast$ Vnm\+\_\+signal\+Init (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -958,11 +1034,11 @@ Useful constants and functions (timers, epsilon, token generators, i/o)
 \begin{DoxyReturn}{Returns}
 the signal handling data structures 
 \end{DoxyReturn}
-\index{vnm.h@{vnm.h}!Vnm\_\-sleep@{Vnm\_\-sleep}}
-\index{Vnm\_\-sleep@{Vnm\_\-sleep}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-sleep}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-sleep (
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+sleep@{Vnm\+\_\+sleep}}
+\index{Vnm\+\_\+sleep@{Vnm\+\_\+sleep}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+sleep}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+sleep (
 \begin{DoxyParamCaption}
-\item[{int}]{ nusecs}
+\item[{int}]{nusecs}
 \end{DoxyParamCaption}
 )}\label{a00018_aa123e15d8c59cae72346c90790b35f01}
 
@@ -973,25 +1049,27 @@ Implement a sleep function with microsecond resolution.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Useful constants and functions (timers, epsilon, token generators, i/o) \par
- This is hacked out of the \char`\"{}sleep\_\-us\char`\"{} example in Rick Steven's Advance Unix Programming book. 
+Useful constants and functions (timers, epsilon, token generators, i/o) ~\newline
+ This is hacked out of the \char`\"{}sleep\+\_\+us\char`\"{} example in Rick Steven\textquotesingle{}s Advance Unix Programming book. 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em nusecs}]number of microseconds \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-system@{Vnm\_\-system}}
-\index{Vnm\_\-system@{Vnm\_\-system}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-system}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-system (
+{\em nusecs} & number of microseconds \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+system@{Vnm\+\_\+system}}
+\index{Vnm\+\_\+system@{Vnm\+\_\+system}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+system}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+system (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{ cmd}
+\item[{const char $\ast$}]{cmd}
 \end{DoxyParamCaption}
 )}\label{a00018_a753364893400079d0417c1cad8792b5f}
 
 
-An improved ANSI-\/C \char`\"{}system\char`\"{} call. 
+An improved A\+N\+S\+I-\/\+C \char`\"{}system\char`\"{} call. 
 
 \begin{DoxyNote}{Note}
 Useful constants and functions (timers, epsilon, token generators, i/o) 
@@ -1004,17 +1082,19 @@ Success enumeration
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em cmd}]Pointer to the command \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-systemBack@{Vnm\_\-systemBack}}
-\index{Vnm\_\-systemBack@{Vnm\_\-systemBack}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-systemBack}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-systemBack (
+{\em cmd} & Pointer to the command \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+system\+Back@{Vnm\+\_\+system\+Back}}
+\index{Vnm\+\_\+system\+Back@{Vnm\+\_\+system\+Back}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+system\+Back}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+system\+Back (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{ cmd}
+\item[{const char $\ast$}]{cmd}
 \end{DoxyParamCaption}
 )}\label{a00018_ac139e1ddf265e55cbb519ef26e9813cc}
 
 
-A background variant of the ANSI-\/C \char`\"{}system\char`\"{} call. 
+A background variant of the A\+N\+S\+I-\/\+C \char`\"{}system\char`\"{} call. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -1027,17 +1107,19 @@ Success enumeration
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em cmd}]Pointer to the command \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-systemKill@{Vnm\_\-systemKill}}
-\index{Vnm\_\-systemKill@{Vnm\_\-systemKill}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-systemKill}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\_\-systemKill (
+{\em cmd} & Pointer to the command \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+system\+Kill@{Vnm\+\_\+system\+Kill}}
+\index{Vnm\+\_\+system\+Kill@{Vnm\+\_\+system\+Kill}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+system\+Kill}]{\setlength{\rightskip}{0pt plus 5cm}int Vnm\+\_\+system\+Kill (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{ cmd}
+\item[{const char $\ast$}]{cmd}
 \end{DoxyParamCaption}
 )}\label{a00018_ace7e9147eb2c47be1eac5e37ac22ad4f}
 
 
-Something like a UNIX \char`\"{}killall\char`\"{} call. 
+Something like a U\+N\+I\+X \char`\"{}killall\char`\"{} call. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -1050,41 +1132,47 @@ Success enumeration
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em cmd}]Pointer to the command \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-tprint@{Vnm\_\-tprint}}
-\index{Vnm\_\-tprint@{Vnm\_\-tprint}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-tprint}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-tprint (
+{\em cmd} & Pointer to the command \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+tprint@{Vnm\+\_\+tprint}}
+\index{Vnm\+\_\+tprint@{Vnm\+\_\+tprint}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+tprint}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+tprint (
 \begin{DoxyParamCaption}
-\item[{const int}]{ unit, }
-\item[{const char $\ast$}]{ format, }
-\item[{}]{ ...}
+\item[{const int}]{unit, }
+\item[{const char $\ast$}]{format, }
+\item[{}]{...}
 \end{DoxyParamCaption}
 )}\label{a00018_ab1f04f03eecdd203e329831c8e6dc575}
 
 
-Add our ioTag to Vnm\_\-print output. We MUST NOT use VASSERT (or Vnm\_\-print!) in this routine. 
+Add our io\+Tag to Vnm\+\_\+print output. We M\+U\+S\+T N\+O\+T use V\+A\+S\+S\+E\+R\+T (or Vnm\+\_\+print!) in this routine. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Useful constants and functions (timers, epsilon, token generators, i/o) For a tag to be added, both of the following conditions must hold:\par
- \doxyref{Vnm\_\-ioTag()}{p.}{a00018_a1f1c6ac80fc4f4cb4a8524d98d7d2458} $>$= 0 (I.e., I must have been given a tag) \par
- \doxyref{Vnm\_\-nTags()}{p.}{a00018_a595a95da823e215cf0241d3910065e32} $>$ 1 (I must not be the only one given a tag) \par
- 
+Useful constants and functions (timers, epsilon, token generators, i/o) For a tag to be added, both of the following conditions must hold\+:~\newline
+ \doxyref{Vnm\+\_\+io\+Tag()}{p.}{a00018_a1f1c6ac80fc4f4cb4a8524d98d7d2458} $>$= 0 (I.\+e., I must have been given a tag) ~\newline
+ \doxyref{Vnm\+\_\+n\+Tags()}{p.}{a00018_a595a95da823e215cf0241d3910065e32} $>$ 1 (I must not be the only one given a tag) ~\newline
+
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em unit}]index for the file unit \item[{\em format}]Pointer to the print format \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-tstart@{Vnm\_\-tstart}}
-\index{Vnm\_\-tstart@{Vnm\_\-tstart}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-tstart}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-tstart (
+{\em unit} & index for the file unit \\
+\hline
+{\em format} & Pointer to the print format \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+tstart@{Vnm\+\_\+tstart}}
+\index{Vnm\+\_\+tstart@{Vnm\+\_\+tstart}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+tstart}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+tstart (
 \begin{DoxyParamCaption}
-\item[{int}]{ timer, }
-\item[{const char $\ast$}]{ name}
+\item[{int}]{timer, }
+\item[{const char $\ast$}]{name}
 \end{DoxyParamCaption}
 )}\label{a00018_a7ca04016d2765ec38a8199f8284c8487}
 
@@ -1102,13 +1190,17 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em timer}]index for the starting timer \item[{\em name}]Pointer to the object \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-tstop@{Vnm\_\-tstop}}
-\index{Vnm\_\-tstop@{Vnm\_\-tstop}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-tstop}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-tstop (
+{\em timer} & index for the starting timer \\
+\hline
+{\em name} & Pointer to the object \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+tstop@{Vnm\+\_\+tstop}}
+\index{Vnm\+\_\+tstop@{Vnm\+\_\+tstop}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+tstop}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+tstop (
 \begin{DoxyParamCaption}
-\item[{int}]{ timer, }
-\item[{const char $\ast$}]{ name}
+\item[{int}]{timer, }
+\item[{const char $\ast$}]{name}
 \end{DoxyParamCaption}
 )}\label{a00018_afb3fe75998e6b961f9da78c76ebfce49}
 
@@ -1126,10 +1218,14 @@ None
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-\item[{\em timer}]index for the starting timer \item[{\em name}]Pointer to the object \end{DoxyParams}
-\index{vnm.h@{vnm.h}!Vnm\_\-typeChk@{Vnm\_\-typeChk}}
-\index{Vnm\_\-typeChk@{Vnm\_\-typeChk}!vnm.h@{vnm.h}}
-\subsubsection[{Vnm\_\-typeChk}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\_\-typeChk (
+{\em timer} & index for the starting timer \\
+\hline
+{\em name} & Pointer to the object \\
+\hline
+\end{DoxyParams}
+\index{vnm.\+h@{vnm.\+h}!Vnm\+\_\+type\+Chk@{Vnm\+\_\+type\+Chk}}
+\index{Vnm\+\_\+type\+Chk@{Vnm\+\_\+type\+Chk}!vnm.\+h@{vnm.\+h}}
+\subsubsection[{Vnm\+\_\+type\+Chk}]{\setlength{\rightskip}{0pt plus 5cm}void Vnm\+\_\+type\+Chk (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}

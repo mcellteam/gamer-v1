@@ -1,22 +1,20 @@
-\section{vio.h File Reference}
-\label{a00014}\index{vio.h@{vio.h}}
+\section{vio.\+h File Reference}
+\label{a00014}\index{vio.\+h@{vio.\+h}}
 
 
-Class Vio: virtual $<$SDIO/FILE/BUFF/UNIX/INET$>$ I/O layer.  
+Class Vio\+: virtual $<$S\+D\+I\+O/\+F\+I\+L\+E/\+B\+U\+F\+F/\+U\+N\+I\+X/\+I\+N\+E\+T$>$ I/\+O layer.  
 
 
-{\ttfamily \#include $<$maloc/maloc\_\-base.h$>$}\par
-{\ttfamily \#include $<$maloc/vnm.h$>$}\par
-Include dependency graph for vio.h:
-\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
+{\ttfamily \#include $<$maloc/vnm.\+h$>$}\\*
+Include dependency graph for vio.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=400pt]{a00039}
+\includegraphics[width=350pt]{a00039}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,143 +24,144 @@ This graph shows which files directly or indirectly include this file:
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf sVio}
-\begin{DoxyCompactList}\small\item\em Contains public data members for Vio class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Defines}
+struct {\bf s\+Vio}
+\begin{DoxyCompactList}\small\item\em Contains public data members for Vio class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define {\bf VPORTNUMBER}~14916
-\begin{DoxyCompactList}\small\item\em our portbase; 5000 $<$ VPORTNUMBER $<$ 49152 \item\end{DoxyCompactList}\item 
-\#define {\bf VIO\_\-MAXBUF}~10
-\begin{DoxyCompactList}\small\item\em number of internal buffers (BUFF datatype) \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define {\bf V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}~14916
+\begin{DoxyCompactList}\small\item\em our portbase; 5000 $<$ V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R $<$ 49152 \end{DoxyCompactList}\item 
+\#define {\bf V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}~10
+\begin{DoxyCompactList}\small\item\em number of internal buffers (B\+U\+F\+F datatype) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum {\bf VIOtype} {\bf VIOtype}
-\begin{DoxyCompactList}\small\item\em Parameter for I/O type (sdio,buff,file,unix,inet). \item\end{DoxyCompactList}\item 
-typedef enum {\bf VIOfrmt} {\bf VIOfrmt}
-\begin{DoxyCompactList}\small\item\em Parameter for compression type (XDR,ASC). \item\end{DoxyCompactList}\item 
-typedef enum {\bf VIOrwkey} {\bf VIOrwkey}
-\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,RW). \item\end{DoxyCompactList}\item 
-typedef struct {\bf sVio} {\bf Vio}
-\begin{DoxyCompactList}\small\item\em Declaration of the Vio class as the Vio structure. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+typedef enum {\bf V\+I\+Otype} {\bf V\+I\+Otype}
+\begin{DoxyCompactList}\small\item\em Parameter for I/\+O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
+typedef enum {\bf V\+I\+Ofrmt} {\bf V\+I\+Ofrmt}
+\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\+D\+R,A\+S\+C) \end{DoxyCompactList}\item 
+typedef enum {\bf V\+I\+Orwkey} {\bf V\+I\+Orwkey}
+\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\+W) \end{DoxyCompactList}\item 
+typedef struct {\bf s\+Vio} {\bf Vio}
+\begin{DoxyCompactList}\small\item\em Declaration of the Vio class as the Vio structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bf VIOtype} \{ \par
-{\bf VIO\_\-NO\_\-TYPE}, 
-{\bf VIO\_\-SDIO}, 
-{\bf VIO\_\-BUFF}, 
-{\bf VIO\_\-FILE}, 
-\par
-{\bf VIO\_\-UNIX}, 
-{\bf VIO\_\-INET}
+enum {\bf V\+I\+Otype} \{ \\*
+{\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E}, 
+{\bf V\+I\+O\+\_\+\+S\+D\+I\+O}, 
+{\bf V\+I\+O\+\_\+\+B\+U\+F\+F}, 
+{\bf V\+I\+O\+\_\+\+F\+I\+L\+E}, 
+\\*
+{\bf V\+I\+O\+\_\+\+U\+N\+I\+X}, 
+{\bf V\+I\+O\+\_\+\+I\+N\+E\+T}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for I/O type (sdio,buff,file,unix,inet). \item\end{DoxyCompactList}\item 
-enum {\bf VIOfrmt} \{ {\bf VIO\_\-NO\_\-FRMT}, 
-{\bf VIO\_\-XDR}, 
-{\bf VIO\_\-ASC}
+\begin{DoxyCompactList}\small\item\em Parameter for I/\+O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
+enum {\bf V\+I\+Ofrmt} \{ {\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T}, 
+{\bf V\+I\+O\+\_\+\+X\+D\+R}, 
+{\bf V\+I\+O\+\_\+\+A\+S\+C}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for compression type (XDR,ASC). \item\end{DoxyCompactList}\item 
-enum {\bf VIOrwkey} \{ {\bf VIO\_\-NO\_\-RW}, 
-{\bf VIO\_\-R}, 
-{\bf VIO\_\-W}
+\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\+D\+R,A\+S\+C) \end{DoxyCompactList}\item 
+enum {\bf V\+I\+Orwkey} \{ {\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W}, 
+{\bf V\+I\+O\+\_\+\+R}, 
+{\bf V\+I\+O\+\_\+\+W}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,RW). \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\+W) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bf Vio\_\-start} (void)
-\begin{DoxyCompactList}\small\item\em Start Vio communication layer (init internal variables/buffers). \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-stop} (void)
-\begin{DoxyCompactList}\small\item\em Shutdown Vio communication layer. \item\end{DoxyCompactList}\item 
-{\bf Vio} $\ast$ {\bf Vio\_\-ctor} (const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
-\begin{DoxyCompactList}\small\item\em Construct the Vio object. \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-ctor2} ({\bf Vio} $\ast$thee, const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
-\begin{DoxyCompactList}\small\item\em Work routine that Vio\_\-ctor calls to do most of the construction. \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-dtor} ({\bf Vio} $\ast$$\ast$thee)
-\begin{DoxyCompactList}\small\item\em Destruct the Vio object. \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-dtor2} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Work routine that Vio\_\-dtor calls to do most of the destruction. \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-setWhiteChars} ({\bf Vio} $\ast$thee, char $\ast$whiteChars)
-\begin{DoxyCompactList}\small\item\em Set the white character set for I/O stream. \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-setCommChars} ({\bf Vio} $\ast$thee, char $\ast$commChars)
-\begin{DoxyCompactList}\small\item\em Set the comment character set for I/O stream. \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-accept} ({\bf Vio} $\ast$thee, int nonblock)
-\begin{DoxyCompactList}\small\item\em Accept any waiting connect attempt to our socket on our machine. \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-acceptFree} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Free the socket child that was used for the last accept. \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-connect} ({\bf Vio} $\ast$thee, int nonblock)
-\begin{DoxyCompactList}\small\item\em Connect to some socket on a remote machine (or on our machine). \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-connectFree} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Purge any output buffers (for $<$UNIX/INET$>$, else a no-\/op). \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-scanf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
-\begin{DoxyCompactList}\small\item\em Mimic \char`\"{}scanf\char`\"{} from an arbitrary Vio device. \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-printf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
-\begin{DoxyCompactList}\small\item\em Mimic \char`\"{}printf\char`\"{} from an arbitrary Vio device. \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-read} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em Read (up to) bufsize characters into buf from input device. \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-write} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em Write bufsize characters from buf to output device. \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-bufTake} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em Set the pointer to the internal buffer. \item\end{DoxyCompactList}\item 
-char $\ast$ {\bf Vio\_\-bufGive} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return the pointer to the internal buffer. \item\end{DoxyCompactList}\item 
-int {\bf Vio\_\-bufSize} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return the length to the internal buffer. \item\end{DoxyCompactList}\item 
-{\bf Vio} $\ast$ {\bf Vio\_\-socketOpen} (char $\ast$key, const char $\ast$iodev, const char $\ast$iofmt, const char $\ast$iohost, const char $\ast$iofile)
-\begin{DoxyCompactList}\small\item\em Socket open for read or write. \item\end{DoxyCompactList}\item 
-void {\bf Vio\_\-socketClose} ({\bf Vio} $\ast$$\ast$sock)
-\begin{DoxyCompactList}\small\item\em Socket close from read or write. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+void {\bf Vio\+\_\+start} (void)
+\begin{DoxyCompactList}\small\item\em Start Vio communication layer (init internal variables/buffers) \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+stop} (void)
+\begin{DoxyCompactList}\small\item\em Shutdown Vio communication layer. \end{DoxyCompactList}\item 
+{\bf Vio} $\ast$ {\bf Vio\+\_\+ctor} (const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
+\begin{DoxyCompactList}\small\item\em Construct the Vio object. \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+ctor2} ({\bf Vio} $\ast$thee, const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
+\begin{DoxyCompactList}\small\item\em Work routine that Vio\+\_\+ctor calls to do most of the construction. \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+dtor} ({\bf Vio} $\ast$$\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destruct the Vio object. \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+dtor2} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Work routine that Vio\+\_\+dtor calls to do most of the destruction. \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+set\+White\+Chars} ({\bf Vio} $\ast$thee, char $\ast$white\+Chars)
+\begin{DoxyCompactList}\small\item\em Set the white character set for I/\+O stream. \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+set\+Comm\+Chars} ({\bf Vio} $\ast$thee, char $\ast$comm\+Chars)
+\begin{DoxyCompactList}\small\item\em Set the comment character set for I/\+O stream. \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+accept} ({\bf Vio} $\ast$thee, int nonblock)
+\begin{DoxyCompactList}\small\item\em Accept any waiting connect attempt to our socket on our machine. \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+accept\+Free} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Free the socket child that was used for the last accept. \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+connect} ({\bf Vio} $\ast$thee, int nonblock)
+\begin{DoxyCompactList}\small\item\em Connect to some socket on a remote machine (or on our machine) \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+connect\+Free} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Purge any output buffers (for $<$U\+N\+I\+X/\+I\+N\+E\+T$>$, else a no-\/op) \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+scanf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
+\begin{DoxyCompactList}\small\item\em Mimic \char`\"{}scanf\char`\"{} from an arbitrary Vio device. \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+printf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
+\begin{DoxyCompactList}\small\item\em Mimic \char`\"{}printf\char`\"{} from an arbitrary Vio device. \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+read} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em Read (up to) bufsize characters into buf from input device. \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+write} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em Write bufsize characters from buf to output device. \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+buf\+Take} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em Set the pointer to the internal buffer. \end{DoxyCompactList}\item 
+char $\ast$ {\bf Vio\+\_\+buf\+Give} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return the pointer to the internal buffer. \end{DoxyCompactList}\item 
+int {\bf Vio\+\_\+buf\+Size} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return the length to the internal buffer. \end{DoxyCompactList}\item 
+{\bf Vio} $\ast$ {\bf Vio\+\_\+socket\+Open} (char $\ast$key, const char $\ast$iodev, const char $\ast$iofmt, const char $\ast$iohost, const char $\ast$iofile)
+\begin{DoxyCompactList}\small\item\em Socket open for read or write. \end{DoxyCompactList}\item 
+void {\bf Vio\+\_\+socket\+Close} ({\bf Vio} $\ast$$\ast$sock)
+\begin{DoxyCompactList}\small\item\em Socket close from read or write. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vio: virtual $<$SDIO/FILE/BUFF/UNIX/INET$>$ I/O layer. \begin{DoxyVersion}{Version}
+Class Vio\+: virtual $<$S\+D\+I\+O/\+F\+I\+L\+E/\+B\+U\+F\+F/\+U\+N\+I\+X/\+I\+N\+E\+T$>$ I/\+O layer. 
+
+\begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id:}
-\doxyref{vio.h}{p.}{a00014},v 1.28 2010/08/12 05:40:35 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{vio.\+h}{p.}{a00014},v 1.\+28 2010/08/12 05\+:40\+:35 fetk Exp 
 \end{DoxyParagraph}
 \begin{DoxyAuthor}{Author}
 Michael Holst
 \end{DoxyAuthor}
 \begin{DoxyAttention}{Attention}
-\begin{DoxyVerb}
- *
- * MALOC = < Minimal Abstraction Layer for Object-oriented C >
- * Copyright (C) 1994-- Michael Holst
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- * 
- * \end{DoxyVerb}
+\begin{DoxyVerb}*
+* MALOC = < Minimal Abstraction Layer for Object-oriented C >
+* Copyright (C) 1994-- Michael Holst
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 2.1 of the License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+* 
+* \end{DoxyVerb}
  
 \end{DoxyAttention}
 
 
-\subsection{Define Documentation}
-\index{vio.h@{vio.h}!VIO\_\-MAXBUF@{VIO\_\-MAXBUF}}
-\index{VIO\_\-MAXBUF@{VIO\_\-MAXBUF}!vio.h@{vio.h}}
-\subsubsection[{VIO\_\-MAXBUF}]{\setlength{\rightskip}{0pt plus 5cm}\#define VIO\_\-MAXBUF~10}\label{a00014_a1e94d8ac2af32609f662f3133cb2460a}
+\subsection{Macro Definition Documentation}
+\index{vio.\+h@{vio.\+h}!V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F@{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}}
+\index{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F@{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}!vio.\+h@{vio.\+h}}
+\subsubsection[{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F~10}\label{a00014_a1e94d8ac2af32609f662f3133cb2460a}
 
 
-number of internal buffers (BUFF datatype) 
+number of internal buffers (B\+U\+F\+F datatype) 
 
-\index{vio.h@{vio.h}!VPORTNUMBER@{VPORTNUMBER}}
-\index{VPORTNUMBER@{VPORTNUMBER}!vio.h@{vio.h}}
-\subsubsection[{VPORTNUMBER}]{\setlength{\rightskip}{0pt plus 5cm}\#define VPORTNUMBER~14916}\label{a00014_a4a7675dfbe5a786fba616dba632bb44a}
+\index{vio.\+h@{vio.\+h}!V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R@{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}}
+\index{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R@{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}!vio.\+h@{vio.\+h}}
+\subsubsection[{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R~14916}\label{a00014_a4a7675dfbe5a786fba616dba632bb44a}
 
 
-our portbase; 5000 $<$ VPORTNUMBER $<$ 49152 
+our portbase; 5000 $<$ V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R $<$ 49152 
 
