@@ -2,9 +2,11 @@ SHELL = /bin/sh
 BUILD_DIR = $(PWD)/gamer_build
 export FETK_INCLUDE = $(BUILD_DIR)/include
 export FETK_LIBRARY = $(BUILD_DIR)/lib
-export PYTHON = /opt/local/bin/python3.4
-LDFLAGS = \"-L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib\"
-INSTALL_DIR = ~/Library/Application\ Support/Blender/2.75
+export PYTHON = /usr/bin/python3.4
+#LDFLAGS = \"-L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib\"
+LDFLAGS = \"\"
+#INSTALL_DIR = ~/Library/Application\ Support/Blender/2.75
+INSTALL_DIR = ~/.config/blender/2.75
 
 # DYLD_LIBRARY_PATH = $(BUILD_DIR)/lib:$DYLD_LIBRARY_PATH
 # PYTHONPATH = $(BUILD_DIR)/lib/python3.4/site-packages:$PYTHONPATH
@@ -20,7 +22,8 @@ gamer:
 	@ cd gamer ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
 
 gamer_swig:
-	@ cd gamer/swig ; ./configure --prefix=$(BUILD_DIR) LDFLAGS=$(LDFLAGS) ; $(MAKE) ; $(MAKE) install
+#	@ cd gamer/swig ; ./configure --prefix=$(BUILD_DIR) LDFLAGS=$(LDFLAGS) ; $(MAKE) ; $(MAKE) install
+	@ cd gamer/swig ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
 
 gamer_tools:
 	@ cd gamer/tools/ImproveSurfMesh ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install

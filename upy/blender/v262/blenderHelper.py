@@ -150,6 +150,7 @@ class blenderHelper(Helper):
 #        Blender.Window.QRedrawAll()  
 #        Blender.Redraw()
 #    
+
 #    def update(self,):
 #        import Blender
 #        Blender.Scene.GetCurrent().update()
@@ -158,19 +159,16 @@ class blenderHelper(Helper):
 #        Blender.Window.QRedrawAll()  
 #        Blender.Redraw()
 #
-    def toggleEditMode(self):
+
+    def toggleEditMode(self,obj=None):
+        if obj == None:
+          obj = bpy.context.active_object
+        editmode = obj.mode
         bpy.ops.object.mode_set(mode='OBJECT')
-#        bpy.ops.object.editmode_toggle()
-#        editmode = Blender.Window.EditMode()    # are we in edit mode?  If so ...
-#        if editmode: 
-#            Blender.Window.EditMode(0)
-        return 1
-#
-    def restoreEditMode(self,editmode=1):
-#        bpy.ops.object.mode_set(mode='OBJECT')
-        pass
-#        bpy.ops.object.editmode_toggle()
-#        Blender.Window.EditMode(editmode)
+        return editmode
+
+    def restoreEditMode(self,editmode='EDIT'):
+        bpy.ops.object.mode_set(mode=editmode)
 
     def getType(self,object):
         if type(object) is str:
@@ -1181,11 +1179,11 @@ class blenderHelper(Helper):
         if parent is not None:
             obj.parent = parent
         #toggle to edit mode
-        self.toggleEditMode()
+        editmode = self.toggleEditMode(obj)
         #should remove the default text
         bpy.ops.font.delete()
         bpy.ops.font.text_insert(text=string)
-        self.restoreEditMode()
+        self.restoreEditMode(editmode)
         if lookAt:
             self.constraintLookAt(name)
         if "extrude" in kw :
@@ -2301,8 +2299,8 @@ class blenderHelper(Helper):
     def getMeshEdge(self,e):
         return e.vertices[0],e.vertices[1]
 
-    def getMeshEdges(self, poly, selected=False):
-        editmode = self.toggleEditMode()
+    def getMeshEdges(self, obj, poly, selected=False):
+        editmode = self.toggleEditMode(obj)
         mesh = self.checkIsMesh(poly)
         medges = mesh.edges
         if selected:
@@ -2312,16 +2310,18 @@ class blenderHelper(Helper):
             return edges,medges_indice
         else :
             edges = [self.getMeshEdge(e) for e in medges]
+            self.restoreEditMode(editmode)
             return edges
 
-    def deleteMeshEdges(self,poly, edges=None):
+    def deleteMeshEdges(self, obj, poly, edges=None):
+        editmode = self.toggleEditMode(obj)
         bpy.ops.object.mode_set(mode='EDIT')
         #bpy.ops.mesh.select_all(action='DESELECT')
         if vertices is not None :
             bpy.ops.mesh.select_all(action='DESELECT')
             self.selectEdges(poly, edges)
         bpy.ops.mesh.delete(type='EDGE')
-        bpy.ops.object.mode_set(mode='OBJECT')
+        self.restoreEditMode(editmode)
 
     def getFaceEdges(self, poly, faceindice, selected=False):
         mesh = self.checkIsMesh(poly)
@@ -2417,7 +2417,7 @@ class blenderHelper(Helper):
         self.toggle(mesh.faces[faceindce].select,select)
     
     def selectFaces(self, obj, faces, select=True):
-        editmode=self.toggleEditMode()
+        editmode=self.toggleEditMode(obj)
         
         mesh = self.checkIsMesh(obj)
         for face in faces:
@@ -2431,7 +2431,7 @@ class blenderHelper(Helper):
         self.toggle(mesh.edges[edgeindce].select,select)
 
     def selectEdges(self, obj, edges, select=True):
-        editmode=self.toggleEditMode()
+        editmode=self.toggleEditMode(obj)
         
         mesh = self.getMeshFrom(obj)
         for edge in edges:
@@ -2448,13 +2448,13 @@ class blenderHelper(Helper):
         self.toggle(mesh.faces[faceindce].select,select)
     
     def selectVertice(self, obj, vertice_indice, select=True,**kw):
-        editmode=self.toggleEditMode()       
+        editmode=self.toggleEditMode(obj)       
         mesh = self.getMeshFrom(obj)        
         self.toggle(mesh.vertices[vertice_indice].select,select)
         self.restoreEditMode(editmode)
         
     def selectVertices(self, obj, vertices_indices, select=True,**kw):         
-        editmode=self.toggleEditMode()       
+        editmode=self.toggleEditMode(obj)       
         mesh = self.getMeshFrom(obj)
         [self.toggle(v.select,select) for v in mesh.vertices if v.index in vertices_indices]
 #        for vertex in vertices:

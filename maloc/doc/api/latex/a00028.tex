@@ -2,109 +2,107 @@
 \label{a00028}\index{Vio class@{Vio class}}
 
 
-This class provides an I/\+O layer for files/bufferes/pipes/sockets.  
+This class provides an I/\-O layer for files/bufferes/pipes/sockets.  
 
 
 \subsection*{Files}
 \begin{DoxyCompactItemize}
 \item 
-file {\bf vio.\+h}
-\begin{DoxyCompactList}\small\item\em Class Vio\+: virtual $<$S\+D\+I\+O/\+F\+I\+L\+E/\+B\+U\+F\+F/\+U\+N\+I\+X/\+I\+N\+E\+T$>$ I/\+O layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+file {\bf vio.\-h}
+\begin{DoxyCompactList}\small\item\em Class Vio\-: virtual $<$S\-D\-I\-O/\-F\-I\-L\-E/\-B\-U\-F\-F/\-U\-N\-I\-X/\-I\-N\-E\-T$>$ I/\-O layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\+Vio}
+struct {\bf s\-Vio}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vio class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum {\bf V\+I\+Otype} {\bf V\+I\+Otype}
-\begin{DoxyCompactList}\small\item\em Parameter for I/\+O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
-typedef enum {\bf V\+I\+Ofrmt} {\bf V\+I\+Ofrmt}
-\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\+D\+R,A\+S\+C) \end{DoxyCompactList}\item 
-typedef enum {\bf V\+I\+Orwkey} {\bf V\+I\+Orwkey}
-\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\+W) \end{DoxyCompactList}\item 
-typedef struct {\bf s\+Vio} {\bf Vio}
+typedef enum {\bf V\-I\-Otype} {\bf V\-I\-Otype}
+\begin{DoxyCompactList}\small\item\em Parameter for I/\-O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
+typedef enum {\bf V\-I\-Ofrmt} {\bf V\-I\-Ofrmt}
+\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\-D\-R,A\-S\-C) \end{DoxyCompactList}\item 
+typedef enum {\bf V\-I\-Orwkey} {\bf V\-I\-Orwkey}
+\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\-W) \end{DoxyCompactList}\item 
+typedef struct {\bf s\-Vio} {\bf Vio}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vio class as the Vio structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bf V\+I\+Otype} \{ \\*
-{\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E}, 
-{\bf V\+I\+O\+\_\+\+S\+D\+I\+O}, 
-{\bf V\+I\+O\+\_\+\+B\+U\+F\+F}, 
-{\bf V\+I\+O\+\_\+\+F\+I\+L\+E}, 
+enum {\bf V\-I\-Otype} \{ \\*
+{\bf V\-I\-O\-\_\-\-N\-O\-\_\-\-T\-Y\-P\-E}, 
+{\bf V\-I\-O\-\_\-\-S\-D\-I\-O}, 
+{\bf V\-I\-O\-\_\-\-B\-U\-F\-F}, 
+{\bf V\-I\-O\-\_\-\-F\-I\-L\-E}, 
 \\*
-{\bf V\+I\+O\+\_\+\+U\+N\+I\+X}, 
-{\bf V\+I\+O\+\_\+\+I\+N\+E\+T}
+{\bf V\-I\-O\-\_\-\-U\-N\-I\-X}, 
+{\bf V\-I\-O\-\_\-\-I\-N\-E\-T}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for I/\+O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
-enum {\bf V\+I\+Ofrmt} \{ {\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T}, 
-{\bf V\+I\+O\+\_\+\+X\+D\+R}, 
-{\bf V\+I\+O\+\_\+\+A\+S\+C}
+\begin{DoxyCompactList}\small\item\em Parameter for I/\-O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
+enum {\bf V\-I\-Ofrmt} \{ {\bf V\-I\-O\-\_\-\-N\-O\-\_\-\-F\-R\-M\-T}, 
+{\bf V\-I\-O\-\_\-\-X\-D\-R}, 
+{\bf V\-I\-O\-\_\-\-A\-S\-C}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\+D\+R,A\+S\+C) \end{DoxyCompactList}\item 
-enum {\bf V\+I\+Orwkey} \{ {\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W}, 
-{\bf V\+I\+O\+\_\+\+R}, 
-{\bf V\+I\+O\+\_\+\+W}
+\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\-D\-R,A\-S\-C) \end{DoxyCompactList}\item 
+enum {\bf V\-I\-Orwkey} \{ {\bf V\-I\-O\-\_\-\-N\-O\-\_\-\-R\-W}, 
+{\bf V\-I\-O\-\_\-\-R}, 
+{\bf V\-I\-O\-\_\-\-W}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\+W) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\-W) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bf Vio\+\_\+start} (void)
+void {\bf Vio\-\_\-start} (void)
 \begin{DoxyCompactList}\small\item\em Start Vio communication layer (init internal variables/buffers) \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+stop} (void)
+void {\bf Vio\-\_\-stop} (void)
 \begin{DoxyCompactList}\small\item\em Shutdown Vio communication layer. \end{DoxyCompactList}\item 
-{\bf Vio} $\ast$ {\bf Vio\+\_\+ctor} (const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
+{\bf Vio} $\ast$ {\bf Vio\-\_\-ctor} (const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
 \begin{DoxyCompactList}\small\item\em Construct the Vio object. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+ctor2} ({\bf Vio} $\ast$thee, const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
-\begin{DoxyCompactList}\small\item\em Work routine that Vio\+\_\+ctor calls to do most of the construction. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+dtor} ({\bf Vio} $\ast$$\ast$thee)
+int {\bf Vio\-\_\-ctor2} ({\bf Vio} $\ast$thee, const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
+\begin{DoxyCompactList}\small\item\em Work routine that Vio\-\_\-ctor calls to do most of the construction. \end{DoxyCompactList}\item 
+void {\bf Vio\-\_\-dtor} ({\bf Vio} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destruct the Vio object. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+dtor2} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Work routine that Vio\+\_\+dtor calls to do most of the destruction. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+set\+White\+Chars} ({\bf Vio} $\ast$thee, char $\ast$white\+Chars)
-\begin{DoxyCompactList}\small\item\em Set the white character set for I/\+O stream. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+set\+Comm\+Chars} ({\bf Vio} $\ast$thee, char $\ast$comm\+Chars)
-\begin{DoxyCompactList}\small\item\em Set the comment character set for I/\+O stream. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+accept} ({\bf Vio} $\ast$thee, int nonblock)
+void {\bf Vio\-\_\-dtor2} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Work routine that Vio\-\_\-dtor calls to do most of the destruction. \end{DoxyCompactList}\item 
+void {\bf Vio\-\_\-set\-White\-Chars} ({\bf Vio} $\ast$thee, char $\ast$white\-Chars)
+\begin{DoxyCompactList}\small\item\em Set the white character set for I/\-O stream. \end{DoxyCompactList}\item 
+void {\bf Vio\-\_\-set\-Comm\-Chars} ({\bf Vio} $\ast$thee, char $\ast$comm\-Chars)
+\begin{DoxyCompactList}\small\item\em Set the comment character set for I/\-O stream. \end{DoxyCompactList}\item 
+int {\bf Vio\-\_\-accept} ({\bf Vio} $\ast$thee, int nonblock)
 \begin{DoxyCompactList}\small\item\em Accept any waiting connect attempt to our socket on our machine. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+accept\+Free} ({\bf Vio} $\ast$thee)
+void {\bf Vio\-\_\-accept\-Free} ({\bf Vio} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Free the socket child that was used for the last accept. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+connect} ({\bf Vio} $\ast$thee, int nonblock)
+int {\bf Vio\-\_\-connect} ({\bf Vio} $\ast$thee, int nonblock)
 \begin{DoxyCompactList}\small\item\em Connect to some socket on a remote machine (or on our machine) \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+connect\+Free} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Purge any output buffers (for $<$U\+N\+I\+X/\+I\+N\+E\+T$>$, else a no-\/op) \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+scanf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
+void {\bf Vio\-\_\-connect\-Free} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Purge any output buffers (for $<$U\-N\-I\-X/\-I\-N\-E\-T$>$, else a no-\/op) \end{DoxyCompactList}\item 
+int {\bf Vio\-\_\-scanf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
 \begin{DoxyCompactList}\small\item\em Mimic \char`\"{}scanf\char`\"{} from an arbitrary Vio device. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+printf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
+int {\bf Vio\-\_\-printf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
 \begin{DoxyCompactList}\small\item\em Mimic \char`\"{}printf\char`\"{} from an arbitrary Vio device. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+read} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+int {\bf Vio\-\_\-read} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
 \begin{DoxyCompactList}\small\item\em Read (up to) bufsize characters into buf from input device. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+write} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+int {\bf Vio\-\_\-write} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
 \begin{DoxyCompactList}\small\item\em Write bufsize characters from buf to output device. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+buf\+Take} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+void {\bf Vio\-\_\-buf\-Take} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
 \begin{DoxyCompactList}\small\item\em Set the pointer to the internal buffer. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vio\+\_\+buf\+Give} ({\bf Vio} $\ast$thee)
+char $\ast$ {\bf Vio\-\_\-buf\-Give} ({\bf Vio} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the pointer to the internal buffer. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+buf\+Size} ({\bf Vio} $\ast$thee)
+int {\bf Vio\-\_\-buf\-Size} ({\bf Vio} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the length to the internal buffer. \end{DoxyCompactList}\item 
-{\bf Vio} $\ast$ {\bf Vio\+\_\+socket\+Open} (char $\ast$key, const char $\ast$iodev, const char $\ast$iofmt, const char $\ast$iohost, const char $\ast$iofile)
+{\bf Vio} $\ast$ {\bf Vio\-\_\-socket\-Open} (char $\ast$key, const char $\ast$iodev, const char $\ast$iofmt, const char $\ast$iohost, const char $\ast$iofile)
 \begin{DoxyCompactList}\small\item\em Socket open for read or write. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+socket\+Close} ({\bf Vio} $\ast$$\ast$sock)
+void {\bf Vio\-\_\-socket\-Close} ({\bf Vio} $\ast$$\ast$sock)
 \begin{DoxyCompactList}\small\item\em Socket close from read or write. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This class provides an I/\+O layer for files/bufferes/pipes/sockets. 
-
-This class provides an abstraction of I/\+O to give acess to files, buffers, pipes, U\+N\+I\+X sockets, and I\+N\+E\+T sockets. 
+This class provides an I/\-O layer for files/bufferes/pipes/sockets. This class provides an abstraction of I/\-O to give acess to files, buffers, pipes, U\-N\-I\-X sockets, and I\-N\-E\-T sockets. 
 
 \subsection{Typedef Documentation}
 \index{Vio class@{Vio class}!Vio@{Vio}}
 \index{Vio@{Vio}!Vio class@{Vio class}}
-\subsubsection[{Vio}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\+Vio} {\bf Vio}}\label{a00028_ga277550356f3dd78c988516b1e172a9c6}
+\subsubsection[{Vio}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\-Vio} {\bf Vio}}\label{a00028_ga277550356f3dd78c988516b1e172a9c6}
 
 
 Declaration of the Vio class as the Vio structure. 
@@ -112,32 +110,32 @@ Declaration of the Vio class as the Vio structure.
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
-\index{Vio class@{Vio class}!V\+I\+Ofrmt@{V\+I\+Ofrmt}}
-\index{V\+I\+Ofrmt@{V\+I\+Ofrmt}!Vio class@{Vio class}}
-\subsubsection[{V\+I\+Ofrmt}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf V\+I\+Ofrmt}  {\bf V\+I\+Ofrmt}}\label{a00028_ga163ab2afe12d8f6739822eac4933da1d}
+\index{Vio class@{Vio class}!V\-I\-Ofrmt@{V\-I\-Ofrmt}}
+\index{V\-I\-Ofrmt@{V\-I\-Ofrmt}!Vio class@{Vio class}}
+\subsubsection[{V\-I\-Ofrmt}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf V\-I\-Ofrmt}  {\bf V\-I\-Ofrmt}}\label{a00028_ga163ab2afe12d8f6739822eac4933da1d}
 
 
-Parameter for compression type (X\+D\+R,A\+S\+C) 
-
-\begin{DoxyAuthor}{Author}
-Michael Holst 
-\end{DoxyAuthor}
-\index{Vio class@{Vio class}!V\+I\+Orwkey@{V\+I\+Orwkey}}
-\index{V\+I\+Orwkey@{V\+I\+Orwkey}!Vio class@{Vio class}}
-\subsubsection[{V\+I\+Orwkey}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf V\+I\+Orwkey}  {\bf V\+I\+Orwkey}}\label{a00028_ga657e164038235f4739ea0ee41b9e368d}
-
-
-Parameter for rw type (R,R\+W) 
+Parameter for compression type (X\-D\-R,A\-S\-C) 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
-\index{Vio class@{Vio class}!V\+I\+Otype@{V\+I\+Otype}}
-\index{V\+I\+Otype@{V\+I\+Otype}!Vio class@{Vio class}}
-\subsubsection[{V\+I\+Otype}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf V\+I\+Otype}  {\bf V\+I\+Otype}}\label{a00028_gaf946e6d7d3ed8f5bdb3de70792477fa4}
+\index{Vio class@{Vio class}!V\-I\-Orwkey@{V\-I\-Orwkey}}
+\index{V\-I\-Orwkey@{V\-I\-Orwkey}!Vio class@{Vio class}}
+\subsubsection[{V\-I\-Orwkey}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf V\-I\-Orwkey}  {\bf V\-I\-Orwkey}}\label{a00028_ga657e164038235f4739ea0ee41b9e368d}
 
 
-Parameter for I/\+O type (sdio,buff,file,unix,inet) 
+Parameter for rw type (R,R\-W) 
+
+\begin{DoxyAuthor}{Author}
+Michael Holst 
+\end{DoxyAuthor}
+\index{Vio class@{Vio class}!V\-I\-Otype@{V\-I\-Otype}}
+\index{V\-I\-Otype@{V\-I\-Otype}!Vio class@{Vio class}}
+\subsubsection[{V\-I\-Otype}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf V\-I\-Otype}  {\bf V\-I\-Otype}}\label{a00028_gaf946e6d7d3ed8f5bdb3de70792477fa4}
+
+
+Parameter for I/\-O type (sdio,buff,file,unix,inet) 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -145,108 +143,111 @@ Michael Holst
 
 
 \subsection{Enumeration Type Documentation}
-\index{Vio class@{Vio class}!V\+I\+Ofrmt@{V\+I\+Ofrmt}}
-\index{V\+I\+Ofrmt@{V\+I\+Ofrmt}!Vio class@{Vio class}}
-\subsubsection[{V\+I\+Ofrmt}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf V\+I\+Ofrmt}}\label{a00028_gabfa72aea464435d52c14c43ebd5e363b}
+\index{Vio class@{Vio class}!V\-I\-Ofrmt@{V\-I\-Ofrmt}}
+\index{V\-I\-Ofrmt@{V\-I\-Ofrmt}!Vio class@{Vio class}}
+\subsubsection[{V\-I\-Ofrmt}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf V\-I\-Ofrmt}}\label{a00028_gabfa72aea464435d52c14c43ebd5e363b}
 
 
-Parameter for compression type (X\+D\+R,A\+S\+C) 
+Parameter for compression type (X\-D\-R,A\-S\-C) 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{Desc}
-\item[Enumerator]\par
+\item[Enumerator\-: ]\par
 \begin{description}
-\index{V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T@{V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T@{V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T}}\item[{\em 
-V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T\label{a00028_ggabfa72aea464435d52c14c43ebd5e363bade52aaa65f920c341c443993f0898b73}
-}]\index{V\+I\+O\+\_\+\+X\+D\+R@{V\+I\+O\+\_\+\+X\+D\+R}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+X\+D\+R@{V\+I\+O\+\_\+\+X\+D\+R}}\item[{\em 
-V\+I\+O\+\_\+\+X\+D\+R\label{a00028_ggabfa72aea464435d52c14c43ebd5e363ba35f912228eb6c27fc632520ae9629924}
-}]\index{V\+I\+O\+\_\+\+A\+S\+C@{V\+I\+O\+\_\+\+A\+S\+C}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+A\+S\+C@{V\+I\+O\+\_\+\+A\+S\+C}}\item[{\em 
-V\+I\+O\+\_\+\+A\+S\+C\label{a00028_ggabfa72aea464435d52c14c43ebd5e363baec02355c47d63dead444522a814209f4}
+\index{V\-I\-O\-\_\-\-N\-O\-\_\-\-F\-R\-M\-T@{V\-I\-O\-\_\-\-N\-O\-\_\-\-F\-R\-M\-T}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-N\-O\-\_\-\-F\-R\-M\-T@{V\-I\-O\-\_\-\-N\-O\-\_\-\-F\-R\-M\-T}}\item[{\em 
+V\-I\-O\-\_\-\-N\-O\-\_\-\-F\-R\-M\-T\label{a00028_ggabfa72aea464435d52c14c43ebd5e363bade52aaa65f920c341c443993f0898b73}
+}]\index{V\-I\-O\-\_\-\-X\-D\-R@{V\-I\-O\-\_\-\-X\-D\-R}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-X\-D\-R@{V\-I\-O\-\_\-\-X\-D\-R}}\item[{\em 
+V\-I\-O\-\_\-\-X\-D\-R\label{a00028_ggabfa72aea464435d52c14c43ebd5e363ba35f912228eb6c27fc632520ae9629924}
+}]\index{V\-I\-O\-\_\-\-A\-S\-C@{V\-I\-O\-\_\-\-A\-S\-C}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-A\-S\-C@{V\-I\-O\-\_\-\-A\-S\-C}}\item[{\em 
+V\-I\-O\-\_\-\-A\-S\-C\label{a00028_ggabfa72aea464435d52c14c43ebd5e363baec02355c47d63dead444522a814209f4}
 }]\end{description}
 \end{Desc}
 
+
 \begin{DoxyCode}
-76                      \{
-77     VIO_NO_FRMT,
-78     VIO_XDR,
-79     VIO_ASC
-80 \} VIOfrmt;
+                     \{
+    VIO_NO_FRMT,
+    VIO_XDR,
+    VIO_ASC
+\} VIOfrmt;
 \end{DoxyCode}
-\index{Vio class@{Vio class}!V\+I\+Orwkey@{V\+I\+Orwkey}}
-\index{V\+I\+Orwkey@{V\+I\+Orwkey}!Vio class@{Vio class}}
-\subsubsection[{V\+I\+Orwkey}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf V\+I\+Orwkey}}\label{a00028_gaf7330032d12db3359c24f79c9c2d4e24}
+\index{Vio class@{Vio class}!V\-I\-Orwkey@{V\-I\-Orwkey}}
+\index{V\-I\-Orwkey@{V\-I\-Orwkey}!Vio class@{Vio class}}
+\subsubsection[{V\-I\-Orwkey}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf V\-I\-Orwkey}}\label{a00028_gaf7330032d12db3359c24f79c9c2d4e24}
 
 
-Parameter for rw type (R,R\+W) 
+Parameter for rw type (R,R\-W) 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{Desc}
-\item[Enumerator]\par
+\item[Enumerator\-: ]\par
 \begin{description}
-\index{V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W@{V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W@{V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W}}\item[{\em 
-V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W\label{a00028_ggaf7330032d12db3359c24f79c9c2d4e24a728233ece268770e6c75232bf7da1968}
-}]\index{V\+I\+O\+\_\+\+R@{V\+I\+O\+\_\+\+R}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+R@{V\+I\+O\+\_\+\+R}}\item[{\em 
-V\+I\+O\+\_\+\+R\label{a00028_ggaf7330032d12db3359c24f79c9c2d4e24af463196c138c83145f7258caf84a6d92}
-}]\index{V\+I\+O\+\_\+\+W@{V\+I\+O\+\_\+\+W}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+W@{V\+I\+O\+\_\+\+W}}\item[{\em 
-V\+I\+O\+\_\+\+W\label{a00028_ggaf7330032d12db3359c24f79c9c2d4e24a89e0bf28fada4387e3440bc18839818a}
+\index{V\-I\-O\-\_\-\-N\-O\-\_\-\-R\-W@{V\-I\-O\-\_\-\-N\-O\-\_\-\-R\-W}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-N\-O\-\_\-\-R\-W@{V\-I\-O\-\_\-\-N\-O\-\_\-\-R\-W}}\item[{\em 
+V\-I\-O\-\_\-\-N\-O\-\_\-\-R\-W\label{a00028_ggaf7330032d12db3359c24f79c9c2d4e24a728233ece268770e6c75232bf7da1968}
+}]\index{V\-I\-O\-\_\-\-R@{V\-I\-O\-\_\-\-R}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-R@{V\-I\-O\-\_\-\-R}}\item[{\em 
+V\-I\-O\-\_\-\-R\label{a00028_ggaf7330032d12db3359c24f79c9c2d4e24af463196c138c83145f7258caf84a6d92}
+}]\index{V\-I\-O\-\_\-\-W@{V\-I\-O\-\_\-\-W}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-W@{V\-I\-O\-\_\-\-W}}\item[{\em 
+V\-I\-O\-\_\-\-W\label{a00028_ggaf7330032d12db3359c24f79c9c2d4e24a89e0bf28fada4387e3440bc18839818a}
 }]\end{description}
 \end{Desc}
 
+
 \begin{DoxyCode}
-87                       \{
-88     VIO_NO_RW,
-89     VIO_R,
-90     VIO_W
-91 \} VIOrwkey;
+                      \{
+    VIO_NO_RW,
+    VIO_R,
+    VIO_W
+\} VIOrwkey;
 \end{DoxyCode}
-\index{Vio class@{Vio class}!V\+I\+Otype@{V\+I\+Otype}}
-\index{V\+I\+Otype@{V\+I\+Otype}!Vio class@{Vio class}}
-\subsubsection[{V\+I\+Otype}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf V\+I\+Otype}}\label{a00028_gac54f991a41350084c7880d7f6192eeb9}
+\index{Vio class@{Vio class}!V\-I\-Otype@{V\-I\-Otype}}
+\index{V\-I\-Otype@{V\-I\-Otype}!Vio class@{Vio class}}
+\subsubsection[{V\-I\-Otype}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf V\-I\-Otype}}\label{a00028_gac54f991a41350084c7880d7f6192eeb9}
 
 
-Parameter for I/\+O type (sdio,buff,file,unix,inet) 
+Parameter for I/\-O type (sdio,buff,file,unix,inet) 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{Desc}
-\item[Enumerator]\par
+\item[Enumerator\-: ]\par
 \begin{description}
-\index{V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E@{V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E@{V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E}}\item[{\em 
-V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a321010e11ee3142a86236c272b6c60d3}
-}]\index{V\+I\+O\+\_\+\+S\+D\+I\+O@{V\+I\+O\+\_\+\+S\+D\+I\+O}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+S\+D\+I\+O@{V\+I\+O\+\_\+\+S\+D\+I\+O}}\item[{\em 
-V\+I\+O\+\_\+\+S\+D\+I\+O\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a8684c452cb27082c48dad8424539c82a}
-}]\index{V\+I\+O\+\_\+\+B\+U\+F\+F@{V\+I\+O\+\_\+\+B\+U\+F\+F}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+B\+U\+F\+F@{V\+I\+O\+\_\+\+B\+U\+F\+F}}\item[{\em 
-V\+I\+O\+\_\+\+B\+U\+F\+F\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a793d30345ee79a61fd19d34d753f550c}
-}]\index{V\+I\+O\+\_\+\+F\+I\+L\+E@{V\+I\+O\+\_\+\+F\+I\+L\+E}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+F\+I\+L\+E@{V\+I\+O\+\_\+\+F\+I\+L\+E}}\item[{\em 
-V\+I\+O\+\_\+\+F\+I\+L\+E\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a52b6b67e03d785a98efc9a9c281450ad}
-}]\index{V\+I\+O\+\_\+\+U\+N\+I\+X@{V\+I\+O\+\_\+\+U\+N\+I\+X}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+U\+N\+I\+X@{V\+I\+O\+\_\+\+U\+N\+I\+X}}\item[{\em 
-V\+I\+O\+\_\+\+U\+N\+I\+X\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a732c134da0247d2a77fbbdc58afd56bb}
-}]\index{V\+I\+O\+\_\+\+I\+N\+E\+T@{V\+I\+O\+\_\+\+I\+N\+E\+T}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\+I\+O\+\_\+\+I\+N\+E\+T@{V\+I\+O\+\_\+\+I\+N\+E\+T}}\item[{\em 
-V\+I\+O\+\_\+\+I\+N\+E\+T\label{a00028_ggac54f991a41350084c7880d7f6192eeb9ae49b82defa0616162b52540447e5c4ed}
+\index{V\-I\-O\-\_\-\-N\-O\-\_\-\-T\-Y\-P\-E@{V\-I\-O\-\_\-\-N\-O\-\_\-\-T\-Y\-P\-E}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-N\-O\-\_\-\-T\-Y\-P\-E@{V\-I\-O\-\_\-\-N\-O\-\_\-\-T\-Y\-P\-E}}\item[{\em 
+V\-I\-O\-\_\-\-N\-O\-\_\-\-T\-Y\-P\-E\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a321010e11ee3142a86236c272b6c60d3}
+}]\index{V\-I\-O\-\_\-\-S\-D\-I\-O@{V\-I\-O\-\_\-\-S\-D\-I\-O}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-S\-D\-I\-O@{V\-I\-O\-\_\-\-S\-D\-I\-O}}\item[{\em 
+V\-I\-O\-\_\-\-S\-D\-I\-O\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a8684c452cb27082c48dad8424539c82a}
+}]\index{V\-I\-O\-\_\-\-B\-U\-F\-F@{V\-I\-O\-\_\-\-B\-U\-F\-F}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-B\-U\-F\-F@{V\-I\-O\-\_\-\-B\-U\-F\-F}}\item[{\em 
+V\-I\-O\-\_\-\-B\-U\-F\-F\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a793d30345ee79a61fd19d34d753f550c}
+}]\index{V\-I\-O\-\_\-\-F\-I\-L\-E@{V\-I\-O\-\_\-\-F\-I\-L\-E}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-F\-I\-L\-E@{V\-I\-O\-\_\-\-F\-I\-L\-E}}\item[{\em 
+V\-I\-O\-\_\-\-F\-I\-L\-E\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a52b6b67e03d785a98efc9a9c281450ad}
+}]\index{V\-I\-O\-\_\-\-U\-N\-I\-X@{V\-I\-O\-\_\-\-U\-N\-I\-X}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-U\-N\-I\-X@{V\-I\-O\-\_\-\-U\-N\-I\-X}}\item[{\em 
+V\-I\-O\-\_\-\-U\-N\-I\-X\label{a00028_ggac54f991a41350084c7880d7f6192eeb9a732c134da0247d2a77fbbdc58afd56bb}
+}]\index{V\-I\-O\-\_\-\-I\-N\-E\-T@{V\-I\-O\-\_\-\-I\-N\-E\-T}!Vio class@{Vio class}}\index{Vio class@{Vio class}!V\-I\-O\-\_\-\-I\-N\-E\-T@{V\-I\-O\-\_\-\-I\-N\-E\-T}}\item[{\em 
+V\-I\-O\-\_\-\-I\-N\-E\-T\label{a00028_ggac54f991a41350084c7880d7f6192eeb9ae49b82defa0616162b52540447e5c4ed}
 }]\end{description}
 \end{Desc}
 
+
 \begin{DoxyCode}
-62                      \{
-63     VIO_NO_TYPE, 
-64     VIO_SDIO,
-65     VIO_BUFF,
-66     VIO_FILE,
-67     VIO_UNIX,
-68     VIO_INET
-69 \} VIOtype;
+                     \{
+    VIO_NO_TYPE, 
+    VIO_SDIO,
+    VIO_BUFF,
+    VIO_FILE,
+    VIO_UNIX,
+    VIO_INET
+\} VIOtype;
 \end{DoxyCode}
 
 
 \subsection{Function Documentation}
-\index{Vio class@{Vio class}!Vio\+\_\+accept@{Vio\+\_\+accept}}
-\index{Vio\+\_\+accept@{Vio\+\_\+accept}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+accept}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+accept (
+\index{Vio class@{Vio class}!Vio\-\_\-accept@{Vio\-\_\-accept}}
+\index{Vio\-\_\-accept@{Vio\-\_\-accept}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-accept}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-accept (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{int}]{nonblock}
@@ -260,7 +261,7 @@ Accept any waiting connect attempt to our socket on our machine.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 1 on success, -\/1 on failure 
@@ -269,12 +270,12 @@ Class Vio\+: Non-\/\+Inlineable methods (vio.\+c)
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the Vio object \\
 \hline
-{\em nonblock} & index for a non-\/blocking socket Only for $<$U\+N\+I\+X/\+I\+N\+E\+T$>$; othewise it is ignored. nonblock==0 ==$>$ block until a connect is attempted nonblock==1 ==$>$ D\+O N\+O\+T block at all \\
+{\em nonblock} & index for a non-\/blocking socket Only for $<$U\-N\-I\-X/\-I\-N\-E\-T$>$; othewise it is ignored. nonblock==0 ==$>$ block until a connect is attempted nonblock==1 ==$>$ D\-O N\-O\-T block at all \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+accept\+Free@{Vio\+\_\+accept\+Free}}
-\index{Vio\+\_\+accept\+Free@{Vio\+\_\+accept\+Free}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+accept\+Free}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+accept\+Free (
+\index{Vio class@{Vio class}!Vio\-\_\-accept\-Free@{Vio\-\_\-accept\-Free}}
+\index{Vio\-\_\-accept\-Free@{Vio\-\_\-accept\-Free}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-accept\-Free}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-accept\-Free (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -287,7 +288,7 @@ Free the socket child that was used for the last accept.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -297,9 +298,9 @@ None
 {\em thee} & Pointer to the Vio object \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+buf\+Give@{Vio\+\_\+buf\+Give}}
-\index{Vio\+\_\+buf\+Give@{Vio\+\_\+buf\+Give}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+buf\+Give}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vio\+\_\+buf\+Give (
+\index{Vio class@{Vio class}!Vio\-\_\-buf\-Give@{Vio\-\_\-buf\-Give}}
+\index{Vio\-\_\-buf\-Give@{Vio\-\_\-buf\-Give}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-buf\-Give}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vio\-\_\-buf\-Give (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -312,7 +313,7 @@ Return the pointer to the internal buffer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Poitner to the internal buffer 
@@ -322,9 +323,9 @@ Poitner to the internal buffer
 {\em thee} & Pointer to the Vio object \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+buf\+Size@{Vio\+\_\+buf\+Size}}
-\index{Vio\+\_\+buf\+Size@{Vio\+\_\+buf\+Size}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+buf\+Size}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+buf\+Size (
+\index{Vio class@{Vio class}!Vio\-\_\-buf\-Size@{Vio\-\_\-buf\-Size}}
+\index{Vio\-\_\-buf\-Size@{Vio\-\_\-buf\-Size}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-buf\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-buf\-Size (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -337,7 +338,7 @@ Return the length to the internal buffer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Length of the internal buffer 
@@ -347,9 +348,9 @@ Length of the internal buffer
 {\em thee} & Pointer to the Vio object \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+buf\+Take@{Vio\+\_\+buf\+Take}}
-\index{Vio\+\_\+buf\+Take@{Vio\+\_\+buf\+Take}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+buf\+Take}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+buf\+Take (
+\index{Vio class@{Vio class}!Vio\-\_\-buf\-Take@{Vio\-\_\-buf\-Take}}
+\index{Vio\-\_\-buf\-Take@{Vio\-\_\-buf\-Take}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-buf\-Take}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-buf\-Take (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{char $\ast$}]{buf, }
@@ -364,7 +365,7 @@ Set the pointer to the internal buffer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -378,9 +379,9 @@ None
 {\em bufsize} & number of items (of declared type) in buffer \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+connect@{Vio\+\_\+connect}}
-\index{Vio\+\_\+connect@{Vio\+\_\+connect}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+connect}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+connect (
+\index{Vio class@{Vio class}!Vio\-\_\-connect@{Vio\-\_\-connect}}
+\index{Vio\-\_\-connect@{Vio\-\_\-connect}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-connect}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-connect (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{int}]{nonblock}
@@ -394,7 +395,7 @@ Connect to some socket on a remote machine (or on our machine)
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 1 on success, -\/1 on failure 
@@ -403,25 +404,25 @@ Class Vio\+: Non-\/\+Inlineable methods (vio.\+c)
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the Vio object \\
 \hline
-{\em nonblock} & index for a non-\/blocking socket Only for $<$U\+N\+I\+X/\+I\+N\+E\+T$>$; othewise it is ignored. nonblock==0 ==$>$ block until a connect is attempted nonblock==1 ==$>$ D\+O N\+O\+T block at all \\
+{\em nonblock} & index for a non-\/blocking socket Only for $<$U\-N\-I\-X/\-I\-N\-E\-T$>$; othewise it is ignored. nonblock==0 ==$>$ block until a connect is attempted nonblock==1 ==$>$ D\-O N\-O\-T block at all \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+connect\+Free@{Vio\+\_\+connect\+Free}}
-\index{Vio\+\_\+connect\+Free@{Vio\+\_\+connect\+Free}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+connect\+Free}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+connect\+Free (
+\index{Vio class@{Vio class}!Vio\-\_\-connect\-Free@{Vio\-\_\-connect\-Free}}
+\index{Vio\-\_\-connect\-Free@{Vio\-\_\-connect\-Free}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-connect\-Free}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-connect\-Free (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee}
 \end{DoxyParamCaption}
 )}\label{a00028_gae7a8b6640b82ff581aa183890efa118e}
 
 
-Purge any output buffers (for $<$U\+N\+I\+X/\+I\+N\+E\+T$>$, else a no-\/op) 
+Purge any output buffers (for $<$U\-N\-I\-X/\-I\-N\-E\-T$>$, else a no-\/op) 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -431,9 +432,9 @@ None
 {\em thee} & Pointer to the Vio object \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+ctor@{Vio\+\_\+ctor}}
-\index{Vio\+\_\+ctor@{Vio\+\_\+ctor}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vio}$\ast$ Vio\+\_\+ctor (
+\index{Vio class@{Vio class}!Vio\-\_\-ctor@{Vio\-\_\-ctor}}
+\index{Vio\-\_\-ctor@{Vio\-\_\-ctor}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vio}$\ast$ Vio\-\_\-ctor (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{socktype, }
 \item[{const char $\ast$}]{datafrmt, }
@@ -450,7 +451,7 @@ Construct the Vio object.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Pointer to newly constructed Vio object 
@@ -468,9 +469,9 @@ Pointer to newly constructed Vio object
 {\em rwkey} & Pointer to the read/write options \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+ctor2@{Vio\+\_\+ctor2}}
-\index{Vio\+\_\+ctor2@{Vio\+\_\+ctor2}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+ctor2}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+ctor2 (
+\index{Vio class@{Vio class}!Vio\-\_\-ctor2@{Vio\-\_\-ctor2}}
+\index{Vio\-\_\-ctor2@{Vio\-\_\-ctor2}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-ctor2}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-ctor2 (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{const char $\ast$}]{socktype, }
@@ -482,13 +483,13 @@ Pointer to newly constructed Vio object
 )}\label{a00028_gafd5263d2ea59f8a27b514a9a6c8db49e}
 
 
-Work routine that Vio\+\_\+ctor calls to do most of the construction. 
+Work routine that Vio\-\_\-ctor calls to do most of the construction. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 1 on success, 0 on failure 
@@ -508,9 +509,9 @@ Class Vio\+: Non-\/\+Inlineable methods (vio.\+c)
 {\em rwkey} & Pointer to the read/write options \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+dtor@{Vio\+\_\+dtor}}
-\index{Vio\+\_\+dtor@{Vio\+\_\+dtor}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+dtor (
+\index{Vio class@{Vio class}!Vio\-\_\-dtor@{Vio\-\_\-dtor}}
+\index{Vio\-\_\-dtor@{Vio\-\_\-dtor}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-dtor (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$$\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -523,7 +524,7 @@ Destruct the Vio object.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -533,22 +534,22 @@ None
 {\em thee} & Pointer to the Vio object \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+dtor2@{Vio\+\_\+dtor2}}
-\index{Vio\+\_\+dtor2@{Vio\+\_\+dtor2}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+dtor2}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+dtor2 (
+\index{Vio class@{Vio class}!Vio\-\_\-dtor2@{Vio\-\_\-dtor2}}
+\index{Vio\-\_\-dtor2@{Vio\-\_\-dtor2}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-dtor2}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-dtor2 (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee}
 \end{DoxyParamCaption}
 )}\label{a00028_gaf80adb2dd398b2c9ffc62b484762fb46}
 
 
-Work routine that Vio\+\_\+dtor calls to do most of the destruction. 
+Work routine that Vio\-\_\-dtor calls to do most of the destruction. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -558,9 +559,9 @@ None
 {\em thee} & Pointer to the Vio object \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+printf@{Vio\+\_\+printf}}
-\index{Vio\+\_\+printf@{Vio\+\_\+printf}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+printf}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+printf (
+\index{Vio class@{Vio class}!Vio\-\_\-printf@{Vio\-\_\-printf}}
+\index{Vio\-\_\-printf@{Vio\-\_\-printf}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-printf}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-printf (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{char $\ast$}]{parms, }
@@ -575,7 +576,7 @@ Mimic \char`\"{}printf\char`\"{} from an arbitrary Vio device.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Number of tokens printed 
@@ -587,9 +588,9 @@ Number of tokens printed
 {\em parms} & Pointer to output parameters \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+read@{Vio\+\_\+read}}
-\index{Vio\+\_\+read@{Vio\+\_\+read}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+read (
+\index{Vio class@{Vio class}!Vio\-\_\-read@{Vio\-\_\-read}}
+\index{Vio\-\_\-read@{Vio\-\_\-read}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-read (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{char $\ast$}]{buf, }
@@ -604,7 +605,7 @@ Read (up to) bufsize characters into buf from input device.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Number of bytes read 
@@ -618,9 +619,9 @@ Number of bytes read
 {\em bufsize} & number of items (of declared type) in buffer \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+scanf@{Vio\+\_\+scanf}}
-\index{Vio\+\_\+scanf@{Vio\+\_\+scanf}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+scanf}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+scanf (
+\index{Vio class@{Vio class}!Vio\-\_\-scanf@{Vio\-\_\-scanf}}
+\index{Vio\-\_\-scanf@{Vio\-\_\-scanf}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-scanf}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-scanf (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{char $\ast$}]{parms, }
@@ -635,7 +636,7 @@ Mimic \char`\"{}scanf\char`\"{} from an arbitrary Vio device.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Number of tokens read 
@@ -647,23 +648,23 @@ Number of tokens read
 {\em parms} & Pointer to input parameters \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+set\+Comm\+Chars@{Vio\+\_\+set\+Comm\+Chars}}
-\index{Vio\+\_\+set\+Comm\+Chars@{Vio\+\_\+set\+Comm\+Chars}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+set\+Comm\+Chars}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+set\+Comm\+Chars (
+\index{Vio class@{Vio class}!Vio\-\_\-set\-Comm\-Chars@{Vio\-\_\-set\-Comm\-Chars}}
+\index{Vio\-\_\-set\-Comm\-Chars@{Vio\-\_\-set\-Comm\-Chars}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-set\-Comm\-Chars}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-set\-Comm\-Chars (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
-\item[{char $\ast$}]{comm\+Chars}
+\item[{char $\ast$}]{comm\-Chars}
 \end{DoxyParamCaption}
 )}\label{a00028_gaed8691f0b14a8aa79e7901076b002eec}
 
 
-Set the comment character set for I/\+O stream. 
+Set the comment character set for I/\-O stream. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -672,26 +673,26 @@ None
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the Vio object \\
 \hline
-{\em comm\+Chars} & comment character set \\
+{\em comm\-Chars} & comment character set \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+set\+White\+Chars@{Vio\+\_\+set\+White\+Chars}}
-\index{Vio\+\_\+set\+White\+Chars@{Vio\+\_\+set\+White\+Chars}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+set\+White\+Chars}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+set\+White\+Chars (
+\index{Vio class@{Vio class}!Vio\-\_\-set\-White\-Chars@{Vio\-\_\-set\-White\-Chars}}
+\index{Vio\-\_\-set\-White\-Chars@{Vio\-\_\-set\-White\-Chars}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-set\-White\-Chars}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-set\-White\-Chars (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
-\item[{char $\ast$}]{white\+Chars}
+\item[{char $\ast$}]{white\-Chars}
 \end{DoxyParamCaption}
 )}\label{a00028_ga6761d827942a815176f9e9b8703cfc22}
 
 
-Set the white character set for I/\+O stream. 
+Set the white character set for I/\-O stream. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -700,12 +701,12 @@ None
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the Vio object \\
 \hline
-{\em white\+Chars} & white space character set \\
+{\em white\-Chars} & white space character set \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+socket\+Close@{Vio\+\_\+socket\+Close}}
-\index{Vio\+\_\+socket\+Close@{Vio\+\_\+socket\+Close}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+socket\+Close}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+socket\+Close (
+\index{Vio class@{Vio class}!Vio\-\_\-socket\-Close@{Vio\-\_\-socket\-Close}}
+\index{Vio\-\_\-socket\-Close@{Vio\-\_\-socket\-Close}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-socket\-Close}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-socket\-Close (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$$\ast$}]{sock}
 \end{DoxyParamCaption}
@@ -718,7 +719,7 @@ Socket close from read or write.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -728,9 +729,9 @@ None
 {\em sock} & Socket for reading/writing the external data \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+socket\+Open@{Vio\+\_\+socket\+Open}}
-\index{Vio\+\_\+socket\+Open@{Vio\+\_\+socket\+Open}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+socket\+Open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vio}$\ast$ Vio\+\_\+socket\+Open (
+\index{Vio class@{Vio class}!Vio\-\_\-socket\-Open@{Vio\-\_\-socket\-Open}}
+\index{Vio\-\_\-socket\-Open@{Vio\-\_\-socket\-Open}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-socket\-Open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vio}$\ast$ Vio\-\_\-socket\-Open (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{key, }
 \item[{const char $\ast$}]{iodev, }
@@ -747,7 +748,7 @@ Socket open for read or write.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Socket for reading/writing the external data 
@@ -765,9 +766,9 @@ Socket for reading/writing the external data
 {\em iofile} & Pointer to the i/o file name \\
 \hline
 \end{DoxyParams}
-\index{Vio class@{Vio class}!Vio\+\_\+start@{Vio\+\_\+start}}
-\index{Vio\+\_\+start@{Vio\+\_\+start}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+start}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+start (
+\index{Vio class@{Vio class}!Vio\-\_\-start@{Vio\-\_\-start}}
+\index{Vio\-\_\-start@{Vio\-\_\-start}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-start (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -780,14 +781,14 @@ Start Vio communication layer (init internal variables/buffers)
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{Vio class@{Vio class}!Vio\+\_\+stop@{Vio\+\_\+stop}}
-\index{Vio\+\_\+stop@{Vio\+\_\+stop}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+stop}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\+\_\+stop (
+\index{Vio class@{Vio class}!Vio\-\_\-stop@{Vio\-\_\-stop}}
+\index{Vio\-\_\-stop@{Vio\-\_\-stop}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-stop}]{\setlength{\rightskip}{0pt plus 5cm}void Vio\-\_\-stop (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -800,14 +801,14 @@ Shutdown Vio communication layer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
 \end{DoxyReturn}
-\index{Vio class@{Vio class}!Vio\+\_\+write@{Vio\+\_\+write}}
-\index{Vio\+\_\+write@{Vio\+\_\+write}!Vio class@{Vio class}}
-\subsubsection[{Vio\+\_\+write}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\+\_\+write (
+\index{Vio class@{Vio class}!Vio\-\_\-write@{Vio\-\_\-write}}
+\index{Vio\-\_\-write@{Vio\-\_\-write}!Vio class@{Vio class}}
+\subsubsection[{Vio\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}int Vio\-\_\-write (
 \begin{DoxyParamCaption}
 \item[{{\bf Vio} $\ast$}]{thee, }
 \item[{char $\ast$}]{buf, }
@@ -822,7 +823,7 @@ Write bufsize characters from buf to output device.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vio\+: Non-\/\+Inlineable methods (vio.\+c) 
+Class Vio\-: Non-\/\-Inlineable methods (vio.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Number of bytes writen 

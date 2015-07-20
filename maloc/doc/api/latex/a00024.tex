@@ -2,68 +2,66 @@
 \label{a00024}\index{Vcom class@{Vcom class}}
 
 
-Virtual (currently just M\+P\+I) communications layer.  
+Virtual (currently just M\-P\-I) communications layer.  
 
 
 \subsection*{Files}
 \begin{DoxyCompactItemize}
 \item 
-file {\bf vcom.\+h}
-\begin{DoxyCompactList}\small\item\em Class Vcom\+: virtual (currently just M\+P\+I) communications layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+file {\bf vcom.\-h}
+\begin{DoxyCompactList}\small\item\em Class Vcom\-: virtual (currently just M\-P\-I) communications layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\+Vcom}
+struct {\bf s\-Vcom}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vcom class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\+Vcom} {\bf Vcom}
+typedef struct {\bf s\-Vcom} {\bf Vcom}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vcom class as the Vcom structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vcom\+\_\+init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+int {\bf Vcom\-\_\-init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
 \begin{DoxyCompactList}\small\item\em The Vmp initializer. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+finalize} (void)
+int {\bf Vcom\-\_\-finalize} (void)
 \begin{DoxyCompactList}\small\item\em The Vmp finalizer. \end{DoxyCompactList}\item 
-{\bf Vcom} $\ast$ {\bf Vcom\+\_\+ctor} (int commtype)
-\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\+P\+I. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+ctor2} ({\bf Vcom} $\ast$thee, int commtype)
-\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\+P\+I. This is broken into two parts to be callable from F\+O\+R\+T\+R\+A\+N. \end{DoxyCompactList}\item 
-void {\bf Vcom\+\_\+dtor} ({\bf Vcom} $\ast$$\ast$thee)
+{\bf Vcom} $\ast$ {\bf Vcom\-\_\-ctor} (int commtype)
+\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\-P\-I. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-ctor2} ({\bf Vcom} $\ast$thee, int commtype)
+\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\-P\-I. This is broken into two parts to be callable from F\-O\-R\-T\-R\-A\-N. \end{DoxyCompactList}\item 
+void {\bf Vcom\-\_\-dtor} ({\bf Vcom} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destroy the communications object. \end{DoxyCompactList}\item 
-void {\bf Vcom\+\_\+dtor2} ({\bf Vcom} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Destroy the communications object. This is broken into two parts to be callable from F\+O\+R\+T\+R\+A\+N. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+send} ({\bf Vcom} $\ast$thee, int des, void $\ast$buf, int len, int type, int block)
+void {\bf Vcom\-\_\-dtor2} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destroy the communications object. This is broken into two parts to be callable from F\-O\-R\-T\-R\-A\-N. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-send} ({\bf Vcom} $\ast$thee, int des, void $\ast$buf, int len, int type, int block)
 \begin{DoxyCompactList}\small\item\em Send a buffer. Returns 1 on success. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+recv} ({\bf Vcom} $\ast$thee, int src, void $\ast$buf, int len, int type, int block)
-\begin{DoxyCompactList}\small\item\em Receive a (character) buffer. ~\newline
+int {\bf Vcom\-\_\-recv} ({\bf Vcom} $\ast$thee, int src, void $\ast$buf, int len, int type, int block)
+\begin{DoxyCompactList}\small\item\em Receive a (character) buffer. \par
  The blocking flag is present, but not used. All receives are assumed to be blocking. A non-\/blocking receive would be {\itshape very} ugly to implement (signals or something?). \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+get\+Count} ({\bf Vcom} $\ast$thee, int src, int $\ast$length, int type)
+int {\bf Vcom\-\_\-get\-Count} ({\bf Vcom} $\ast$thee, int src, int $\ast$length, int type)
 \begin{DoxyCompactList}\small\item\em Perform a blocking probe to get the length (in number of items of specified type) of an incoming message and place it in the argument ``length". \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+reduce} ({\bf Vcom} $\ast$thee, void $\ast$sendbuf, void $\ast$recvbuf, int length, int type, int op)
-\begin{DoxyCompactList}\small\item\em Perform a reduction of the data across all processors. This is equivalent (and in the case of M\+P\+I is identical to) M\+P\+I\+\_\+\+Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+size} ({\bf Vcom} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Get the number of P\+Es in communicator. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+resize} ({\bf Vcom} $\ast$thee, int newsize)
-\begin{DoxyCompactList}\small\item\em Resize (shrink) the communications group to include only newsize number of processors. ~\newline
+int {\bf Vcom\-\_\-reduce} ({\bf Vcom} $\ast$thee, void $\ast$sendbuf, void $\ast$recvbuf, int length, int type, int op)
+\begin{DoxyCompactList}\small\item\em Perform a reduction of the data across all processors. This is equivalent (and in the case of M\-P\-I is identical to) M\-P\-I\-\_\-\-Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-size} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Get the number of P\-Es in communicator. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-resize} ({\bf Vcom} $\ast$thee, int newsize)
+\begin{DoxyCompactList}\small\item\em Resize (shrink) the communications group to include only newsize number of processors. \par
  Obsolete processes are given rank of -\/1 and size of 0. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+rank} ({\bf Vcom} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Get the I\+D of the local P\+E. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+barr} ({\bf Vcom} $\ast$thee)
+int {\bf Vcom\-\_\-rank} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Get the I\-D of the local P\-E. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-barr} ({\bf Vcom} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Synchronization barrier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Virtual (currently just M\+P\+I) communications layer. 
-
-
+Virtual (currently just M\-P\-I) communications layer. 
 
 \subsection{Typedef Documentation}
 \index{Vcom class@{Vcom class}!Vcom@{Vcom}}
 \index{Vcom@{Vcom}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\+Vcom} {\bf Vcom}}\label{a00024_ga820c01ebd185aba8388ae8ed1147bd28}
+\subsubsection[{Vcom}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\-Vcom} {\bf Vcom}}\label{a00024_ga820c01ebd185aba8388ae8ed1147bd28}
 
 
 Declaration of the Vcom class as the Vcom structure. 
@@ -77,9 +75,9 @@ None
 
 
 \subsection{Function Documentation}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+barr@{Vcom\+\_\+barr}}
-\index{Vcom\+\_\+barr@{Vcom\+\_\+barr}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+barr}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+barr (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-barr@{Vcom\-\_\-barr}}
+\index{Vcom\-\_\-barr@{Vcom\-\_\-barr}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-barr}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-barr (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -92,7 +90,7 @@ Synchronization barrier.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 1 if successful. 
@@ -102,22 +100,22 @@ Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c)
 {\em thee} & Pointer to the communications object \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+ctor@{Vcom\+\_\+ctor}}
-\index{Vcom\+\_\+ctor@{Vcom\+\_\+ctor}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vcom}$\ast$ Vcom\+\_\+ctor (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-ctor@{Vcom\-\_\-ctor}}
+\index{Vcom\-\_\-ctor@{Vcom\-\_\-ctor}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vcom}$\ast$ Vcom\-\_\-ctor (
 \begin{DoxyParamCaption}
 \item[{int}]{commtype}
 \end{DoxyParamCaption}
 )}\label{a00024_gab0fe4866e57bde795a1612a0c6c25845}
 
 
-Construct the communications object. This routine sets up data members of class and initializes M\+P\+I. 
+Construct the communications object. This routine sets up data members of class and initializes M\-P\-I. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Pointer to the new allocated communications object. 
@@ -127,9 +125,9 @@ Pointer to the new allocated communications object.
 {\em commtype} & type of communications object \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+ctor2@{Vcom\+\_\+ctor2}}
-\index{Vcom\+\_\+ctor2@{Vcom\+\_\+ctor2}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+ctor2}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+ctor2 (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-ctor2@{Vcom\-\_\-ctor2}}
+\index{Vcom\-\_\-ctor2@{Vcom\-\_\-ctor2}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-ctor2}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-ctor2 (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee, }
 \item[{int}]{commtype}
@@ -137,13 +135,13 @@ Pointer to the new allocated communications object.
 )}\label{a00024_ga2c81bdd58a94b739bc1b240afb5e2203}
 
 
-Construct the communications object. This routine sets up data members of class and initializes M\+P\+I. This is broken into two parts to be callable from F\+O\+R\+T\+R\+A\+N. 
+Construct the communications object. This routine sets up data members of class and initializes M\-P\-I. This is broken into two parts to be callable from F\-O\-R\-T\-R\-A\-N. 
 
 \begin{DoxyAuthor}{Authors}
 Nathan Baker and Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -155,9 +153,9 @@ Success enumeration
 {\em commtype} & type of communications object \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+dtor@{Vcom\+\_\+dtor}}
-\index{Vcom\+\_\+dtor@{Vcom\+\_\+dtor}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vcom\+\_\+dtor (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-dtor@{Vcom\-\_\-dtor}}
+\index{Vcom\-\_\-dtor@{Vcom\-\_\-dtor}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vcom\-\_\-dtor (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$$\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -170,7 +168,7 @@ Destroy the communications object.
 Nathan Baker and Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -180,22 +178,22 @@ None
 {\em thee} & Pointer to the communications object. \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+dtor2@{Vcom\+\_\+dtor2}}
-\index{Vcom\+\_\+dtor2@{Vcom\+\_\+dtor2}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+dtor2}]{\setlength{\rightskip}{0pt plus 5cm}void Vcom\+\_\+dtor2 (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-dtor2@{Vcom\-\_\-dtor2}}
+\index{Vcom\-\_\-dtor2@{Vcom\-\_\-dtor2}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-dtor2}]{\setlength{\rightskip}{0pt plus 5cm}void Vcom\-\_\-dtor2 (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee}
 \end{DoxyParamCaption}
 )}\label{a00024_gafd89d6360a1fa93e6a5ccd6441511003}
 
 
-Destroy the communications object. This is broken into two parts to be callable from F\+O\+R\+T\+R\+A\+N. 
+Destroy the communications object. This is broken into two parts to be callable from F\-O\-R\-T\-R\-A\-N. 
 
 \begin{DoxyAuthor}{Authors}
 Nathan Baker and Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -205,9 +203,9 @@ None
 {\em thee} & Pointer to the communications object. \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+finalize@{Vcom\+\_\+finalize}}
-\index{Vcom\+\_\+finalize@{Vcom\+\_\+finalize}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+finalize}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+finalize (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-finalize@{Vcom\-\_\-finalize}}
+\index{Vcom\-\_\-finalize@{Vcom\-\_\-finalize}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-finalize}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-finalize (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -220,14 +218,14 @@ The Vmp finalizer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
 \end{DoxyReturn}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+get\+Count@{Vcom\+\_\+get\+Count}}
-\index{Vcom\+\_\+get\+Count@{Vcom\+\_\+get\+Count}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+get\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+get\+Count (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-get\-Count@{Vcom\-\_\-get\-Count}}
+\index{Vcom\-\_\-get\-Count@{Vcom\-\_\-get\-Count}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-get\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-get\-Count (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee, }
 \item[{int}]{src, }
@@ -243,7 +241,7 @@ Perform a blocking probe to get the length (in number of items of specified type
 Nathan Baker 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -256,13 +254,13 @@ Success enumeration
 \hline
 {\em length} & Pointer to perform a blocking probe \\
 \hline
-{\em type} & type of items in message. ~\newline
- 0 =$>$ M\+P\+I\+\_\+\+B\+Y\+T\+E, 1 =$>$ M\+P\+I\+\_\+\+I\+N\+T, 2 =$>$ M\+P\+I\+\_\+\+D\+O\+U\+B\+L\+E, 3 =$>$ M\+P\+I\+\_\+\+C\+H\+A\+R \\
+{\em type} & type of items in message. \par
+ 0 =$>$ M\-P\-I\-\_\-\-B\-Y\-T\-E, 1 =$>$ M\-P\-I\-\_\-\-I\-N\-T, 2 =$>$ M\-P\-I\-\_\-\-D\-O\-U\-B\-L\-E, 3 =$>$ M\-P\-I\-\_\-\-C\-H\-A\-R \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+init@{Vcom\+\_\+init}}
-\index{Vcom\+\_\+init@{Vcom\+\_\+init}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+init (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-init@{Vcom\-\_\-init}}
+\index{Vcom\-\_\-init@{Vcom\-\_\-init}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-init (
 \begin{DoxyParamCaption}
 \item[{int $\ast$}]{argc, }
 \item[{char $\ast$$\ast$$\ast$}]{argv}
@@ -276,7 +274,7 @@ The Vmp initializer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -288,34 +286,34 @@ Success enumeration
 {\em argv} & the command line arguments \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+rank@{Vcom\+\_\+rank}}
-\index{Vcom\+\_\+rank@{Vcom\+\_\+rank}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+rank}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+rank (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-rank@{Vcom\-\_\-rank}}
+\index{Vcom\-\_\-rank@{Vcom\-\_\-rank}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-rank}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-rank (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee}
 \end{DoxyParamCaption}
 )}\label{a00024_ga0b74c7becd865db338bc67a31ecb9c5c}
 
 
-Get the I\+D of the local P\+E. 
+Get the I\-D of the local P\-E. 
 
 \begin{DoxyAuthor}{Authors}
 Nathan Baker and Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-Get the I\+D of the local P\+E 
+Get the I\-D of the local P\-E 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the communications object \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+recv@{Vcom\+\_\+recv}}
-\index{Vcom\+\_\+recv@{Vcom\+\_\+recv}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+recv}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+recv (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-recv@{Vcom\-\_\-recv}}
+\index{Vcom\-\_\-recv@{Vcom\-\_\-recv}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-recv}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-recv (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee, }
 \item[{int}]{src, }
@@ -327,14 +325,14 @@ Get the I\+D of the local P\+E
 )}\label{a00024_ga9d0c8f9c3dcd65a9f461d8bfc7817e66}
 
 
-Receive a (character) buffer. ~\newline
+Receive a (character) buffer. \par
  The blocking flag is present, but not used. All receives are assumed to be blocking. A non-\/blocking receive would be {\itshape very} ugly to implement (signals or something?). 
 
 \begin{DoxyAuthor}{Authors}
 Nathan Baker and Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 1 if successful 
@@ -349,15 +347,15 @@ Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c)
 \hline
 {\em len} & number of items (of declared type) in buffer \\
 \hline
-{\em type} & type of items in message. ~\newline
- 0 =$>$ M\+P\+I\+\_\+\+B\+Y\+T\+E, 1 =$>$ M\+P\+I\+\_\+\+I\+N\+T, 2 =$>$ M\+P\+I\+\_\+\+D\+O\+U\+B\+L\+E, 3 =$>$ M\+P\+I\+\_\+\+C\+H\+A\+R \\
+{\em type} & type of items in message. \par
+ 0 =$>$ M\-P\-I\-\_\-\-B\-Y\-T\-E, 1 =$>$ M\-P\-I\-\_\-\-I\-N\-T, 2 =$>$ M\-P\-I\-\_\-\-D\-O\-U\-B\-L\-E, 3 =$>$ M\-P\-I\-\_\-\-C\-H\-A\-R \\
 \hline
 {\em block} & toggles blocking on (=1) and off (=0) \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+reduce@{Vcom\+\_\+reduce}}
-\index{Vcom\+\_\+reduce@{Vcom\+\_\+reduce}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+reduce}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+reduce (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-reduce@{Vcom\-\_\-reduce}}
+\index{Vcom\-\_\-reduce@{Vcom\-\_\-reduce}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-reduce}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-reduce (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee, }
 \item[{void $\ast$}]{sendbuf, }
@@ -369,13 +367,13 @@ Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c)
 )}\label{a00024_ga3ca5e19921a4eb7b38554bda4df1fa19}
 
 
-Perform a reduction of the data across all processors. This is equivalent (and in the case of M\+P\+I is identical to) M\+P\+I\+\_\+\+Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. 
+Perform a reduction of the data across all processors. This is equivalent (and in the case of M\-P\-I is identical to) M\-P\-I\-\_\-\-Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. 
 
 \begin{DoxyAuthor}{Author}
 Nathan Baker 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -390,16 +388,16 @@ Success enumeration
 \hline
 {\em length} & number of items \\
 \hline
-{\em type} & type of items in message ~\newline
- 0 =$>$ M\+P\+I\+\_\+\+B\+Y\+T\+E, 1 =$>$ M\+P\+I\+\_\+\+I\+N\+T, 2 =$>$ M\+P\+I\+\_\+\+D\+O\+U\+B\+L\+E, 3 =$>$ M\+P\+I\+\_\+\+C\+H\+A\+R \\
+{\em type} & type of items in message \par
+ 0 =$>$ M\-P\-I\-\_\-\-B\-Y\-T\-E, 1 =$>$ M\-P\-I\-\_\-\-I\-N\-T, 2 =$>$ M\-P\-I\-\_\-\-D\-O\-U\-B\-L\-E, 3 =$>$ M\-P\-I\-\_\-\-C\-H\-A\-R \\
 \hline
-{\em op} & operation to perform ~\newline
- 0 =$>$ M\+P\+I\+\_\+\+S\+U\+M, 1 =$>$ M\+P\+I\+\_\+\+P\+R\+O\+D, 2 =$>$ M\+P\+I\+\_\+\+M\+I\+N, 3 =$>$ M\+P\+I\+\_\+\+M\+A\+X \\
+{\em op} & operation to perform \par
+ 0 =$>$ M\-P\-I\-\_\-\-S\-U\-M, 1 =$>$ M\-P\-I\-\_\-\-P\-R\-O\-D, 2 =$>$ M\-P\-I\-\_\-\-M\-I\-N, 3 =$>$ M\-P\-I\-\_\-\-M\-A\-X \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+resize@{Vcom\+\_\+resize}}
-\index{Vcom\+\_\+resize@{Vcom\+\_\+resize}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+resize}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+resize (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-resize@{Vcom\-\_\-resize}}
+\index{Vcom\-\_\-resize@{Vcom\-\_\-resize}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-resize}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-resize (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee, }
 \item[{int}]{newsize}
@@ -407,14 +405,14 @@ Success enumeration
 )}\label{a00024_ga184e2fcc4f26351475b5448fbe506ea1}
 
 
-Resize (shrink) the communications group to include only newsize number of processors. ~\newline
+Resize (shrink) the communications group to include only newsize number of processors. \par
  Obsolete processes are given rank of -\/1 and size of 0. 
 
 \begin{DoxyAuthor}{Author}
 Nathan Baker 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 1 if successful 
@@ -426,9 +424,9 @@ Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c)
 {\em newsize} & number of processors \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+send@{Vcom\+\_\+send}}
-\index{Vcom\+\_\+send@{Vcom\+\_\+send}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+send}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+send (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-send@{Vcom\-\_\-send}}
+\index{Vcom\-\_\-send@{Vcom\-\_\-send}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-send (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee, }
 \item[{int}]{des, }
@@ -446,7 +444,7 @@ Send a buffer. Returns 1 on success.
 Nathan Baker and Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 1 if successful 
@@ -461,31 +459,31 @@ Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c)
 \hline
 {\em len} & number of items (of declared type) in buffer \\
 \hline
-{\em type} & type of items in message. ~\newline
- 0 =$>$ M\+P\+I\+\_\+\+B\+Y\+T\+E, 1 =$>$ M\+P\+I\+\_\+\+I\+N\+T, 2 =$>$ M\+P\+I\+\_\+\+D\+O\+U\+B\+L\+E, 3 =$>$ M\+P\+I\+\_\+\+C\+H\+A\+R \\
+{\em type} & type of items in message. \par
+ 0 =$>$ M\-P\-I\-\_\-\-B\-Y\-T\-E, 1 =$>$ M\-P\-I\-\_\-\-I\-N\-T, 2 =$>$ M\-P\-I\-\_\-\-D\-O\-U\-B\-L\-E, 3 =$>$ M\-P\-I\-\_\-\-C\-H\-A\-R \\
 \hline
 {\em block} & toggles blocking on (=1) and off (=0) \\
 \hline
 \end{DoxyParams}
-\index{Vcom class@{Vcom class}!Vcom\+\_\+size@{Vcom\+\_\+size}}
-\index{Vcom\+\_\+size@{Vcom\+\_\+size}!Vcom class@{Vcom class}}
-\subsubsection[{Vcom\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\+\_\+size (
+\index{Vcom class@{Vcom class}!Vcom\-\_\-size@{Vcom\-\_\-size}}
+\index{Vcom\-\_\-size@{Vcom\-\_\-size}!Vcom class@{Vcom class}}
+\subsubsection[{Vcom\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int Vcom\-\_\-size (
 \begin{DoxyParamCaption}
 \item[{{\bf Vcom} $\ast$}]{thee}
 \end{DoxyParamCaption}
 )}\label{a00024_ga2d0360979d6715b199291cc25879fd7b}
 
 
-Get the number of P\+Es in communicator. 
+Get the number of P\-Es in communicator. 
 
 \begin{DoxyAuthor}{Authors}
 Nathan Baker Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vcom\+: Non-\/\+Inlineable methods (vcom.\+c) 
+Class Vcom\-: Non-\/\-Inlineable methods (vcom.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
-Number of P\+Es or -\/1 if error 
+Number of P\-Es or -\/1 if error 
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}

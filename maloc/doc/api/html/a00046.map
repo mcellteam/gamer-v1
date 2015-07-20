@@ -1,5 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$a00016.html" title="Class Vmp: a Virtual MPI communication layer object." alt="" coords="11,86,67,117"/>
-<area shape="rect" id="node5" href="$a00012.html" title="Header file for a simple parallel extension of ALOC&#39;s VSH." alt="" coords="12,166,65,197"/>
-<area shape="rect" id="node7" href="$a00009.html" title="The foundation header for MALOC." alt="" coords="5,246,72,277"/>
+<map id="vmpi.h" name="vmpi.h">
+<area shape="rect" id="node3" href="$a00016.html" title="Class Vmp: a Virtual MPI communication layer object." alt="" coords="11,83,67,111"/>
+<area shape="rect" id="node5" href="$a00012.html" title="Header file for a simple parallel extension of ALOC&#39;s VSH." alt="" coords="12,161,65,189"/>
+<area shape="rect" id="node7" href="$a00009.html" title="The foundation header for MALOC." alt="" coords="5,238,72,266"/>
 </map>

@@ -14,6 +14,7 @@
 # Script Copyright (C) Johan Hake <hake.dev@gmail.com>
 #                      Ludovic Autin <autin@scripps.edu>
 # Importing modules
+import bpy
 import sys
 import upy
 
@@ -718,7 +719,7 @@ class GamerUI(uiadaptor):
             return
         
         # Ensure editmode is off
-        editmode = self.helper.toggleEditMode()
+        editmode = self.helper.toggleEditMode(obj)
         
         # Paint boundaries 
         items = boundaries.items if hasattr(boundaries, "items") \
@@ -751,7 +752,7 @@ class GamerUI(uiadaptor):
         max_ind = 10000
         num_sub_arrays = len(faces)/max_ind+1
 
-        # If the faces allready excist delete it and re attach it
+        # If the faces allready exist delete it and re attach it
         if "faces" in boundary:
             for key in boundary["faces"]:
                 del boundary["faces"][key]
@@ -791,7 +792,7 @@ class GamerUI(uiadaptor):
         
         if need_repaint:
             # Ensure editmode is off
-            editmode = self.helper.toggleEditMode()
+            editmode = self.helper.toggleEditMode(obj)
             
             faces = self._get_boundary_faces(boundaries[name])
             self.helper.changeColor(obj, gray,\
@@ -937,7 +938,7 @@ class GamerUI(uiadaptor):
             return
 
         # Ensure editmode is off
-        editmode = self.helper.toggleEditMode()
+        editmode = self.helper.toggleEditMode(obj)
         
         for bound_name in list(boundaries.keys()):
             if bound_name == boundary_name:
@@ -1244,7 +1245,7 @@ class GamerUI(uiadaptor):
         bpy.ops.mesh.delete(type='FACE')
 
         # Ensure editmode is off
-        editmode = self.helper.toggleEditMode()
+        editmode = self.helper.toggleEditMode(obj)
         
         # Restore editmode
         self.helper.restoreEditMode(editmode)
@@ -1260,29 +1261,34 @@ class GamerUI(uiadaptor):
             return
         bmesh = self.helper.getMeshFrom(obj)
         
-        # Ensure editmode is off
-        editmode = self.helper.toggleEditMode()
+        # Ensure editmode is off and store current state
+        editmode = self.helper.toggleEditMode(obj)
         
         # Collect quads
-        nquads = 0
+        n_ngons = 0
     
-        # Remove free vertices
+        # detect free vertices and select ngons
 #        vert_users = np.zeros(len(bmesh.verts))
         vert_users = np.zeros(len(bmesh.vertices))
         for f in bmesh.polygons:
             f.select = 0
             for v in f.vertices:
                 vert_users[v] += 1
-            if len(f.vertices) == 4:
-                nquads += 1
+            if len(f.vertices) > 3:
+                n_ngons += 1
                 f.select = 1
                 
-        if nquads:
-            myprint("Found %d quads"%nquads)
+        if n_ngons:
+            myprint("Found %d ngons"%n_ngons)
 
-        # Convert selected quads to triangles
+        # Convert selected ngons to triangles
 #        bmesh.quadToTriangle()
+        # Ensure editmode is on
+        self.helper.restoreEditMode()
         bpy.ops.mesh.quads_convert_to_tris()
+
+        # Ensure editmode is off and don't store current state
+        self.helper.toggleEditMode(obj)
     
     
         for e in bmesh.edges:
@@ -1291,11 +1297,14 @@ class GamerUI(uiadaptor):
         
         verts_free = (vert_users==0).nonzero()[0].tolist()
     	
+        # Delete free verts
         if verts_free:
+            self.helper.toggleEditMode(obj)
             for v in verts_free:
-              bmesh.vertices[v].select = 1
-#            bmesh.verts.delete(verts_free)
+                bmesh.vertices[v].select = 1
+            self.helper.restoreEditMode()
             bpy.ops.mesh.delete(type='VERT')
+            self.helper.toggleEditMode(obj)
             myprint("Removed %s vertices"%len(verts_free))
         
         # Remove edges with no face connected to it
@@ -1310,10 +1319,12 @@ class GamerUI(uiadaptor):
             if e.key not in edges:
                 edges_free.append(e)
         if edges_free:
+            self.helper.toggleEditMode(obj)
             for e in edges_free:
                 bmesh.edges[e].select = 1
-#            bmesh.edges.delete(edges_free)
+            self.helper.restoreEditMode()
             bpy.ops.mesh.delete(type='EDGE')
+            self.helper.toggleEditMode(obj)
             myprint("Removed %s edges"%len(edges_free))
     
         # Check for non-manifolds and open edges
@@ -1391,12 +1402,19 @@ class GamerUI(uiadaptor):
                     bmesh.polygons[edge_map[edge][0]].select = 1
         
         # Free and add faces
-        bmesh.faces.delete(1, free_faces)
-        bmesh.faces.extend(add_faces)
+        for face in free_faces:
+          bmesh.polygons[face].select = 1
+        self.helper.restoreEditMode()
+        bpy.ops.mesh.delete(type='FACE')
+        self.helper.toggleEditMode(obj)
+
+# FIXME:
+#        bmesh.faces.extend(add_faces)
                 
         # Remove free vertices
         vert_users = np.zeros(len(bmesh.vertices))
         for f in bmesh.polygons:
+            f.select = 0
             for v in f.vertices:
                 vert_users[v] += 1
     
@@ -1407,14 +1425,20 @@ class GamerUI(uiadaptor):
         verts_free = (vert_users==0).nonzero()[0].tolist()
     	
         if verts_free:
+            for v in verts_free:
+              bmesh.vertices[v].select = 1
+            self.helper.restoreEditMode()
+            bpy.ops.mesh.delete(type='VERT')
+            self.helper.toggleEditMode(obj)
             myprint("Removed %s vertices"%len(verts_free))
-            bmesh.verts.delete(verts_free)
     
         # Harmonize the normals
         for face in bmesh.polygons:
             face.select = 1
-        myprint("Recalculate normals")
-        bmesh.recalcNormals(0)
+        myprint("Ensure normals face outwards")
+        self.helper.restoreEditMode()
+        bpy.ops.mesh.normals_make_consistent(inside=False)
+        self.helper.toggleEditMode(obj)
         
         # Restore editmode
         self.helper.restoreEditMode(editmode)
@@ -1427,7 +1451,7 @@ class GamerUI(uiadaptor):
             return
         
         # Ensure editmode is off
-        editmode = self.helper.toggleEditMode()
+        editmode = self.helper.toggleEditMode(obj)
         
         # Grab vertices and Faces
         vertices = self.helper.getMeshVertices(obj)
@@ -1466,7 +1490,7 @@ class GamerUI(uiadaptor):
         bmesh = self.helper.getMeshFrom(obj)
 
         # Ensure editmode is off
-        editmode = self.helper.toggleEditMode()
+        editmode = self.helper.toggleEditMode(obj)
         
         # Check for non-manifolds and open edges
         edge_map = dict((edge.key, []) for edge in bmesh.edges)
@@ -1747,8 +1771,6 @@ class GamerUI(uiadaptor):
         # Take the first one
         #myprint("host_to_gamer ", obj)
 
-        # Ensure editmode is off
-        editmode = self.helper.toggleEditMode()
         
         # Get selected mesh
         if obj is None:
@@ -1756,6 +1778,9 @@ class GamerUI(uiadaptor):
         #myprint("_get_selected_mesh ", obj)
         if obj is None:
             return None, None
+
+        # Ensure editmode is off
+        editmode = self.helper.toggleEditMode(obj)
 
         self.waitingCursor(1)
         

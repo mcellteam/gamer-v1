@@ -1,127 +1,125 @@
-\section{vio.\+h File Reference}
-\label{a00014}\index{vio.\+h@{vio.\+h}}
+\section{vio.\-h File Reference}
+\label{a00014}\index{vio.\-h@{vio.\-h}}
 
 
-Class Vio\+: virtual $<$S\+D\+I\+O/\+F\+I\+L\+E/\+B\+U\+F\+F/\+U\+N\+I\+X/\+I\+N\+E\+T$>$ I/\+O layer.  
+Class Vio\-: virtual $<$S\-D\-I\-O/\-F\-I\-L\-E/\-B\-U\-F\-F/\-U\-N\-I\-X/\-I\-N\-E\-T$>$ I/\-O layer.  
 
 
-{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
-{\ttfamily \#include $<$maloc/vnm.\+h$>$}\\*
-Include dependency graph for vio.\+h\+:\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\-\_\-base.\-h$>$}\\*
+{\ttfamily \#include $<$maloc/vnm.\-h$>$}\\*
+Include dependency graph for vio.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{a00039}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=224pt]{a00040}
+\includegraphics[width=223pt]{a00040}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\+Vio}
+struct {\bf s\-Vio}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vio class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define {\bf V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}~14916
-\begin{DoxyCompactList}\small\item\em our portbase; 5000 $<$ V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R $<$ 49152 \end{DoxyCompactList}\item 
-\#define {\bf V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}~10
-\begin{DoxyCompactList}\small\item\em number of internal buffers (B\+U\+F\+F datatype) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define {\bf V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R}~14916
+\begin{DoxyCompactList}\small\item\em our portbase; 5000 $<$ V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R $<$ 49152 \end{DoxyCompactList}\item 
+\#define {\bf V\-I\-O\-\_\-\-M\-A\-X\-B\-U\-F}~10
+\begin{DoxyCompactList}\small\item\em number of internal buffers (B\-U\-F\-F datatype) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum {\bf V\+I\+Otype} {\bf V\+I\+Otype}
-\begin{DoxyCompactList}\small\item\em Parameter for I/\+O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
-typedef enum {\bf V\+I\+Ofrmt} {\bf V\+I\+Ofrmt}
-\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\+D\+R,A\+S\+C) \end{DoxyCompactList}\item 
-typedef enum {\bf V\+I\+Orwkey} {\bf V\+I\+Orwkey}
-\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\+W) \end{DoxyCompactList}\item 
-typedef struct {\bf s\+Vio} {\bf Vio}
+typedef enum {\bf V\-I\-Otype} {\bf V\-I\-Otype}
+\begin{DoxyCompactList}\small\item\em Parameter for I/\-O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
+typedef enum {\bf V\-I\-Ofrmt} {\bf V\-I\-Ofrmt}
+\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\-D\-R,A\-S\-C) \end{DoxyCompactList}\item 
+typedef enum {\bf V\-I\-Orwkey} {\bf V\-I\-Orwkey}
+\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\-W) \end{DoxyCompactList}\item 
+typedef struct {\bf s\-Vio} {\bf Vio}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vio class as the Vio structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bf V\+I\+Otype} \{ \\*
-{\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+T\+Y\+P\+E}, 
-{\bf V\+I\+O\+\_\+\+S\+D\+I\+O}, 
-{\bf V\+I\+O\+\_\+\+B\+U\+F\+F}, 
-{\bf V\+I\+O\+\_\+\+F\+I\+L\+E}, 
+enum {\bf V\-I\-Otype} \{ \\*
+{\bf V\-I\-O\-\_\-\-N\-O\-\_\-\-T\-Y\-P\-E}, 
+{\bf V\-I\-O\-\_\-\-S\-D\-I\-O}, 
+{\bf V\-I\-O\-\_\-\-B\-U\-F\-F}, 
+{\bf V\-I\-O\-\_\-\-F\-I\-L\-E}, 
 \\*
-{\bf V\+I\+O\+\_\+\+U\+N\+I\+X}, 
-{\bf V\+I\+O\+\_\+\+I\+N\+E\+T}
+{\bf V\-I\-O\-\_\-\-U\-N\-I\-X}, 
+{\bf V\-I\-O\-\_\-\-I\-N\-E\-T}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for I/\+O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
-enum {\bf V\+I\+Ofrmt} \{ {\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+F\+R\+M\+T}, 
-{\bf V\+I\+O\+\_\+\+X\+D\+R}, 
-{\bf V\+I\+O\+\_\+\+A\+S\+C}
+\begin{DoxyCompactList}\small\item\em Parameter for I/\-O type (sdio,buff,file,unix,inet) \end{DoxyCompactList}\item 
+enum {\bf V\-I\-Ofrmt} \{ {\bf V\-I\-O\-\_\-\-N\-O\-\_\-\-F\-R\-M\-T}, 
+{\bf V\-I\-O\-\_\-\-X\-D\-R}, 
+{\bf V\-I\-O\-\_\-\-A\-S\-C}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\+D\+R,A\+S\+C) \end{DoxyCompactList}\item 
-enum {\bf V\+I\+Orwkey} \{ {\bf V\+I\+O\+\_\+\+N\+O\+\_\+\+R\+W}, 
-{\bf V\+I\+O\+\_\+\+R}, 
-{\bf V\+I\+O\+\_\+\+W}
+\begin{DoxyCompactList}\small\item\em Parameter for compression type (X\-D\-R,A\-S\-C) \end{DoxyCompactList}\item 
+enum {\bf V\-I\-Orwkey} \{ {\bf V\-I\-O\-\_\-\-N\-O\-\_\-\-R\-W}, 
+{\bf V\-I\-O\-\_\-\-R}, 
+{\bf V\-I\-O\-\_\-\-W}
  \}
-\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\+W) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parameter for rw type (R,R\-W) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bf Vio\+\_\+start} (void)
+void {\bf Vio\-\_\-start} (void)
 \begin{DoxyCompactList}\small\item\em Start Vio communication layer (init internal variables/buffers) \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+stop} (void)
+void {\bf Vio\-\_\-stop} (void)
 \begin{DoxyCompactList}\small\item\em Shutdown Vio communication layer. \end{DoxyCompactList}\item 
-{\bf Vio} $\ast$ {\bf Vio\+\_\+ctor} (const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
+{\bf Vio} $\ast$ {\bf Vio\-\_\-ctor} (const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
 \begin{DoxyCompactList}\small\item\em Construct the Vio object. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+ctor2} ({\bf Vio} $\ast$thee, const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
-\begin{DoxyCompactList}\small\item\em Work routine that Vio\+\_\+ctor calls to do most of the construction. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+dtor} ({\bf Vio} $\ast$$\ast$thee)
+int {\bf Vio\-\_\-ctor2} ({\bf Vio} $\ast$thee, const char $\ast$socktype, const char $\ast$datafrmt, const char $\ast$hostname, const char $\ast$filename, const char $\ast$rwkey)
+\begin{DoxyCompactList}\small\item\em Work routine that Vio\-\_\-ctor calls to do most of the construction. \end{DoxyCompactList}\item 
+void {\bf Vio\-\_\-dtor} ({\bf Vio} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destruct the Vio object. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+dtor2} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Work routine that Vio\+\_\+dtor calls to do most of the destruction. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+set\+White\+Chars} ({\bf Vio} $\ast$thee, char $\ast$white\+Chars)
-\begin{DoxyCompactList}\small\item\em Set the white character set for I/\+O stream. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+set\+Comm\+Chars} ({\bf Vio} $\ast$thee, char $\ast$comm\+Chars)
-\begin{DoxyCompactList}\small\item\em Set the comment character set for I/\+O stream. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+accept} ({\bf Vio} $\ast$thee, int nonblock)
+void {\bf Vio\-\_\-dtor2} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Work routine that Vio\-\_\-dtor calls to do most of the destruction. \end{DoxyCompactList}\item 
+void {\bf Vio\-\_\-set\-White\-Chars} ({\bf Vio} $\ast$thee, char $\ast$white\-Chars)
+\begin{DoxyCompactList}\small\item\em Set the white character set for I/\-O stream. \end{DoxyCompactList}\item 
+void {\bf Vio\-\_\-set\-Comm\-Chars} ({\bf Vio} $\ast$thee, char $\ast$comm\-Chars)
+\begin{DoxyCompactList}\small\item\em Set the comment character set for I/\-O stream. \end{DoxyCompactList}\item 
+int {\bf Vio\-\_\-accept} ({\bf Vio} $\ast$thee, int nonblock)
 \begin{DoxyCompactList}\small\item\em Accept any waiting connect attempt to our socket on our machine. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+accept\+Free} ({\bf Vio} $\ast$thee)
+void {\bf Vio\-\_\-accept\-Free} ({\bf Vio} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Free the socket child that was used for the last accept. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+connect} ({\bf Vio} $\ast$thee, int nonblock)
+int {\bf Vio\-\_\-connect} ({\bf Vio} $\ast$thee, int nonblock)
 \begin{DoxyCompactList}\small\item\em Connect to some socket on a remote machine (or on our machine) \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+connect\+Free} ({\bf Vio} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Purge any output buffers (for $<$U\+N\+I\+X/\+I\+N\+E\+T$>$, else a no-\/op) \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+scanf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
+void {\bf Vio\-\_\-connect\-Free} ({\bf Vio} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Purge any output buffers (for $<$U\-N\-I\-X/\-I\-N\-E\-T$>$, else a no-\/op) \end{DoxyCompactList}\item 
+int {\bf Vio\-\_\-scanf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
 \begin{DoxyCompactList}\small\item\em Mimic \char`\"{}scanf\char`\"{} from an arbitrary Vio device. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+printf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
+int {\bf Vio\-\_\-printf} ({\bf Vio} $\ast$thee, char $\ast$parms,...)
 \begin{DoxyCompactList}\small\item\em Mimic \char`\"{}printf\char`\"{} from an arbitrary Vio device. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+read} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+int {\bf Vio\-\_\-read} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
 \begin{DoxyCompactList}\small\item\em Read (up to) bufsize characters into buf from input device. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+write} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+int {\bf Vio\-\_\-write} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
 \begin{DoxyCompactList}\small\item\em Write bufsize characters from buf to output device. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+buf\+Take} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
+void {\bf Vio\-\_\-buf\-Take} ({\bf Vio} $\ast$thee, char $\ast$buf, int bufsize)
 \begin{DoxyCompactList}\small\item\em Set the pointer to the internal buffer. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vio\+\_\+buf\+Give} ({\bf Vio} $\ast$thee)
+char $\ast$ {\bf Vio\-\_\-buf\-Give} ({\bf Vio} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the pointer to the internal buffer. \end{DoxyCompactList}\item 
-int {\bf Vio\+\_\+buf\+Size} ({\bf Vio} $\ast$thee)
+int {\bf Vio\-\_\-buf\-Size} ({\bf Vio} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the length to the internal buffer. \end{DoxyCompactList}\item 
-{\bf Vio} $\ast$ {\bf Vio\+\_\+socket\+Open} (char $\ast$key, const char $\ast$iodev, const char $\ast$iofmt, const char $\ast$iohost, const char $\ast$iofile)
+{\bf Vio} $\ast$ {\bf Vio\-\_\-socket\-Open} (char $\ast$key, const char $\ast$iodev, const char $\ast$iofmt, const char $\ast$iohost, const char $\ast$iofile)
 \begin{DoxyCompactList}\small\item\em Socket open for read or write. \end{DoxyCompactList}\item 
-void {\bf Vio\+\_\+socket\+Close} ({\bf Vio} $\ast$$\ast$sock)
+void {\bf Vio\-\_\-socket\-Close} ({\bf Vio} $\ast$$\ast$sock)
 \begin{DoxyCompactList}\small\item\em Socket close from read or write. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vio\+: virtual $<$S\+D\+I\+O/\+F\+I\+L\+E/\+B\+U\+F\+F/\+U\+N\+I\+X/\+I\+N\+E\+T$>$ I/\+O layer. 
-
-\begin{DoxyVersion}{Version}
+Class Vio\-: virtual $<$S\-D\-I\-O/\-F\-I\-L\-E/\-B\-U\-F\-F/\-U\-N\-I\-X/\-I\-N\-E\-T$>$ I/\-O layer. \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id}
-\doxyref{vio.\+h}{p.}{a00014},v 1.\+28 2010/08/12 05\+:40\+:35 fetk Exp 
+\begin{DoxyParagraph}{Id\-:}
+\doxyref{vio.\-h}{p.}{a00014},v 1.\-28 2010/08/12 05\-:40\-:35 fetk Exp 
 \end{DoxyParagraph}
 \begin{DoxyAuthor}{Author}
 Michael Holst
@@ -151,17 +149,17 @@ Michael Holst
 
 
 \subsection{Macro Definition Documentation}
-\index{vio.\+h@{vio.\+h}!V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F@{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}}
-\index{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F@{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}!vio.\+h@{vio.\+h}}
-\subsubsection[{V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+I\+O\+\_\+\+M\+A\+X\+B\+U\+F~10}\label{a00014_a1e94d8ac2af32609f662f3133cb2460a}
+\index{vio.\-h@{vio.\-h}!V\-I\-O\-\_\-\-M\-A\-X\-B\-U\-F@{V\-I\-O\-\_\-\-M\-A\-X\-B\-U\-F}}
+\index{V\-I\-O\-\_\-\-M\-A\-X\-B\-U\-F@{V\-I\-O\-\_\-\-M\-A\-X\-B\-U\-F}!vio.h@{vio.\-h}}
+\subsubsection[{V\-I\-O\-\_\-\-M\-A\-X\-B\-U\-F}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\-I\-O\-\_\-\-M\-A\-X\-B\-U\-F~10}\label{a00014_a1e94d8ac2af32609f662f3133cb2460a}
 
 
-number of internal buffers (B\+U\+F\+F datatype) 
+number of internal buffers (B\-U\-F\-F datatype) 
 
-\index{vio.\+h@{vio.\+h}!V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R@{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}}
-\index{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R@{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}!vio.\+h@{vio.\+h}}
-\subsubsection[{V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R~14916}\label{a00014_a4a7675dfbe5a786fba616dba632bb44a}
+\index{vio.\-h@{vio.\-h}!V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R@{V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R}}
+\index{V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R@{V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R}!vio.h@{vio.\-h}}
+\subsubsection[{V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R~14916}\label{a00014_a4a7675dfbe5a786fba616dba632bb44a}
 
 
-our portbase; 5000 $<$ V\+P\+O\+R\+T\+N\+U\+M\+B\+E\+R $<$ 49152 
+our portbase; 5000 $<$ V\-P\-O\-R\-T\-N\-U\-M\-B\-E\-R $<$ 49152 
 
