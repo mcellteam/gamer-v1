@@ -7,7 +7,7 @@ Created on Tue Apr 17 08:37:50 2012
 __url__ = ["gamer",]
 
 bl_info = {
-    "name": "GAMer",
+    "name": "GAMer Upy",
     "description": """""",
     "author": "",
     "version": (0,0,0),

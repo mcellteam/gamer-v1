@@ -1,63 +1,65 @@
-\section{vmp.\-h File Reference}
-\label{a00016}\index{vmp.\-h@{vmp.\-h}}
+\section{vmp.\+h File Reference}
+\label{a00016}\index{vmp.\+h@{vmp.\+h}}
 
 
-Class Vmp\-: a Virtual M\-P\-I communication layer object.  
+Class Vmp\+: a Virtual M\+P\+I communication layer object.  
 
 
-{\ttfamily \#include $<$maloc/maloc\-\_\-base.\-h$>$}\\*
-{\ttfamily \#include $<$maloc/vsys.\-h$>$}\\*
-{\ttfamily \#include $<$maloc/vmpi.\-h$>$}\\*
-{\ttfamily \#include $<$maloc/vcom.\-h$>$}\\*
-Include dependency graph for vmp.\-h\-:\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
+{\ttfamily \#include $<$maloc/vsys.\+h$>$}\\*
+{\ttfamily \#include $<$maloc/vmpi.\+h$>$}\\*
+{\ttfamily \#include $<$maloc/vcom.\+h$>$}\\*
+Include dependency graph for vmp.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{a00043}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\-:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=94pt]{a00044}
+\includegraphics[width=96pt]{a00044}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\-Vmp}
+struct {\bf s\+Vmp}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vmp class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\-Vmp} {\bf Vmp}
+typedef struct {\bf s\+Vmp} {\bf Vmp}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vmp class as teh Vmp structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vmp\-\_\-init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+int {\bf Vmp\+\_\+init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
 \begin{DoxyCompactList}\small\item\em The Vmp initializer. \end{DoxyCompactList}\item 
-int {\bf Vmp\-\_\-finalize} (void)
+int {\bf Vmp\+\_\+finalize} (void)
 \begin{DoxyCompactList}\small\item\em The Vmp finalizer. \end{DoxyCompactList}\item 
-{\bf Vmp} $\ast$ {\bf Vmp\-\_\-ctor} (void)
+{\bf Vmp} $\ast$ {\bf Vmp\+\_\+ctor} (void)
 \begin{DoxyCompactList}\small\item\em The Vmp constructor. \end{DoxyCompactList}\item 
-void {\bf Vmp\-\_\-dtor} ({\bf Vmp} $\ast$$\ast$thee)
+void {\bf Vmp\+\_\+dtor} ({\bf Vmp} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em The Vmp destructor. \end{DoxyCompactList}\item 
-int {\bf Vmp\-\_\-rank} ({\bf Vmp} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return my processor I\-D. \end{DoxyCompactList}\item 
-int {\bf Vmp\-\_\-size} ({\bf Vmp} $\ast$thee)
+int {\bf Vmp\+\_\+rank} ({\bf Vmp} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return my processor I\+D. \end{DoxyCompactList}\item 
+int {\bf Vmp\+\_\+size} ({\bf Vmp} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the number of processors involved. \end{DoxyCompactList}\item 
-int {\bf Vmp\-\_\-barr} ({\bf Vmp} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I barrier. \end{DoxyCompactList}\item 
-int {\bf Vmp\-\_\-send} ({\bf Vmp} $\ast$thee, int des, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I blocking send. \end{DoxyCompactList}\item 
-int {\bf Vmp\-\_\-recv} ({\bf Vmp} $\ast$thee, int src, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I blocking receive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int {\bf Vmp\+\_\+barr} ({\bf Vmp} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I barrier. \end{DoxyCompactList}\item 
+int {\bf Vmp\+\_\+send} ({\bf Vmp} $\ast$thee, int des, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I blocking send. \end{DoxyCompactList}\item 
+int {\bf Vmp\+\_\+recv} ({\bf Vmp} $\ast$thee, int src, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I blocking receive. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vmp\-: a Virtual M\-P\-I communication layer object. \begin{DoxyAuthor}{Author}
+Class Vmp\+: a Virtual M\+P\+I communication layer object. 
+
+\begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
@@ -66,8 +68,8 @@ None
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id\-:}
-\doxyref{vmp.\-h}{p.}{a00016},v 1.\-22 2010/08/12 05\-:40\-:23 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{vmp.\+h}{p.}{a00016},v 1.\+22 2010/08/12 05\+:40\+:23 fetk Exp 
 \end{DoxyParagraph}
 
 

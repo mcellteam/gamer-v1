@@ -534,13 +534,13 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
-INPUT                  = /home/bartol/src/gamer/gamer_20131125_git/maloc/src/base/maloc \
-                         /home/bartol/src/gamer/gamer_20131125_git/maloc/src/psh/maloc \
-                         /home/bartol/src/gamer/gamer_20131125_git/maloc/src/vsh/maloc \
-                         /home/bartol/src/gamer/gamer_20131125_git/maloc/src/vsys/maloc \
-                         /home/bartol/src/gamer/gamer_20131125_git/maloc/src/aaa_inc/maloc/maloc.h \
-                         /home/bartol/src/gamer/gamer_20131125_git/maloc/doc/license.h \
-                         /home/bartol/src/gamer/gamer_20131125_git/maloc/doc/doxygen/prog.h
+INPUT                  = /Users/bartol/src/gamer/gamer_git/maloc/src/base/maloc \
+                         /Users/bartol/src/gamer/gamer_git/maloc/src/psh/maloc \
+                         /Users/bartol/src/gamer/gamer_git/maloc/src/vsh/maloc \
+                         /Users/bartol/src/gamer/gamer_git/maloc/src/vsys/maloc \
+                         /Users/bartol/src/gamer/gamer_git/maloc/src/aaa_inc/maloc/maloc.h \
+                         /Users/bartol/src/gamer/gamer_git/maloc/doc/license.h \
+                         /Users/bartol/src/gamer/gamer_git/maloc/doc/doxygen/prog.h
 
 # This tag can be used to specify the character encoding of the source files 
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is 
@@ -627,7 +627,7 @@ IMAGE_PATH             =
 # to standard output.  If FILTER_PATTERNS is specified, this tag will be 
 # ignored.
 
-INPUT_FILTER           = /home/bartol/src/gamer/gamer_20131125_git/maloc/doc/doxygen/cooc-filter
+INPUT_FILTER           = /Users/bartol/src/gamer/gamer_git/maloc/doc/doxygen/cooc-filter
 
 # The FILTER_PATTERNS tag can be used to specify filters on a per file pattern 
 # basis.  Doxygen will compare the file name with each pattern and apply the 
@@ -762,7 +762,7 @@ HTML_FOOTER            =
 # the style sheet file to the HTML output directory, so don't put your own 
 # stylesheet in the HTML output directory as well, or it will be erased!
 
-HTML_STYLESHEET        = /home/bartol/src/gamer/gamer_20131125_git/maloc/doc/doxygen/maloc.css
+HTML_STYLESHEET        = /Users/bartol/src/gamer/gamer_git/maloc/doc/doxygen/maloc.css
 
 # If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes, 
 # files or namespaces will be aligned in HTML using tables. If set to 
@@ -1358,7 +1358,7 @@ DOT_IMAGE_FORMAT       = png
 # The tag DOT_PATH can be used to specify the path where the dot tool can be 
 # found. If left blank, it is assumed the dot tool can be found in the path.
 
-DOT_PATH               = /usr/bin/dot
+DOT_PATH               = /opt/local/bin/dot
 
 # The DOTFILE_DIRS tag can be used to specify one or more directories that 
 # contain dot files that are included in the documentation (see the 

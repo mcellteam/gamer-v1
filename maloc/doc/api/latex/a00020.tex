@@ -1,80 +1,82 @@
-\section{vset.\-h File Reference}
-\label{a00020}\index{vset.\-h@{vset.\-h}}
+\section{vset.\+h File Reference}
+\label{a00020}\index{vset.\+h@{vset.\+h}}
 
 
-Class Vset\-: a dynamic set object.  
+Class Vset\+: a dynamic set object.  
 
 
-{\ttfamily \#include $<$maloc/maloc\-\_\-base.\-h$>$}\\*
-{\ttfamily \#include $<$maloc/vnm.\-h$>$}\\*
-{\ttfamily \#include $<$maloc/vmem.\-h$>$}\\*
-Include dependency graph for vset.\-h\-:\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
+{\ttfamily \#include $<$maloc/vnm.\+h$>$}\\*
+{\ttfamily \#include $<$maloc/vmem.\+h$>$}\\*
+Include dependency graph for vset.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{a00051}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\-:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=223pt]{a00052}
+\includegraphics[width=226pt]{a00052}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\-Vset}
+struct {\bf s\+Vset}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vset class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\-Vset} {\bf Vset}
+typedef struct {\bf s\+Vset} {\bf Vset}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vset class as the Vset structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vset\-\_\-num} ({\bf Vset} $\ast$thee)
+int {\bf Vset\+\_\+num} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the number of things currently in the list. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-access} ({\bf Vset} $\ast$thee, int i)
+char $\ast$ {\bf Vset\+\_\+access} ({\bf Vset} $\ast$thee, int i)
 \begin{DoxyCompactList}\small\item\em Access an object in an arbitrary place in the list. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-create} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+create} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Create an object on the end of the list. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-first} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+first} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the first object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-last} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the last object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-next} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+next} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the next object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-prev} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+prev} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the prev object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-peek\-First} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+peek\+First} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the first object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-peek\-Last} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+peek\+Last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the last object in the set. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-destroy} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+destroy} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Delete an object from the end of the list. \end{DoxyCompactList}\item 
-{\bf Vset} $\ast$ {\bf Vset\-\_\-ctor} ({\bf Vmem} $\ast$vmem, const char $\ast$tname, int tsize, int tmax\-Num, int io\-Key)
+{\bf Vset} $\ast$ {\bf Vset\+\_\+ctor} ({\bf Vmem} $\ast$vmem, const char $\ast$tname, int tsize, int tmax\+Num, int io\+Key)
 \begin{DoxyCompactList}\small\item\em Construct the set object. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-dtor} ({\bf Vset} $\ast$$\ast$thee)
+void {\bf Vset\+\_\+dtor} ({\bf Vset} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destroy the set object. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-create\-Last} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+create\+Last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Create an object on the end of the list. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-destroy\-Last} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+destroy\+Last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Free up the object currently on the end of the list. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-init\-Data} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+init\+Data} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Initialize the Vset data (thee). \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-reset} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+reset} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Release all Ram controlled by this (thee) and re-\/initialize. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-check} ({\bf Vset} $\ast$thee, int $\ast$tnum, int $\ast$tsize, int $\ast$t\-Vec\-Use, int $\ast$t\-Vec\-Mal, int $\ast$t\-Vec\-Ohd)
-\begin{DoxyCompactList}\small\item\em Get and return the R\-A\-M Control Block (thee) information. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-mem\-Chk} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+check} ({\bf Vset} $\ast$thee, int $\ast$tnum, int $\ast$tsize, int $\ast$t\+Vec\+Use, int $\ast$t\+Vec\+Mal, int $\ast$t\+Vec\+Ohd)
+\begin{DoxyCompactList}\small\item\em Get and return the R\+A\+M Control Block (thee) information. \end{DoxyCompactList}\item 
+void {\bf Vset\+\_\+mem\+Chk} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Print the exact current malloc usage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vset\-: a dynamic set object. \begin{DoxyAuthor}{Author}
+Class Vset\+: a dynamic set object. 
+
+\begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
@@ -83,8 +85,8 @@ None
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id\-:}
-\doxyref{vset.\-h}{p.}{a00020},v 1.\-20 2010/08/12 05\-:40\-:37 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{vset.\+h}{p.}{a00020},v 1.\+20 2010/08/12 05\+:40\+:37 fetk Exp 
 \end{DoxyParagraph}
 
 

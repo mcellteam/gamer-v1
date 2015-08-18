@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PREFIX=$PWD/gamer_install
+export PREFIX=$PWD/gamer_build
 export FETK_INCLUDE=$PREFIX/include
 export FETK_LIBRARY=$PREFIX/lib
 export PYTHON=/opt/local/bin/python3.4

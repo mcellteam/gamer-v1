@@ -8,66 +8,68 @@ A dynamic set object.
 \subsection*{Files}
 \begin{DoxyCompactItemize}
 \item 
-file {\bf vset.\-h}
-\begin{DoxyCompactList}\small\item\em Class Vset\-: a dynamic set object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+file {\bf vset.\+h}
+\begin{DoxyCompactList}\small\item\em Class Vset\+: a dynamic set object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\-Vset}
+struct {\bf s\+Vset}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vset class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\-Vset} {\bf Vset}
+typedef struct {\bf s\+Vset} {\bf Vset}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vset class as the Vset structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vset\-\_\-num} ({\bf Vset} $\ast$thee)
+int {\bf Vset\+\_\+num} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the number of things currently in the list. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-access} ({\bf Vset} $\ast$thee, int i)
+char $\ast$ {\bf Vset\+\_\+access} ({\bf Vset} $\ast$thee, int i)
 \begin{DoxyCompactList}\small\item\em Access an object in an arbitrary place in the list. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-create} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+create} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Create an object on the end of the list. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-first} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+first} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the first object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-last} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the last object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-next} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+next} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the next object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-prev} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+prev} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the prev object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-peek\-First} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+peek\+First} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the first object in the set. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-peek\-Last} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+peek\+Last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the last object in the set. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-destroy} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+destroy} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Delete an object from the end of the list. \end{DoxyCompactList}\item 
-{\bf Vset} $\ast$ {\bf Vset\-\_\-ctor} ({\bf Vmem} $\ast$vmem, const char $\ast$tname, int tsize, int tmax\-Num, int io\-Key)
+{\bf Vset} $\ast$ {\bf Vset\+\_\+ctor} ({\bf Vmem} $\ast$vmem, const char $\ast$tname, int tsize, int tmax\+Num, int io\+Key)
 \begin{DoxyCompactList}\small\item\em Construct the set object. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-dtor} ({\bf Vset} $\ast$$\ast$thee)
+void {\bf Vset\+\_\+dtor} ({\bf Vset} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destroy the set object. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vset\-\_\-create\-Last} ({\bf Vset} $\ast$thee)
+char $\ast$ {\bf Vset\+\_\+create\+Last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Create an object on the end of the list. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-destroy\-Last} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+destroy\+Last} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Free up the object currently on the end of the list. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-init\-Data} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+init\+Data} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Initialize the Vset data (thee). \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-reset} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+reset} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Release all Ram controlled by this (thee) and re-\/initialize. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-check} ({\bf Vset} $\ast$thee, int $\ast$tnum, int $\ast$tsize, int $\ast$t\-Vec\-Use, int $\ast$t\-Vec\-Mal, int $\ast$t\-Vec\-Ohd)
-\begin{DoxyCompactList}\small\item\em Get and return the R\-A\-M Control Block (thee) information. \end{DoxyCompactList}\item 
-void {\bf Vset\-\_\-mem\-Chk} ({\bf Vset} $\ast$thee)
+void {\bf Vset\+\_\+check} ({\bf Vset} $\ast$thee, int $\ast$tnum, int $\ast$tsize, int $\ast$t\+Vec\+Use, int $\ast$t\+Vec\+Mal, int $\ast$t\+Vec\+Ohd)
+\begin{DoxyCompactList}\small\item\em Get and return the R\+A\+M Control Block (thee) information. \end{DoxyCompactList}\item 
+void {\bf Vset\+\_\+mem\+Chk} ({\bf Vset} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Print the exact current malloc usage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A dynamic set object. 
 
+
+
 \subsection{Typedef Documentation}
 \index{Vset class@{Vset class}!Vset@{Vset}}
 \index{Vset@{Vset}!Vset class@{Vset class}}
-\subsubsection[{Vset}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\-Vset} {\bf Vset}}\label{a00030_ga171da826a5f6aa7ab502a512084ec375}
+\subsubsection[{Vset}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\+Vset} {\bf Vset}}\label{a00030_ga171da826a5f6aa7ab502a512084ec375}
 
 
 Declaration of the Vset class as the Vset structure. 
@@ -78,9 +80,9 @@ Michael Holst
 
 
 \subsection{Function Documentation}
-\index{Vset class@{Vset class}!Vset\-\_\-access@{Vset\-\_\-access}}
-\index{Vset\-\_\-access@{Vset\-\_\-access}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-access}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-access (
+\index{Vset class@{Vset class}!Vset\+\_\+access@{Vset\+\_\+access}}
+\index{Vset\+\_\+access@{Vset\+\_\+access}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+access}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+access (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee, }
 \item[{int}]{i}
@@ -94,7 +96,7 @@ Access an object in an arbitrary place in the list.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 list of pointers to blocks of storage we manage 
@@ -106,27 +108,27 @@ list of pointers to blocks of storage we manage
 {\em i} & index of the object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-check@{Vset\-\_\-check}}
-\index{Vset\-\_\-check@{Vset\-\_\-check}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-check}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\-\_\-check (
+\index{Vset class@{Vset class}!Vset\+\_\+check@{Vset\+\_\+check}}
+\index{Vset\+\_\+check@{Vset\+\_\+check}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+check}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\+\_\+check (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee, }
 \item[{int $\ast$}]{tnum, }
 \item[{int $\ast$}]{tsize, }
-\item[{int $\ast$}]{t\-Vec\-Use, }
-\item[{int $\ast$}]{t\-Vec\-Mal, }
-\item[{int $\ast$}]{t\-Vec\-Ohd}
+\item[{int $\ast$}]{t\+Vec\+Use, }
+\item[{int $\ast$}]{t\+Vec\+Mal, }
+\item[{int $\ast$}]{t\+Vec\+Ohd}
 \end{DoxyParamCaption}
 )}\label{a00030_gaa36915a435ed4b67a9a1b4ea02a96c8d}
 
 
-Get and return the R\-A\-M Control Block (thee) information. 
+Get and return the R\+A\+M Control Block (thee) information. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -135,20 +137,20 @@ None
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the Vset object \\
 \hline
-{\em tnum} & the global \char`\"{}\-T\char`\"{} counter -- how many \char`\"{}\-T\char`\"{}s in list \\
+{\em tnum} & the global \char`\"{}\+T\char`\"{} counter -- how many \char`\"{}\+T\char`\"{}s in list \\
 \hline
 {\em tsize} & size of the object in bytes \\
 \hline
-{\em t\-Vec\-Use} & size of the total objects \\
+{\em t\+Vec\+Use} & size of the total objects \\
 \hline
-{\em t\-Vec\-Mal} & size of the total R\-A\-M Control Block \\
+{\em t\+Vec\+Mal} & size of the total R\+A\+M Control Block \\
 \hline
-{\em t\-Vec\-Ohd} & maximal size of R\-A\-M Control Block \\
+{\em t\+Vec\+Ohd} & maximal size of R\+A\+M Control Block \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-create@{Vset\-\_\-create}}
-\index{Vset\-\_\-create@{Vset\-\_\-create}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-create (
+\index{Vset class@{Vset class}!Vset\+\_\+create@{Vset\+\_\+create}}
+\index{Vset\+\_\+create@{Vset\+\_\+create}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+create (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -161,7 +163,7 @@ Create an object on the end of the list.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Pointer to a created Vset object on the end of the list 
@@ -171,9 +173,9 @@ Pointer to a created Vset object on the end of the list
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-create\-Last@{Vset\-\_\-create\-Last}}
-\index{Vset\-\_\-create\-Last@{Vset\-\_\-create\-Last}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-create\-Last}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-create\-Last (
+\index{Vset class@{Vset class}!Vset\+\_\+create\+Last@{Vset\+\_\+create\+Last}}
+\index{Vset\+\_\+create\+Last@{Vset\+\_\+create\+Last}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+create\+Last}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+create\+Last (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -186,7 +188,7 @@ Create an object on the end of the list.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Pointer to the created Vset object 
@@ -196,15 +198,15 @@ Pointer to the created Vset object
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-ctor@{Vset\-\_\-ctor}}
-\index{Vset\-\_\-ctor@{Vset\-\_\-ctor}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vset}$\ast$ Vset\-\_\-ctor (
+\index{Vset class@{Vset class}!Vset\+\_\+ctor@{Vset\+\_\+ctor}}
+\index{Vset\+\_\+ctor@{Vset\+\_\+ctor}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vset}$\ast$ Vset\+\_\+ctor (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmem} $\ast$}]{vmem, }
 \item[{const char $\ast$}]{tname, }
 \item[{int}]{tsize, }
-\item[{int}]{tmax\-Num, }
-\item[{int}]{io\-Key}
+\item[{int}]{tmax\+Num, }
+\item[{int}]{io\+Key}
 \end{DoxyParamCaption}
 )}\label{a00030_ga0a2667278d53ec43041792a2ec006d7b}
 
@@ -215,7 +217,7 @@ Construct the set object.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Pointer to a new allocated Vset object 
@@ -228,14 +230,14 @@ Pointer to a new allocated Vset object
 \hline
 {\em tsize} & size of the object in bytes \\
 \hline
-{\em tmax\-Num} & number of objects to manage (user specified) \\
+{\em tmax\+Num} & number of objects to manage (user specified) \\
 \hline
-{\em io\-Key} & index for i/o \\
+{\em io\+Key} & index for i/o \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-destroy@{Vset\-\_\-destroy}}
-\index{Vset\-\_\-destroy@{Vset\-\_\-destroy}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\-\_\-destroy (
+\index{Vset class@{Vset class}!Vset\+\_\+destroy@{Vset\+\_\+destroy}}
+\index{Vset\+\_\+destroy@{Vset\+\_\+destroy}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\+\_\+destroy (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -248,7 +250,7 @@ Delete an object from the end of the list.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -258,9 +260,9 @@ None
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-destroy\-Last@{Vset\-\_\-destroy\-Last}}
-\index{Vset\-\_\-destroy\-Last@{Vset\-\_\-destroy\-Last}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-destroy\-Last}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\-\_\-destroy\-Last (
+\index{Vset class@{Vset class}!Vset\+\_\+destroy\+Last@{Vset\+\_\+destroy\+Last}}
+\index{Vset\+\_\+destroy\+Last@{Vset\+\_\+destroy\+Last}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+destroy\+Last}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\+\_\+destroy\+Last (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -273,7 +275,7 @@ Free up the object currently on the end of the list.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -283,9 +285,9 @@ None
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-dtor@{Vset\-\_\-dtor}}
-\index{Vset\-\_\-dtor@{Vset\-\_\-dtor}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\-\_\-dtor (
+\index{Vset class@{Vset class}!Vset\+\_\+dtor@{Vset\+\_\+dtor}}
+\index{Vset\+\_\+dtor@{Vset\+\_\+dtor}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\+\_\+dtor (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$$\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -298,7 +300,7 @@ Destroy the set object.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -308,9 +310,9 @@ None
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-first@{Vset\-\_\-first}}
-\index{Vset\-\_\-first@{Vset\-\_\-first}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-first}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-first (
+\index{Vset class@{Vset class}!Vset\+\_\+first@{Vset\+\_\+first}}
+\index{Vset\+\_\+first@{Vset\+\_\+first}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+first}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+first (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -323,7 +325,7 @@ Return the first object in the set.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the first object in the set 
@@ -333,9 +335,9 @@ the first object in the set
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-init\-Data@{Vset\-\_\-init\-Data}}
-\index{Vset\-\_\-init\-Data@{Vset\-\_\-init\-Data}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-init\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\-\_\-init\-Data (
+\index{Vset class@{Vset class}!Vset\+\_\+init\+Data@{Vset\+\_\+init\+Data}}
+\index{Vset\+\_\+init\+Data@{Vset\+\_\+init\+Data}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+init\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\+\_\+init\+Data (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -348,7 +350,7 @@ Initialize the Vset data (thee).
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -358,9 +360,9 @@ None
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-last@{Vset\-\_\-last}}
-\index{Vset\-\_\-last@{Vset\-\_\-last}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-last}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-last (
+\index{Vset class@{Vset class}!Vset\+\_\+last@{Vset\+\_\+last}}
+\index{Vset\+\_\+last@{Vset\+\_\+last}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+last}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+last (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -373,7 +375,7 @@ Return the last object in the set.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the last object in the set. 
@@ -383,9 +385,9 @@ the last object in the set.
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-mem\-Chk@{Vset\-\_\-mem\-Chk}}
-\index{Vset\-\_\-mem\-Chk@{Vset\-\_\-mem\-Chk}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-mem\-Chk}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\-\_\-mem\-Chk (
+\index{Vset class@{Vset class}!Vset\+\_\+mem\+Chk@{Vset\+\_\+mem\+Chk}}
+\index{Vset\+\_\+mem\+Chk@{Vset\+\_\+mem\+Chk}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+mem\+Chk}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\+\_\+mem\+Chk (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -398,7 +400,7 @@ Print the exact current malloc usage.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -408,9 +410,9 @@ None
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-next@{Vset\-\_\-next}}
-\index{Vset\-\_\-next@{Vset\-\_\-next}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-next (
+\index{Vset class@{Vset class}!Vset\+\_\+next@{Vset\+\_\+next}}
+\index{Vset\+\_\+next@{Vset\+\_\+next}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+next}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+next (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -423,7 +425,7 @@ Return the next object in the set.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the next object in the set. 
@@ -433,9 +435,9 @@ the next object in the set.
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-num@{Vset\-\_\-num}}
-\index{Vset\-\_\-num@{Vset\-\_\-num}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}int Vset\-\_\-num (
+\index{Vset class@{Vset class}!Vset\+\_\+num@{Vset\+\_\+num}}
+\index{Vset\+\_\+num@{Vset\+\_\+num}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+num}]{\setlength{\rightskip}{0pt plus 5cm}int Vset\+\_\+num (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -448,7 +450,7 @@ Return the number of things currently in the list.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the number of things currently in the list. 
@@ -458,9 +460,9 @@ the number of things currently in the list.
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-peek\-First@{Vset\-\_\-peek\-First}}
-\index{Vset\-\_\-peek\-First@{Vset\-\_\-peek\-First}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-peek\-First}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-peek\-First (
+\index{Vset class@{Vset class}!Vset\+\_\+peek\+First@{Vset\+\_\+peek\+First}}
+\index{Vset\+\_\+peek\+First@{Vset\+\_\+peek\+First}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+peek\+First}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+peek\+First (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -473,7 +475,7 @@ Return the first object in the set.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the first object in the set 
@@ -483,9 +485,9 @@ the first object in the set
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-peek\-Last@{Vset\-\_\-peek\-Last}}
-\index{Vset\-\_\-peek\-Last@{Vset\-\_\-peek\-Last}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-peek\-Last}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-peek\-Last (
+\index{Vset class@{Vset class}!Vset\+\_\+peek\+Last@{Vset\+\_\+peek\+Last}}
+\index{Vset\+\_\+peek\+Last@{Vset\+\_\+peek\+Last}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+peek\+Last}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+peek\+Last (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -498,7 +500,7 @@ Return the last object in the set.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the last object in the set. 
@@ -508,9 +510,9 @@ the last object in the set.
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-prev@{Vset\-\_\-prev}}
-\index{Vset\-\_\-prev@{Vset\-\_\-prev}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-prev}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\-\_\-prev (
+\index{Vset class@{Vset class}!Vset\+\_\+prev@{Vset\+\_\+prev}}
+\index{Vset\+\_\+prev@{Vset\+\_\+prev}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+prev}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vset\+\_\+prev (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -523,7 +525,7 @@ Return the prev object in the set.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Inlineable method (vset.\-c) 
+Class Vset\+: Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 the prev object in the set 
@@ -533,9 +535,9 @@ the prev object in the set
 {\em thee} & Pointer to the Vset object \\
 \hline
 \end{DoxyParams}
-\index{Vset class@{Vset class}!Vset\-\_\-reset@{Vset\-\_\-reset}}
-\index{Vset\-\_\-reset@{Vset\-\_\-reset}!Vset class@{Vset class}}
-\subsubsection[{Vset\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\-\_\-reset (
+\index{Vset class@{Vset class}!Vset\+\_\+reset@{Vset\+\_\+reset}}
+\index{Vset\+\_\+reset@{Vset\+\_\+reset}!Vset class@{Vset class}}
+\subsubsection[{Vset\+\_\+reset}]{\setlength{\rightskip}{0pt plus 5cm}void Vset\+\_\+reset (
 \begin{DoxyParamCaption}
 \item[{{\bf Vset} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -548,7 +550,7 @@ Release all Ram controlled by this (thee) and re-\/initialize.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vset\-: Non-\/\-Inlineable method (vset.\-c) 
+Class Vset\+: Non-\/\+Inlineable method (vset.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 

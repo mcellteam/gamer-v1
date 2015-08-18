@@ -1,14 +1,14 @@
 <map id="maloc.h" name="maloc.h">
-<area shape="rect" id="node3" href="$a00010.html" title="The base (or foundation) header for MALOC." alt="" coords="571,547,712,575"/>
-<area shape="rect" id="node35" href="$a00022.html" title="The primary header for VSYS. (Virtual SYStem utilities library.)" alt="" coords="589,315,688,343"/>
-<area shape="rect" id="node56" href="$a00021.html" title="Header file for vsh, a bourne&#45;compatible shell." alt="" coords="468,161,559,189"/>
-<area shape="rect" id="node60" href="$a00012.html" title="Header file for a simple parallel extension of ALOC&#39;s VSH." alt="" coords="633,83,724,111"/>
-<area shape="rect" id="node38" href="$a00018.html" title="Header file for an ISO C [V]irtual [N]umerical [M]achine." alt="" coords="463,470,559,498"/>
-<area shape="rect" id="node41" href="$a00015.html" title="Class Vmem: A safer, object&#45;oriented, malloc/free object." alt="" coords="633,470,740,498"/>
-<area shape="rect" id="node44" href="$a00014.html" title="Class Vio: virtual &lt;SDIO/FILE/BUFF/UNIX/INET&gt; I/O layer." alt="" coords="412,393,500,421"/>
-<area shape="rect" id="node48" href="$a00020.html" title="Class Vset: a dynamic set object." alt="" coords="575,393,671,421"/>
-<area shape="rect" id="node53" href="$a00019.html" title="Header file for the Geometric Predicates." alt="" coords="764,470,865,498"/>
-<area shape="rect" id="node65" href="$a00016.html" title="Class Vmp: a Virtual MPI communication layer object." alt="" coords="737,161,833,189"/>
-<area shape="rect" id="node69" href="$a00017.html" title="Class Vmpi: a Virtual MPI communication layer object." alt="" coords="860,238,959,266"/>
-<area shape="rect" id="node73" href="$a00013.html" title="Class Vcom: virtual (currently just MPI) communications layer." alt="" coords="735,238,836,266"/>
+<area shape="rect" id="node2" href="$a00010.html" title="The base (or foundation) header for MALOC. " alt="" coords="589,528,733,555"/>
+<area shape="rect" id="node18" href="$a00022.html" title="The primary header for VSYS. (Virtual SYStem utilities library.) " alt="" coords="611,304,709,331"/>
+<area shape="rect" id="node24" href="$a00021.html" title="Header file for vsh, a bourne&#45;compatible shell. " alt="" coords="487,155,580,181"/>
+<area shape="rect" id="node25" href="$a00012.html" title="Header file for a simple parallel extension of ALOC&#39;s VSH. " alt="" coords="655,80,748,107"/>
+<area shape="rect" id="node19" href="$a00018.html" title="Header file for an ISO C [V]irtual [N]umerical [M]achine. " alt="" coords="481,453,578,480"/>
+<area shape="rect" id="node20" href="$a00015.html" title="Class Vmem: A safer, object&#45;oriented, malloc/free object. " alt="" coords="653,453,763,480"/>
+<area shape="rect" id="node21" href="$a00014.html" title="Class Vio: virtual &lt;SDIO/FILE/BUFF/UNIX/INET&gt; I/O layer. " alt="" coords="430,379,519,405"/>
+<area shape="rect" id="node22" href="$a00020.html" title="Class Vset: a dynamic set object. " alt="" coords="595,379,693,405"/>
+<area shape="rect" id="node23" href="$a00019.html" title="Header file for the Geometric Predicates. " alt="" coords="787,453,893,480"/>
+<area shape="rect" id="node26" href="$a00016.html" title="Class Vmp: a Virtual MPI communication layer object. " alt="" coords="759,155,857,181"/>
+<area shape="rect" id="node27" href="$a00017.html" title="Class Vmpi: a Virtual MPI communication layer object. " alt="" coords="885,229,985,256"/>
+<area shape="rect" id="node28" href="$a00013.html" title="Class Vcom: virtual (currently just MPI) communications layer. " alt="" coords="756,229,860,256"/>
 </map>

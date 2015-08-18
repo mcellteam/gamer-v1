@@ -701,6 +701,7 @@ class GamerUI(uiadaptor):
         marker = self._get_next_marker(self.getVal(self.mparams["marker"]),\
                                        boundaries)
         color = self.getVal(self.mparams["color"])
+        print('gamer color: ', color)
 
         # Allways new entitiy
         boundaries[name] = dict(marker=marker, r=color[0], g=color[1], \
@@ -750,7 +751,7 @@ class GamerUI(uiadaptor):
         assert(isinstance(faces, list))
         # Maximal indices in a array prop in Blender is 10000
         max_ind = 10000
-        num_sub_arrays = len(faces)/max_ind+1
+        num_sub_arrays = int(len(faces)/max_ind)+1
 
         # If the faces allready exist delete it and re attach it
         if "faces" in boundary:
@@ -836,7 +837,7 @@ class GamerUI(uiadaptor):
         self.helper.selectFaces(obj, faces, select)
     
     def _deselect_boundary(self):
-        self._select_boundary(False)
+        self._select_boundary(select=False)
 
     def _hide_boundary(self, hide=True):
         if len(self.menu_items)==0:
@@ -1065,6 +1066,7 @@ class GamerUI(uiadaptor):
             return
         
         color = self.getVal(self.mparams["color"])
+        print('color = :', color)
 
         if color == (boundary["r"], boundary["g"], boundary["b"]):
             return

@@ -1,76 +1,78 @@
-\section{vmem.\-h File Reference}
-\label{a00015}\index{vmem.\-h@{vmem.\-h}}
+\section{vmem.\+h File Reference}
+\label{a00015}\index{vmem.\+h@{vmem.\+h}}
 
 
-Class Vmem\-: A safer, object-\/oriented, malloc/free object.  
+Class Vmem\+: A safer, object-\/oriented, malloc/free object.  
 
 
-{\ttfamily \#include $<$maloc/maloc\-\_\-base.\-h$>$}\\*
-Include dependency graph for vmem.\-h\-:\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
+Include dependency graph for vmem.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{a00041}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\-:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=222pt]{a00042}
+\includegraphics[width=226pt]{a00042}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\-Vmem}
+struct {\bf s\+Vmem}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vmem class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\-Vmem} {\bf Vmem}
+typedef struct {\bf s\+Vmem} {\bf Vmem}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vmem class as the Vmem structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-size\-\_\-t {\bf Vmem\-\_\-bytes\-Total} (void)
+size\+\_\+t {\bf Vmem\+\_\+bytes\+Total} (void)
 \begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas (current footprint) \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-malloc\-Bytes\-Total} (void)
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Bytes\+Total} (void)
 \begin{DoxyCompactList}\small\item\em Return total of all Vmem malloc allocations. \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-free\-Bytes\-Total} (void)
+size\+\_\+t {\bf Vmem\+\_\+free\+Bytes\+Total} (void)
 \begin{DoxyCompactList}\small\item\em Return total of all Vmem free calls. \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-high\-Water\-Total} (void)
+size\+\_\+t {\bf Vmem\+\_\+high\+Water\+Total} (void)
 \begin{DoxyCompactList}\small\item\em Return the high-\/water byte mark (largest footprint) \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-malloc\-Areas\-Total} (void)
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Areas\+Total} (void)
 \begin{DoxyCompactList}\small\item\em Return total of all active Vmem malloc areas by groups. \end{DoxyCompactList}\item 
-void {\bf Vmem\-\_\-print\-Total} (void)
+void {\bf Vmem\+\_\+print\+Total} (void)
 \begin{DoxyCompactList}\small\item\em Print current memory statistics for all Vmem malloc/free areas. \end{DoxyCompactList}\item 
-{\bf Vmem} $\ast$ {\bf Vmem\-\_\-ctor} (char $\ast$name)
+{\bf Vmem} $\ast$ {\bf Vmem\+\_\+ctor} (char $\ast$name)
 \begin{DoxyCompactList}\small\item\em Construct the dynamic memory allocation logging object. \end{DoxyCompactList}\item 
-void {\bf Vmem\-\_\-dtor} ({\bf Vmem} $\ast$$\ast$thee)
+void {\bf Vmem\+\_\+dtor} ({\bf Vmem} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destruct the dynamic memory allocation logging object. \end{DoxyCompactList}\item 
-void $\ast$ {\bf Vmem\-\_\-malloc} ({\bf Vmem} $\ast$thee, size\-\_\-t num, size\-\_\-t size)
+void $\ast$ {\bf Vmem\+\_\+malloc} ({\bf Vmem} $\ast$thee, size\+\_\+t num, size\+\_\+t size)
 \begin{DoxyCompactList}\small\item\em A safe logged version of malloc. \end{DoxyCompactList}\item 
-void {\bf Vmem\-\_\-free} ({\bf Vmem} $\ast$thee, size\-\_\-t num, size\-\_\-t size, void $\ast$$\ast$ram)
+void {\bf Vmem\+\_\+free} ({\bf Vmem} $\ast$thee, size\+\_\+t num, size\+\_\+t size, void $\ast$$\ast$ram)
 \begin{DoxyCompactList}\small\item\em A safe logged version of free. \end{DoxyCompactList}\item 
-void $\ast$ {\bf Vmem\-\_\-realloc} ({\bf Vmem} $\ast$thee, size\-\_\-t num, size\-\_\-t size, void $\ast$$\ast$ram, size\-\_\-t new\-Num)
+void $\ast$ {\bf Vmem\+\_\+realloc} ({\bf Vmem} $\ast$thee, size\+\_\+t num, size\+\_\+t size, void $\ast$$\ast$ram, size\+\_\+t new\+Num)
 \begin{DoxyCompactList}\small\item\em A safe logged version of realloc (usually a bad idea to use this) \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-bytes} ({\bf Vmem} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return total of all A\-C\-T\-I\-V\-E malloc areas used by Vmem object. \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-malloc\-Bytes} ({\bf Vmem} $\ast$thee)
+size\+\_\+t {\bf Vmem\+\_\+bytes} ({\bf Vmem} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return total of all A\+C\+T\+I\+V\+E malloc areas used by Vmem object. \end{DoxyCompactList}\item 
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Bytes} ({\bf Vmem} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return total of all mallocs performed by Vmem object. \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-free\-Bytes} ({\bf Vmem} $\ast$thee)
+size\+\_\+t {\bf Vmem\+\_\+free\+Bytes} ({\bf Vmem} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return total of all frees performed by Vmem object. \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-high\-Water} ({\bf Vmem} $\ast$thee)
+size\+\_\+t {\bf Vmem\+\_\+high\+Water} ({\bf Vmem} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return high-\/water malloc bytemark hit by Vmem object. \end{DoxyCompactList}\item 
-size\-\_\-t {\bf Vmem\-\_\-malloc\-Areas} ({\bf Vmem} $\ast$thee)
+size\+\_\+t {\bf Vmem\+\_\+malloc\+Areas} ({\bf Vmem} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return total number of individual active malloc areas. \end{DoxyCompactList}\item 
-void {\bf Vmem\-\_\-print} ({\bf Vmem} $\ast$thee)
+void {\bf Vmem\+\_\+print} ({\bf Vmem} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Print current memory stats associated with this Vmem object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vmem\-: A safer, object-\/oriented, malloc/free object. \begin{DoxyAuthor}{Author}
+Class Vmem\+: A safer, object-\/oriented, malloc/free object. 
+
+\begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
@@ -79,8 +81,8 @@ None
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id\-:}
-\doxyref{vmem.\-h}{p.}{a00015},v 1.\-21 2010/08/12 05\-:40\-:36 fetk Exp 
+\begin{DoxyParagraph}{Id}
+\doxyref{vmem.\+h}{p.}{a00015},v 1.\+21 2010/08/12 05\+:40\+:36 fetk Exp 
 \end{DoxyParagraph}
 
 

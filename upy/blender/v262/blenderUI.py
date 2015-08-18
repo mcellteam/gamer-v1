@@ -209,6 +209,7 @@ class OBJECT_OT_General(bpy.types.Operator):
 #    w=bpy.props.IntProperty()
 #    h=bpy.props.IntProperty()
 #    tooltip = bpy.props.StringProperty()
+    tooltip = bpy.props.StringProperty()
 #    icon = None
 #    action = None
 #    elem = None
@@ -279,6 +280,7 @@ class blenderUI:
     uiname = "ui"
     space_type = "VIEW_3D"#"SCRIPTS_WINDOW"#"VIEW_3D"
     region_type = "TOOLS"#_PROPS
+    category = "GAMer Upy"
     
 
 #    def _command(self,*args):
@@ -2279,6 +2281,7 @@ class blenderUI:
         panelCode+="    bl_label = '%s'\n" % self.title
         panelCode+="    bl_space_type = '%s'\n" % self.space_type
         panelCode+="    bl_region_type = '%s'\n" % self.region_type
+        panelCode+="    bl_category = '%s'\n" % self.category
         
         panelCode+="    def draw(self, context):\n"       
         panelCode+="        dial = bpy.%s\n" % self.uiname

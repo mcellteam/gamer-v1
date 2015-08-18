@@ -2,60 +2,62 @@
 \label{a00026}\index{Vmpi class@{Vmpi class}}
 
 
-A Virtual M\-P\-I communication lawyer object.  
+A Virtual M\+P\+I communication lawyer object.  
 
 
 \subsection*{Files}
 \begin{DoxyCompactItemize}
 \item 
-file {\bf vmpi.\-h}
-\begin{DoxyCompactList}\small\item\em Class Vmpi\-: a Virtual M\-P\-I communication layer object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+file {\bf vmpi.\+h}
+\begin{DoxyCompactList}\small\item\em Class Vmpi\+: a Virtual M\+P\+I communication layer object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\-Vmpi}
-\begin{DoxyCompactList}\small\item\em Class Vmpi\-: Definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+struct {\bf s\+Vmpi}
+\begin{DoxyCompactList}\small\item\em Class Vmpi\+: Definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\-Vmpi} {\bf Vmpi}
+typedef struct {\bf s\+Vmpi} {\bf Vmpi}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vmpi class as the Vmpi structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vmpi\-\_\-init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+int {\bf Vmpi\+\_\+init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
 \begin{DoxyCompactList}\small\item\em The Vmp initializer. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-finalize} (void)
+int {\bf Vmpi\+\_\+finalize} (void)
 \begin{DoxyCompactList}\small\item\em The Vmp finalizer. \end{DoxyCompactList}\item 
-{\bf Vmpi} $\ast$ {\bf Vmpi\-\_\-ctor} (void)
+{\bf Vmpi} $\ast$ {\bf Vmpi\+\_\+ctor} (void)
 \begin{DoxyCompactList}\small\item\em The Vmpi constructor. \end{DoxyCompactList}\item 
-void {\bf Vmpi\-\_\-dtor} ({\bf Vmpi} $\ast$$\ast$thee)
+void {\bf Vmpi\+\_\+dtor} ({\bf Vmpi} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em The Vmpi destructor. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-rank} ({\bf Vmpi} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return my processor I\-D. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-size} ({\bf Vmpi} $\ast$thee)
+int {\bf Vmpi\+\_\+rank} ({\bf Vmpi} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return my processor I\+D. \end{DoxyCompactList}\item 
+int {\bf Vmpi\+\_\+size} ({\bf Vmpi} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the number of processors involved. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-barr} ({\bf Vmpi} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I barrier. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-send} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I blocking send. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-recv} ({\bf Vmpi} $\ast$thee, int src, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I blocking receive. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-bcast} ({\bf Vmpi} $\ast$thee, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I broadcast. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-reduce} ({\bf Vmpi} $\ast$thee, char $\ast$sbuf, char $\ast$rbuf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I reduce. \end{DoxyCompactList}\item 
-int {\bf Vmpi\-\_\-isend} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\-P\-I non-\/blocking send. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int {\bf Vmpi\+\_\+barr} ({\bf Vmpi} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I barrier. \end{DoxyCompactList}\item 
+int {\bf Vmpi\+\_\+send} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I blocking send. \end{DoxyCompactList}\item 
+int {\bf Vmpi\+\_\+recv} ({\bf Vmpi} $\ast$thee, int src, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I blocking receive. \end{DoxyCompactList}\item 
+int {\bf Vmpi\+\_\+bcast} ({\bf Vmpi} $\ast$thee, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I broadcast. \end{DoxyCompactList}\item 
+int {\bf Vmpi\+\_\+reduce} ({\bf Vmpi} $\ast$thee, char $\ast$sbuf, char $\ast$rbuf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I reduce. \end{DoxyCompactList}\item 
+int {\bf Vmpi\+\_\+isend} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\+P\+I non-\/blocking send. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-A Virtual M\-P\-I communication lawyer object. 
+A Virtual M\+P\+I communication lawyer object. 
+
+
 
 \subsection{Typedef Documentation}
 \index{Vmpi class@{Vmpi class}!Vmpi@{Vmpi}}
 \index{Vmpi@{Vmpi}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\-Vmpi} {\bf Vmpi}}\label{a00026_ga6a87d5fe4d6c92b97d06bff5f15711f0}
+\subsubsection[{Vmpi}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\+Vmpi} {\bf Vmpi}}\label{a00026_ga6a87d5fe4d6c92b97d06bff5f15711f0}
 
 
 Declaration of the Vmpi class as the Vmpi structure. 
@@ -66,22 +68,22 @@ Michael Holst
 
 
 \subsection{Function Documentation}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-barr@{Vmpi\-\_\-barr}}
-\index{Vmpi\-\_\-barr@{Vmpi\-\_\-barr}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-barr}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-barr (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+barr@{Vmpi\+\_\+barr}}
+\index{Vmpi\+\_\+barr@{Vmpi\+\_\+barr}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+barr}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+barr (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee}
 \end{DoxyParamCaption}
 )}\label{a00026_gaf072f8a48db66219158b3da2f5a63f5a}
 
 
-An M\-P\-I barrier. 
+An M\+P\+I barrier. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -91,9 +93,9 @@ Success enumeration
 {\em thee} & Pointer to the Vmpi object \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-bcast@{Vmpi\-\_\-bcast}}
-\index{Vmpi\-\_\-bcast@{Vmpi\-\_\-bcast}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-bcast}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-bcast (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+bcast@{Vmpi\+\_\+bcast}}
+\index{Vmpi\+\_\+bcast@{Vmpi\+\_\+bcast}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+bcast}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+bcast (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee, }
 \item[{char $\ast$}]{buf, }
@@ -102,13 +104,13 @@ Success enumeration
 )}\label{a00026_gaf11988f9639cc73c40a30b3b57ebcf1e}
 
 
-An M\-P\-I broadcast. 
+An M\+P\+I broadcast. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -122,9 +124,9 @@ Success enumeration
 {\em bufsize} & number of items (of declared type) in buffer \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-ctor@{Vmpi\-\_\-ctor}}
-\index{Vmpi\-\_\-ctor@{Vmpi\-\_\-ctor}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vmpi}$\ast$ Vmpi\-\_\-ctor (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+ctor@{Vmpi\+\_\+ctor}}
+\index{Vmpi\+\_\+ctor@{Vmpi\+\_\+ctor}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vmpi}$\ast$ Vmpi\+\_\+ctor (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -137,14 +139,14 @@ The Vmpi constructor.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
 \end{DoxyReturn}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-dtor@{Vmpi\-\_\-dtor}}
-\index{Vmpi\-\_\-dtor@{Vmpi\-\_\-dtor}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vmpi\-\_\-dtor (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+dtor@{Vmpi\+\_\+dtor}}
+\index{Vmpi\+\_\+dtor@{Vmpi\+\_\+dtor}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vmpi\+\_\+dtor (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$$\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -157,7 +159,7 @@ The Vmpi destructor.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -167,9 +169,9 @@ None
 {\em thee} & Pointer to pointer of the Vmpi object \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-finalize@{Vmpi\-\_\-finalize}}
-\index{Vmpi\-\_\-finalize@{Vmpi\-\_\-finalize}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-finalize}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-finalize (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+finalize@{Vmpi\+\_\+finalize}}
+\index{Vmpi\+\_\+finalize@{Vmpi\+\_\+finalize}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+finalize}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+finalize (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -182,14 +184,14 @@ The Vmp finalizer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
 \end{DoxyReturn}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-init@{Vmpi\-\_\-init}}
-\index{Vmpi\-\_\-init@{Vmpi\-\_\-init}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-init (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+init@{Vmpi\+\_\+init}}
+\index{Vmpi\+\_\+init@{Vmpi\+\_\+init}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+init (
 \begin{DoxyParamCaption}
 \item[{int $\ast$}]{argc, }
 \item[{char $\ast$$\ast$$\ast$}]{argv}
@@ -203,7 +205,7 @@ The Vmp initializer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -215,9 +217,9 @@ Success enumeration
 {\em argv} & the command line arguments \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-isend@{Vmpi\-\_\-isend}}
-\index{Vmpi\-\_\-isend@{Vmpi\-\_\-isend}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-isend}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-isend (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+isend@{Vmpi\+\_\+isend}}
+\index{Vmpi\+\_\+isend@{Vmpi\+\_\+isend}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+isend}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+isend (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee, }
 \item[{int}]{des, }
@@ -227,13 +229,13 @@ Success enumeration
 )}\label{a00026_gab22153f0b251914aae25818e5690aa4f}
 
 
-An M\-P\-I non-\/blocking send. 
+An M\+P\+I non-\/blocking send. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -249,22 +251,22 @@ Success enumeration
 {\em bufsize} & number of items (of declared type) in buffer \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-rank@{Vmpi\-\_\-rank}}
-\index{Vmpi\-\_\-rank@{Vmpi\-\_\-rank}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-rank}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-rank (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+rank@{Vmpi\+\_\+rank}}
+\index{Vmpi\+\_\+rank@{Vmpi\+\_\+rank}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+rank}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+rank (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee}
 \end{DoxyParamCaption}
 )}\label{a00026_gaff5007f7cb2396d8891dc9ee6463f4f4}
 
 
-Return my processor I\-D. 
+Return my processor I\+D. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -274,9 +276,9 @@ Success enumeration
 {\em thee} & Pointer to the Vmpi object \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-recv@{Vmpi\-\_\-recv}}
-\index{Vmpi\-\_\-recv@{Vmpi\-\_\-recv}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-recv}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-recv (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+recv@{Vmpi\+\_\+recv}}
+\index{Vmpi\+\_\+recv@{Vmpi\+\_\+recv}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+recv}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+recv (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee, }
 \item[{int}]{src, }
@@ -286,13 +288,13 @@ Success enumeration
 )}\label{a00026_ga5f44607345e5bd8c4462b1f51fd1a082}
 
 
-An M\-P\-I blocking receive. 
+An M\+P\+I blocking receive. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -308,9 +310,9 @@ Success enumeration
 {\em bufsize} & number of items (of declared type) in buffer \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-reduce@{Vmpi\-\_\-reduce}}
-\index{Vmpi\-\_\-reduce@{Vmpi\-\_\-reduce}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-reduce}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-reduce (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+reduce@{Vmpi\+\_\+reduce}}
+\index{Vmpi\+\_\+reduce@{Vmpi\+\_\+reduce}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+reduce}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+reduce (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee, }
 \item[{char $\ast$}]{sbuf, }
@@ -320,13 +322,13 @@ Success enumeration
 )}\label{a00026_ga166259c4289d447248ebc293f2b91495}
 
 
-An M\-P\-I reduce. 
+An M\+P\+I reduce. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -342,9 +344,9 @@ Success enumeration
 {\em bufsize} & number of items (of declared type) in buffer \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-send@{Vmpi\-\_\-send}}
-\index{Vmpi\-\_\-send@{Vmpi\-\_\-send}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-send (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+send@{Vmpi\+\_\+send}}
+\index{Vmpi\+\_\+send@{Vmpi\+\_\+send}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+send}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+send (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee, }
 \item[{int}]{des, }
@@ -354,13 +356,13 @@ Success enumeration
 )}\label{a00026_gadf52faafdb5f8382159c01a37884c9ac}
 
 
-An M\-P\-I blocking send. 
+An M\+P\+I blocking send. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -376,9 +378,9 @@ Success enumeration
 {\em bufsize} & number of items (of declared type) in buffer \\
 \hline
 \end{DoxyParams}
-\index{Vmpi class@{Vmpi class}!Vmpi\-\_\-size@{Vmpi\-\_\-size}}
-\index{Vmpi\-\_\-size@{Vmpi\-\_\-size}!Vmpi class@{Vmpi class}}
-\subsubsection[{Vmpi\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\-\_\-size (
+\index{Vmpi class@{Vmpi class}!Vmpi\+\_\+size@{Vmpi\+\_\+size}}
+\index{Vmpi\+\_\+size@{Vmpi\+\_\+size}!Vmpi class@{Vmpi class}}
+\subsubsection[{Vmpi\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}int Vmpi\+\_\+size (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmpi} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -391,7 +393,7 @@ Return the number of processors involved.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vmpi\-: Non-\/inlineable method (vmpi.\-c) 
+Class Vmpi\+: Non-\/inlineable method (vmpi.\+c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 

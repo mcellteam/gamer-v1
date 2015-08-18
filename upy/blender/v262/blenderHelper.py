@@ -1756,6 +1756,7 @@ class blenderHelper(Helper):
         for unset in set(range(20)).difference(layers):
             scn.layers[unset] = False
 
+#FIXME:
     def updateFaces(self,mesh,faces):
         # eekadoodle prevention
         for i in range(len(faces)):
@@ -1933,7 +1934,7 @@ class blenderHelper(Helper):
             mesh.vertex_colors.new()# enable vertex colors
         vertexColour = mesh.vertex_colors[0].data
 
-        mfaces = mesh.faces
+        mfaces = mesh.polygons
         mverts = mesh.vertices
         if facesSelection is not None :
             if type(facesSelection) is bool :
@@ -1944,7 +1945,7 @@ class blenderHelper(Helper):
             vsel = set()
             for i in face_sel_indice:
                 fsel.append(mfaces[i])
-                for v in mfaces[i].v:
+                for v in mfaces[i].vertices:
                         vsel.add(v)
             mfaces = fsel
             mverts = list(vsel)
@@ -1970,23 +1971,27 @@ class blenderHelper(Helper):
         if not faceMaterial:
             for k, f in enumerate(mfaces):
                 v = vertexColour[k]
-                vi = f.vertices_raw
+                vi = f.vertices
                 if not unic and not perVertex : 
                     if f.index <= len(colors):
                         ncolor = self.convertColor(colors[f.index],toint=False)
                 if unic or not perVertex :  
-#                    print (colors[f.index],ncolor)
-                    v.color1 = ncolor
-                    v.color2 = ncolor
-                    v.color3 = ncolor
-                    v.color4 = ncolor
+#                     print (colors[f.index],ncolor)
+#                     print (ncolor)
+                     v.color[0] = ncolor[0]
+                     v.color[1] = ncolor[1]
+                     v.color[2] = ncolor[2]
+#                    v.color1 = ncolor
+#                    v.color2 = ncolor
+#                    v.color3 = ncolor
+#                    v.color4 = ncolor
                 else :
                     v.color1 = self.convertColor(colors[vi[0]],toint=False)
                     v.color2 = self.convertColor(colors[vi[1]],toint=False)
                     v.color3 = self.convertColor(colors[vi[2]],toint=False)
                     v.color4 = self.convertColor(colors[vi[3]] ,toint=False)                           
                 if pb and (k%70) == 0:
-                    progress = float(k) / (len( mesh.faces ))
+                    progress = float(k) / (len( mesh.polygons ))
 #                    Window.DrawProgressBar(progress, 'color mesh')
 
         if unic and facesSelection is None :
@@ -2325,7 +2330,7 @@ class blenderHelper(Helper):
 
     def getFaceEdges(self, poly, faceindice, selected=False):
         mesh = self.checkIsMesh(poly)
-        return mesh.faces[faceindice].edge_keys    
+        return mesh.polygons[faceindice].edge_keys    
 #
 #    def setMeshFace(self,mesh,f,indexes):
 #        print(indexes)
@@ -2347,7 +2352,7 @@ class blenderHelper(Helper):
 #        mfaces = mesh.faces
         mfaces = mesh.polygons
         if selected :
-            mfaces_indice = [face.index for face in mesh.faces
+            mfaces_indice = [face.index for face in mesh.polygons
                              if face.select and not face.hide]
             faces = [self.getMeshFace(mfaces[f]) for f in mfaces_indice]
             return faces, mfaces_indice
@@ -2414,16 +2419,20 @@ class blenderHelper(Helper):
               
     def selectFace(self,obj,faceindce,select=True):
         mesh = self.checkIsMesh(obj)
-        self.toggle(mesh.faces[faceindce].select,select)
+        self.toggle(mesh.polygons[faceindce].select,select)
     
     def selectFaces(self, obj, faces, select=True):
         editmode=self.toggleEditMode(obj)
-        
+#        msm = bpy.context.scene.tool_settings.mesh_select_mode[0:3]
+#        bpy.context.scene.tool_settings.mesh_select_mode = (False, False, True)
+ 
         mesh = self.checkIsMesh(obj)
         for face in faces:
-            if face >= len(mesh.faces):
+            if face >= len(mesh.polygons):
                 continue
-            mesh.faces[face].sel = select
+            mesh.polygons[face].select = select
+
+#        bpy.context.scene.tool_settings.mesh_select_mode = msm
         self.restoreEditMode(editmode)
 
     def selectEdge(self,obj,edgeindce,select=True):
@@ -2437,15 +2446,15 @@ class blenderHelper(Helper):
         for edge in edges:
             if edge >= len(mesh.edges):
                 continue
-            mesh.edges[edge].sel = select
+            mesh.edges[edge].select = select
         self.restoreEditMode(editmode)
 
     def toggle(self,variable,value):
         variable = value
     
-    def selectFace(self,obj,faceindce,select=True):
-        mesh = self.checkIsMesh(obj)
-        self.toggle(mesh.faces[faceindce].select,select)
+#    def selectFace(self,obj,faceindce,select=True):
+#        mesh = self.checkIsMesh(obj)
+#        self.toggle(mesh.polygons[faceindce].select,select)
     
     def selectVertice(self, obj, vertice_indice, select=True,**kw):
         editmode=self.toggleEditMode(obj)       
@@ -2463,6 +2472,7 @@ class blenderHelper(Helper):
 #            mesh.vertices[vertex].sel = select
         self.restoreEditMode(editmode)
 #    listeindice = [v.index for v in mesh.vertices if v.select and not v.hide]
+
     def DecomposeMesh(self,poly,edit=True,copy=True,tri=True,transform=True):
 #        import numpy
         mesh = self.getMeshFrom(poly)
