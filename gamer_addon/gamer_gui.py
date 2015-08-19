@@ -21,37 +21,6 @@ def unregister():
     bpy.utils.unregister_module(__name__)
 
 
-
-def show_hide_tool_panel ( show=True ):
-    if show:
-        print ( "Showing CellBlender panel in the Tool tab" )
-        try:
-            bpy.utils.register_class(MCELL_PT_main_panel)
-        except:
-            pass
-    else:
-        print ( "Hiding the CellBlender panel in the Tool tab" )
-        try:
-            bpy.utils.unregister_class(MCELL_PT_main_panel)
-        except:
-            pass
-
-
-def set_tool_panel_callback(self, context):
-    """ Show or hide the tool panel based on the show_tool_panel boolean property. """
-    print ( "Toggling the tool panels" )
-    mcell = context.scene.mcell
-    prefs = mcell.cellblender_preferences
-    if (prefs.show_old_scene_panels or prefs.show_scene_panel):
-        # One of the other panels is showing, so it's OK to toggle
-        show_hide_tool_panel ( prefs.show_tool_panel )
-    else:
-        # No other panels are showing so DON'T ALLOW THIS ONE TO GO AWAY!
-        prefs.show_tool_panel = True
-        show_hide_tool_panel ( True )
-
-
-
 def panel_select_callback (self, context):
     self.panel_select_callback(context)
 
@@ -192,7 +161,7 @@ class GAMER_OT_tet_domain_add(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        context.scene.gamer.tet_group.add_tet_group(context)
+        context.scene.gamer.tet_group.add_tet_domain(context)
         return {'FINISHED'}
 
 class GAMER_OT_tet_domain_remove(bpy.types.Operator):
@@ -202,10 +171,9 @@ class GAMER_OT_tet_domain_remove(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        context.scene.gamer.tet_group.remove_active_tet_group(context)
-        self.report({'INFO'}, "Deleted Tet Group")
+        context.scene.gamer.tet_group.remove_active_tet_domain(context)
+        self.report({'INFO'}, "Deleted Active Tet Group")
         return {'FINISHED'}
-
 
 
 class GAMER_OT_generic_button(bpy.types.Operator):
@@ -222,83 +190,137 @@ class GAMER_OT_generic_button(bpy.types.Operator):
         return self.execute(context)
 
 
+class GAMerTetDomainPropertyGroup(bpy.types.PropertyGroup):
+    # name = StringProperty()  # This is a reminder that "name" is already defined for all subclasses of PropertyGroup
+    domain_id = IntProperty ( name="ID", default=-1, description="Domain ID" )
+    marker = IntProperty ( name="Marker", default=-1, description="Domain Marker Integer" )
+    is_hole = BoolProperty ( name="Hole", default=False, description="Use this domain as a hole" )
+    constrain_vol  = BoolProperty ( name="Constrain Volume", default=False, description="Constrain Volume" )
+    vol_constraint = FloatProperty ( name="Vol Constraint", default=10.0, description="Volume Constraint" )
+
+    min_dihedral = FloatProperty ( name="Min Dihedral", default=10.0, description="Minimum Dihedral in Degrees" )
+    max_aspect_ratio = FloatProperty ( name="Max Aspect Ration", default=1.3, description="Maximum Aspect Ratio" )
+
+    dolfin = BoolProperty ( name="DOLFIN", default=False, description="DOLFIN" )
+    diffpack = BoolProperty ( name="Diffpack", default=False, description="Diffpack" )
+    carp = BoolProperty ( name="Carp", default=False, description="Carp" )
+    fetk = BoolProperty ( name="FEtk", default=False, description="FEtk" )
+    ho_mesh = BoolProperty ( name="Higher order mesh generation", default=False, description="Higher order mesh generation" )
+    
+    def draw_layout ( self, layout ):
+
+        row = layout.row()
+        col = row.column()
+        col.prop ( self, "marker" )
+        col = row.column()
+        col.prop ( self, "is_hole" )
+
+        row = layout.row()
+        col = row.column()
+        col.prop ( self, "constrain_vol" )
+        if self.constrain_vol:
+            col = row.column()
+            col.prop ( self, "vol_constraint" )
+
+        row = layout.row()
+        col = row.column()
+        col.prop ( self, "min_dihedral" )
+        col = row.column()
+        col.prop ( self, "max_aspect_ratio" )
+        
+        row = layout.row()
+        col = row.column()
+        col.prop ( self, "dolfin" )
+        col = row.column()
+        col.prop ( self, "diffpack" )
+
+        row = layout.row()
+        col = row.column()
+        col.prop ( self, "carp" )
+        col = row.column()
+        col.prop ( self, "fetk" )
+
+        row = layout.row()
+        col = row.column()
+        col.operator ( "gamer.generic_button", text="Tetrahedralize" )
+        col = row.column()
+        col.prop ( self, "ho_mesh" )
+
+
+class GAMer_UL_domain(bpy.types.UIList):
+    def draw_item(self, context, layout, data, item, icon, active_data, active_propname, index):
+        # The draw_item function is called for each item of the collection that is visible in the list.
+        #   data is the RNA object containing the collection,
+        #   item is the current drawn item of the collection,
+        #   icon is the "computed" icon for the item (as an integer, because some objects like materials or textures
+        #        have custom icons ID, which are not available as enum items).
+        #   active_data is the RNA object containing the active property for the collection (i.e. integer pointing to the
+        #        active item of the collection).
+        #   active_propname is the name of the active property (use 'getattr(active_data, active_propname)').
+        #   index is index of the current item in the collection.
+        #   flt_flag is the result of the filtering process for this item.
+        #   Note: as index and flt_flag are optional arguments, you do not have to use/declare them here if you don't
+        #         need them.
+
+        tet = item
+
+        row = layout.row()
+        col = row.column()
+        col.label ( "ID: " + str(tet.domain_id) )
+        col = row.column()
+        col.label ( "Marker: " + str(tet.marker) )
+
+        """
+        col = row.column()
+        col.label ( "Item:" + str(item) )   # This is a GAMerTetDomainPropertyGroup
+        col = row.column()
+        col.label ( "Icon:" + str(icon) )
+        row = layout.row()
+        col = row.column()
+        col.label ( "AData:" + str(active_data) )
+        col = row.column()
+        col.label ( "AProp:" + str(active_propname) )
+        col = row.column()
+        col.label ( "Index:" + str(index) )
+        """
+
 
 
 class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
-  generic_float = FloatProperty(
-      name="Generic Float", default=123.456, min=0.0, max=1000, precision=4,
-      description="A Generic Float Value")
 
-  generic_int = IntProperty(
-      name="Generic Int", default=5, min=1, max=10,
-      description="A Generic Int Value")
+  generic_float = FloatProperty( name="Generic Float", default=123.456, min=0.0, max=1000, precision=4, description="A Generic Float Value")
+  generic_int = IntProperty( name="Generic Int", default=5, min=1, max=10, description="A Generic Int Value")
+  generic_boolean = BoolProperty( name="Generic Bool", default=False, description="A Generic Boolean Value")
 
-  generic_boolean = BoolProperty(
-      name="Generic Bool", default=False,
-      description="A Generic Boolean Value")
-
-  dense_rate = FloatProperty(
-      name="CD_Rate", default=2.5, min=0.001, max=4.0, precision=4,
-      description="The rate for coarsening dense areas")
-  dense_iter = IntProperty(
-      name="CD_Iter", default=1, min=1, max=15,
-      description="The number of iterations for coarsening dense areas")
-  flat_rate = FloatProperty(
-      name="CF_Rate", default=0.016, min=0.00001, max=0.5, precision=4,
-      description="The rate for coarsening flat areas")
-  max_min_angle = IntProperty(
-      name="Max_Min_Angle", default=15, min=10, max=20,
-      description="The maximal minumum angle for smoothing")
-  smooth_iter = IntProperty(
-      name="S_Iter", default=6, min=1, max=50,
-      description="The number of iterations for coarsening dense areas")
-  preserve_ridges = BoolProperty( name="Preserve ridges", default=False)
-  new_mesh = BoolProperty( name="Create new mesh", default=False)
-
-  def add_tet_group ( self, context):
-      print("Adding a Tet Group")
-
-  def remove_active_tet_group ( self, context):
-      print("Removing active Tet Group")
-
-  def coarse_dense ( self, context):
-      print("Calling coarse_dense")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.coarse_dense(rate=self.dense_rate, numiter=self.dense_iter)
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
-
-  def coarse_flat ( self, context):
-      print("Calling coarse_flat")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.coarse_flat(rate=self.flat_rate)
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
-
-  def smooth ( self, context):
-      print("Calling smooth")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.smooth(max_min_angle=self.max_min_angle, max_iter=self.smooth_iter, preserve_ridges=self.preserve_ridges)
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
-
-  def normal_smooth ( self, context):
-      print("Calling smooth")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.normal_smooth()
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+  domain_list = CollectionProperty(type=GAMerTetDomainPropertyGroup, name="Domain List")
+  active_domain_index = IntProperty(name="Active Domain Index", default=0)
+  next_id = IntProperty(name="Counter for Unique Domain IDs", default=1)  # Start ID's at 1 to confirm initialization
 
   def draw_layout ( self, context, layout ):
+
       row = layout.row()
       col = row.column()
-      col.label ( "list goes here" )
-      """
-      col.template_list("MCell_UL_check_molecule", "define_molecules",
-                        self, "molecule_list",
-                        self, "active_mol_index",
+
+      col.template_list("GAMer_UL_domain", "",
+                        self, "domain_list",                # Object,key of the item to be drawn. This will be the item passed to draw_item.
+                        self, "active_domain_index",        # Object,key of the index of the item to be drawn
                         rows=2)
-      """
+
       col = row.column(align=True)
       col.operator("gamer.tet_domain_add", icon='ZOOMIN', text="")
       col.operator("gamer.tet_domain_remove", icon='ZOOMOUT', text="")
 
+      if len(self.domain_list) > 0:
+          domain = self.domain_list[self.active_domain_index]
+
+          row = layout.row()
+          row.label ( "Active Index = " + str ( self.active_domain_index ) + ", ID = " + str ( domain.domain_id ) )
+          
+          domain.draw_layout ( layout )
+
+
+      row = layout.row()
+      row.label ( "==============================" )
 
       row = layout.row()
       # row.label ( "Use domain as a hole" )
@@ -373,6 +395,76 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       
       srow = col.row()
       srow.prop ( self, "generic_boolean", text="Higher order mesh generation" )
+
+  def add_tet_domain ( self, context):
+      print("Adding a Tet Domain")
+      """ Add a new tet domain to the list of tet domains and set as the active domain """
+      new_dom = self.domain_list.add()
+      new_dom.domain_id = self.allocate_available_id()
+      self.active_domain_index = len(self.domain_list)-1
+
+  def remove_active_tet_domain ( self, context):
+      print("Removing active Tet Domain")
+      """ Remove the active tet domain from the list of domains """
+      self.domain_list.remove ( self.active_domain_index )
+      self.active_domain_index -= 1
+      if self.active_domain_index < 0:
+          self.active_domain_index = 0
+          print ( "That was the last one!!!" )
+      #if self.domain_list:
+      #    self.check(context)
+
+  def allocate_available_id ( self ):
+      """ Return a unique domain ID for a new domain """
+      print ( "Next ID is " + str(self.next_id) )
+      if len(self.domain_list) <= 0:
+          # Reset the ID to 1 when there are no more molecules
+          self.next_id = 1
+      self.next_id += 1
+      return ( self.next_id - 1 )
+
+  dense_rate = FloatProperty(
+      name="CD_Rate", default=2.5, min=0.001, max=4.0, precision=4,
+      description="The rate for coarsening dense areas")
+  dense_iter = IntProperty(
+      name="CD_Iter", default=1, min=1, max=15,
+      description="The number of iterations for coarsening dense areas")
+  flat_rate = FloatProperty(
+      name="CF_Rate", default=0.016, min=0.00001, max=0.5, precision=4,
+      description="The rate for coarsening flat areas")
+  max_min_angle = IntProperty(
+      name="Max_Min_Angle", default=15, min=10, max=20,
+      description="The maximal minumum angle for smoothing")
+  smooth_iter = IntProperty(
+      name="S_Iter", default=6, min=1, max=50,
+      description="The number of iterations for coarsening dense areas")
+  preserve_ridges = BoolProperty( name="Preserve ridges", default=False)
+  new_mesh = BoolProperty( name="Create new mesh", default=False)
+
+  def coarse_dense ( self, context):
+      print("Calling coarse_dense")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.coarse_dense(rate=self.dense_rate, numiter=self.dense_iter)
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
+  def coarse_flat ( self, context):
+      print("Calling coarse_flat")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.coarse_flat(rate=self.flat_rate)
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
+  def smooth ( self, context):
+      print("Calling smooth")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.smooth(max_min_angle=self.max_min_angle, max_iter=self.smooth_iter, preserve_ridges=self.preserve_ridges)
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
+  def normal_smooth ( self, context):
+      print("Calling smooth")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.normal_smooth()
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
 
 
   def draw_panel ( self, context, panel ):
@@ -511,10 +603,6 @@ class GAMER_PT_main_panel(bpy.types.Panel):
 class GAMerPropertyGroup(bpy.types.PropertyGroup):
   initialized = BoolProperty(name="GAMer Initialized", default=False)
   gamer_version = StringProperty(name="GAMer Version", default="0")
-
-  show_tool_panel = BoolProperty(
-      name="GAMer in Tool Tab", default=True,
-      description="Show GAMer Panel in Tool Tab", update=set_tool_panel_callback)
 
   main_panel = PointerProperty(
     type=GAMerMainPanelPropertyGroup,
