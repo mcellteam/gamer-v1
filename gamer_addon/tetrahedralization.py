@@ -59,6 +59,89 @@ class GAMER_OT_generic_button(bpy.types.Operator):
         return self.execute(context)
 
 
+"""
+    # Unmodified code from gamer/swig/src/upy_gui.py
+
+    def tetrahedralize_action(self, filename):
+        "Callback function for the tetrahedralize File chooser"
+
+        # Load options and materials from registry
+        self.load_from_registry()
+
+        # Grab all selected mesh formats
+        mesh_formats = []
+        if self.getVal(self.tetparams["dolfin_format"]):
+            mesh_formats.append("dolfin")
+        if self.getVal(self.tetparams["diffpack_format"]):
+            mesh_formats.append("diffpack")
+        if self.getVal(self.tetparams["carp_format"]):
+            mesh_formats.append("carp")
+        if self.getVal(self.tetparams["mcsf_format"]):
+            mesh_formats.append("mcsf")
+
+        # Get gamer mesh
+        gmeshes = []
+        boundary_markers = []
+        for i, (name, domain) in enumerate(self.domains.items()):
+            obj = self.helper.getObject(name)
+            if obj is None:
+                self.drawError(errormsg="The domain: '%s' is not a mesh in "\
+                               "this scene" % name)
+            
+            gmesh, boundaries = self.host_to_gamer(obj, False)
+            if gmesh is None:
+                return
+
+            # Collect boundary information
+            for boundary_name, boundary in zip(boundaries.keys(), boundaries.values()):
+                boundary_markers.append((boundary["marker"], boundary_name))
+                
+            myprint("\nMesh %d: num verts: %d numfaces: %d" %
+                    (i, gmesh.num_vertices, gmesh.num_faces))
+            
+            # Set the domain data on the SurfaceMesh
+            for name, value in domain.items():
+                setattr(gmesh, name, value)
+                myprint("%s : %d" %(name, int(value)))
+
+            # Write surface mesh to file for debug
+            gmesh.write_off("surfmesh%d.off" % i)
+
+            # Add the mesh
+            gmeshes.append(gmesh)
+        
+        #obj = self._get_selected_mesh(False)
+        #if obj is None:
+        #    return
+        
+        # Tetrahedralize mesh
+        quality_str = "q%.1fqq%.1faA"%(self.getVal(self.tetparams["aspect_ratio"]),
+                                       self.getVal(self.tetparams["dihedral_angle"]))
+
+        quality_str += "o2" if self.getVal(self.tetparams["higher_order"]) else ""
+
+        myprint("TetGen quality string:", quality_str)
+        
+        # Do the tetrahedralization
+        self.waitingCursor(1)
+        gem_mesh = gamer.GemMesh(gmeshes, quality_str)
+        
+        # Store mesh to files
+        for format_ in mesh_formats:
+
+            suffix = self.tetmesh_suffices[self.tetmesh_formats.index(format_)]
+            
+            # If the format is diffpack or carp we need to add boundary names
+            if format_ in ["diffpack", "carp"]:
+                boundary_names = [b[1] for b in sorted(boundary_markers)]
+                getattr(gem_mesh, "write_%s"%format_)(filename+suffix, boundary_names)
+            else:
+                getattr(gem_mesh, "write_%s"%format_)(filename+suffix)
+        
+        self.waitingCursor(0)
+
+"""
+
 class GAMerTetDomainPropertyGroup(bpy.types.PropertyGroup):
     # name = StringProperty()  # This is a reminder that "name" is already defined for all subclasses of PropertyGroup
     domain_id = IntProperty ( name="ID", default=-1, description="Domain ID" )
