@@ -43,10 +43,12 @@ if "bpy" in locals():
     import imp
     imp.reload(gamer_gui)
     imp.reload(boundary_markers)
+    imp.reload(tetrahedralization)
 else:
     print("Importing GAMer")
     from . import gamer_gui
     from . import boundary_markers
+    from . import tetrahedralization
 
 # General import
 import bpy

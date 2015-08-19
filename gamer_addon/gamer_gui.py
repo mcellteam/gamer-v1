@@ -6,6 +6,7 @@ import mathutils
 import gamer
 
 from . import boundary_markers
+from . import tetrahedralization
 
 # python imports
 import os
@@ -186,6 +187,7 @@ class GAMerMeshImprovementPropertyGroup(bpy.types.PropertyGroup):
 class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
     mesh_improve_select = BoolProperty ( name="mesh_improve_sel", description="Surface Mesh Improvement", default=False, subtype='NONE', update=panel_select_callback)
     boundary_markers_select = BoolProperty ( name="boundary_markers_sel", description="Boundary Markers", default=False, subtype='NONE', update=panel_select_callback)
+    tet_select = BoolProperty ( name="tet_sel", description="Tetrahedralization", default=False, subtype='NONE', update=panel_select_callback)
     select_multiple = BoolProperty ( name="select_multiple", description="Show Multiple Panels", default=False, subtype='NONE', update=panel_select_callback)
     last_state = BoolVectorProperty ( size=22 ) # Keeps track of previous button state to detect transitions
 
@@ -202,7 +204,7 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
             Hide all panels ... always
         """
 
-        prop_keys = [ 'mesh_improve_select', 'select_multiple' ]
+        prop_keys = [ 'mesh_improve_select', 'boundary_markers_select', 'tet_select', 'select_multiple' ]
 
         pin_state = False
 
@@ -264,6 +266,8 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
 
         brow = layout.row()
         bcol = brow.column()
+        bcol.prop ( self, "tet_select", icon='MESH_CONE', text="Tetrahedralization" )
+        bcol = brow.column()
         if self.select_multiple:
             bcol.prop ( self, "select_multiple", icon='PINNED', text="Show All / Multiple" )
         else:
@@ -279,7 +283,15 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
         if self.boundary_markers_select:
             layout.box() # Use as a separator
             layout.label ( "Boundary Marking", icon='MESH_ICOSPHERE' )
-            context.scene.gamer.boundary_marker_panel.draw_layout ( context, layout )
+            active_obj = context.active_object
+            if active_obj:
+              active_obj.gamer.draw_layout ( context, layout )
+
+        if self.tet_select:
+            layout.box() # Use as a separator
+            layout.label ( "Tetrahedralization", icon='MESH_CONE' )
+            context.scene.gamer.tet_group.draw_layout ( context, layout )
+
 
 
 
@@ -327,9 +339,10 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
     type=GAMerMeshImprovementPropertyGroup,
     name="GAMer Surface Mesh Improvement")
 
-  boundary_marker_panel = PointerProperty(
-    type=boundary_markers.GAMerBoundaryMarkersListPropertyGroup,
-    name="GAMer Boundary Markers")
+  tet_group = PointerProperty(
+    type=tetrahedralization.GAMerTetrahedralizationPropertyGroup,
+    name="GAMer Tetrahedralization")
+
 
   def init_properties ( self ):
     self.gamer_version = "0.1"
