@@ -266,24 +266,9 @@ class GAMer_UL_domain(bpy.types.UIList):
 
         row = layout.row()
         col = row.column()
-        col.label ( "ID: " + str(tet.domain_id) )
+        col.label ( "Domain ID: " + str(tet.domain_id) )
         col = row.column()
-        col.label ( "Marker: " + str(tet.marker) )
-
-        """
-        col = row.column()
-        col.label ( "Item:" + str(item) )   # This is a GAMerTetDomainPropertyGroup
-        col = row.column()
-        col.label ( "Icon:" + str(icon) )
-        row = layout.row()
-        col = row.column()
-        col.label ( "AData:" + str(active_data) )
-        col = row.column()
-        col.label ( "AProp:" + str(active_propname) )
-        col = row.column()
-        col.label ( "Index:" + str(index) )
-        """
-
+        col.label ( "Domain Marker: " + str(tet.marker) )
 
 
 class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
@@ -302,8 +287,8 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       col = row.column()
 
       col.template_list("GAMer_UL_domain", "",
-                        self, "domain_list",                # Object,key of the item to be drawn. This will be the item passed to draw_item.
-                        self, "active_domain_index",        # Object,key of the index of the item to be drawn
+                        self, "domain_list",
+                        self, "active_domain_index",
                         rows=2)
 
       col = row.column(align=True)
@@ -317,84 +302,6 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           row.label ( "Active Index = " + str ( self.active_domain_index ) + ", ID = " + str ( domain.domain_id ) )
           
           domain.draw_layout ( layout )
-
-
-      row = layout.row()
-      row.label ( "==============================" )
-
-      row = layout.row()
-      # row.label ( "Use domain as a hole" )
-      row.prop ( self, "generic_boolean", text="Use domain as a hole" )
-
-
-      # Split into two columns here
-      
-      row = layout.row()
-      
-      # Left column
-      col = row.column()
-
-      srow = col.row()
-      srow.label ( "Marker" )
-      
-      srow = col.row()
-      srow.label ( "Vol constr:" )
-
-      # Right column
-      col = row.column()
-
-      srow = col.row()
-      srow.prop ( self, "generic_int", text="Marker" )
-
-      srow = col.row()
-      srow.prop ( self, "generic_int", text="Vol_constr" )
-
-      
-      # Merge columns together again
-
-      row = layout.row()
-      row.prop ( self, "generic_boolean", text="Use Volume Constraint" )
-      
-      # Split into two columns here
-      
-      row = layout.row()
-      
-      # Left column
-      col = row.column()
-
-      srow = col.row()
-      srow.label (text="Min dihed deg:" )
-
-      srow = col.row()
-      srow.prop ( self, "generic_float", text="Min_dihed_deg:" )
-
-      srow = col.row()
-      srow.prop ( self, "generic_boolean", text="DOLFIN" )
-
-      srow = col.row()
-      srow.prop ( self, "generic_boolean", text="Carp" )
-      
-      srow = col.row()
-      srow.operator ( "gamer.generic_button", text="Tetrahedralize" )
-
-
-      # Right column
-      col = row.column()
-
-      srow = col.row()
-      srow.label ( text="Min aspect ratio:" )
-
-      srow = col.row()
-      srow.prop ( self, "generic_float", text="Min_aspec_rat" )
-
-      srow = col.row()
-      srow.prop ( self, "generic_boolean", text="Diffpack" )
-
-      srow = col.row()
-      srow.prop ( self, "generic_boolean", text="FEtk" )
-      
-      srow = col.row()
-      srow.prop ( self, "generic_boolean", text="Higher order mesh generation" )
 
   def add_tet_domain ( self, context):
       print("Adding a Tet Domain")
@@ -411,8 +318,6 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       if self.active_domain_index < 0:
           self.active_domain_index = 0
           print ( "That was the last one!!!" )
-      #if self.domain_list:
-      #    self.check(context)
 
   def allocate_available_id ( self ):
       """ Return a unique domain ID for a new domain """
@@ -422,50 +327,6 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           self.next_id = 1
       self.next_id += 1
       return ( self.next_id - 1 )
-
-  dense_rate = FloatProperty(
-      name="CD_Rate", default=2.5, min=0.001, max=4.0, precision=4,
-      description="The rate for coarsening dense areas")
-  dense_iter = IntProperty(
-      name="CD_Iter", default=1, min=1, max=15,
-      description="The number of iterations for coarsening dense areas")
-  flat_rate = FloatProperty(
-      name="CF_Rate", default=0.016, min=0.00001, max=0.5, precision=4,
-      description="The rate for coarsening flat areas")
-  max_min_angle = IntProperty(
-      name="Max_Min_Angle", default=15, min=10, max=20,
-      description="The maximal minumum angle for smoothing")
-  smooth_iter = IntProperty(
-      name="S_Iter", default=6, min=1, max=50,
-      description="The number of iterations for coarsening dense areas")
-  preserve_ridges = BoolProperty( name="Preserve ridges", default=False)
-  new_mesh = BoolProperty( name="Create new mesh", default=False)
-
-  def coarse_dense ( self, context):
-      print("Calling coarse_dense")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.coarse_dense(rate=self.dense_rate, numiter=self.dense_iter)
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
-
-  def coarse_flat ( self, context):
-      print("Calling coarse_flat")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.coarse_flat(rate=self.flat_rate)
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
-
-  def smooth ( self, context):
-      print("Calling smooth")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.smooth(max_min_angle=self.max_min_angle, max_iter=self.smooth_iter, preserve_ridges=self.preserve_ridges)
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
-
-  def normal_smooth ( self, context):
-      print("Calling smooth")
-      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
-      gmesh.normal_smooth()
-      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
-
-
 
   def draw_panel ( self, context, panel ):
       layout = panel.layout
