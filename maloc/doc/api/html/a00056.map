@@ -1,8 +1,8 @@
 <map id="vsys.h" name="vsys.h">
-<area shape="rect" id="node2" href="$a00012.html" title="Header file for a simple parallel extension of ALOC&#39;s VSH. " alt="" coords="69,229,124,256"/>
-<area shape="rect" id="node3" href="$a00009.html" title="The foundation header for MALOC. " alt="" coords="62,304,131,331"/>
-<area shape="rect" id="node4" href="$a00013.html" title="Class Vcom: virtual (currently just MPI) communications layer. " alt="" coords="29,80,95,107"/>
-<area shape="rect" id="node5" href="$a00016.html" title="Class Vmp: a Virtual MPI communication layer object. " alt="" coords="67,155,126,181"/>
-<area shape="rect" id="node6" href="$a00017.html" title="Class Vmpi: a Virtual MPI communication layer object. " alt="" coords="170,80,231,107"/>
-<area shape="rect" id="node7" href="$a00021.html" title="Header file for vsh, a bourne&#45;compatible shell. " alt="" coords="150,155,203,181"/>
+<area shape="rect" id="node3" href="$a00012.html" title="Header file for a simple parallel extension of ALOC&#39;s VSH." alt="" coords="70,238,123,266"/>
+<area shape="rect" id="node5" href="$a00009.html" title="The foundation header for MALOC." alt="" coords="63,315,130,343"/>
+<area shape="rect" id="node7" href="$a00013.html" title="Class Vcom: virtual (currently just MPI) communications layer." alt="" coords="30,83,94,111"/>
+<area shape="rect" id="node9" href="$a00016.html" title="Class Vmp: a Virtual MPI communication layer object." alt="" coords="69,161,125,189"/>
+<area shape="rect" id="node13" href="$a00017.html" title="Class Vmpi: a Virtual MPI communication layer object." alt="" coords="169,83,227,111"/>
+<area shape="rect" id="node16" href="$a00021.html" title="Header file for vsh, a bourne&#45;compatible shell." alt="" coords="149,161,202,189"/>
 </map>

@@ -8,68 +8,66 @@ A bourne-\/compatible shell.
 \subsection*{Files}
 \begin{DoxyCompactItemize}
 \item 
-file {\bf psh.\+h}
-\begin{DoxyCompactList}\small\item\em Header file for a simple parallel extension of A\+L\+O\+C\textquotesingle{}s V\+S\+H. \end{DoxyCompactList}\item 
-file {\bf vsh.\+h}
+file {\bf psh.\-h}
+\begin{DoxyCompactList}\small\item\em Header file for a simple parallel extension of A\-L\-O\-C's V\-S\-H. \end{DoxyCompactList}\item 
+file {\bf vsh.\-h}
 \begin{DoxyCompactList}\small\item\em Header file for vsh, a bourne-\/compatible shell. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\+Vsh}
+struct {\bf s\-Vsh}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vsh class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\+Vsh} {\bf Vsh}
+typedef struct {\bf s\-Vsh} {\bf Vsh}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vsh class as the Vsh structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vsh\+\_\+pshell} ({\bf Vsh} $\ast$thee, char $\ast$p\+P\+R, void $\ast$pthee, int($\ast$builtin)(void $\ast$thee, int argc, char $\ast$$\ast$argv))
-\begin{DoxyCompactList}\small\item\em Drop-\/in replacement for Vsh\+\_\+shell giving parallel extensions. \end{DoxyCompactList}\item 
-{\bf Vsh} $\ast$ {\bf Vsh\+\_\+ctor} ({\bf Vmem} $\ast$vmem, int argc, char $\ast$$\ast$argv)
+int {\bf Vsh\-\_\-pshell} ({\bf Vsh} $\ast$thee, char $\ast$p\-P\-R, void $\ast$pthee, int($\ast$builtin)(void $\ast$thee, int argc, char $\ast$$\ast$argv))
+\begin{DoxyCompactList}\small\item\em Drop-\/in replacement for Vsh\-\_\-shell giving parallel extensions. \end{DoxyCompactList}\item 
+{\bf Vsh} $\ast$ {\bf Vsh\-\_\-ctor} ({\bf Vmem} $\ast$vmem, int argc, char $\ast$$\ast$argv)
 \begin{DoxyCompactList}\small\item\em Create the shell. \end{DoxyCompactList}\item 
-void {\bf Vsh\+\_\+dtor} ({\bf Vsh} $\ast$$\ast$thee)
+void {\bf Vsh\-\_\-dtor} ({\bf Vsh} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destroy the shell. \end{DoxyCompactList}\item 
-int {\bf Vsh\+\_\+shell} ({\bf Vsh} $\ast$thee, char $\ast$p\+P\+R, void $\ast$pthee, int($\ast$builtin)(void $\ast$thee, int argc, char $\ast$$\ast$argv))
+int {\bf Vsh\-\_\-shell} ({\bf Vsh} $\ast$thee, char $\ast$p\-P\-R, void $\ast$pthee, int($\ast$builtin)(void $\ast$thee, int argc, char $\ast$$\ast$argv))
 \begin{DoxyCompactList}\small\item\em A bash-\/like shell with user-\/definable extensions. \end{DoxyCompactList}\item 
-int {\bf Vsh\+\_\+putenv} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const char $\ast$valu)
+int {\bf Vsh\-\_\-putenv} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const char $\ast$valu)
 \begin{DoxyCompactList}\small\item\em Place a variable with a value in the environment. \end{DoxyCompactList}\item 
-int {\bf Vsh\+\_\+putenv\+Info} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const char $\ast$valu)
+int {\bf Vsh\-\_\-putenv\-Info} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const char $\ast$valu)
 \begin{DoxyCompactList}\small\item\em Place a variable with an info string in the environment. \end{DoxyCompactList}\item 
-int {\bf Vsh\+\_\+putenv\+Int} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const int valu)
+int {\bf Vsh\-\_\-putenv\-Int} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const int valu)
 \begin{DoxyCompactList}\small\item\em Place a variable with a value (integer) in the environment. \end{DoxyCompactList}\item 
-int {\bf Vsh\+\_\+putenv\+Real} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const double valu)
+int {\bf Vsh\-\_\-putenv\-Real} ({\bf Vsh} $\ast$thee, const char $\ast$envi, const double valu)
 \begin{DoxyCompactList}\small\item\em Place a variable with a value (real) in the environment. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vsh\+\_\+getenv} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+char $\ast$ {\bf Vsh\-\_\-getenv} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
 \begin{DoxyCompactList}\small\item\em Get a value of variable in the environment. \end{DoxyCompactList}\item 
-char $\ast$ {\bf Vsh\+\_\+getenv\+Info} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+char $\ast$ {\bf Vsh\-\_\-getenv\-Info} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
 \begin{DoxyCompactList}\small\item\em Get info associated with a variable in the environment. \end{DoxyCompactList}\item 
-int {\bf Vsh\+\_\+getenv\+Int} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+int {\bf Vsh\-\_\-getenv\-Int} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
 \begin{DoxyCompactList}\small\item\em Get a value of variable in the environment as an integer. \end{DoxyCompactList}\item 
-double {\bf Vsh\+\_\+getenv\+Real} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+double {\bf Vsh\-\_\-getenv\-Real} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
 \begin{DoxyCompactList}\small\item\em Get a value of variable in the environment as a real. \end{DoxyCompactList}\item 
-void {\bf Vsh\+\_\+remove} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
+void {\bf Vsh\-\_\-remove} ({\bf Vsh} $\ast$thee, const char $\ast$envi)
 \begin{DoxyCompactList}\small\item\em Remove a variable from the environment. \end{DoxyCompactList}\item 
-void {\bf Vsh\+\_\+wipe} ({\bf Vsh} $\ast$thee)
+void {\bf Vsh\-\_\-wipe} ({\bf Vsh} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Wipe the environment. \end{DoxyCompactList}\item 
-void {\bf Vsh\+\_\+mem\+Chk} ({\bf Vsh} $\ast$thee)
+void {\bf Vsh\-\_\-mem\-Chk} ({\bf Vsh} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Print the exact current malloc usage. \end{DoxyCompactList}\item 
-{\bf Vio} $\ast$ {\bf Vsh\+\_\+io\+Setup} ({\bf Vsh} $\ast$thee, char $\ast$key)
-\begin{DoxyCompactList}\small\item\em Setup for an I/\+O command. \end{DoxyCompactList}\item 
-void {\bf Vsh\+\_\+io\+Cleanup} ({\bf Vsh} $\ast$thee, {\bf Vio} $\ast$$\ast$sock)
-\begin{DoxyCompactList}\small\item\em Cleanup an I/\+O command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bf Vio} $\ast$ {\bf Vsh\-\_\-io\-Setup} ({\bf Vsh} $\ast$thee, char $\ast$key)
+\begin{DoxyCompactList}\small\item\em Setup for an I/\-O command. \end{DoxyCompactList}\item 
+void {\bf Vsh\-\_\-io\-Cleanup} ({\bf Vsh} $\ast$thee, {\bf Vio} $\ast$$\ast$sock)
+\begin{DoxyCompactList}\small\item\em Cleanup an I/\-O command. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A bourne-\/compatible shell. 
 
-
-
 \subsection{Typedef Documentation}
 \index{Vsh class@{Vsh class}!Vsh@{Vsh}}
 \index{Vsh@{Vsh}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\+Vsh} {\bf Vsh}}\label{a00027_ga12e0c622051a2ba8ed3b0609a5ae71e3}
+\subsubsection[{Vsh}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf s\-Vsh} {\bf Vsh}}\label{a00027_ga12e0c622051a2ba8ed3b0609a5ae71e3}
 
 
 Declaration of the Vsh class as the Vsh structure. 
@@ -80,9 +78,9 @@ Michael Holst
 
 
 \subsection{Function Documentation}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+ctor@{Vsh\+\_\+ctor}}
-\index{Vsh\+\_\+ctor@{Vsh\+\_\+ctor}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vsh}$\ast$ Vsh\+\_\+ctor (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-ctor@{Vsh\-\_\-ctor}}
+\index{Vsh\-\_\-ctor@{Vsh\-\_\-ctor}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-ctor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vsh}$\ast$ Vsh\-\_\-ctor (
 \begin{DoxyParamCaption}
 \item[{{\bf Vmem} $\ast$}]{vmem, }
 \item[{int}]{argc, }
@@ -97,7 +95,7 @@ Create the shell.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Pointer to the new allocated Vsh object 
@@ -111,9 +109,9 @@ Pointer to the new allocated Vsh object
 {\em argv} & the command line arguments \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+dtor@{Vsh\+\_\+dtor}}
-\index{Vsh\+\_\+dtor@{Vsh\+\_\+dtor}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\+\_\+dtor (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-dtor@{Vsh\-\_\-dtor}}
+\index{Vsh\-\_\-dtor@{Vsh\-\_\-dtor}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-dtor}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\-\_\-dtor (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$$\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -126,7 +124,7 @@ Destroy the shell.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -136,9 +134,9 @@ None
 {\em thee} & Pointer to the Vsh object \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+getenv@{Vsh\+\_\+getenv}}
-\index{Vsh\+\_\+getenv@{Vsh\+\_\+getenv}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+getenv}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vsh\+\_\+getenv (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-getenv@{Vsh\-\_\-getenv}}
+\index{Vsh\-\_\-getenv@{Vsh\-\_\-getenv}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-getenv}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vsh\-\_\-getenv (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi}
@@ -152,7 +150,7 @@ Get a value of variable in the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 value of variable in the environment. 
@@ -164,9 +162,9 @@ value of variable in the environment.
 {\em envi} & environment string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+getenv\+Info@{Vsh\+\_\+getenv\+Info}}
-\index{Vsh\+\_\+getenv\+Info@{Vsh\+\_\+getenv\+Info}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+getenv\+Info}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vsh\+\_\+getenv\+Info (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-getenv\-Info@{Vsh\-\_\-getenv\-Info}}
+\index{Vsh\-\_\-getenv\-Info@{Vsh\-\_\-getenv\-Info}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-getenv\-Info}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Vsh\-\_\-getenv\-Info (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi}
@@ -180,7 +178,7 @@ Get info associated with a variable in the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 info associated with a variable in the environment. 
@@ -192,9 +190,9 @@ info associated with a variable in the environment.
 {\em envi} & environment string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+getenv\+Int@{Vsh\+\_\+getenv\+Int}}
-\index{Vsh\+\_\+getenv\+Int@{Vsh\+\_\+getenv\+Int}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+getenv\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\+\_\+getenv\+Int (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-getenv\-Int@{Vsh\-\_\-getenv\-Int}}
+\index{Vsh\-\_\-getenv\-Int@{Vsh\-\_\-getenv\-Int}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-getenv\-Int}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\-\_\-getenv\-Int (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi}
@@ -208,7 +206,7 @@ Get a value of variable in the environment as an integer.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 value of variable in the environment as an integer. 
@@ -220,9 +218,9 @@ value of variable in the environment as an integer.
 {\em envi} & environment string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+getenv\+Real@{Vsh\+\_\+getenv\+Real}}
-\index{Vsh\+\_\+getenv\+Real@{Vsh\+\_\+getenv\+Real}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+getenv\+Real}]{\setlength{\rightskip}{0pt plus 5cm}double Vsh\+\_\+getenv\+Real (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-getenv\-Real@{Vsh\-\_\-getenv\-Real}}
+\index{Vsh\-\_\-getenv\-Real@{Vsh\-\_\-getenv\-Real}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-getenv\-Real}]{\setlength{\rightskip}{0pt plus 5cm}double Vsh\-\_\-getenv\-Real (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi}
@@ -236,7 +234,7 @@ Get a value of variable in the environment as a real.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 value of variable in the environment as a real. 
@@ -248,9 +246,9 @@ value of variable in the environment as a real.
 {\em envi} & environment string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+io\+Cleanup@{Vsh\+\_\+io\+Cleanup}}
-\index{Vsh\+\_\+io\+Cleanup@{Vsh\+\_\+io\+Cleanup}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+io\+Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\+\_\+io\+Cleanup (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-io\-Cleanup@{Vsh\-\_\-io\-Cleanup}}
+\index{Vsh\-\_\-io\-Cleanup@{Vsh\-\_\-io\-Cleanup}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-io\-Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\-\_\-io\-Cleanup (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{{\bf Vio} $\ast$$\ast$}]{sock}
@@ -258,13 +256,13 @@ value of variable in the environment as a real.
 )}\label{a00027_ga5caf47cfdaa31928b8b0d709c106213b}
 
 
-Cleanup an I/\+O command. 
+Cleanup an I/\-O command. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -276,9 +274,9 @@ None
 {\em sock} & socket for reading/writing the external data \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+io\+Setup@{Vsh\+\_\+io\+Setup}}
-\index{Vsh\+\_\+io\+Setup@{Vsh\+\_\+io\+Setup}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+io\+Setup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vio}$\ast$ Vsh\+\_\+io\+Setup (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-io\-Setup@{Vsh\-\_\-io\-Setup}}
+\index{Vsh\-\_\-io\-Setup@{Vsh\-\_\-io\-Setup}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-io\-Setup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vio}$\ast$ Vsh\-\_\-io\-Setup (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{char $\ast$}]{key}
@@ -286,13 +284,13 @@ None
 )}\label{a00027_ga68e128d68b74da3c19a8460e420439f5}
 
 
-Setup for an I/\+O command. 
+Setup for an I/\-O command. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 socket for reading/writing the external data 
@@ -304,9 +302,9 @@ socket for reading/writing the external data
 {\em key} & Pointer to different read/write option \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+mem\+Chk@{Vsh\+\_\+mem\+Chk}}
-\index{Vsh\+\_\+mem\+Chk@{Vsh\+\_\+mem\+Chk}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+mem\+Chk}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\+\_\+mem\+Chk (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-mem\-Chk@{Vsh\-\_\-mem\-Chk}}
+\index{Vsh\-\_\-mem\-Chk@{Vsh\-\_\-mem\-Chk}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-mem\-Chk}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\-\_\-mem\-Chk (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -319,7 +317,7 @@ Print the exact current malloc usage.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -329,19 +327,19 @@ None
 {\em thee} & Pointer to the Vsh object \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+pshell@{Vsh\+\_\+pshell}}
-\index{Vsh\+\_\+pshell@{Vsh\+\_\+pshell}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+pshell}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\+\_\+pshell (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-pshell@{Vsh\-\_\-pshell}}
+\index{Vsh\-\_\-pshell@{Vsh\-\_\-pshell}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-pshell}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\-\_\-pshell (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
-\item[{char $\ast$}]{p\+P\+R, }
+\item[{char $\ast$}]{p\-P\-R, }
 \item[{void $\ast$}]{pthee, }
 \item[{int($\ast$)(void $\ast$thee, int argc, char $\ast$$\ast$argv)}]{builtin}
 \end{DoxyParamCaption}
 )}\label{a00027_gac65ab0aa601462e1f8609209c618a2c7}
 
 
-Drop-\/in replacement for Vsh\+\_\+shell giving parallel extensions. 
+Drop-\/in replacement for Vsh\-\_\-shell giving parallel extensions. 
 
 \begin{DoxyAuthor}{Author}
 Michael Holst 
@@ -356,16 +354,16 @@ Success enumeration
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the Vsh object \\
 \hline
-{\em p\+P\+R} & minimal prompt \\
+{\em p\-P\-R} & minimal prompt \\
 \hline
 {\em pthee} & the externally supplied builtin object pointer \\
 \hline
 {\em builtin} & external supershell builtin function \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+putenv@{Vsh\+\_\+putenv}}
-\index{Vsh\+\_\+putenv@{Vsh\+\_\+putenv}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+putenv}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\+\_\+putenv (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-putenv@{Vsh\-\_\-putenv}}
+\index{Vsh\-\_\-putenv@{Vsh\-\_\-putenv}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-putenv}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\-\_\-putenv (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi, }
@@ -380,7 +378,7 @@ Place a variable with a value in the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -394,9 +392,9 @@ Success enumeration
 {\em valu} & value string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+putenv\+Info@{Vsh\+\_\+putenv\+Info}}
-\index{Vsh\+\_\+putenv\+Info@{Vsh\+\_\+putenv\+Info}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+putenv\+Info}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\+\_\+putenv\+Info (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-putenv\-Info@{Vsh\-\_\-putenv\-Info}}
+\index{Vsh\-\_\-putenv\-Info@{Vsh\-\_\-putenv\-Info}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-putenv\-Info}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\-\_\-putenv\-Info (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi, }
@@ -411,7 +409,7 @@ Place a variable with an info string in the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -425,9 +423,9 @@ Success enumeration
 {\em valu} & value string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+putenv\+Int@{Vsh\+\_\+putenv\+Int}}
-\index{Vsh\+\_\+putenv\+Int@{Vsh\+\_\+putenv\+Int}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+putenv\+Int}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\+\_\+putenv\+Int (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-putenv\-Int@{Vsh\-\_\-putenv\-Int}}
+\index{Vsh\-\_\-putenv\-Int@{Vsh\-\_\-putenv\-Int}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-putenv\-Int}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\-\_\-putenv\-Int (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi, }
@@ -442,7 +440,7 @@ Place a variable with a value (integer) in the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -456,9 +454,9 @@ Success enumeration
 {\em valu} & value string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+putenv\+Real@{Vsh\+\_\+putenv\+Real}}
-\index{Vsh\+\_\+putenv\+Real@{Vsh\+\_\+putenv\+Real}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+putenv\+Real}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\+\_\+putenv\+Real (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-putenv\-Real@{Vsh\-\_\-putenv\-Real}}
+\index{Vsh\-\_\-putenv\-Real@{Vsh\-\_\-putenv\-Real}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-putenv\-Real}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\-\_\-putenv\-Real (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi, }
@@ -473,7 +471,7 @@ Place a variable with a value (real) in the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -487,9 +485,9 @@ Success enumeration
 {\em valu} & value string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+remove@{Vsh\+\_\+remove}}
-\index{Vsh\+\_\+remove@{Vsh\+\_\+remove}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+remove}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\+\_\+remove (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-remove@{Vsh\-\_\-remove}}
+\index{Vsh\-\_\-remove@{Vsh\-\_\-remove}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-remove}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\-\_\-remove (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
 \item[{const char $\ast$}]{envi}
@@ -503,7 +501,7 @@ Remove a variable from the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
@@ -515,12 +513,12 @@ None
 {\em envi} & environment string \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+shell@{Vsh\+\_\+shell}}
-\index{Vsh\+\_\+shell@{Vsh\+\_\+shell}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+shell}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\+\_\+shell (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-shell@{Vsh\-\_\-shell}}
+\index{Vsh\-\_\-shell@{Vsh\-\_\-shell}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-shell}]{\setlength{\rightskip}{0pt plus 5cm}int Vsh\-\_\-shell (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee, }
-\item[{char $\ast$}]{p\+P\+R, }
+\item[{char $\ast$}]{p\-P\-R, }
 \item[{void $\ast$}]{pthee, }
 \item[{int($\ast$)(void $\ast$thee, int argc, char $\ast$$\ast$argv)}]{builtin}
 \end{DoxyParamCaption}
@@ -533,7 +531,7 @@ A bash-\/like shell with user-\/definable extensions.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 Success enumeration 
@@ -542,16 +540,16 @@ Success enumeration
 \begin{DoxyParams}{Parameters}
 {\em thee} & Pointer to the Vsh object \\
 \hline
-{\em p\+P\+R} & minimal prompt \\
+{\em p\-P\-R} & minimal prompt \\
 \hline
 {\em pthee} & the externally supplied builtin object pointer \\
 \hline
 {\em builtin} & external supershell builtin function \\
 \hline
 \end{DoxyParams}
-\index{Vsh class@{Vsh class}!Vsh\+\_\+wipe@{Vsh\+\_\+wipe}}
-\index{Vsh\+\_\+wipe@{Vsh\+\_\+wipe}!Vsh class@{Vsh class}}
-\subsubsection[{Vsh\+\_\+wipe}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\+\_\+wipe (
+\index{Vsh class@{Vsh class}!Vsh\-\_\-wipe@{Vsh\-\_\-wipe}}
+\index{Vsh\-\_\-wipe@{Vsh\-\_\-wipe}!Vsh class@{Vsh class}}
+\subsubsection[{Vsh\-\_\-wipe}]{\setlength{\rightskip}{0pt plus 5cm}void Vsh\-\_\-wipe (
 \begin{DoxyParamCaption}
 \item[{{\bf Vsh} $\ast$}]{thee}
 \end{DoxyParamCaption}
@@ -564,7 +562,7 @@ Wipe the environment.
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-Class Vsh\+: Non-\/inlineable method (vsh.\+c) 
+Class Vsh\-: Non-\/inlineable method (vsh.\-c) 
 \end{DoxyNote}
 \begin{DoxyReturn}{Returns}
 None 
