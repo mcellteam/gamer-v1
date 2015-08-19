@@ -1,80 +1,78 @@
-\section{vcom.\+h File Reference}
-\label{a00013}\index{vcom.\+h@{vcom.\+h}}
+\section{vcom.\-h File Reference}
+\label{a00013}\index{vcom.\-h@{vcom.\-h}}
 
 
-Class Vcom\+: virtual (currently just M\+P\+I) communications layer.  
+Class Vcom\-: virtual (currently just M\-P\-I) communications layer.  
 
 
-{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
-{\ttfamily \#include $<$maloc/vsys.\+h$>$}\\*
-Include dependency graph for vcom.\+h\+:\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\-\_\-base.\-h$>$}\\*
+{\ttfamily \#include $<$maloc/vsys.\-h$>$}\\*
+Include dependency graph for vcom.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{a00037}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=96pt]{a00038}
+\includegraphics[width=94pt]{a00038}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\+Vcom}
+struct {\bf s\-Vcom}
 \begin{DoxyCompactList}\small\item\em Contains public data members for Vcom class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define {\bf V\+C\+O\+M\+\_\+\+M\+P\+I\+\_\+\+T\+A\+G}~111
-\begin{DoxyCompactList}\small\item\em A base value for M\+P\+I tags. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define {\bf V\-C\-O\-M\-\_\-\-M\-P\-I\-\_\-\-T\-A\-G}~111
+\begin{DoxyCompactList}\small\item\em A base value for M\-P\-I tags. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\+Vcom} {\bf Vcom}
+typedef struct {\bf s\-Vcom} {\bf Vcom}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vcom class as the Vcom structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vcom\+\_\+init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+int {\bf Vcom\-\_\-init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
 \begin{DoxyCompactList}\small\item\em The Vmp initializer. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+finalize} (void)
+int {\bf Vcom\-\_\-finalize} (void)
 \begin{DoxyCompactList}\small\item\em The Vmp finalizer. \end{DoxyCompactList}\item 
-{\bf Vcom} $\ast$ {\bf Vcom\+\_\+ctor} (int commtype)
-\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\+P\+I. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+ctor2} ({\bf Vcom} $\ast$thee, int commtype)
-\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\+P\+I. This is broken into two parts to be callable from F\+O\+R\+T\+R\+A\+N. \end{DoxyCompactList}\item 
-void {\bf Vcom\+\_\+dtor} ({\bf Vcom} $\ast$$\ast$thee)
+{\bf Vcom} $\ast$ {\bf Vcom\-\_\-ctor} (int commtype)
+\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\-P\-I. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-ctor2} ({\bf Vcom} $\ast$thee, int commtype)
+\begin{DoxyCompactList}\small\item\em Construct the communications object. This routine sets up data members of class and initializes M\-P\-I. This is broken into two parts to be callable from F\-O\-R\-T\-R\-A\-N. \end{DoxyCompactList}\item 
+void {\bf Vcom\-\_\-dtor} ({\bf Vcom} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em Destroy the communications object. \end{DoxyCompactList}\item 
-void {\bf Vcom\+\_\+dtor2} ({\bf Vcom} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Destroy the communications object. This is broken into two parts to be callable from F\+O\+R\+T\+R\+A\+N. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+send} ({\bf Vcom} $\ast$thee, int des, void $\ast$buf, int len, int type, int block)
+void {\bf Vcom\-\_\-dtor2} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Destroy the communications object. This is broken into two parts to be callable from F\-O\-R\-T\-R\-A\-N. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-send} ({\bf Vcom} $\ast$thee, int des, void $\ast$buf, int len, int type, int block)
 \begin{DoxyCompactList}\small\item\em Send a buffer. Returns 1 on success. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+recv} ({\bf Vcom} $\ast$thee, int src, void $\ast$buf, int len, int type, int block)
-\begin{DoxyCompactList}\small\item\em Receive a (character) buffer. ~\newline
+int {\bf Vcom\-\_\-recv} ({\bf Vcom} $\ast$thee, int src, void $\ast$buf, int len, int type, int block)
+\begin{DoxyCompactList}\small\item\em Receive a (character) buffer. \par
  The blocking flag is present, but not used. All receives are assumed to be blocking. A non-\/blocking receive would be {\itshape very} ugly to implement (signals or something?). \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+get\+Count} ({\bf Vcom} $\ast$thee, int src, int $\ast$length, int type)
+int {\bf Vcom\-\_\-get\-Count} ({\bf Vcom} $\ast$thee, int src, int $\ast$length, int type)
 \begin{DoxyCompactList}\small\item\em Perform a blocking probe to get the length (in number of items of specified type) of an incoming message and place it in the argument ``length". \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+reduce} ({\bf Vcom} $\ast$thee, void $\ast$sendbuf, void $\ast$recvbuf, int length, int type, int op)
-\begin{DoxyCompactList}\small\item\em Perform a reduction of the data across all processors. This is equivalent (and in the case of M\+P\+I is identical to) M\+P\+I\+\_\+\+Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+size} ({\bf Vcom} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Get the number of P\+Es in communicator. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+resize} ({\bf Vcom} $\ast$thee, int newsize)
-\begin{DoxyCompactList}\small\item\em Resize (shrink) the communications group to include only newsize number of processors. ~\newline
+int {\bf Vcom\-\_\-reduce} ({\bf Vcom} $\ast$thee, void $\ast$sendbuf, void $\ast$recvbuf, int length, int type, int op)
+\begin{DoxyCompactList}\small\item\em Perform a reduction of the data across all processors. This is equivalent (and in the case of M\-P\-I is identical to) M\-P\-I\-\_\-\-Allreduce. Basically, the specified operations are appleed to each member of the sendbuf across all processors and the results are written to recvbuf. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-size} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Get the number of P\-Es in communicator. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-resize} ({\bf Vcom} $\ast$thee, int newsize)
+\begin{DoxyCompactList}\small\item\em Resize (shrink) the communications group to include only newsize number of processors. \par
  Obsolete processes are given rank of -\/1 and size of 0. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+rank} ({\bf Vcom} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Get the I\+D of the local P\+E. \end{DoxyCompactList}\item 
-int {\bf Vcom\+\_\+barr} ({\bf Vcom} $\ast$thee)
+int {\bf Vcom\-\_\-rank} ({\bf Vcom} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Get the I\-D of the local P\-E. \end{DoxyCompactList}\item 
+int {\bf Vcom\-\_\-barr} ({\bf Vcom} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Synchronization barrier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vcom\+: virtual (currently just M\+P\+I) communications layer. 
-
-\begin{DoxyAuthor}{Authors}
+Class Vcom\-: virtual (currently just M\-P\-I) communications layer. \begin{DoxyAuthor}{Authors}
 Nathan Baker and Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
@@ -83,8 +81,8 @@ None
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id}
-\doxyref{vcom.\+h}{p.}{a00013},v 1.\+38 2010/08/12 05\+:40\+:23 fetk Exp 
+\begin{DoxyParagraph}{Id\-:}
+\doxyref{vcom.\-h}{p.}{a00013},v 1.\-38 2010/08/12 05\-:40\-:23 fetk Exp 
 \end{DoxyParagraph}
 
 
@@ -113,10 +111,10 @@ None
 
 
 \subsection{Macro Definition Documentation}
-\index{vcom.\+h@{vcom.\+h}!V\+C\+O\+M\+\_\+\+M\+P\+I\+\_\+\+T\+A\+G@{V\+C\+O\+M\+\_\+\+M\+P\+I\+\_\+\+T\+A\+G}}
-\index{V\+C\+O\+M\+\_\+\+M\+P\+I\+\_\+\+T\+A\+G@{V\+C\+O\+M\+\_\+\+M\+P\+I\+\_\+\+T\+A\+G}!vcom.\+h@{vcom.\+h}}
-\subsubsection[{V\+C\+O\+M\+\_\+\+M\+P\+I\+\_\+\+T\+A\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+C\+O\+M\+\_\+\+M\+P\+I\+\_\+\+T\+A\+G~111}\label{a00013_a81c395f6f83ae48ed287066004e4795d}
+\index{vcom.\-h@{vcom.\-h}!V\-C\-O\-M\-\_\-\-M\-P\-I\-\_\-\-T\-A\-G@{V\-C\-O\-M\-\_\-\-M\-P\-I\-\_\-\-T\-A\-G}}
+\index{V\-C\-O\-M\-\_\-\-M\-P\-I\-\_\-\-T\-A\-G@{V\-C\-O\-M\-\_\-\-M\-P\-I\-\_\-\-T\-A\-G}!vcom.h@{vcom.\-h}}
+\subsubsection[{V\-C\-O\-M\-\_\-\-M\-P\-I\-\_\-\-T\-A\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\-C\-O\-M\-\_\-\-M\-P\-I\-\_\-\-T\-A\-G~111}\label{a00013_a81c395f6f83ae48ed287066004e4795d}
 
 
-A base value for M\+P\+I tags. 
+A base value for M\-P\-I tags. 
 

@@ -7,6 +7,7 @@ import gamer
 
 # python imports
 import os
+import re
 import numpy as np
 
 
@@ -19,24 +20,12 @@ def unregister():
     bpy.utils.unregister_module(__name__)
 
 
-'''
-class GAMER_OT_coarse_dense(bpy.types.Operator):
-    bl_idname = "gamer.coarse_dense"
-    bl_label = "Coarse Dense"
-    bl_description = "Decimate selected dense areas of the mesh"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        context.scene.gamer.mesh_improve_panel.coarse_dense(context)
-        return {'FINISHED'}
-'''
-
 # Object Boundary Marker Operators:
 
 class GAMER_OT_add_boundary(bpy.types.Operator):
     bl_idname = "gamer.add_boundary"
-    bl_label = "Add New Surface Boundary"
-    bl_description = "Add a new surface boundary to an object"
+    bl_label = "Add New Boundary"
+    bl_description = "Add a new boundary to an object"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -46,8 +35,8 @@ class GAMER_OT_add_boundary(bpy.types.Operator):
 
 class GAMER_OT_remove_boundary(bpy.types.Operator):
     bl_idname = "gamer.remove_boundary"
-    bl_label = "Remove Surface Boundary"
-    bl_description = "Remove selected surface boundary from object"
+    bl_label = "Remove Boundary"
+    bl_description = "Remove selected boundary from object"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -57,8 +46,8 @@ class GAMER_OT_remove_boundary(bpy.types.Operator):
 
 class GAMER_OT_remove_all_boundaries(bpy.types.Operator):
     bl_idname = "gamer.remove_all_boundaries"
-    bl_label = "Remove All Surface Boundaries"
-    bl_description = "Remove all surface boundaries from object"
+    bl_label = "Remove All Boundaries"
+    bl_description = "Remove all boundaries from object"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -68,8 +57,8 @@ class GAMER_OT_remove_all_boundaries(bpy.types.Operator):
 
 class GAMER_OT_assign_boundary_faces(bpy.types.Operator):
     bl_idname = "gamer.assign_boundary_faces"
-    bl_label = "Assign Selected Faces To Surface Boundary"
-    bl_description = "Assign selected faces to surface boundary"
+    bl_label = "Assign Selected Faces To Boundary"
+    bl_description = "Assign selected faces to boundary"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -81,8 +70,8 @@ class GAMER_OT_assign_boundary_faces(bpy.types.Operator):
 
 class GAMER_OT_remove_boundary_faces(bpy.types.Operator):
     bl_idname = "gamer.remove_boundary_faces"
-    bl_label = "Remove Selected Faces From Surface Boundary"
-    bl_description = "Remove selected faces from surface boundary"
+    bl_label = "Remove Selected Faces From Boundary"
+    bl_description = "Remove selected faces from boundary"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -94,8 +83,8 @@ class GAMER_OT_remove_boundary_faces(bpy.types.Operator):
 
 class GAMER_OT_select_boundary_faces(bpy.types.Operator):
     bl_idname = "gamer.select_boundary_faces"
-    bl_label = "Select Faces of Selected Surface Boundary"
-    bl_description = "Select faces of selected surface boundary"
+    bl_label = "Select Faces of Selected Boundary"
+    bl_description = "Select faces of selected boundary"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -106,9 +95,9 @@ class GAMER_OT_select_boundary_faces(bpy.types.Operator):
 
 
 class GAMER_OT_deselect_boundary_faces(bpy.types.Operator):
-    bl_idname = "gamer.deselect_boundary"
-    bl_label = "Deselect Faces of Selected Surface Boundary"
-    bl_description = "Deselect faces of selected surface boundary"
+    bl_idname = "gamer.deselect_boundary_faces"
+    bl_label = "Deselect Faces of Selected Boundary"
+    bl_description = "Deselect faces of selected boundary"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -123,26 +112,28 @@ class GAMER_OT_deselect_boundary_faces(bpy.types.Operator):
 class GAMER_UL_check_boundary(bpy.types.UIList):
     def draw_item(self, context, layout, data, item, icon, active_data,
                   active_propname, index):
-        if item.status:
-            layout.label(item.status, icon='ERROR')
-        else:
-            layout.label(item.name, icon='FILE_TICK')
+        layout.label(item.name)
+#        if item.status:
+#            layout.label(item.status, icon='ERROR')
+#        else:
+#            layout.label(item.name, icon='FILE_TICK')
 
 
 # Boundary Callbacks:
 
-def boundary_update(self, context):
-    context.object.gamer.boundary_update()
+def boundary_name_update(self, context):
+    context.object.gamer.boundary_name_update()
     return
-###################
 
 
 # Gamer Property Classes for Boundaries
 
-class GAMerBoundaryMarkersProperty(bpy.types.PropertyGroup):
-    id = IntProperty(name="Unique ID of This Boundary",default=-1)
+class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
     name = StringProperty(
-        name="Boundary Name", default="Boundary", update=boundary_update)
+        name="Boundary Name", default="Boundary", update=boundary_name_update)
+    id = IntProperty(name="Unique ID of This Boundary",default=-1)
+    marker = IntProperty(name="Marker Value", default = 1)
+    color = FloatVectorProperty ( name="Boundary Color", min=0.0, max=1.0, default=(0.5,0.5,0.5), subtype='COLOR', description='Boundary Color')
     status = StringProperty(name="Status")
 
 
@@ -227,15 +218,13 @@ class GAMerBoundaryMarkersProperty(bpy.types.PropertyGroup):
 
     def destroy_boundary(self, context):
         """Remove all boundary data from mesh"""
-        id = str(self.id)
+        bnd_name = self.name
 
-        # POSSIBLE FIXME? GET PARENT BLEND OBJECT OF THIS REGION_LIST
         obj = context.active_object
-        mesh = obj.data
-        for seg_id in mesh["mcell"]["boundaries"][id].keys():
-            mesh["mcell"]["boundaries"][id][seg_id] = []
-        mesh["mcell"]["boundaries"][id].clear()
-        mesh["mcell"]["boundaries"].pop(id)
+        for seg_id in obj["boundaries"][bnd_name]['faces'].keys():
+            obj["boundaries"][bnd_name]['faces'][seg_id] = []
+        obj["boundaries"][bnd_name].clear()
+        obj["boundaries"].pop(bnd_name)
 
 
     def face_in_boundary(self, context, face_index):
@@ -245,18 +234,26 @@ class GAMerBoundaryMarkersProperty(bpy.types.PropertyGroup):
         return(face_index in bnd_faces)
 
 
-    def init_boundary(self, context, id):
+    def init_boundary(self, context, bnd_name, id):
 
         self.id = id
-        str_id = str(self.id)
+        self.name = bnd_name
 
-        mesh = context.active_object.data
-        if not mesh.get("mcell"):
-            mesh["mcell"] = {}
-        if not mesh["mcell"].get("boundaries"):
-            mesh["mcell"]["boundaries"] = {}
-        if not mesh["mcell"]["boundaries"].get(str_id):
-            mesh["mcell"]["boundaries"][str_id] = {}
+        obj = context.active_object
+        if not obj.get("boundaries"):
+            obj['boundaries'] = {}
+        if not obj['boundaries'].get(bnd_name):
+            obj['boundaries'][bnd_name] = {}
+        if not obj['boundaries'][bnd_name].get('marker'):
+            obj['boundaries'][bnd_name]['marker'] = self.marker
+        if not obj['boundaries'][bnd_name].get('r'):
+            obj['boundaries'][bnd_name]['r'] = self.color[0]
+        if not obj['boundaries'][bnd_name].get('g'):
+            obj['boundaries'][bnd_name]['g'] = self.color[1]
+        if not obj['boundaries'][bnd_name].get('b'):
+            obj['boundaries'][bnd_name]['b'] = self.color[2]
+        if not obj['boundaries'][bnd_name].get('faces'):
+            obj['boundaries'][bnd_name]['faces'] = {}
 
 
     def reset_boundary(self, context):
@@ -375,9 +372,9 @@ class GAMerBoundaryMarkersProperty(bpy.types.PropertyGroup):
         return(rld)
 
 
-class GAMerBoundaryMarkersListProperty(bpy.types.PropertyGroup):
+class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
     boundary_list = CollectionProperty(
-        type=GAMerBoundaryMarkerProperty, name="Surface Boundary List")
+        type=GAMerBoundaryMarkersPropertyGroup, name="Boundary List")
     active_bnd_index = IntProperty(name="Active Boundary Index", default=0)
     id_counter = IntProperty(name="Counter for Unique Boundary IDs", default=0)
     include = BoolProperty(name="Include Domain in Model", default=False)
@@ -451,11 +448,10 @@ class GAMerBoundaryMarkersListProperty(bpy.types.PropertyGroup):
     def add_boundary(self, context):
         """ Add a new boundary to the list of boundaries and set as the active boundary """
         id = self.allocate_id()
-        new_bnd=self.boundary_list.add()
-        new_bnd.init_boundary(context, id)
+        bnd_name = "Boundary_%d" % (id)
+        new_bnd = self.boundary_list.add()
 # FIXME: CHECK FOR NAME COLLISION HERE: FIX BY ALLOCATING NEXT ID...
-        bnd_name = "Boundary_%d" % (new_bnd.id)
-        new_bnd.name = bnd_name
+        new_bnd.init_boundary(context, bnd_name, id)
         idx = self.boundary_list.find(bnd_name)
         self.active_bnd_index = idx
 
@@ -467,9 +463,8 @@ class GAMerBoundaryMarkersListProperty(bpy.types.PropertyGroup):
 
         id = self.allocate_id()
         new_bnd=self.boundary_list.add()
-        new_bnd.init_boundary(context, id)
 # FIXME: CHECK FOR NAME COLLISION HERE: FIX BY ALLOCATING NEXT ID...
-        new_bnd.name = bnd_name
+        new_bnd.init_boundary(context, bnd_name, id)
 
         idx = self.boundary_list.find(curr_bnd_name)
         self.active_bnd_index = idx
@@ -489,19 +484,19 @@ class GAMerBoundaryMarkersListProperty(bpy.types.PropertyGroup):
 
     def remove_boundary(self, context):
 
-        # First remove boundary data from mesh:
+        # First remove ID prop boundary data from object:
         bnd = self.get_active_boundary()
         if bnd:
             bnd.destroy_boundary(context)
 
-            # Now remove the boundary from the object
+            # Now remove the RNA boundary from the object
             self.boundary_list.remove(self.active_bnd_index)
             self.active_bnd_index -= 1
             if (self.active_bnd_index < 0):
                 self.active_bnd_index = 0
 
 
-    def boundary_update(self):
+    def boundary_name_update(self):
         """Performs checks and sorts boundary list after update of boundary names"""
 
         if self.boundary_list:
@@ -561,51 +556,66 @@ class GAMerBoundaryMarkersListProperty(bpy.types.PropertyGroup):
     def draw_layout(self, context, layout):
         active_obj = context.active_object
 
-        if active_obj.type == 'MESH':
+        if active_obj and (active_obj.type == 'MESH'):
             row = layout.row()
-            # row.label(text="Defined Boundarys:", icon='FORCE_LENNARDJONES')
-            row.label(text="Defined Surface Boundarys:", icon='SNAP_FACE')
+            # row.label(text="Defined Boundaries:", icon='FORCE_LENNARDJONES')
+            row.label(text="Defined Boundaries:", icon='SNAP_FACE')
             row = layout.row()
             col = row.column()
-            col.template_list("MCELL_UL_check_boundary", "define_surf_boundaries",
-                          self, "boundary_list",
-                          self, "active_bnd_index",
+            col.template_list("GAMER_UL_check_boundary", "boundary_list_1",
+                          active_obj.gamer, "boundary_list",
+                          active_obj.gamer, "active_bnd_index",
                           rows=2)
             col = row.column(align=True)
-            col.operator("mcell.boundary_add", icon='ZOOMIN', text="")
-            col.operator("mcell.boundary_remove", icon='ZOOMOUT', text="")
-            col.operator("mcell.boundary_remove_all", icon='X', text="")
+            col.operator("gamer.add_boundary", icon='ZOOMIN', text="")
+            col.operator("gamer.remove_boundary", icon='ZOOMOUT', text="")
+            col.operator("gamer.remove_all_boundaries", icon='X', text="")
 
             # Could have boundary item draw itself in new row here:
-            row = layout.row()
-            if len(self.boundary_list) > 0:
-                layout.prop(self.get_active_boundary(), "name")
+            active_bnd = None
+            if len(active_obj.gamer.boundary_list) > 0:
+                active_bnd = active_obj.gamer.get_active_boundary()
 
-            if active_obj.mode == 'EDIT' and (len(self.boundary_list)>0):
+                row = layout.row()
+                row.prop(active_bnd, "name")
+
+                row = layout.row()
+                col = row.column()
+                col.label(text="Marker:")
+                col = row.column()
+                col.prop(active_bnd, "marker", text="")
+
+                row = layout.row()
+                col = row.column()
+                col.label(text="Color:")
+                col = row.column()
+                col.prop(active_bnd, "color", text="")
+
+            if active_obj.mode == 'EDIT' and active_bnd:
                 row = layout.row()
                 sub = row.row(align=True)
-                sub.operator("mcell.boundary_faces_assign", text="Assign")
-                sub.operator("mcell.boundary_faces_remove", text="Remove")
+                sub.operator("gamer.assign_boundary_faces", text="Assign")
+                sub.operator("gamer.remove_boundary_faces", text="Remove")
                 sub = row.row(align=True)
-                sub.operator("mcell.boundary_faces_select", text="Select")
-                sub.operator("mcell.boundary_faces_deselect", text="Deselect")
+                sub.operator("gamer.select_boundary_faces", text="Select")
+                sub.operator("gamer.deselect_boundary_faces", text="Deselect")
 
-                # Option to Get Boundary Info
-                box = layout.box()
-                row = box.row(align=True)
-                row.alignment = 'LEFT'
-                if self.get_boundary_info:
-                    row.prop(self, "get_boundary_info", icon='TRIA_DOWN',
-                             text="Boundary Info for Selected Faces",
-                              emboss=False)
-                    bnd_info = self.faces_get_boundaries(context)
-                    for bnd_name in bnd_info:
-                        row = box.row()
-                        row.label(text=bnd_name)
-                else:
-                    row.prop(self, "get_boundary_info", icon='TRIA_RIGHT',
-                             text="Boundary Info for Selected Faces",
-                             emboss=False)
+#                # Option to Get Boundary Info
+#                box = layout.box()
+#                row = box.row(align=True)
+#                row.alignment = 'LEFT'
+#                if self.get_boundary_info:
+#                    row.prop(self, "get_boundary_info", icon='TRIA_DOWN',
+#                             text="Boundary Info for Selected Faces",
+#                              emboss=False)
+#                    bnd_info = self.faces_get_boundaries(context)
+#                    for bnd_name in bnd_info:
+#                        row = box.row()
+#                        row.label(text=bnd_name)
+#                else:
+#                    row.prop(self, "get_boundary_info", icon='TRIA_RIGHT',
+#                             text="Boundary Info for Selected Faces",
+#                             emboss=False)
 
 
 

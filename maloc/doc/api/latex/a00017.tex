@@ -1,69 +1,67 @@
-\section{vmpi.\+h File Reference}
-\label{a00017}\index{vmpi.\+h@{vmpi.\+h}}
+\section{vmpi.\-h File Reference}
+\label{a00017}\index{vmpi.\-h@{vmpi.\-h}}
 
 
-Class Vmpi\+: a Virtual M\+P\+I communication layer object.  
+Class Vmpi\-: a Virtual M\-P\-I communication layer object.  
 
 
-{\ttfamily \#include $<$maloc/maloc\+\_\+base.\+h$>$}\\*
-{\ttfamily \#include $<$maloc/vsys.\+h$>$}\\*
-Include dependency graph for vmpi.\+h\+:\nopagebreak
+{\ttfamily \#include $<$maloc/maloc\-\_\-base.\-h$>$}\\*
+{\ttfamily \#include $<$maloc/vsys.\-h$>$}\\*
+Include dependency graph for vmpi.\-h\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{a00045}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=96pt]{a00046}
+\includegraphics[width=94pt]{a00046}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct {\bf s\+Vmpi}
-\begin{DoxyCompactList}\small\item\em Class Vmpi\+: Definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+struct {\bf s\-Vmpi}
+\begin{DoxyCompactList}\small\item\em Class Vmpi\-: Definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct {\bf s\+Vmpi} {\bf Vmpi}
+typedef struct {\bf s\-Vmpi} {\bf Vmpi}
 \begin{DoxyCompactList}\small\item\em Declaration of the Vmpi class as the Vmpi structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf Vmpi\+\_\+init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
+int {\bf Vmpi\-\_\-init} (int $\ast$argc, char $\ast$$\ast$$\ast$argv)
 \begin{DoxyCompactList}\small\item\em The Vmp initializer. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+finalize} (void)
+int {\bf Vmpi\-\_\-finalize} (void)
 \begin{DoxyCompactList}\small\item\em The Vmp finalizer. \end{DoxyCompactList}\item 
-{\bf Vmpi} $\ast$ {\bf Vmpi\+\_\+ctor} (void)
+{\bf Vmpi} $\ast$ {\bf Vmpi\-\_\-ctor} (void)
 \begin{DoxyCompactList}\small\item\em The Vmpi constructor. \end{DoxyCompactList}\item 
-void {\bf Vmpi\+\_\+dtor} ({\bf Vmpi} $\ast$$\ast$thee)
+void {\bf Vmpi\-\_\-dtor} ({\bf Vmpi} $\ast$$\ast$thee)
 \begin{DoxyCompactList}\small\item\em The Vmpi destructor. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+rank} ({\bf Vmpi} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em Return my processor I\+D. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+size} ({\bf Vmpi} $\ast$thee)
+int {\bf Vmpi\-\_\-rank} ({\bf Vmpi} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em Return my processor I\-D. \end{DoxyCompactList}\item 
+int {\bf Vmpi\-\_\-size} ({\bf Vmpi} $\ast$thee)
 \begin{DoxyCompactList}\small\item\em Return the number of processors involved. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+barr} ({\bf Vmpi} $\ast$thee)
-\begin{DoxyCompactList}\small\item\em An M\+P\+I barrier. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+send} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\+P\+I blocking send. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+recv} ({\bf Vmpi} $\ast$thee, int src, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\+P\+I blocking receive. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+bcast} ({\bf Vmpi} $\ast$thee, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\+P\+I broadcast. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+reduce} ({\bf Vmpi} $\ast$thee, char $\ast$sbuf, char $\ast$rbuf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\+P\+I reduce. \end{DoxyCompactList}\item 
-int {\bf Vmpi\+\_\+isend} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
-\begin{DoxyCompactList}\small\item\em An M\+P\+I non-\/blocking send. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int {\bf Vmpi\-\_\-barr} ({\bf Vmpi} $\ast$thee)
+\begin{DoxyCompactList}\small\item\em An M\-P\-I barrier. \end{DoxyCompactList}\item 
+int {\bf Vmpi\-\_\-send} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\-P\-I blocking send. \end{DoxyCompactList}\item 
+int {\bf Vmpi\-\_\-recv} ({\bf Vmpi} $\ast$thee, int src, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\-P\-I blocking receive. \end{DoxyCompactList}\item 
+int {\bf Vmpi\-\_\-bcast} ({\bf Vmpi} $\ast$thee, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\-P\-I broadcast. \end{DoxyCompactList}\item 
+int {\bf Vmpi\-\_\-reduce} ({\bf Vmpi} $\ast$thee, char $\ast$sbuf, char $\ast$rbuf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\-P\-I reduce. \end{DoxyCompactList}\item 
+int {\bf Vmpi\-\_\-isend} ({\bf Vmpi} $\ast$thee, int des, char $\ast$buf, int bufsize)
+\begin{DoxyCompactList}\small\item\em An M\-P\-I non-\/blocking send. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Class Vmpi\+: a Virtual M\+P\+I communication layer object. 
-
-\begin{DoxyAuthor}{Author}
+Class Vmpi\-: a Virtual M\-P\-I communication layer object. \begin{DoxyAuthor}{Author}
 Michael Holst 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
@@ -72,8 +70,8 @@ None
 \begin{DoxyVersion}{Version}
 
 \end{DoxyVersion}
-\begin{DoxyParagraph}{Id}
-\doxyref{vmpi.\+h}{p.}{a00017},v 1.\+29 2010/08/12 05\+:40\+:23 fetk Exp 
+\begin{DoxyParagraph}{Id\-:}
+\doxyref{vmpi.\-h}{p.}{a00017},v 1.\-29 2010/08/12 05\-:40\-:23 fetk Exp 
 \end{DoxyParagraph}
 
 

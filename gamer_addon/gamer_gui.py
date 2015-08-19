@@ -328,7 +328,7 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
     name="GAMer Surface Mesh Improvement")
 
   boundary_marker_panel = PointerProperty(
-    type=boundary_markers.GAMerBoundaryMarkersPropertyGroup,
+    type=boundary_markers.GAMerBoundaryMarkersListPropertyGroup,
     name="GAMer Boundary Markers")
 
   def init_properties ( self ):

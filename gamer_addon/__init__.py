@@ -60,7 +60,7 @@ def register():
     bpy.types.Scene.gamer = bpy.props.PointerProperty(
         type=gamer_gui.GAMerPropertyGroup)
     bpy.types.Object.gamer = bpy.props.PointerProperty(
-        type=boundary_markers.GAMerBoundaryMarkersPropertyGroup)
+        type=boundary_markers.GAMerBoundaryMarkersListPropertyGroup)
 
     print("GAMer registered")
 
