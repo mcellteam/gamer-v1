@@ -38,15 +38,15 @@ bl_info = {
 # ***** END GPL LICENCE BLOCK ***** 
 # -------------------------------------------------------------------------- 
 
-# from . import gamer_gui
-
 if "bpy" in locals():
     print("Reloading GAMer")
     import imp
     imp.reload(gamer_gui)
+    imp.reload(boundary_markers)
 else:
     print("Importing GAMer")
     from . import gamer_gui
+    from . import boundary_markers
 
 # General import
 import bpy
@@ -57,9 +57,10 @@ def register():
     print("Registering GAMer...")
     bpy.utils.register_module(__name__)
 
-    # Unregister and re-register panels to display them in order
     bpy.types.Scene.gamer = bpy.props.PointerProperty(
         type=gamer_gui.GAMerPropertyGroup)
+    bpy.types.Object.gamer = bpy.props.PointerProperty(
+        type=boundary_markers.GAMerBoundaryMarkersPropertyGroup)
 
     print("GAMer registered")
 

@@ -5,6 +5,8 @@ from bpy.props import BoolProperty, CollectionProperty, EnumProperty, \
 import mathutils
 import gamer
 
+from . import boundary_markers
+
 # python imports
 import os
 import numpy as np
@@ -183,6 +185,7 @@ class GAMerMeshImprovementPropertyGroup(bpy.types.PropertyGroup):
 
 class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
     mesh_improve_select = BoolProperty ( name="mesh_improve_sel", description="Surface Mesh Improvement", default=False, subtype='NONE', update=panel_select_callback)
+    boundary_markers_select = BoolProperty ( name="boundary_markers_sel", description="Boundary Markers", default=False, subtype='NONE', update=panel_select_callback)
     select_multiple = BoolProperty ( name="select_multiple", description="Show Multiple Panels", default=False, subtype='NONE', update=panel_select_callback)
     last_state = BoolVectorProperty ( size=22 ) # Keeps track of previous button state to detect transitions
 
@@ -257,7 +260,10 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
         bcol = brow.column()
         bcol.prop ( self, "mesh_improve_select", icon='MESH_ICOSPHERE', text="Surface Mesh Improvement" )
         bcol = brow.column()
+        bcol.prop ( self, "boundary_markers_select", icon='MESH_ICOSPHERE', text="Boundary Marking" )
 
+        brow = layout.row()
+        bcol = brow.column()
         if self.select_multiple:
             bcol.prop ( self, "select_multiple", icon='PINNED', text="Show All / Multiple" )
         else:
@@ -269,6 +275,11 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
             layout.box() # Use as a separator
             layout.label ( "Surface Mesh Improvement", icon='MESH_ICOSPHERE' )
             context.scene.gamer.mesh_improve_panel.draw_layout ( context, layout )
+
+        if self.boundary_markers_select:
+            layout.box() # Use as a separator
+            layout.label ( "Boundary Marking", icon='MESH_ICOSPHERE' )
+            context.scene.gamer.boundary_marker_panel.draw_layout ( context, layout )
 
 
 
@@ -315,6 +326,10 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
   mesh_improve_panel = PointerProperty(
     type=GAMerMeshImprovementPropertyGroup,
     name="GAMer Surface Mesh Improvement")
+
+  boundary_marker_panel = PointerProperty(
+    type=boundary_markers.GAMerBoundaryMarkersPropertyGroup,
+    name="GAMer Boundary Markers")
 
   def init_properties ( self ):
     self.gamer_version = "0.1"
