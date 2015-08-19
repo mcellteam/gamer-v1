@@ -183,6 +183,89 @@ class GAMerMeshImprovementPropertyGroup(bpy.types.PropertyGroup):
 
 
 
+class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
+  dense_rate = FloatProperty(
+      name="CD_Rate", default=2.5, min=0.001, max=4.0, precision=4,
+      description="The rate for coarsening dense areas")
+  dense_iter = IntProperty(
+      name="CD_Iter", default=1, min=1, max=15,
+      description="The number of iterations for coarsening dense areas")
+  flat_rate = FloatProperty(
+      name="CF_Rate", default=0.016, min=0.00001, max=0.5, precision=4,
+      description="The rate for coarsening flat areas")
+  max_min_angle = IntProperty(
+      name="Max_Min_Angle", default=15, min=10, max=20,
+      description="The maximal minumum angle for smoothing")
+  smooth_iter = IntProperty(
+      name="S_Iter", default=6, min=1, max=50,
+      description="The number of iterations for coarsening dense areas")
+  preserve_ridges = BoolProperty( name="Preserve ridges", default=False)
+  new_mesh = BoolProperty( name="Create new mesh", default=False)
+
+  def coarse_dense ( self, context):
+      print("Calling coarse_dense")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.coarse_dense(rate=self.dense_rate, numiter=self.dense_iter)
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
+  def coarse_flat ( self, context):
+      print("Calling coarse_flat")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.coarse_flat(rate=self.flat_rate)
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
+  def smooth ( self, context):
+      print("Calling smooth")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.smooth(max_min_angle=self.max_min_angle, max_iter=self.smooth_iter, preserve_ridges=self.preserve_ridges)
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
+  def normal_smooth ( self, context):
+      print("Calling smooth")
+      gmesh, boundaries = blender_to_gamer(create_new_mesh=self.new_mesh)
+      gmesh.normal_smooth()
+      gamer_to_blender(gmesh, boundaries, create_new_mesh=self.new_mesh)
+
+  def draw_layout ( self, context, layout ):
+      row = layout.row()
+      col = row.column()
+      col.operator("gamer.coarse_dense",icon="OUTLINER_OB_LATTICE")
+      col = row.column()
+      col.prop(self, "dense_rate" )
+      col = row.column()
+      col.prop(self, "dense_iter" )
+
+      row = layout.row()
+      col = row.column()
+      col.operator("gamer.coarse_flat",icon="OUTLINER_OB_LATTICE")
+      col = row.column()
+      col.prop(self, "flat_rate" )
+
+      row = layout.row()
+      col = row.column()
+      col.operator("gamer.smooth",icon="OUTLINER_OB_LATTICE")
+      col = row.column()
+      col.prop(self, "max_min_angle" )
+      col = row.column()
+      col.prop(self, "smooth_iter" )
+
+      row = layout.row()
+      row.prop(self, "preserve_ridges" )
+
+      row = layout.row()
+      col = row.column()
+      col.operator("gamer.normal_smooth",icon="OUTLINER_OB_LATTICE")
+
+      row = layout.row()
+      row.prop(self, "new_mesh" )
+
+
+  def draw_panel ( self, context, panel ):
+      layout = panel.layout
+      self.draw_layout ( context, layout )
+
+
+
 class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
     mesh_improve_select = BoolProperty ( name="mesh_improve_sel", description="Surface Mesh Improvement", default=False, subtype='NONE', update=panel_select_callback)
     tet_select = BoolProperty ( name="tet_sel", description="Tetrahedralization", default=False, subtype='NONE', update=panel_select_callback)
@@ -327,7 +410,7 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
     name="GAMer Surface Mesh Improvement")
 
   tet_panel = PointerProperty(
-    type=GAMerMeshImprovementPropertyGroup,
+    type=GAMerTetrahedralizationPropertyGroup,
     name="GAMer Tetrahedralization")
 
   def init_properties ( self ):
