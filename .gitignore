@@ -1,0 +1,6 @@
+__pycache__
+tags
+maloc/doc/api
+*.lo
+*.la
+*.so
