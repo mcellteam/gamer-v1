@@ -183,7 +183,60 @@ class GAMerMeshImprovementPropertyGroup(bpy.types.PropertyGroup):
 
 
 
+# Tetrahedralization Operators:
+
+class GAMER_OT_tet_domain_add(bpy.types.Operator):
+    bl_idname = "gamer.tet_domain_add"
+    bl_label = "Add a Tet Domain"
+    bl_description = "Add a new tetrahedralization domain"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        context.scene.gamer.tet_group.add_tet_group(context)
+        return {'FINISHED'}
+
+class GAMER_OT_tet_domain_remove(bpy.types.Operator):
+    bl_idname = "gamer.tet_domain_remove"
+    bl_label = "Remove a Tet Domain"
+    bl_description = "Remove a tetrahedralization domain"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        context.scene.gamer.tet_group.remove_active_tet_group(context)
+        self.report({'INFO'}, "Deleted Tet Group")
+        return {'FINISHED'}
+
+
+
+class GAMER_OT_generic_button(bpy.types.Operator):
+    bl_idname = "gamer.generic_button"
+    bl_label = "Generic Button"
+    bl_description = ("Generic Button")
+    bl_options = {'REGISTER'}
+
+    def execute(self, context):
+        print ( "Executed" )
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+
+
+
 class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
+  generic_float = FloatProperty(
+      name="Generic Float", default=123.456, min=0.0, max=1000, precision=4,
+      description="A Generic Float Value")
+
+  generic_int = IntProperty(
+      name="Generic Int", default=5, min=1, max=10,
+      description="A Generic Int Value")
+
+  generic_boolean = BoolProperty(
+      name="Generic Bool", default=False,
+      description="A Generic Boolean Value")
+
   dense_rate = FloatProperty(
       name="CD_Rate", default=2.5, min=0.001, max=4.0, precision=4,
       description="The rate for coarsening dense areas")
@@ -201,6 +254,12 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       description="The number of iterations for coarsening dense areas")
   preserve_ridges = BoolProperty( name="Preserve ridges", default=False)
   new_mesh = BoolProperty( name="Create new mesh", default=False)
+
+  def add_tet_group ( self, context):
+      print("Adding a Tet Group")
+
+  def remove_active_tet_group ( self, context):
+      print("Removing active Tet Group")
 
   def coarse_dense ( self, context):
       print("Calling coarse_dense")
@@ -229,35 +288,91 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
   def draw_layout ( self, context, layout ):
       row = layout.row()
       col = row.column()
-      col.operator("gamer.coarse_dense",icon="OUTLINER_OB_LATTICE")
-      col = row.column()
-      col.prop(self, "dense_rate" )
-      col = row.column()
-      col.prop(self, "dense_iter" )
+      col.label ( "list goes here" )
+      """
+      col.template_list("MCell_UL_check_molecule", "define_molecules",
+                        self, "molecule_list",
+                        self, "active_mol_index",
+                        rows=2)
+      """
+      col = row.column(align=True)
+      col.operator("gamer.tet_domain_add", icon='ZOOMIN', text="")
+      col.operator("gamer.tet_domain_remove", icon='ZOOMOUT', text="")
+
 
       row = layout.row()
+      # row.label ( "Use domain as a hole" )
+      row.prop ( self, "generic_boolean", text="Use domain as a hole" )
+
+
+      # Split into two columns here
+      
+      row = layout.row()
+      
+      # Left column
       col = row.column()
-      col.operator("gamer.coarse_flat",icon="OUTLINER_OB_LATTICE")
+
+      srow = col.row()
+      srow.label ( "Marker" )
+      
+      srow = col.row()
+      srow.label ( "Vol constr:" )
+
+      # Right column
       col = row.column()
-      col.prop(self, "flat_rate" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_int", text="Marker" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_int", text="Vol_constr" )
+
+      
+      # Merge columns together again
 
       row = layout.row()
-      col = row.column()
-      col.operator("gamer.smooth",icon="OUTLINER_OB_LATTICE")
-      col = row.column()
-      col.prop(self, "max_min_angle" )
-      col = row.column()
-      col.prop(self, "smooth_iter" )
-
+      row.prop ( self, "generic_boolean", text="Use Volume Constraint" )
+      
+      # Split into two columns here
+      
       row = layout.row()
-      row.prop(self, "preserve_ridges" )
-
-      row = layout.row()
+      
+      # Left column
       col = row.column()
-      col.operator("gamer.normal_smooth",icon="OUTLINER_OB_LATTICE")
 
-      row = layout.row()
-      row.prop(self, "new_mesh" )
+      srow = col.row()
+      srow.label (text="Min dihed deg:" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_float", text="Min_dihed_deg:" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_boolean", text="DOLFIN" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_boolean", text="Carp" )
+      
+      srow = col.row()
+      srow.operator ( "gamer.generic_button", text="Tetrahedralize" )
+
+
+      # Right column
+      col = row.column()
+
+      srow = col.row()
+      srow.label ( text="Min aspect ratio:" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_float", text="Min_aspec_rat" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_boolean", text="Diffpack" )
+
+      srow = col.row()
+      srow.prop ( self, "generic_boolean", text="FEtk" )
+      
+      srow = col.row()
+      srow.prop ( self, "generic_boolean", text="Higher order mesh generation" )
 
 
   def draw_panel ( self, context, panel ):
@@ -361,7 +476,7 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
         if self.tet_select:
             layout.box() # Use as a separator
             layout.label ( "Tetrahedralization", icon='MESH_CONE' )
-            context.scene.gamer.tet_panel.draw_layout ( context, layout )
+            context.scene.gamer.tet_group.draw_layout ( context, layout )
 
 
 
@@ -409,7 +524,7 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
     type=GAMerMeshImprovementPropertyGroup,
     name="GAMer Surface Mesh Improvement")
 
-  tet_panel = PointerProperty(
+  tet_group = PointerProperty(
     type=GAMerTetrahedralizationPropertyGroup,
     name="GAMer Tetrahedralization")
 
