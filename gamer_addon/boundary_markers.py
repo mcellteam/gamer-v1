@@ -269,13 +269,13 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
     def get_boundary_faces(self, context):
         """Given return the set of boundary face indices for this boundary"""
 
-        obj = context.active_objext
+        obj = context.active_object
         bnd_name = self.name
 
         face_list = []
         for seg_id in obj["boundaries"][bnd_name]['faces'].keys():
           face_list.extend(obj["boundaries"][bnd_name]['faces'][seg_id].to_list())
-        if (len(face_list > 0)): 
+        if (len(face_list) > 0): 
             face_set = set(face_list)
         else:
             face_set = set([])
@@ -284,92 +284,33 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 
 
     def set_boundary_faces(self, context, face_set):
-        """Set the faces of a given boundary id on a mesh, given a set of faces """
+        """Set the faces of a given boundary on object, given a set of faces """
 
-        id = str(self.id)
+        obj = context.active_object
+        bnd_name = self.name
         face_list = list(face_set)
         face_list.sort()
-        face_rle = self.rl_encode(face_list)
 
         # Clear existing faces from this boundary id
-        mesh["mcell"]["boundaries"][id].clear()
+        obj["boundaries"][bnd_name]["faces"].clear()
 
-        # segment face_rle into pieces <= max_len (i.e. <= 32767)
+        # segment face_list into pieces <= max_len (i.e. <= 32767)
         #   and assign these segments to the boundary id
         max_len = 32767
-        seg_rle = face_rle
-        len_rle = len(seg_rle)
+        seg_list = face_list
+        len_list = len(seg_list)
         seg_idx = 0
-        while len_rle > 0:
-          if len_rle <= 32767:
-            mesh["mcell"]["boundaries"][id][str(seg_idx)] = seg_rle
-            len_rle = 0
+        while len_list > 0:
+          if len_list <= 32767:
+            obj["boundaries"][bnd_name]["faces"]["F"+str(seg_idx)] = seg_list
+            len_list = 0
           else:
-            mesh["mcell"]["boundaries"][id][str(seg_idx)] = seg_rle[0:max_len]
-            tmp_rle = seg_rle[max_len:]
-            seg_rle = tmp_rle
-            len_rle = len(seg_rle)
+            obj["boundaries"][bnd_name]["faces"]["F"+str(seg_idx)] = seg_list[0:max_len]
+            tmp_list = seg_list[max_len:]
+            seg_list = tmp_list
+            len_list = len(seg_list)
           seg_idx += 1
 
-
-    def rl_encode(self, l):
-        """Run-length encode an array of face indices"""
-
-        runlen = 0
-        runstart = 0
-        rle = []
-        i = 0
-
-        while (i < len(l)):
-          if (runlen == 0):
-            rle.append(l[i])
-            runstart = l[i]
-            runlen = 1
-            i+=1
-          elif (l[i] == (runstart+runlen)):
-            if (i < (len(l)-1)):
-              runlen += 1
-            else:
-              if (runlen == 1):
-                rle.append(runstart+1)
-              else:
-                rle.append(-runlen)
-            i+=1
-          elif (runlen == 1):
-            runlen = 0
-          elif (runlen == 2):
-            rle.append(runstart+1)
-            runlen = 0
-          else:
-            rle.append(-(runlen-1))
-            runlen = 0
-
-        return(rle)
-
-
-    def rl_decode(self, l):
-        """Decode a run-length encoded array of face indices"""
-
-        runlen = 0
-        runstart = 0
-        rld = []
-        i = 0
-
-        while (i < len(l)):
-          if (runlen == 0):
-            rld.append(l[i])
-            runstart = l[i]
-            runlen = 1
-            i+=1
-          elif (l[i] > 0):
-            runlen = 0
-          else:
-            for j in range(1,-l[i]+1):
-              rld.append(runstart+j)
-            runlen = 0
-            i+=1
-
-        return(rld)
 
 
 class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
