@@ -2,6 +2,7 @@ import bpy
 from bpy.props import BoolProperty, CollectionProperty, EnumProperty, \
     FloatProperty, FloatVectorProperty, IntProperty, IntVectorProperty, \
     PointerProperty, StringProperty, BoolVectorProperty
+from bpy.app.handlers import persistent
 import mathutils
 import gamer
 
@@ -18,6 +19,22 @@ def register():
 
 def unregister():
     bpy.utils.unregister_module(__name__)
+
+
+@persistent
+def boundary_markers_load_post(context):
+    """ If this is on old gamer_upy file, tranfer pure ID boundaries to RNA  """
+    print ( "load post handler: boundary_markers_load_post() called"
+)
+    if not context:
+        context = bpy.context
+    scn = bpy.context.scene
+    objs = [obj for obj in scn.objects if obj.type == 'MESH']
+    for obj in objs:
+      if obj.get('boundaries'):
+        if len(obj.gamer.boundary_list)==0:
+          print("  Loading boundaries for object: %s" % (obj.name))
+          obj.gamer.set_boundaries_from_id_boundaries(context)
 
 
 # Object Boundary Marker Operators:
@@ -289,6 +306,13 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
         self.name = bnd_name
 
 
+    def set_boundary_from_id_boundary(self, context, bnd_dict):
+       self.marker = bnd_dict['marker']
+       self.color[0] = bnd_dict['r']
+       self.color[1] = bnd_dict['g']
+       self.color[2] = bnd_dict['b']
+
+
     def reset_boundary(self, context):
 
         id = str(self.id)
@@ -371,6 +395,14 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
         return bnd_dict
 
 
+    def set_boundaries_from_id_boundaries(self, context):
+        obj = context.active_object
+        for bnd_key, bnd_dict in obj['boundaries'].items():
+            self.add_boundary_by_name(context, bnd_key)
+            bnd = self.get_active_boundary()
+            bnd.set_boundary_from_id_boundary(context, bnd_dict)
+
+
     def get_active_boundary(self):
         bnd = None
         if (len(self.boundary_list) > 0):
@@ -430,17 +462,19 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
         self.active_bnd_index = idx
 
 
-    def add_boundary_by_name(self, context, bnd_name):
+    def add_boundary_by_name(self, context, bnd_name, init_boundary=False):
         """ Add a new boundary to the list of boundaries and set as the active boundary """
-        curr_bnd = self.get_active_boundary()
-        curr_bnd_name = curr_bnd.name
-
         id = self.allocate_id()
         new_bnd=self.boundary_list.add()
 # FIXME: CHECK FOR NAME COLLISION HERE: FIX BY ALLOCATING NEXT ID...
-        new_bnd.init_boundary(context, bnd_name, id)
+#        new_bnd.init_boundary(context, bnd_name, id)
+        if init_boundary:
+            new_bnd.init_boundary(context, bnd_name, id)
+        else:
+            new_bnd.boundary_key = bnd_name
+            new_bnd.name = bnd_name
 
-        idx = self.boundary_list.find(curr_bnd_name)
+        idx = self.boundary_list.find(bnd_name)
         self.active_bnd_index = idx
 
 
