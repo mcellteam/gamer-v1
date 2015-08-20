@@ -6,8 +6,8 @@ export FETK_LIBRARY = $(BUILD_DIR)/lib
 export PYTHON = /opt/local/bin/python3.4
 LDFLAGS = \"-L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib\"
 #LDFLAGS = \"\"
-INSTALL_DIR = ~/Library/Application\ Support/Blender/2.75
-#INSTALL_DIR = ~/.config/blender/2.75
+#INSTALL_DIR = ~/Library/Application\ Support/Blender/2.75
+INSTALL_DIR = ~/.config/blender/2.75
 
 DYLD_LIBRARY_PATH = $(BUILD_DIR)/lib:$DYLD_LIBRARY_PATH
 PYTHONPATH = $(BUILD_DIR)/lib/python3.4/site-packages:$PYTHONPATH
