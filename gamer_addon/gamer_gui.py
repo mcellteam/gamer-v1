@@ -420,7 +420,7 @@ def getTranslation(obj):
     return obj.location#("worldspace")#[obj.LocX,obj.LocY,obj.LocZ]#obj.matrixWorld[3][0:3]
 
 
-def getBoundaryFaces(self, boundary):
+def getBoundaryFaces(boundary):
     if not "faces" in boundary:
         return []
     all_faces = []
