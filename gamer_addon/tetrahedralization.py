@@ -44,6 +44,17 @@ class GAMER_OT_tet_domain_remove(bpy.types.Operator):
         self.report({'INFO'}, "Deleted Active Tet Group")
         return {'FINISHED'}
 
+class GAMER_OT_tet_domain_remove_all(bpy.types.Operator):
+    bl_idname = "gamer.tet_domain_remove_all"
+    bl_label = "Remove a Tet Domain"
+    bl_description = "Remove a tetrahedralization domain"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        context.scene.gamer.tet_group.remove_all_tet_domains(context)
+        self.report({'INFO'}, "Deleted Active Tet Group")
+        return {'FINISHED'}
+
 
 class GAMER_OT_generic_button(bpy.types.Operator):
     bl_idname = "gamer.generic_button"
@@ -76,16 +87,24 @@ class GAMER_OT_tetrahedralize(bpy.types.Operator):
 class GAMerTetDomainPropertyGroup(bpy.types.PropertyGroup):
     # name = StringProperty()  # This is a reminder that "name" is already defined for all subclasses of PropertyGroup
     domain_id = IntProperty ( name="ID", default=-1, description="Domain ID" )
+    object_name = StringProperty ( name="ObjName", default="", description="Object Name" )
     marker = IntProperty ( name="Marker", default=-1, description="Domain Marker Integer" )
     is_hole = BoolProperty ( name="Hole", default=False, description="Use this domain as a hole" )
     
     def draw_layout ( self, layout ):
-
         row = layout.row()
         col = row.column()
         col.prop ( self, "marker" )
         col = row.column()
         col.prop ( self, "is_hole", text="Use Domain as a Hole" )
+
+    def draw_item_in_row ( self, row ):
+        col = row.column()
+        col.label ( str(self.object_name) )
+        col = row.column()
+        col.label ( "Domain ID: " + str(self.domain_id) )
+        col = row.column()
+        col.label ( "Domain Marker: " + str(self.marker) )
 
 
 class GAMer_UL_domain(bpy.types.UIList):
@@ -104,13 +123,16 @@ class GAMer_UL_domain(bpy.types.UIList):
         #         need them.
 
         tet = item
+        tet.draw_item_in_row ( layout.row() )
 
-        row = layout.row()
-        col = row.column()
-        col.label ( "Domain ID: " + str(tet.domain_id) )
-        col = row.column()
-        col.label ( "Domain Marker: " + str(tet.marker) )
 
+
+# Callbacks for all Property updates appear to require global (non-member) functions.
+# This is circumvented by simply calling the associated member function passed as self:
+
+def check_formats_callback(self, context):
+    self.check_formats_callback(context)
+    return
 
 class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
@@ -130,11 +152,18 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
   min_dihedral = FloatProperty ( name="Min Dihedral", default=10.0, description="Minimum Dihedral in Degrees" )
   max_aspect_ratio = FloatProperty ( name="Max Aspect Ratio", default=1.3, description="Maximum Aspect Ratio" )
 
-  dolfin = BoolProperty ( name="DOLFIN", default=False, description="DOLFIN" )
-  diffpack = BoolProperty ( name="Diffpack", default=False, description="Diffpack" )
-  carp = BoolProperty ( name="Carp", default=False, description="Carp" )
-  fetk = BoolProperty ( name="FEtk", default=False, description="FEtk" )
   ho_mesh = BoolProperty ( name="Higher order mesh generation", default=False, description="Higher order mesh generation" )
+
+  dolfin = BoolProperty ( name="DOLFIN", default=False, description="Generate DOLFIN output", update=check_formats_callback )
+  diffpack = BoolProperty ( name="Diffpack", default=False, description="Generate Diffpack output", update=check_formats_callback )
+  carp = BoolProperty ( name="Carp", default=False, description="Generate Carp output", update=check_formats_callback )
+  fetk = BoolProperty ( name="FEtk", default=False, description="Generate FEtk output", update=check_formats_callback )
+  
+  status = StringProperty ( name="status", default="" )
+
+  def check_formats_callback(self, context):
+      if self.dolfin or self.diffpack or self.carp or self.fetk:
+          self.status = ""
 
   def draw_layout ( self, context, layout ):
 
@@ -152,6 +181,7 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       col = row.column(align=True)
       col.operator("gamer.tet_domain_add", icon='ZOOMIN', text="")
       col.operator("gamer.tet_domain_remove", icon='ZOOMOUT', text="")
+      col.operator("gamer.tet_domain_remove_all", icon='X', text="")
 
       if len(self.domain_list) > 0:
           domain = self.domain_list[self.active_domain_index]
@@ -208,15 +238,27 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           if self.dolfin or self.diffpack or self.carp or self.fetk:
               icon = 'COLOR_RED'
           row.operator ( "gamer.tetrahedralize", text="Tetrahedralize", icon=icon )
-
+          if len(self.status) > 0:
+              row = layout.row()
+              row.label ( self.status, icon="ERROR" )
 
 
   def add_tet_domain ( self, context):
       print("Adding a Tet Domain")
-      """ Add a new tet domain to the list of tet domains and set as the active domain """
-      new_dom = self.domain_list.add()
-      new_dom.domain_id = self.allocate_available_id()
-      self.active_domain_index = len(self.domain_list)-1
+      """ Add a new tet domain to the list of tet domains for each selected object """
+      #mcell = context.scene.mcell
+
+      # From the list of selected objects, only add MESH objects.
+      objs = [obj for obj in context.selected_objects if obj.type == 'MESH']
+      if len(objs) > 0:
+          for obj in objs:
+              new_id = self.allocate_available_id()  # Do this first to check for empty list before adding
+              obj.gamer.include = True
+              new_dom = self.domain_list.add()
+              new_dom.domain_id = new_id
+              new_dom.marker = new_id
+              new_dom.object_name = obj.name
+              self.active_domain_index = len(self.domain_list)-1
 
   def remove_active_tet_domain ( self, context):
       print("Removing active Tet Domain")
@@ -225,7 +267,14 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       self.active_domain_index -= 1
       if self.active_domain_index < 0:
           self.active_domain_index = 0
-          print ( "That was the last one!!!" )
+
+  def remove_all_tet_domains ( self, context):
+      print("Removing All Tet Domains")
+      """ Remove all tet domains from the list of domains """
+      while len(self.domain_list) > 0:
+          self.domain_list.remove ( 0 )
+      self.active_domain_index = 0
+
 
   def allocate_available_id ( self ):
       """ Return a unique domain ID for a new domain """
@@ -242,23 +291,29 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
   def tetrahedralize ( self ):
       print ( "Begin Tetrahedralize" )
-      if self.dolfin or self.diffpack or self.carp or self.fetk:
-          pass
+      if not (self.dolfin or self.diffpack or self.carp or self.fetk):
+          self.status = "Please select an output format in Tetrahedralization Settings"
+          print ( self.status )
       else:
-          print ( "Please select an output format" )
+          self.status = ""
+          mesh_formats = []
 
-      """
-      mesh_formats = []
-      if self.getVal(self.tetparams["dolfin_format"]):
-          mesh_formats.append("dolfin")
-      if self.getVal(self.tetparams["diffpack_format"]):
-          mesh_formats.append("diffpack")
-      if self.getVal(self.tetparams["carp_format"]):
-          mesh_formats.append("carp")
-      if self.getVal(self.tetparams["mcsf_format"]):
-          mesh_formats.append("mcsf")
-      """
-      print ( "End Tetrahedralize" )
+          if self.dolfin:
+              mesh_formats.append("dolfin")
+          if self.diffpack:
+              mesh_formats.append("diffpack")
+          if self.carp:
+              mesh_formats.append("carp")
+          if self.fetk:
+              mesh_formats.append("fetk")
+
+          # What is this? It doesn't show up in the GAMer panel.
+          #if self.getVal(self.tetparams["mcsf_format"]):
+          #    mesh_formats.append("mcsf")
+
+          print ( "End Tetrahedralize" )
+
+
 
 
 """
