@@ -169,7 +169,7 @@ def check_formats_callback(self, context):
 class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
   tet_path = StringProperty ( name="tet_path", default="", description="Path to location of tetrahedralization output files" )
-  tet_out_name = StringProperty ( name="tet_out_name", default="Blender_GAMer_tet", description="Prefix name of tetrahedralization output files" )
+  tet_out_name = StringProperty ( name="Tet Mesh Base File Name", default="Blender_GAMer_tet", description="Prefix name of tetrahedralization output files" )
 
   generic_float = FloatProperty( name="Generic Float", default=123.456, min=0.0, max=1000, precision=4, description="A Generic Float Value")
   generic_int = IntProperty( name="Generic Int", default=5, min=1, max=10, description="A Generic Int Value")
@@ -399,8 +399,8 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
               # Store mesh to files
 
-              tetmesh_formats  = ["dolfin", "mcsf", "diffpack", "carp"]
-              tetmesh_suffices = [  ".xml",   ".m",    ".grid",     ""]
+              tetmesh_formats  = ["dolfin", "mcsf", "diffpack",  "carp"]
+              tetmesh_suffices = [  ".xml",   ".m",    ".grid", ".carp"]
 
               for fmt in mesh_formats:
 
