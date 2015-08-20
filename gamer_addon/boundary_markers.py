@@ -112,11 +112,10 @@ class GAMER_OT_deselect_boundary_faces(bpy.types.Operator):
 class GAMER_UL_check_boundary(bpy.types.UIList):
     def draw_item(self, context, layout, data, item, icon, active_data,
                   active_propname, index):
-        layout.label(item.name)
-#        if item.status:
-#            layout.label(item.status, icon='ERROR')
-#        else:
-#            layout.label(item.name, icon='FILE_TICK')
+        if item.status:
+            layout.label(item.status, icon='ERROR')
+        else:
+            layout.label(item.name, icon='FILE_TICK')
 
 
 # Boundary Callbacks:
@@ -160,14 +159,14 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
     def assign_boundary_faces(self, context):
         mesh = context.active_object.data
         if (mesh.total_face_sel > 0):
-            face_set = self.get_boundary_faces(mesh) 
+            face_set = self.get_boundary_faces(context) 
             bpy.ops.object.mode_set(mode='OBJECT')
             for f in mesh.polygons:
                 if f.select:
                     face_set.add(f.index)
             bpy.ops.object.mode_set(mode='EDIT')
 
-            self.set_boundary_faces(mesh,face_set) 
+            self.set_boundary_faces(context, face_set) 
 
         return {'FINISHED'}
 
@@ -175,7 +174,7 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
     def remove_boundary_faces(self, context):
         mesh = context.active_object.data
         if (mesh.total_face_sel > 0):
-            face_set = self.get_boundary_faces(mesh) 
+            face_set = self.get_boundary_faces(context) 
             bpy.ops.object.mode_set(mode='OBJECT')
             for f in mesh.polygons:
                 if f.select:
@@ -183,14 +182,14 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
                         face_set.remove(f.index)
             bpy.ops.object.mode_set(mode='EDIT')
 
-            self.set_boundary_faces(mesh,face_set) 
+            self.set_boundary_faces(context, face_set) 
 
         return {'FINISHED'}
 
 
     def select_boundary_faces(self, context):
         mesh = context.active_object.data
-        face_set = self.get_boundary_faces(mesh)
+        face_set = self.get_boundary_faces(context)
         msm = context.scene.tool_settings.mesh_select_mode[0:3]
         context.scene.tool_settings.mesh_select_mode = (False, False, True)
         bpy.ops.object.mode_set(mode='OBJECT')
@@ -204,7 +203,7 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 
     def deselect_boundary_faces(self, context):
         mesh = context.active_object.data
-        face_set = self.get_boundary_faces(mesh)
+        face_set = self.get_boundary_faces(context)
         msm = context.scene.tool_settings.mesh_select_mode[0:3]
         context.scene.tool_settings.mesh_select_mode = (False, False, True)
         bpy.ops.object.mode_set(mode='OBJECT')
@@ -230,7 +229,7 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
     def face_in_boundary(self, context, face_index):
         """Return True if face is in this boundary"""
         mesh = context.active_object.data
-        bnd_faces = self.get_boundary_faces(mesh)
+        bnd_faces = self.get_boundary_faces(context)
         return(face_index in bnd_faces)
 
 
@@ -267,23 +266,24 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
         mesh["mcell"]["boundaries"][id].clear()
 
 
-    def get_boundary_faces(self, mesh):
-        """Given a mesh and a boundary id, return the set of boundary face indices"""
+    def get_boundary_faces(self, context):
+        """Given return the set of boundary face indices for this boundary"""
 
-        id = str(self.id)
+        obj = context.active_objext
+        bnd_name = self.name
 
-        face_rle = []
-        for seg_id in mesh["mcell"]["boundaries"][id].keys():
-          face_rle.extend(mesh["mcell"]["boundaries"][id][seg_id].to_list())
-        if (len(face_rle) > 0): 
-            face_set = set(self.rl_decode(face_rle))
+        face_list = []
+        for seg_id in obj["boundaries"][bnd_name]['faces'].keys():
+          face_list.extend(obj["boundaries"][bnd_name]['faces'][seg_id].to_list())
+        if (len(face_list > 0)): 
+            face_set = set(face_list)
         else:
             face_set = set([])
 
         return(face_set)
 
 
-    def set_boundary_faces(self, mesh, face_set):
+    def set_boundary_faces(self, context, face_set):
         """Set the faces of a given boundary id on a mesh, given a set of faces """
 
         id = str(self.id)
@@ -383,15 +383,14 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
         name="Toggle to enable/disable boundary_info", default=False)
 
 
-    def get_boundaries_dictionary (self, obj):
+    def get_boundaries_dictionary (self, context):
         """ Return a dictionary with boundary names """
         bnd_dict = {}
         obj_bnds = self.boundaries.boundary_list
         for bnd in obj_bnds:
             id = str(bnd.id)
             mesh = obj.data
-            #bnd_faces = list(cellblender_operators.get_boundary_faces(mesh,id))
-            bnd_faces = list(bnd.get_boundary_faces(mesh))
+            bnd_faces = list(bnd.get_boundary_faces(context))
             bnd_faces.sort()
             bnd_dict[bnd.name] = bnd_faces
         return bnd_dict
@@ -438,7 +437,7 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
           selface_set = set([f.index for f in mesh.polygons if f.select])
           bpy.ops.object.mode_set(mode='EDIT')
           for bnd in self.boundary_list: 
-            bnd_faces = bnd.get_boundary_faces(mesh)
+            bnd_faces = bnd.get_boundary_faces(context)
             if not selface_set.isdisjoint(bnd_faces):
               bnd_info.append(bnd.name)
 
@@ -572,9 +571,8 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
             col.operator("gamer.remove_all_boundaries", icon='X', text="")
 
             # Could have boundary item draw itself in new row here:
-            active_bnd = None
-            if len(active_obj.gamer.boundary_list) > 0:
-                active_bnd = active_obj.gamer.get_active_boundary()
+            active_bnd = self.get_active_boundary()
+            if active_bnd:
 
                 row = layout.row()
                 row.prop(active_bnd, "name")
@@ -619,65 +617,3 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
 
 
 
-'''
-class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
-  boundary_list = CollectionProperty(
-      type=MCellSurfaceBoundaryProperty, name="Surface Boundary List")
-  active_bnd_index = IntProperty(name="Active Boundary Index", default=0)
-  id_counter = IntProperty(name="Counter for Unique Boundary IDs", default=0)
- 
-  include = BoolProperty(name="Include Domain in Model", default=False)
-
-  def get_boundaries_dictionary (self, obj):
-      """ Return a dictionary with boundary names """
-      bnd_dict = {}
-      obj_bnds = self.boundaries.boundary_list
-      for bnd in obj_bnds:
-          id = str(bnd.id)
-          mesh = obj.data
-          #bnd_faces = list(cellblender_operators.get_boundary_faces(mesh,id))
-          bnd_faces = list(bnd.get_boundary_faces(mesh))
-          bnd_faces.sort()
-          bnd_dict[bnd.name] = bnd_faces
-      return bnd_dict
-
-
-  def draw_layout ( self, context, layout ):
-      row = layout.row()
-      col = row.column()
-      col.operator("gamer.coarse_dense",icon="OUTLINER_OB_LATTICE")
-      col = row.column()
-      col.prop(self, "dense_rate" )
-      col = row.column()
-      col.prop(self, "dense_iter" )
-
-      row = layout.row()
-      col = row.column()
-      col.operator("gamer.coarse_flat",icon="OUTLINER_OB_LATTICE")
-      col = row.column()
-      col.prop(self, "flat_rate" )
-
-      row = layout.row()
-      col = row.column()
-      col.operator("gamer.smooth",icon="OUTLINER_OB_LATTICE")
-      col = row.column()
-      col.prop(self, "max_min_angle" )
-      col = row.column()
-      col.prop(self, "smooth_iter" )
-
-      row = layout.row()
-      row.prop(self, "preserve_ridges" )
-
-      row = layout.row()
-      col = row.column()
-      col.operator("gamer.normal_smooth",icon="OUTLINER_OB_LATTICE")
-
-      row = layout.row()
-      row.prop(self, "new_mesh" )
-
-
-  def draw_panel ( self, context, panel ):
-      layout = panel.layout
-      self.draw_layout ( context, layout )
-
-'''
