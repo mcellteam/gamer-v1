@@ -55,6 +55,20 @@ import bpy
 import sys
 import os
 
+def add_handler ( handler_list, handler_function ):
+    """ Only add a handler if it's not already in the list """
+    if not (handler_function in handler_list):
+        handler_list.append ( handler_function )
+
+        #cellblender_added_handlers
+
+
+def remove_handler ( handler_list, handler_function ):
+    """ Only remove a handler if it's in the list """
+    if handler_function in handler_list:
+        handler_list.remove ( handler_function )
+
+
 def register():
     print("Registering GAMer...")
     bpy.utils.register_module(__name__)
@@ -64,11 +78,17 @@ def register():
     bpy.types.Object.gamer = bpy.props.PointerProperty(
         type=boundary_markers.GAMerBoundaryMarkersListPropertyGroup)
 
+    # Add the load_post handlers
+    add_handler ( bpy.app.handlers.load_post, boundary_markers.boundary_markers_load_post )
+ 
+
     print("GAMer registered")
 
 
 def unregister():
+    remove_handler ( bpy.app.handlers.load_post, boundary_markers.boundary_markers_load_post )
     bpy.utils.unregister_module(__name__)
+  
     print("GAMer unregistered")
 
 
