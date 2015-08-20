@@ -59,105 +59,25 @@ class GAMER_OT_generic_button(bpy.types.Operator):
         return self.execute(context)
 
 
-"""
-    # Unmodified code from gamer/swig/src/upy_gui.py
+class GAMER_OT_tetrahedralize(bpy.types.Operator):
+    bl_idname = "gamer.tetrahedralize"
+    bl_label = "Tetrahedralize"
+    bl_description = ("Tetrahedralize")
+    bl_options = {'REGISTER'}
 
-    def tetrahedralize_action(self, filename):
-        "Callback function for the tetrahedralize File chooser"
+    def execute(self, context):
+        context.scene.gamer.tet_group.tetrahedralize()
+        return {'FINISHED'}
 
-        # Load options and materials from registry
-        self.load_from_registry()
+    def invoke(self, context, event):
+        return self.execute(context)
 
-        # Grab all selected mesh formats
-        mesh_formats = []
-        if self.getVal(self.tetparams["dolfin_format"]):
-            mesh_formats.append("dolfin")
-        if self.getVal(self.tetparams["diffpack_format"]):
-            mesh_formats.append("diffpack")
-        if self.getVal(self.tetparams["carp_format"]):
-            mesh_formats.append("carp")
-        if self.getVal(self.tetparams["mcsf_format"]):
-            mesh_formats.append("mcsf")
-
-        # Get gamer mesh
-        gmeshes = []
-        boundary_markers = []
-        for i, (name, domain) in enumerate(self.domains.items()):
-            obj = self.helper.getObject(name)
-            if obj is None:
-                self.drawError(errormsg="The domain: '%s' is not a mesh in "\
-                               "this scene" % name)
-            
-            gmesh, boundaries = self.host_to_gamer(obj, False)
-            if gmesh is None:
-                return
-
-            # Collect boundary information
-            for boundary_name, boundary in zip(boundaries.keys(), boundaries.values()):
-                boundary_markers.append((boundary["marker"], boundary_name))
-                
-            myprint("\nMesh %d: num verts: %d numfaces: %d" %
-                    (i, gmesh.num_vertices, gmesh.num_faces))
-            
-            # Set the domain data on the SurfaceMesh
-            for name, value in domain.items():
-                setattr(gmesh, name, value)
-                myprint("%s : %d" %(name, int(value)))
-
-            # Write surface mesh to file for debug
-            gmesh.write_off("surfmesh%d.off" % i)
-
-            # Add the mesh
-            gmeshes.append(gmesh)
-        
-        #obj = self._get_selected_mesh(False)
-        #if obj is None:
-        #    return
-        
-        # Tetrahedralize mesh
-        quality_str = "q%.1fqq%.1faA"%(self.getVal(self.tetparams["aspect_ratio"]),
-                                       self.getVal(self.tetparams["dihedral_angle"]))
-
-        quality_str += "o2" if self.getVal(self.tetparams["higher_order"]) else ""
-
-        myprint("TetGen quality string:", quality_str)
-        
-        # Do the tetrahedralization
-        self.waitingCursor(1)
-        gem_mesh = gamer.GemMesh(gmeshes, quality_str)
-        
-        # Store mesh to files
-        for format_ in mesh_formats:
-
-            suffix = self.tetmesh_suffices[self.tetmesh_formats.index(format_)]
-            
-            # If the format is diffpack or carp we need to add boundary names
-            if format_ in ["diffpack", "carp"]:
-                boundary_names = [b[1] for b in sorted(boundary_markers)]
-                getattr(gem_mesh, "write_%s"%format_)(filename+suffix, boundary_names)
-            else:
-                getattr(gem_mesh, "write_%s"%format_)(filename+suffix)
-        
-        self.waitingCursor(0)
-
-"""
 
 class GAMerTetDomainPropertyGroup(bpy.types.PropertyGroup):
     # name = StringProperty()  # This is a reminder that "name" is already defined for all subclasses of PropertyGroup
     domain_id = IntProperty ( name="ID", default=-1, description="Domain ID" )
     marker = IntProperty ( name="Marker", default=-1, description="Domain Marker Integer" )
     is_hole = BoolProperty ( name="Hole", default=False, description="Use this domain as a hole" )
-    constrain_vol  = BoolProperty ( name="Constrain Volume", default=False, description="Constrain Volume" )
-    vol_constraint = FloatProperty ( name="Vol Constraint", default=10.0, description="Volume Constraint" )
-
-    min_dihedral = FloatProperty ( name="Min Dihedral", default=10.0, description="Minimum Dihedral in Degrees" )
-    max_aspect_ratio = FloatProperty ( name="Max Aspect Ration", default=1.3, description="Maximum Aspect Ratio" )
-
-    dolfin = BoolProperty ( name="DOLFIN", default=False, description="DOLFIN" )
-    diffpack = BoolProperty ( name="Diffpack", default=False, description="Diffpack" )
-    carp = BoolProperty ( name="Carp", default=False, description="Carp" )
-    fetk = BoolProperty ( name="FEtk", default=False, description="FEtk" )
-    ho_mesh = BoolProperty ( name="Higher order mesh generation", default=False, description="Higher order mesh generation" )
     
     def draw_layout ( self, layout ):
 
@@ -165,38 +85,7 @@ class GAMerTetDomainPropertyGroup(bpy.types.PropertyGroup):
         col = row.column()
         col.prop ( self, "marker" )
         col = row.column()
-        col.prop ( self, "is_hole" )
-
-        row = layout.row()
-        col = row.column()
-        col.prop ( self, "constrain_vol" )
-        if self.constrain_vol:
-            col = row.column()
-            col.prop ( self, "vol_constraint" )
-
-        row = layout.row()
-        col = row.column()
-        col.prop ( self, "min_dihedral" )
-        col = row.column()
-        col.prop ( self, "max_aspect_ratio" )
-        
-        row = layout.row()
-        col = row.column()
-        col.prop ( self, "dolfin" )
-        col = row.column()
-        col.prop ( self, "diffpack" )
-
-        row = layout.row()
-        col = row.column()
-        col.prop ( self, "carp" )
-        col = row.column()
-        col.prop ( self, "fetk" )
-
-        row = layout.row()
-        col = row.column()
-        col.operator ( "gamer.generic_button", text="Tetrahedralize" )
-        col = row.column()
-        col.prop ( self, "ho_mesh" )
+        col.prop ( self, "is_hole", text="Use Domain as a Hole" )
 
 
 class GAMer_UL_domain(bpy.types.UIList):
@@ -233,7 +122,24 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
   active_domain_index = IntProperty(name="Active Domain Index", default=0)
   next_id = IntProperty(name="Counter for Unique Domain IDs", default=1)  # Start ID's at 1 to confirm initialization
 
+  show_settings = BoolProperty( name="Tetrahedralization Settings", default=False, description="Show more detailed settings")
+
+  constrain_vol  = BoolProperty ( name="Constrain Volume", default=False, description="Constrain Volume" )
+  vol_constraint = FloatProperty ( name="Vol Constraint", default=10.0, description="Volume Constraint" )
+
+  min_dihedral = FloatProperty ( name="Min Dihedral", default=10.0, description="Minimum Dihedral in Degrees" )
+  max_aspect_ratio = FloatProperty ( name="Max Aspect Ratio", default=1.3, description="Maximum Aspect Ratio" )
+
+  dolfin = BoolProperty ( name="DOLFIN", default=False, description="DOLFIN" )
+  diffpack = BoolProperty ( name="Diffpack", default=False, description="Diffpack" )
+  carp = BoolProperty ( name="Carp", default=False, description="Carp" )
+  fetk = BoolProperty ( name="FEtk", default=False, description="FEtk" )
+  ho_mesh = BoolProperty ( name="Higher order mesh generation", default=False, description="Higher order mesh generation" )
+
   def draw_layout ( self, context, layout ):
+
+      row = layout.row()
+      row.label ( "Domains" )
 
       row = layout.row()
       col = row.column()
@@ -254,6 +160,56 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           row.label ( "Active Index = " + str ( self.active_domain_index ) + ", ID = " + str ( domain.domain_id ) )
           
           domain.draw_layout ( layout )
+
+          box = layout.box()
+          row = box.row(align=True)
+          row.alignment = 'LEFT'
+          if not self.show_settings:
+              row.prop(self, "show_settings", icon='TRIA_RIGHT', emboss=False)
+          else:
+              row.prop(self, "show_settings", icon='TRIA_DOWN', emboss=False)
+
+              row = box.row()
+              col = row.column()
+              col.prop ( self, "min_dihedral" )
+              col = row.column()
+              col.prop ( self, "max_aspect_ratio" )
+
+              row = box.row()
+              col = row.column()
+              col.prop ( self, "constrain_vol" )
+              if self.constrain_vol:
+                  col = row.column()
+                  col.prop ( self, "vol_constraint" )
+
+              row = box.row()
+              row.prop ( self, "ho_mesh" )
+
+              row = box.row()
+              row.label ( "Output Formats:" )
+
+              row = box.row()
+              sbox = row.box()
+
+              row = sbox.row()
+              col = row.column()
+              col.prop ( self, "dolfin" )
+              col = row.column()
+              col.prop ( self, "diffpack" )
+
+              row = sbox.row()
+              col = row.column()
+              col.prop ( self, "carp" )
+              col = row.column()
+              col.prop ( self, "fetk" )
+
+          row = layout.row()
+          icon = 'PROP_OFF'
+          if self.dolfin or self.diffpack or self.carp or self.fetk:
+              icon = 'COLOR_RED'
+          row.operator ( "gamer.tetrahedralize", text="Tetrahedralize", icon=icon )
+
+
 
   def add_tet_domain ( self, context):
       print("Adding a Tet Domain")
@@ -284,4 +240,107 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       layout = panel.layout
       self.draw_layout ( context, layout )
 
+  def tetrahedralize ( self ):
+      print ( "Begin Tetrahedralize" )
+      if self.dolfin or self.diffpack or self.carp or self.fetk:
+          pass
+      else:
+          print ( "Please select an output format" )
+
+      """
+      mesh_formats = []
+      if self.getVal(self.tetparams["dolfin_format"]):
+          mesh_formats.append("dolfin")
+      if self.getVal(self.tetparams["diffpack_format"]):
+          mesh_formats.append("diffpack")
+      if self.getVal(self.tetparams["carp_format"]):
+          mesh_formats.append("carp")
+      if self.getVal(self.tetparams["mcsf_format"]):
+          mesh_formats.append("mcsf")
+      """
+      print ( "End Tetrahedralize" )
+
+
+"""
+    # Unmodified code from gamer/swig/src/upy_gui.py
+
+    def tetrahedralize_action(self, filename):
+        "Callback function for the tetrahedralize File chooser"
+
+        # Load options and materials from registry
+        self.load_from_registry()
+
+        # Grab all selected mesh formats
+        mesh_formats = []
+        if self.getVal(self.tetparams["dolfin_format"]):
+            mesh_formats.append("dolfin")
+        if self.getVal(self.tetparams["diffpack_format"]):
+            mesh_formats.append("diffpack")
+        if self.getVal(self.tetparams["carp_format"]):
+            mesh_formats.append("carp")
+        if self.getVal(self.tetparams["mcsf_format"]):
+            mesh_formats.append("mcsf")
+
+        # Get gamer mesh
+        gmeshes = []
+        boundary_markers = []
+        for i, (name, domain) in enumerate(self.domains.items()):
+            obj = self.helper.getObject(name)
+            if obj is None:
+                self.drawError(errormsg="The domain: '%s' is not a mesh in "\
+                               "this scene" % name)
+
+            gmesh, boundaries = self.host_to_gamer(obj, False)
+            if gmesh is None:
+                return
+
+            # Collect boundary information
+            for boundary_name, boundary in zip(boundaries.keys(), boundaries.values()):
+                boundary_markers.append((boundary["marker"], boundary_name))
+
+            myprint("\nMesh %d: num verts: %d numfaces: %d" %
+                    (i, gmesh.num_vertices, gmesh.num_faces))
+
+            # Set the domain data on the SurfaceMesh
+            for name, value in domain.items():
+                setattr(gmesh, name, value)
+                myprint("%s : %d" %(name, int(value)))
+
+            # Write surface mesh to file for debug
+            gmesh.write_off("surfmesh%d.off" % i)
+
+            # Add the mesh
+            gmeshes.append(gmesh)
+
+        #obj = self._get_selected_mesh(False)
+        #if obj is None:
+        #    return
+
+        # Tetrahedralize mesh
+        quality_str = "q%.1fqq%.1faA"%(self.getVal(self.tetparams["aspect_ratio"]),
+                                       self.getVal(self.tetparams["dihedral_angle"]))
+
+        quality_str += "o2" if self.getVal(self.tetparams["higher_order"]) else ""
+
+        myprint("TetGen quality string:", quality_str)
+
+        # Do the tetrahedralization
+        self.waitingCursor(1)
+        gem_mesh = gamer.GemMesh(gmeshes, quality_str)
+
+        # Store mesh to files
+        for format_ in mesh_formats:
+
+            suffix = self.tetmesh_suffices[self.tetmesh_formats.index(format_)]
+
+            # If the format is diffpack or carp we need to add boundary names
+            if format_ in ["diffpack", "carp"]:
+                boundary_names = [b[1] for b in sorted(boundary_markers)]
+                getattr(gem_mesh, "write_%s"%format_)(filename+suffix, boundary_names)
+            else:
+                getattr(gem_mesh, "write_%s"%format_)(filename+suffix)
+
+        self.waitingCursor(0)
+
+"""
 
