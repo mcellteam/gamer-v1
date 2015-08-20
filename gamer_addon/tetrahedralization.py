@@ -24,6 +24,23 @@ def unregister():
 
 # Tetrahedralization Operators:
 
+class GAMER_OT_set_tet_path(bpy.types.Operator):
+    bl_idname = "gamer.set_tet_path"
+    bl_label = "Set Tetrahedralization Path"
+    bl_description = ("Set Tetrahedralization Path")
+    bl_options = {'REGISTER'}
+
+    filepath = bpy.props.StringProperty(subtype='FILE_PATH', default="")
+
+    def execute(self, context):
+        context.scene.gamer.tet_group.tet_path = self.filepath
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        context.window_manager.fileselect_add(self)
+        return {'RUNNING_MODAL'}
+
+
 class GAMER_OT_tet_domain_add(bpy.types.Operator):
     bl_idname = "gamer.tet_domain_add"
     bl_label = "Add a Tet Domain"
@@ -151,6 +168,9 @@ def check_formats_callback(self, context):
 
 class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
+  tet_path = StringProperty ( name="tet_path", default="", description="Path to location of tetrahedralization output files" )
+  tet_out_name = StringProperty ( name="Tet Mesh Base File Name", default="Blender_GAMer_tet", description="Prefix name of tetrahedralization output files" )
+
   generic_float = FloatProperty( name="Generic Float", default=123.456, min=0.0, max=1000, precision=4, description="A Generic Float Value")
   generic_int = IntProperty( name="Generic Int", default=5, min=1, max=10, description="A Generic Int Value")
   generic_boolean = BoolProperty( name="Generic Bool", default=False, description="A Generic Boolean Value")
@@ -210,6 +230,13 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
               row.prop(self, "show_settings", icon='TRIA_RIGHT', emboss=False)
           else:
               row.prop(self, "show_settings", icon='TRIA_DOWN', emboss=False)
+
+              row = box.row()
+              row.operator("gamer.set_tet_path", text="Set Path to Output Files", icon='FILESEL')
+              row = box.row()
+              row.label ( self.tet_path )
+              row = box.row()
+              row.prop ( self, "tet_out_name" )
 
               row = box.row()
               col = row.column()
@@ -299,7 +326,9 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       self.draw_layout ( context, layout )
 
   def tetrahedralize ( self ):
-      print ( "Begin Tetrahedralize" )
+      print ( "######################## Begin Tetrahedralize ########################" )
+
+      filename = self.tet_path + self.tet_out_name
       if not (self.dolfin or self.diffpack or self.carp or self.fetk):
           self.status = "Please select an output format in Tetrahedralization Settings"
           print ( self.status )
@@ -314,7 +343,7 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           if self.carp:
               mesh_formats.append("carp")
           if self.fetk:
-              mesh_formats.append("fetk")
+              mesh_formats.append("mcsf")
 
           # What is this? It doesn't show up in the GAMer panel.
           #if self.getVal(self.tetparams["mcsf_format"]):
@@ -336,61 +365,65 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
                   if gmesh == None:
                       print ( "blender_to_gamer returned a gmesh of None" )
                   else:
+                      # Collect boundary information
+                      for boundary_name, boundary in zip(boundaries.keys(), boundaries.values()):
+                          boundary_markers.append((boundary["marker"], boundary_name))
+
+                      print ("\nMesh %s: num verts: %d numfaces: %d" % (obj_name, gmesh.num_vertices, gmesh.num_faces))
+
+                      # Set the domain data on the SurfaceMesh these are the per/domain items as_hole, marker, and volume constraints
                       gmesh.as_hole = tet_domain.is_hole
                       gmesh.marker = tet_domain.marker
                       gmesh.use_volume_constraint = tet_domain.constrain_vol
                       gmesh.volume_constraint = tet_domain.vol_constraint
 
+                      # Write surface mesh to file for debug
+                      gmesh.write_off("surfmesh_%s.off" % obj_name)
 
-"""
-          for i, (name, domain) in enumerate(self.domains.items()):
-              obj = self.helper.getObject(name)
-              if obj is None:
-                  self.drawError(errormsg="The domain: '%s' is not a mesh in "\
-                                 "this scene" % name)
+                      # Add the mesh
+                      gmeshes.append(gmesh)
 
-              gmesh, boundaries = self.host_to_gamer(obj, False)
-              if gmesh is None:
-                  return
-
-              # Collect boundary information
-              for boundary_name, boundary in zip(boundaries.keys(), boundaries.values()):
-                  boundary_markers.append((boundary["marker"], boundary_name))
-
-              myprint("\nMesh %d: num verts: %d numfaces: %d" %
-                      (i, gmesh.num_vertices, gmesh.num_faces))
-
-              # Set the domain data on the SurfaceMesh these are the per/domain items as_hole, marker, 
-              for name, value in domain.items():
-                  setattr(gmesh, name, value)
-                  myprint("%s : %d" %(name, int(value)))
-
-              # Write surface mesh to file for debug
-              gmesh.write_off("surfmesh%d.off" % i)
-
-              # Add the mesh
-              gmeshes.append(gmesh)
-
-          #obj = self._get_selected_mesh(False)
-          #if obj is None:
-          #    return
 
           # Tetrahedralize mesh
-          quality_str = "q%.1fqq%.1faA"%(self.getVal(self.tetparams["aspect_ratio"]),
-                                         self.getVal(self.tetparams["dihedral_angle"]))
+          if len(gmeshes) > 0:
 
-          quality_str += "o2" if self.getVal(self.tetparams["higher_order"]) else ""
+              quality_str = "q%.1fqq%.1faA"%(self.max_aspect_ratio,self.min_dihedral)
 
-          myprint("TetGen quality string:", quality_str)
+              quality_str += "o2" if self.ho_mesh else ""
 
-          # Do the tetrahedralization
-          self.waitingCursor(1)
-          gem_mesh = gamer.GemMesh(gmeshes, quality_str)
+              print("TetGen quality string: " + quality_str)
 
+              # Do the tetrahedralization
 
-          print ( "End Tetrahedralize" )
-"""
+              gem_mesh = gamer.GemMesh(gmeshes, quality_str)
 
+              # Store mesh to files
+
+              tetmesh_formats  = ["dolfin", "mcsf", "diffpack",  "carp"]
+              tetmesh_suffices = [  ".xml",   ".m",    ".grid", ".carp"]
+
+              for fmt in mesh_formats:
+
+                  try:
+
+                      suffix = tetmesh_suffices[tetmesh_formats.index(fmt)]
+                      print ( "Writing to " + fmt + " file: " + filename + suffix )
+
+                      # If the format is diffpack or carp we need to add boundary names
+                      if fmt in ["diffpack", "carp"]:
+                          boundary_names = [b[1] for b in sorted(boundary_markers)]
+                          print ( "Boundary names = " + str(boundary_names) )
+                          ### This doesn't work for some reason ... RuntimeError: Expected a list of strings as second argument.
+                          getattr(gem_mesh, "write_%s"%fmt)(filename+suffix, boundary_names)
+                      else:
+                          getattr(gem_mesh, "write_%s"%fmt)(filename+suffix)
+
+                  except Exception as ex:
+
+                      print ( "Error: Unable to write to " + fmt + " file: " + filename + suffix )
+                      print ( "   " + str(ex) )
+
+      print ( "######################## End Tetrahedralize ########################" )
 
 
 
