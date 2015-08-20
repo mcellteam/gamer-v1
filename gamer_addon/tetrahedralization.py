@@ -122,8 +122,10 @@ class GAMer_UL_domain(bpy.types.UIList):
         #   Note: as index and flt_flag are optional arguments, you do not have to use/declare them here if you don't
         #         need them.
 
-        tet = item
-        tet.draw_item_in_row ( layout.row() )
+        # The item will be a GAMerTetDomainPropertyGroup
+        # Let it draw itself in a new row:
+
+        item.draw_item_in_row ( layout.row() )
 
 
 
@@ -252,13 +254,17 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
       objs = [obj for obj in context.selected_objects if obj.type == 'MESH']
       if len(objs) > 0:
           for obj in objs:
-              new_id = self.allocate_available_id()  # Do this first to check for empty list before adding
-              obj.gamer.include = True
-              new_dom = self.domain_list.add()
-              new_dom.domain_id = new_id
-              new_dom.marker = new_id
-              new_dom.object_name = obj.name
-              self.active_domain_index = len(self.domain_list)-1
+              # Check by name to see if it's already listed
+              current_domain_names = [ d.object_name for d in self.domain_list ]
+              print ( "Current domains = " + str(current_domain_names) )
+              if not (obj.name in current_domain_names):
+                  new_id = self.allocate_available_id()  # Do this first to check for empty list before adding
+                  obj.gamer.include = True
+                  new_dom = self.domain_list.add()
+                  new_dom.domain_id = new_id
+                  new_dom.marker = new_id
+                  new_dom.object_name = obj.name
+                  self.active_domain_index = len(self.domain_list)-1
 
   def remove_active_tet_domain ( self, context):
       print("Removing active Tet Domain")
