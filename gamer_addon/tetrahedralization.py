@@ -404,68 +404,24 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
               for fmt in mesh_formats:
 
-                  suffix = tetmesh_suffices[tetmesh_formats.index(fmt)]
-                  print ( "Writing to " + fmt + " file: " + filename + suffix )
+                  try:
 
-                  # If the format is diffpack or carp we need to add boundary names
-                  if fmt in ["diffpack", "carp"]:
-                      boundary_names = [b[1] for b in sorted(boundary_markers)]
-                      print ( "Boundary names = " + str(boundary_names) )
-                      ### This doesn't work for some reason ... RuntimeError: Expected a list of strings as second argument.
-                      getattr(gem_mesh, "write_%s"%fmt)(filename+suffix, boundary_names)
-                  else:
-                      getattr(gem_mesh, "write_%s"%fmt)(filename+suffix)
+                      suffix = tetmesh_suffices[tetmesh_formats.index(fmt)]
+                      print ( "Writing to " + fmt + " file: " + filename + suffix )
 
+                      # If the format is diffpack or carp we need to add boundary names
+                      if fmt in ["diffpack", "carp"]:
+                          boundary_names = [b[1] for b in sorted(boundary_markers)]
+                          print ( "Boundary names = " + str(boundary_names) )
+                          ### This doesn't work for some reason ... RuntimeError: Expected a list of strings as second argument.
+                          getattr(gem_mesh, "write_%s"%fmt)(filename+suffix, boundary_names)
+                      else:
+                          getattr(gem_mesh, "write_%s"%fmt)(filename+suffix)
 
+                  except Exception as ex:
 
-      """
-          for i, (name, domain) in enumerate(self.domains.items()):
-              obj = self.helper.getObject(name)
-              if obj is None:
-                  self.drawError(errormsg="The domain: '%s' is not a mesh in "\
-                                 "this scene" % name)
-
-              gmesh, boundaries = self.host_to_gamer(obj, False)
-              if gmesh is None:
-                  return
-
-              # Collect boundary information
-              for boundary_name, boundary in zip(boundaries.keys(), boundaries.values()):
-                  boundary_markers.append((boundary["marker"], boundary_name))
-
-              myprint("\nMesh %d: num verts: %d numfaces: %d" %
-                      (i, gmesh.num_vertices, gmesh.num_faces))
-
-              # Set the domain data on the SurfaceMesh these are the per/domain items as_hole, marker, 
-              for name, value in domain.items():
-                  setattr(gmesh, name, value)
-                  myprint("%s : %d" %(name, int(value)))
-
-              # Write surface mesh to file for debug
-              gmesh.write_off("surfmesh%d.off" % i)
-
-              # Add the mesh
-              gmeshes.append(gmesh)
-
-          #obj = self._get_selected_mesh(False)
-          #if obj is None:
-          #    return
-
-          # Tetrahedralize mesh
-          quality_str = "q%.1fqq%.1faA"%(self.getVal(self.tetparams["aspect_ratio"]),
-                                         self.getVal(self.tetparams["dihedral_angle"]))
-
-          quality_str += "o2" if self.getVal(self.tetparams["higher_order"]) else ""
-
-          myprint("TetGen quality string:", quality_str)
-
-          # Do the tetrahedralization
-          self.waitingCursor(1)
-          gem_mesh = gamer.GemMesh(gmeshes, quality_str)
-
-
-          print ( "End Tetrahedralize" )
-      """
+                      print ( "Error: Unable to write to " + fmt + " file: " + filename + suffix )
+                      print ( "   " + str(ex) )
 
       print ( "######################## End Tetrahedralize ########################" )
 
