@@ -24,6 +24,23 @@ def unregister():
 
 # Tetrahedralization Operators:
 
+class GAMER_OT_set_tet_path(bpy.types.Operator):
+    bl_idname = "gamer.set_tet_path"
+    bl_label = "Set Tetrahedralization Path"
+    bl_description = ("Set Tetrahedralization Path")
+    bl_options = {'REGISTER'}
+
+    filepath = bpy.props.StringProperty(subtype='FILE_PATH', default="")
+
+    def execute(self, context):
+        context.scene.gamer.tet_group.tet_path = self.filepath
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        context.window_manager.fileselect_add(self)
+        return {'RUNNING_MODAL'}
+
+
 class GAMER_OT_tet_domain_add(bpy.types.Operator):
     bl_idname = "gamer.tet_domain_add"
     bl_label = "Add a Tet Domain"
@@ -151,6 +168,9 @@ def check_formats_callback(self, context):
 
 class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
+  tet_path = StringProperty ( name="tet_path", default="", description="Path to location of tetrahedralization output files" )
+  tet_out_name = StringProperty ( name="tet_out_name", default="Blender_GAMer_tet", description="Prefix name of tetrahedralization output files" )
+
   generic_float = FloatProperty( name="Generic Float", default=123.456, min=0.0, max=1000, precision=4, description="A Generic Float Value")
   generic_int = IntProperty( name="Generic Int", default=5, min=1, max=10, description="A Generic Int Value")
   generic_boolean = BoolProperty( name="Generic Bool", default=False, description="A Generic Boolean Value")
@@ -210,6 +230,13 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
               row.prop(self, "show_settings", icon='TRIA_RIGHT', emboss=False)
           else:
               row.prop(self, "show_settings", icon='TRIA_DOWN', emboss=False)
+
+              row = box.row()
+              row.operator("gamer.set_tet_path", text="Set Path to Output Files", icon='FILESEL')
+              row = box.row()
+              row.label ( self.tet_path )
+              row = box.row()
+              row.prop ( self, "tet_out_name" )
 
               row = box.row()
               col = row.column()
@@ -300,7 +327,8 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
 
   def tetrahedralize ( self ):
       print ( "######################## Begin Tetrahedralize ########################" )
-      filename = "Blender_GAMer_tet"
+
+      filename = self.tet_path + self.tet_out_name
       if not (self.dolfin or self.diffpack or self.carp or self.fetk):
           self.status = "Please select an output format in Tetrahedralization Settings"
           print ( self.status )
