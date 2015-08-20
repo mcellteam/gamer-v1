@@ -21,7 +21,8 @@ def register():
 def unregister():
     bpy.utils.unregister_module(__name__)
 
-
+def myprint ( s ):
+    print ( s )
 
 def show_hide_tool_panel ( show=True ):
     if show:

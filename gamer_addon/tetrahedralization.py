@@ -6,6 +6,7 @@ from bpy.props import BoolProperty, CollectionProperty, EnumProperty, \
     PointerProperty, StringProperty, BoolVectorProperty
 import mathutils
 import gamer
+import gamer_addon.gamer_gui
 
 # python imports
 import os
@@ -90,13 +91,22 @@ class GAMerTetDomainPropertyGroup(bpy.types.PropertyGroup):
     object_name = StringProperty ( name="ObjName", default="", description="Object Name" )
     marker = IntProperty ( name="Marker", default=-1, description="Domain Marker Integer" )
     is_hole = BoolProperty ( name="Hole", default=False, description="Use this domain as a hole" )
+    constrain_vol  = BoolProperty ( name="Constrain Volume", default=False, description="Constrain Volume" )
+    vol_constraint = FloatProperty ( name="Vol Constraint", default=10.0, description="Volume Constraint" )
     
     def draw_layout ( self, layout ):
         row = layout.row()
         col = row.column()
-        col.prop ( self, "marker" )
-        col = row.column()
         col.prop ( self, "is_hole", text="Use Domain as a Hole" )
+        if not self.is_hole:
+            col = row.column()
+            col.prop ( self, "marker" )
+            row = layout.row()
+            col = row.column()
+            col.prop ( self, "constrain_vol" )
+            if self.constrain_vol:
+                col = row.column()
+                col.prop ( self, "vol_constraint" )
 
     def draw_item_in_row ( self, row ):
         col = row.column()
@@ -104,7 +114,10 @@ class GAMerTetDomainPropertyGroup(bpy.types.PropertyGroup):
         col = row.column()
         col.label ( "Domain ID: " + str(self.domain_id) )
         col = row.column()
-        col.label ( "Domain Marker: " + str(self.marker) )
+        if self.is_hole:
+            col.label ( "Hole" )
+        else:
+            col.label ( "Domain Marker: " + str(self.marker) )
 
 
 class GAMer_UL_domain(bpy.types.UIList):
@@ -147,9 +160,6 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
   next_id = IntProperty(name="Counter for Unique Domain IDs", default=1)  # Start ID's at 1 to confirm initialization
 
   show_settings = BoolProperty( name="Tetrahedralization Settings", default=False, description="Show more detailed settings")
-
-  constrain_vol  = BoolProperty ( name="Constrain Volume", default=False, description="Constrain Volume" )
-  vol_constraint = FloatProperty ( name="Vol Constraint", default=10.0, description="Volume Constraint" )
 
   min_dihedral = FloatProperty ( name="Min Dihedral", default=10.0, description="Minimum Dihedral in Degrees" )
   max_aspect_ratio = FloatProperty ( name="Max Aspect Ratio", default=1.3, description="Maximum Aspect Ratio" )
@@ -206,13 +216,6 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
               col.prop ( self, "min_dihedral" )
               col = row.column()
               col.prop ( self, "max_aspect_ratio" )
-
-              row = box.row()
-              col = row.column()
-              col.prop ( self, "constrain_vol" )
-              if self.constrain_vol:
-                  col = row.column()
-                  col.prop ( self, "vol_constraint" )
 
               row = box.row()
               row.prop ( self, "ho_mesh" )
@@ -321,12 +324,22 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           gmeshes = []
           boundary_markers = []
 
+          for (obj_name,tet_domain) in [ (d.object_name,d) for d in self.domain_list ]:
+              print ( "obj_name = " + obj_name + ", tet_domain = " + str(tet_domain) )
+
           current_domain_names = [ d.object_name for d in self.domain_list ]
           print ( "Current domains = " + str(current_domain_names) )
           for obj_name in current_domain_names:
               obj = bpy.data.objects[obj_name]
               if obj.gamer.include:
-                  gmesh, boundaries = self.host_to_gamer(obj=obj, create_new_mesh=False, check_for_vertex_selection=True)
+                  gmesh, boundaries = gamer_addon.gamer_gui.blender_to_gamer(obj=obj, create_new_mesh=False, check_for_vertex_selection=True)
+                  if gmesh == None:
+                      print ( "blender_to_gamer returned a gmesh of None" )
+                  else:
+                      gmesh.as_hole = tet_domain.is_hole
+                      gmesh.marker = tet_domain.marker
+                      gmesh.use_volume_constraint = tet_domain.constrain_vol
+                      gmesh.volume_constraint = tet_domain.vol_constraint
 
 
 """
@@ -347,7 +360,7 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
               myprint("\nMesh %d: num verts: %d numfaces: %d" %
                       (i, gmesh.num_vertices, gmesh.num_faces))
 
-              # Set the domain data on the SurfaceMesh
+              # Set the domain data on the SurfaceMesh these are the per/domain items as_hole, marker, 
               for name, value in domain.items():
                   setattr(gmesh, name, value)
                   myprint("%s : %d" %(name, int(value)))
