@@ -326,9 +326,9 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           for obj_name in current_domain_names:
               obj = bpy.data.objects[obj_name]
               if obj.gamer.include:
-                  gmesh, boundaries = self.host_to_gamer(obj, False)
+                  gmesh, boundaries = self.host_to_gamer(obj=obj, create_new_mesh=False, check_for_vertex_selection=True)
 
-          
+
 """
           for i, (name, domain) in enumerate(self.domains.items()):
               obj = self.helper.getObject(name)
