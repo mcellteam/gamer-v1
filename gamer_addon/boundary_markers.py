@@ -119,9 +119,16 @@ class GAMER_UL_check_boundary(bpy.types.UIList):
 
 
 # Boundary Callbacks:
-
+#
 def boundary_name_update(self, context):
-    context.object.gamer.boundary_name_update()
+    context.object.gamer.boundary_name_update(context)
+    return
+
+
+def boundary_marker_update(self, context):
+    active_bnd_index = context.object.gamer.active_bnd_index
+    bnd = context.object.gamer.boundary_list[active_bnd_index]
+    bnd.boundary_marker_update(context)
     return
 
 
@@ -130,8 +137,10 @@ def boundary_name_update(self, context):
 class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
     name = StringProperty(
         name="Boundary Name", default="Boundary", update=boundary_name_update)
+    boundary_key = StringProperty(
+        name="Boundary Key", default="")
     id = IntProperty(name="Unique ID of This Boundary",default=-1)
-    marker = IntProperty(name="Marker Value", default = 1)
+    marker = IntProperty(name="Marker Value", default = 1, update=boundary_marker_update)
     color = FloatVectorProperty ( name="Boundary Color", min=0.0, max=1.0, default=(0.5,0.5,0.5), subtype='COLOR', description='Boundary Color')
     status = StringProperty(name="Status")
 
@@ -154,6 +163,29 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
         self.status = status
 
         return
+
+
+    def boundary_key_update(self, context):
+        obj = context.active_object
+        bnd_name = self.name
+        bnd_key = self.boundary_key
+        obj_bnd = obj["boundaries"][bnd_key]
+        obj['boundaries'][bnd_name] = obj_bnd
+        for seg_id in obj["boundaries"][bnd_key]["faces"].keys():
+            obj["boundaries"][bnd_key]['faces'][seg_id] = []
+        obj["boundaries"][bnd_key].clear()
+        obj["boundaries"].pop(bnd_key)
+        self.boundary_key = bnd_name
+
+        return 
+
+
+    def boundary_marker_update(self, context):
+        obj = context.active_object
+        bnd_name = self.name
+        obj['boundaries'][bnd_name]['marker'] = self.marker
+
+        return 
 
 
     def assign_boundary_faces(self, context):
@@ -216,7 +248,7 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 
 
     def destroy_boundary(self, context):
-        """Remove all boundary data from mesh"""
+        """Remove boundary data from obj"""
         bnd_name = self.name
 
         obj = context.active_object
@@ -235,8 +267,7 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 
     def init_boundary(self, context, bnd_name, id):
 
-        self.id = id
-        self.name = bnd_name
+        self.boundary_key = bnd_name
 
         obj = context.active_object
         if not obj.get("boundaries"):
@@ -253,6 +284,7 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
             obj['boundaries'][bnd_name]['b'] = self.color[2]
         if not obj['boundaries'][bnd_name].get('faces'):
             obj['boundaries'][bnd_name]['faces'] = {}
+        self.name = bnd_name
 
 
     def reset_boundary(self, context):
@@ -436,13 +468,15 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
                 self.active_bnd_index = 0
 
 
-    def boundary_name_update(self):
+    def boundary_name_update(self, context):
         """Performs checks and sorts boundary list after update of boundary names"""
 
         if self.boundary_list:
             bnd = self.get_active_boundary()
             bnd.check_boundary_name(self.boundary_list.keys())
             self.sort_boundary_list()
+            if bnd.name != bnd.boundary_key:
+                bnd.boundary_key_update(context)
 
         return
 
