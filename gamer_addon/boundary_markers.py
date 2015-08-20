@@ -121,6 +121,8 @@ class GAMER_UL_check_boundary(bpy.types.UIList):
 # Boundary Callbacks:
 #
 def boundary_name_update(self, context):
+    active_bnd_index = context.object.gamer.active_bnd_index
+    bnd = context.object.gamer.boundary_list[active_bnd_index]
     context.object.gamer.boundary_name_update(context)
     return
 
@@ -475,6 +477,7 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
             bnd = self.get_active_boundary()
             bnd.check_boundary_name(self.boundary_list.keys())
             self.sort_boundary_list()
+            bnd = self.get_active_boundary()
             if bnd.name != bnd.boundary_key:
                 bnd.boundary_key_update(context)
 
