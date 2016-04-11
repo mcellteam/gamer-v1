@@ -4,6 +4,7 @@ maloc/doc/api
 *.lo
 *.la
 *.so
+*.o
 blamer-presentation.tar.gz
 blamer/
 build_2015_08_18/
