@@ -1,5 +1,5 @@
 SHELL = /bin/sh
-BUILD_DIR = $(PWD)/gamer_build
+BUILD_DIR = $(PWD)/gamer_build_static
 export FETK_INCLUDE = $(BUILD_DIR)/include
 export FETK_LIBRARY = $(BUILD_DIR)/lib
 #export PYTHON = /usr/bin/python3.4
@@ -7,7 +7,7 @@ export PYTHON = /opt/local/bin/python3.4
 LDFLAGS = \"-L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib\"
 #LDFLAGS = \"\"
 #INSTALL_DIR = ~/Library/Application\ Support/Blender/2.75
-INSTALL_DIR = ~/.config/blender/2.75
+INSTALL_DIR = ~/.config/blender/2.76
 
 DYLD_LIBRARY_PATH = $(BUILD_DIR)/lib:$DYLD_LIBRARY_PATH
 PYTHONPATH = $(BUILD_DIR)/lib/python3.4/site-packages:$PYTHONPATH
@@ -39,7 +39,7 @@ install:
 	@ cp ./gamer/tools/blender/mesh_gamer_addon.py $(INSTALL_DIR)/scripts/addons/
 	@ cp -r ./gamer_addon $(INSTALL_DIR)/scripts/addons/
 	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/gamer $(INSTALL_DIR)/scripts/modules/
-	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/upy $(INSTALL_DIR)/scripts/modules/
+#	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/upy $(INSTALL_DIR)/scripts/modules/
 
 clean:
 	@ cd maloc; $(MAKE) clean

@@ -532,9 +532,9 @@ AC_CHECK_HEADER(gamer/gamer.h,
     [gamer_found="";gamer_inc=""])
 if test -n "${gamer_found}"; then
     AC_CHECK_LIB(gamer,gamer_link,
-        [gamer_found="yes";gamer_lib="${gamer_lib_path}-lgamer -ltetgen -ltriangle"],
+        [gamer_found="yes";gamer_lib="${FETK_LIBRARY}/libgamer.a ${FETK_LIBRARY}/libtetgen.a ${FETK_LIBRARY}/libtriangle.a"],
         [gamer_found="";gamer_lib=""],
-        [${gamer_lib_path}-lgamer -ltetgen -ltriangle ${maloc_lib} ${mpi_lib} ${rl_lib} ${liberty_lib} ${socket_lib} ${nsl_lib} ${thread_lib} ${math_lib} ${zfence_lib} ${profile_lib}])
+        [${FETK_LIBRARY}/libgamer.a ${FETK_LIBRARY}/libtetgen.a ${FETK_LIBRARY}/libtriangle.a ${maloc_lib} ${mpi_lib} ${rl_lib} ${liberty_lib} ${socket_lib} ${nsl_lib} ${thread_lib} ${math_lib} ${zfence_lib} ${profile_lib}])
 fi
 if test -z "${gamer_found}"; then
     AC_MSG_ERROR([GAMer libraries OR headers missing ...EXITING ON ERROR])
