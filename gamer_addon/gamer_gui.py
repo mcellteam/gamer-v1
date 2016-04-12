@@ -24,35 +24,6 @@ def unregister():
 def myprint ( s ):
     print ( s )
 
-def show_hide_tool_panel ( show=True ):
-    if show:
-        print ( "Showing CellBlender panel in the Tool tab" )
-        try:
-            bpy.utils.register_class(MCELL_PT_main_panel)
-        except:
-            pass
-    else:
-        print ( "Hiding the CellBlender panel in the Tool tab" )
-        try:
-            bpy.utils.unregister_class(MCELL_PT_main_panel)
-        except:
-            pass
-
-
-def set_tool_panel_callback(self, context):
-    """ Show or hide the tool panel based on the show_tool_panel boolean property. """
-    print ( "Toggling the tool panels" )
-    mcell = context.scene.mcell
-    prefs = mcell.cellblender_preferences
-    if (prefs.show_old_scene_panels or prefs.show_scene_panel):
-        # One of the other panels is showing, so it's OK to toggle
-        show_hide_tool_panel ( prefs.show_tool_panel )
-    else:
-        # No other panels are showing so DON'T ALLOW THIS ONE TO GO AWAY!
-        prefs.show_tool_panel = True
-        show_hide_tool_panel ( True )
-
-
 
 def panel_select_callback (self, context):
     self.panel_select_callback(context)
@@ -328,10 +299,6 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
   initialized = BoolProperty(name="GAMer Initialized", default=False)
   gamer_version = StringProperty(name="GAMer Version", default="0")
 
-  show_tool_panel = BoolProperty(
-      name="GAMer in Tool Tab", default=True,
-      description="Show GAMer Panel in Tool Tab", update=set_tool_panel_callback)
-
   main_panel = PointerProperty(
     type=GAMerMainPanelPropertyGroup,
     name="GAMer Main Panel")
@@ -343,7 +310,6 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
   tet_group = PointerProperty(
     type=tetrahedralization.GAMerTetrahedralizationPropertyGroup,
     name="GAMer Tetrahedralization")
-
 
   def init_properties ( self ):
     self.gamer_version = "0.1"
