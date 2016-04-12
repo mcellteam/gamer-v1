@@ -2,16 +2,21 @@ SHELL = /bin/sh
 BUILD_DIR = $(PWD)/gamer_build_static
 export FETK_INCLUDE = $(BUILD_DIR)/include
 export FETK_LIBRARY = $(BUILD_DIR)/lib
-export PYTHON = /usr/bin/python3.4
-#export PYTHON = /opt/local/bin/python3.4
-LDFLAGS = \"\"
-#LDFLAGS = \"-L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib\"
-INSTALL_DIR = ~/.config/blender/2.76
-#INSTALL_DIR = ~/Library/Application\ Support/Blender/2.75
 
+# For Linux:
+export PYTHON = /usr/bin/python3.4
 export LD_LIBRARY_PATH=$(BUILD_DIR)/lib:$LD_LIBRARY_PATH
+LDFLAGS = ""
+INSTALL_DIR = ~/.config/blender/2.76
+
+# For MacOSX
+#export PYTHON = /opt/local/bin/python3.4
 #export DYLD_LIBRARY_PATH=$(BUILD_DIR)/lib:$DYLD_LIBRARY_PATH
-PYTHONPATH = $(BUILD_DIR)/lib/python3.4/site-packages:$PYTHONPATH
+#LDFLAGS = -L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib
+#INSTALL_DIR = ~/Library/Application\ Support/Blender/2.76
+
+export PYTHONPATH=$(BUILD_DIR)/lib/python3.4/site-packages:$PYTHONPATH
+
 
 all: maloc gamer gamer_swig gamer_tools
 
@@ -24,13 +29,13 @@ gamer: maloc
 	@ cd gamer ; ./configure --enable-static --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
 
 gamer_swig: gamer
-#	@ cd gamer/swig ; ./configure --enable-static --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
+	echo "LDFLAGS are set to:  " $(LDFLAGS)
 	@ cd gamer/swig ; ./configure --enable-static --prefix=$(BUILD_DIR) LDFLAGS=$(LDFLAGS) ; $(MAKE) ; $(MAKE) install
 
 gamer_tools: gamer
-	@ cd gamer/tools/ImproveSurfMesh ; ./configure --enable-static --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
-	@ cd gamer/tools/MolecularMesh ; ./configure --enable-static --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
-	@ cd gamer/tools/GenerateMesh ; ./configure --enable-static --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
+	@ cd gamer/tools/ImproveSurfMesh ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
+	@ cd gamer/tools/MolecularMesh ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
+	@ cd gamer/tools/GenerateMesh ; ./configure --prefix=$(BUILD_DIR) ; $(MAKE) ; $(MAKE) install
 
 
 install:
