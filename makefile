@@ -3,13 +3,13 @@ BUILD_DIR = $(PWD)/gamer_build_static
 export FETK_INCLUDE = $(BUILD_DIR)/include
 export FETK_LIBRARY = $(BUILD_DIR)/lib
 
-# For Linux:
+# On a Linux platform, uncomment these lines and adjust as needed:
 export PYTHON = /usr/bin/python3.4
 export LD_LIBRARY_PATH=$(BUILD_DIR)/lib:$LD_LIBRARY_PATH
 LDFLAGS = ""
 INSTALL_DIR = ~/.config/blender/2.76
 
-# For MacOSX
+# On a MacOSX platform, uncomment these lines and adjust as needed:
 #export PYTHON = /opt/local/bin/python3.4
 #export DYLD_LIBRARY_PATH=$(BUILD_DIR)/lib:$DYLD_LIBRARY_PATH
 #LDFLAGS = -L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib
