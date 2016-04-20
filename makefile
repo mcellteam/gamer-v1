@@ -7,7 +7,7 @@ export FETK_LIBRARY = $(BUILD_DIR)/lib
 export PYTHON = /usr/bin/python3.4
 export LD_LIBRARY_PATH=$(BUILD_DIR)/lib:$LD_LIBRARY_PATH
 LDFLAGS = ""
-INSTALL_DIR = ~/.config/blender/2.76
+INSTALL_DIR = ~/.config/blender/2.77
 
 # On a MacOSX platform, uncomment these lines and adjust as needed:
 #export PYTHON = /opt/local/bin/python3.4
@@ -39,11 +39,10 @@ gamer_tools: gamer
 
 
 install:
-	@ mkdir -p $(INSTALL_DIR)
-	@ cp ./gamer/tools/blender/mesh_gamer_addon.py $(INSTALL_DIR)/scripts/addons/
+	@ mkdir -p $(INSTALL_DIR)/scripts/addons
+	@ mkdir -p $(INSTALL_DIR)/scripts/modules
 	@ cp -r ./gamer_addon $(INSTALL_DIR)/scripts/addons/
 	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/gamer $(INSTALL_DIR)/scripts/modules/
-#	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/upy $(INSTALL_DIR)/scripts/modules/
 
 clean:
 	@ cd maloc; $(MAKE) clean

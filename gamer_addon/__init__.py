@@ -6,7 +6,7 @@ Created on Tue Apr 17 08:37:50 2012
 """
 
 bl_info = {
-    "name": "GAMer_2",
+    "name": "GAMer",
     "description": "GAMer: Geometry-preserving Adaptive Mesher",
     "author": "Zeyun Yu, Michael Holst, Johan Hake, and Tom Bartol",
     "version": (0,1,0),
