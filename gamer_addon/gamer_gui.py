@@ -2,6 +2,7 @@ import bpy
 from bpy.props import BoolProperty, CollectionProperty, EnumProperty, \
     FloatProperty, FloatVectorProperty, IntProperty, IntVectorProperty, \
     PointerProperty, StringProperty, BoolVectorProperty
+from bpy.app.handlers import persistent
 import mathutils
 import gamer
 
@@ -25,13 +26,25 @@ def myprint ( s ):
     print ( s )
 
 
+@persistent
+def gamer_load_post(context):
+    """ Initialize GAMer add  """
+    print ( "load post handler: gamer_load_post() called"
+)
+    if not context:
+        context = bpy.context
+    scn = bpy.context.scene
+    if not scn.gamer.initialized:
+      scn.gamer.init_properties()
+
+
 def panel_select_callback (self, context):
     self.panel_select_callback(context)
 
 
 class GAMER_OT_coarse_dense(bpy.types.Operator):
     bl_idname = "gamer.coarse_dense"
-    bl_label = "Coarse Dense"
+    bl_label = "Coarse Dense Tris"
     bl_description = "Decimate selected dense areas of the mesh"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -42,7 +55,7 @@ class GAMER_OT_coarse_dense(bpy.types.Operator):
 
 class GAMER_OT_coarse_flat(bpy.types.Operator):
     bl_idname = "gamer.coarse_flat"
-    bl_label = "Coarse Flat"
+    bl_label = "Coarse Flat Tris"
     bl_description = "Decimate selected flat areas of the mesh"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -53,7 +66,7 @@ class GAMER_OT_coarse_flat(bpy.types.Operator):
 
 class GAMER_OT_smooth(bpy.types.Operator):
     bl_idname = "gamer.smooth"
-    bl_label = "Smooth"
+    bl_label = "Smooth Tris"
     bl_description = "Smooth selected vertices of the mesh"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -64,7 +77,7 @@ class GAMER_OT_smooth(bpy.types.Operator):
 
 class GAMER_OT_normal_smooth(bpy.types.Operator):
     bl_idname = "gamer.normal_smooth"
-    bl_label = "Normal Smooth"
+    bl_label = "Normal Smooth Surf"
     bl_description = "Smooth facet normals of selected faces of the mesh"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -127,13 +140,13 @@ class GAMerMeshImprovementPropertyGroup(bpy.types.PropertyGroup):
 
       row = layout.row()
       col = row.column()
-      col.operator("gamer.coarse_flat",icon="OUTLINER_OB_LATTICE")
+      col.operator("gamer.coarse_flat",icon="MOD_TRIANGULATE")
       col = row.column()
       col.prop(self, "flat_rate" )
 
       row = layout.row()
       col = row.column()
-      col.operator("gamer.smooth",icon="OUTLINER_OB_LATTICE")
+      col.operator("gamer.smooth",icon="OUTLINER_OB_MESH")
       col = row.column()
       col.prop(self, "max_min_angle" )
       col = row.column()
@@ -144,10 +157,10 @@ class GAMerMeshImprovementPropertyGroup(bpy.types.PropertyGroup):
 
       row = layout.row()
       col = row.column()
-      col.operator("gamer.normal_smooth",icon="OUTLINER_OB_LATTICE")
+      col.operator("gamer.normal_smooth",icon="SMOOTHCURVE")
 
-      row = layout.row()
-      row.prop(self, "new_mesh" )
+#      row = layout.row()
+#      row.prop(self, "new_mesh" )
 
 
   def draw_panel ( self, context, panel ):
@@ -234,11 +247,11 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
         bcol = brow.column()
         bcol.prop ( self, "mesh_improve_select", icon='MESH_ICOSPHERE', text="Surface Mesh Improvement" )
         bcol = brow.column()
-        bcol.prop ( self, "boundary_markers_select", icon='MESH_ICOSPHERE', text="Boundary Marking" )
+        bcol.prop ( self, "boundary_markers_select", icon='TPAINT_HLT', text="Boundary Marking" )
 
         brow = layout.row()
         bcol = brow.column()
-        bcol.prop ( self, "tet_select", icon='MESH_CONE', text="Tetrahedralization" )
+        bcol.prop ( self, "tet_select", icon='MOD_SKIN', text="Tetrahedralization" )
         bcol = brow.column()
         if self.select_multiple:
             bcol.prop ( self, "select_multiple", icon='PINNED', text="Show All / Multiple" )
@@ -254,14 +267,14 @@ class GAMerMainPanelPropertyGroup(bpy.types.PropertyGroup):
 
         if self.boundary_markers_select:
             layout.box() # Use as a separator
-            layout.label ( "Boundary Marking", icon='MESH_ICOSPHERE' )
+            layout.label ( "Boundary Marking", icon='TPAINT_HLT' )
             active_obj = context.active_object
             if active_obj:
               active_obj.gamer.draw_layout ( context, layout )
 
         if self.tet_select:
             layout.box() # Use as a separator
-            layout.label ( "Tetrahedralization", icon='MESH_CONE' )
+            layout.label ( "Tetrahedralization", icon='MOD_SKIN' )
             context.scene.gamer.tet_group.draw_layout ( context, layout )
 
 
@@ -298,6 +311,7 @@ class GAMER_PT_main_panel(bpy.types.Panel):
 class GAMerPropertyGroup(bpy.types.PropertyGroup):
   initialized = BoolProperty(name="GAMer Initialized", default=False)
   gamer_version = StringProperty(name="GAMer Version", default="0")
+  boundary_id_counter = IntProperty(name="GAMer Boundary id Counter")
 
   main_panel = PointerProperty(
     type=GAMerMainPanelPropertyGroup,
@@ -311,8 +325,19 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
     type=tetrahedralization.GAMerTetrahedralizationPropertyGroup,
     name="GAMer Tetrahedralization")
 
+  def allocate_boundary_id ( self ):
+    self.boundary_id_counter += 1
+    boundary_id = "bnd_id_%d" % (self.boundary_id_counter)
+    return self.boundary_id_counter, boundary_id
+
   def init_properties ( self ):
     self.gamer_version = "0.1"
+    self.boundary_id_counter = 0
+    
+    if not bpy.data.materials.get('bnd_unset_mat') : 
+      bnd_unset_mat = bpy.data.materials.new('bnd_unset_mat')
+      bnd_unset_mat.gamer.boundary_id = 'bnd_unset'
+
     self.initialized = True
 
 
@@ -400,8 +425,8 @@ def setBoundaryFaces(boundary, faces):
     "Set faces in boundary props"
     if not "faces" in boundary:
         return
-    # Maximal indices in a array prop in Blender is 10000
-    max_ind = 10000
+    # Maximal indices in a array prop in Blender is 32767
+    max_ind = 32767
     num_sub_arrays = int(len(faces)/max_ind)+1
 
     # If the faces allready exist delete it and re attach it
@@ -536,13 +561,13 @@ def gamer_to_blender(gmesh, boundaries, create_new_mesh=False,
     # If we create a new mesh we copy the boundaries to a dict
     if create_new_mesh:
         new_boundaries = {}
-        for boundary_name in boundaries.keys():
-            boundary = boundaries[boundary_name]
-            new_boundaries[boundary_name] = dict(
+        for bnd_id in boundaries.keys():
+            boundary = boundaries[bnd_id]
+            new_boundaries[bnd_id] = dict(
                 marker=boundary["marker"], r=boundary["r"], g=boundary["g"], \
                 b=boundary["b"], faces={})
         
-        # Do not copy the faces information grab that from the gamer mesh
+        # Do not copy the faces information, grab that from the gamer mesh
         boundaries = new_boundaries
     
     # Create marker to boundary map
@@ -605,10 +630,8 @@ def gamer_to_blender(gmesh, boundaries, create_new_mesh=False,
     # Restore editmode
     restoreInteractionMode(obj,editmode)
 
-    # Repaint boundaries if there were markers in the GAMer data
-# FIXME:
-#    if markers:
-#        self._repaint_boundaries(obj)
+    # Repaint boundaries
+    obj.gamer.repaint_boundaries(bpy.context)
     
 #    self.waitingCursor(0)
 #    self.updateViewer()

@@ -77,8 +77,11 @@ def register():
         type=gamer_gui.GAMerPropertyGroup)
     bpy.types.Object.gamer = bpy.props.PointerProperty(
         type=boundary_markers.GAMerBoundaryMarkersListPropertyGroup)
+    bpy.types.Material.gamer = bpy.props.PointerProperty(
+        type=boundary_markers.GAMerBoundaryMaterialPropertyGroup)
 
     # Add the load_post handlers
+    add_handler ( bpy.app.handlers.load_post, gamer_gui.gamer_load_post )
     add_handler ( bpy.app.handlers.load_post, boundary_markers.boundary_markers_load_post )
  
 
@@ -87,6 +90,7 @@ def register():
 
 def unregister():
     remove_handler ( bpy.app.handlers.load_post, boundary_markers.boundary_markers_load_post )
+    remove_handler ( bpy.app.handlers.load_post, gamer_gui.gamer_load_post )
     bpy.utils.unregister_module(__name__)
   
     print("GAMer unregistered")
