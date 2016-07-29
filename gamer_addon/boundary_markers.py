@@ -351,9 +351,24 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
             obj['boundaries'][bnd_id]['faces'] = {}
 
         mats = bpy.data.materials
-        bnd_mat_name = "%s_mat" % (bnd_id)
-        
+
+        # Check if the bnd_unset material exists already...
+        bnd_unset_mat = None    # set scope
+        matches = [ mat for mat in mats if mat.gamer.boundary_id == 'bnd_unset' ]
+        if len(matches) == 0:
+            # Doesn't exist yet... create it
+            bnd_unset_mat = bpy.data.materials.new('bnd_unset_mat') 
+            bnd_unset_mat.gamer.boundary_id = 'bnd_unset'
+        else:
+            bnd_unset_mat = matches[0]
+
+        # Check if the default material is set to bnd_unset  
+        if len(obj.material_slots) == 0:
+            bpy.ops.object.material_slot_add()
+            obj.material_slots[0].material = bnd_unset_mat
+
         # Search for mat with boundary_id...
+        bnd_mat_name = "%s_mat" % (bnd_id)
         mat_list = [ mat for mat in mats if mat.gamer.boundary_id == bnd_id ]
         if len(mat_list) == 0:
           bnd_mat = bpy.data.materials.new(bnd_mat_name)
@@ -361,13 +376,6 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
         else:
           bnd_mat = mat_list[0]
        
-        """
-        if len(obj.material_slots) == 0:
-          bpy.ops.object.material_slot_add()
-          bnd_mat = [ mat for mat in mats if mat.gamer.boundary_id == bnd_id ][0]
-          obj.material_slots[0].material = bnd_mat
-        """
-
         bpy.ops.object.material_slot_add()
         obj.material_slots[-1].material = bnd_mat
         
