@@ -351,21 +351,25 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
             obj['boundaries'][bnd_id]['faces'] = {}
 
         mats = bpy.data.materials
-        if len(obj.material_slots) == 0:
-          bpy.ops.object.material_slot_add()
-          bnd_unset_mat = [ mat for mat in mats if mat.gamer.boundary_id == 'bnd_unset' ][0]
-          obj.material_slots[0].material = bnd_unset_mat
-
         bnd_mat_name = "%s_mat" % (bnd_id)
+        
+        # Search for mat with boundary_id...
         mat_list = [ mat for mat in mats if mat.gamer.boundary_id == bnd_id ]
         if len(mat_list) == 0:
           bnd_mat = bpy.data.materials.new(bnd_mat_name)
           bnd_mat.gamer.boundary_id = bnd_id
         else:
           bnd_mat = mat_list[0]
+       
+        """
+        if len(obj.material_slots) == 0:
+          bpy.ops.object.material_slot_add()
+          bnd_mat = [ mat for mat in mats if mat.gamer.boundary_id == bnd_id ][0]
+          obj.material_slots[0].material = bnd_mat
+        """
+
         bpy.ops.object.material_slot_add()
         obj.material_slots[-1].material = bnd_mat
-        
         
 
 
