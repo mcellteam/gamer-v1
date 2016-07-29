@@ -359,6 +359,12 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
             # Doesn't exist yet... create it
             bnd_unset_mat = bpy.data.materials.new('bnd_unset_mat') 
             bnd_unset_mat.gamer.boundary_id = 'bnd_unset'
+            
+            # Update all materials which don't have a gamer boundaryID yet
+            for slot in obj.material_slots:
+                # Blender created materials should have '' as boundary_id
+                if slot.material.gamer.boundary_id == '':
+                    slot.material = bnd_unset_mat
         else:
             bnd_unset_mat = matches[0]
 
