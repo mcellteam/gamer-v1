@@ -336,6 +336,7 @@ class GAMerPropertyGroup(bpy.types.PropertyGroup):
     
     if not bpy.data.materials.get('bnd_unset_mat') : 
       bnd_unset_mat = bpy.data.materials.new('bnd_unset_mat')
+      bnd_unset_mat.use_fake_user = True
       bnd_unset_mat.gamer.boundary_id = 'bnd_unset'
 
     self.initialized = True
