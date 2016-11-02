@@ -9,6 +9,7 @@ ifeq ($(UNAME), Linux)
 	export PYTHON := /usr/bin/python3.4
 	export LD_LIBRARY_PATH := $(BUILD_DIR)/lib:$(LD_LIBRARY_PATH)
 	LDFLAGS = "-L/usr/local/lib/"
+	PYTHON_MODULE_BUILD_DIR = $(BUILD_DIR)/lib/python3.4/site-packages/gamer
 	INSTALL_DIR = ..
 else
 #	export PYTHON := /usr/local/bin/python3.5
@@ -16,12 +17,11 @@ else
 	export DYLD_LIBRARY_PATH := $(BUILD_DIR)/lib:$(DYLD_LIBRARY_PATH)
 #	LDFLAGS := -L/usr/local/Cellar/python3/3.5.2_3/Frameworks/Python.framework/Versions/3.5/lib
 	LDFLAGS := -L/opt/local/Library/Frameworks/Python.framework/Versions/3.5/lib
+	PYTHON_MODULE_BUILD_DIR = $(BUILD_DIR)/lib/python3.5/site-packages/gamer
 	INSTALL_DIR := ../
 endif
 
-PKG_DIR = ~/src/blender/blender-2.77a-linux-glibc211-x86_64/2.77/
-
-export PYTHONPATH := $(BUILD_DIR)/lib/python3.4/site-packages:$(PYTHONPATH)
+PKG_DIR = ~/src/blender/blender-2.78-linux-glibc211-x86_64/2.78/
 
 all: maloc gamer gamer_swig gamer_tools
 
@@ -48,13 +48,13 @@ install:
 	@ mkdir -p $(INSTALL_DIR)/scripts/addons
 	@ mkdir -p $(INSTALL_DIR)/scripts/modules
 	@ cp -r ./gamer_addon $(INSTALL_DIR)/scripts/addons/
-	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/gamer $(INSTALL_DIR)/scripts/modules/
+	@ cp -r $(PYTHON_MODULE_BUILD_DIR) $(INSTALL_DIR)/scripts/modules/
 
 pkg:
 	@ mkdir -p $(PKG_DIR)/scripts/addons
 	@ mkdir -p $(PKG_DIR)/scripts/modules
 	@ cp -r ./gamer_addon $(PKG_DIR)/scripts/addons/
-	@ cp -r $(BUILD_DIR)/lib/python3.4/site-packages/gamer $(PKG_DIR)/scripts/modules/
+	@ cp -r $(PYTHON_MODULE_BUILD_DIR) $(PKG_DIR)/scripts/modules/
 
 clean:
 	@ cd maloc; $(MAKE) -k clean
