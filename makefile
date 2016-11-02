@@ -3,22 +3,25 @@ BUILD_DIR := $(PWD)/gamer_build_static
 export FETK_INCLUDE := $(BUILD_DIR)/include
 export FETK_LIBRARY := $(BUILD_DIR)/lib
 
-# On a Linux platform, uncomment these lines and adjust as needed:
-export PYTHON := /opt/python3.4/bin/python3.4
-export LD_LIBRARY_PATH := $(BUILD_DIR)/lib:$(LD_LIBRARY_PATH)
-LDFLAGS := "-L/opt/python3.4/lib/"
-INSTALL_DIR := ~/.config/blender/2.77
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Linux)
+	export PYTHON := /usr/bin/python3.4
+	export LD_LIBRARY_PATH := $(BUILD_DIR)/lib:$(LD_LIBRARY_PATH)
+	LDFLAGS = "-L/usr/local/lib/"
+	INSTALL_DIR = ..
+else
+#	export PYTHON := /usr/local/bin/python3.5
+	export PYTHON := /opt/local/bin/python3.5
+	export DYLD_LIBRARY_PATH := $(BUILD_DIR)/lib:$(DYLD_LIBRARY_PATH)
+#	LDFLAGS := -L/usr/local/Cellar/python3/3.5.2_3/Frameworks/Python.framework/Versions/3.5/lib
+	LDFLAGS := -L/opt/local/Library/Frameworks/Python.framework/Versions/3.5/lib
+	INSTALL_DIR := ../
+endif
+
 PKG_DIR = ~/src/blender/blender-2.77a-linux-glibc211-x86_64/2.77/
 
-# On a MacOSX platform, uncomment these lines and adjust as needed:
-#export PYTHON := /opt/local/bin/python3.4
-#export DYLD_LIBRARY_PATH := $(BUILD_DIR)/lib:$(DYLD_LIBRARY_PATH)
-#LDFLAGS := -L/opt/local/Library/Frameworks/Python.framework/Versions/3.4/lib
-#INSTALL_DIR := ~/Library/Application\ Support/Blender/2.77
-#PKG_DIR = ~/src/blender/blender-2.77a-linux-glibc211-x86_64/2.77/
-
 export PYTHONPATH := $(BUILD_DIR)/lib/python3.4/site-packages:$(PYTHONPATH)
-
 
 all: maloc gamer gamer_swig gamer_tools
 
