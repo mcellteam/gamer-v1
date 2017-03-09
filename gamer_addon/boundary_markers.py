@@ -123,6 +123,18 @@ class GAMER_OT_deselect_boundary_faces(bpy.types.Operator):
             bnd.deselect_boundary_faces(context)
         return {'FINISHED'}
 
+class GAMER_OT_select_all_boundary_faces(bpy.types.Operator):
+    bl_idname = "gamer.select_all_boundary_faces"
+    bl_label = "Select All Faces of Selected Boundary"
+    bl_description = "Select all faces of selected boundary"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        for bnd in context.object.gamer.boundary_list:
+            bnd.select_boundary_faces(context)
+        return {'FINISHED'}
+
+
 
 # Object Boundary Panel:
 
@@ -689,6 +701,7 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
                 sub = row.row(align=True)
                 sub.operator("gamer.select_boundary_faces", text="Select")
                 sub.operator("gamer.deselect_boundary_faces", text="Deselect")
+                sub.operator("gamer.select_all_boundary_faces", text="Select All")
 
 #                # Option to Get Boundary Info
 #                box = layout.box()
