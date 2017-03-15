@@ -351,11 +351,13 @@ class GAMerTetrahedralizationPropertyGroup(bpy.types.PropertyGroup):
           boundary_markers = []
 
           for (obj_name,tet_domain) in [ (d.object_name,d) for d in self.domain_list ]:
-              print ( "obj_name = " + obj_name + ", tet_domain = " + str(tet_domain) )
+              print ( "obj_name = " + obj_name + ", tet_domain = " + str(tet_domain.marker) )
 
           current_domain_names = [ d.object_name for d in self.domain_list ]
           print ( "Current domains = " + str(current_domain_names) )
-          for obj_name in current_domain_names:
+          for tet_domain in self.domain_list:
+#          for obj_name in current_domain_names:
+              obj_name = tet_domain.object_name
               obj = bpy.data.objects[obj_name]
               if obj.gamer.include:
                   gmesh, boundaries = gamer_addon.gamer_gui.blender_to_gamer(obj=obj, create_new_mesh=False, check_for_vertex_selection=True)
