@@ -23,7 +23,7 @@ def unregister():
 
 @persistent
 def boundary_markers_load_post(context):
-    """ If this is on old gamer_upy file, tranfer pure ID boundaries to RNA  """
+    """ If this is on old gamer_upy file, transfer pure ID boundaries to RNA  """
     print ( "load post handler: boundary_markers_load_post() called"
 )
     if not context:
@@ -397,17 +397,13 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 
     def init_boundary(self, context, bnd_name, bnd_id, bnd_marker):
 
-        self.boundary_id = bnd_id
-        self.marker = bnd_marker
-        self.name = bnd_name
-
         obj = context.active_object
         if not obj.get("boundaries"):
             obj['boundaries'] = {}
         if not obj['boundaries'].get(bnd_id):
             obj['boundaries'][bnd_id] = {}
         if not obj['boundaries'][bnd_id].get('marker'):
-            obj['boundaries'][bnd_id]['marker'] = self.marker
+            obj['boundaries'][bnd_id]['marker'] = bnd_marker
 #        if not obj['boundaries'][bnd_id].get('r'):
 #            obj['boundaries'][bnd_id]['r'] = self.color[0]
 #        if not obj['boundaries'][bnd_id].get('g'):
@@ -416,6 +412,10 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 #            obj['boundaries'][bnd_id]['b'] = self.color[2]
         if not obj['boundaries'][bnd_id].get('faces'):
             obj['boundaries'][bnd_id]['faces'] = {}
+
+        self.boundary_id = bnd_id
+        self.marker = bnd_marker
+        self.name = bnd_name
 
         mats = bpy.data.materials
         if len(obj.material_slots) == 0:

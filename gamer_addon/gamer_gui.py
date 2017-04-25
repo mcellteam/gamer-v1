@@ -28,7 +28,7 @@ def myprint ( s ):
 
 @persistent
 def gamer_load_post(context):
-    """ Initialize GAMer add  """
+    """ Initialize GAMer addon  """
     print ( "load post handler: gamer_load_post() called"
 )
     if not context:
