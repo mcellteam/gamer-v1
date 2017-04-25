@@ -384,6 +384,21 @@ def getSelectedMesh(errorreport=True):
     return obj
 
 
+def getActiveMesh(errorreport=True):
+    "Returns the active mesh"
+    obj = bpy.context.active_object
+    #obj = objs[0] if len(objs) else None
+    # myprint(obj)
+    if not obj:
+        if errorreport:
+            print("No active object found")
+    elif obj.type != 'MESH':
+        if errorreport:
+            #            self.drawError(errormsg="expected a selected mesh")
+            print("Active object %s is not a mesh" % (obj.name))
+        return None
+    return obj
+
 
 def getMeshVertices(obj, selected=False):
     mesh = obj.data
@@ -463,7 +478,7 @@ def blender_to_gamer(obj=None, create_new_mesh=False, check_for_vertex_selection
     
     # Get selected mesh
     if obj is None:
-        obj = getSelectedMesh()
+        obj = getActiveMesh()
     #myprint("blender_to_gamer getSelectedMesh ", obj.name)
     if obj is None:
         return None, None
@@ -586,7 +601,7 @@ def gamer_to_blender(gmesh, boundaries, create_new_mesh=False,
         setBoundaryFaces(boundary, face_markers[boundary["marker"]])
     
     # Ensure editmode is off
-    obj = getSelectedMesh()
+    obj = getActiveMesh()
     editmode = setObjectMode(obj)
 
     if create_new_mesh:

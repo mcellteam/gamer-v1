@@ -134,7 +134,29 @@ class GAMER_OT_select_all_boundary_faces(bpy.types.Operator):
             bnd.select_boundary_faces(context)
         return {'FINISHED'}
 
+class GAMER_OT_select_overlapping_faces(bpy.types.Operator):
+    bl_idname = "gamer.select_overlapping_faces"
+    bl_label = "Select Faces That Overlap With The Selected Boundary"
+    bl_description = "Select faces that overlap with the selected boundary"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bnd = context.object.gamer.get_active_boundary()
+        if bnd:
+            bnd.select_overlapping_faces(context)
+        return {'FINISHED'}
+
+class GAMER_OT_eliminate_overlapping_faces(bpy.types.Operator):
+    bl_idname = "gamer.eliminate_overlapping_faces"
+    bl_label = "Eliminate Faces That Overlap With The Selected Boundary"
+    bl_description = "Select faces that overlap with the selected boundary"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bnd = context.object.gamer.get_active_boundary()
+        if bnd:
+            bnd.eliminate_overlapping_faces(context)
+        return {'FINISHED'}
 
 # Object Boundary Panel:
 
@@ -238,7 +260,7 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
             bpy.ops.object.mode_set(mode='OBJECT')
             for f in mesh.polygons:
                 if f.select:
-                    face_set.add(f.index)
+                    face_set.add(f.index)                   
             bpy.ops.object.mode_set(mode='EDIT')
 
             mats = bpy.data.materials
@@ -321,6 +343,39 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 
         return {'FINISHED'}
 
+
+    def select_overlapping_faces(self, context):
+        mesh = context.active_object.data
+        this_face_set = self.get_boundary_faces(context)
+#       msm = context.scene.tool_settings.mesh_select_mode[0:3]
+#       context.scene.tool_settings.mesh_select_mode = (True, True, True)
+        bpy.ops.object.mode_set(mode='OBJECT')
+        overlap = set([])
+        for bnd in context.object.gamer.boundary_list:
+            if bnd.name != self.name:
+                overlap = overlap.union(this_face_set.intersection(bnd.get_boundary_faces(context)))	
+        for f in overlap:
+            mesh.polygons[f].select = True
+        bpy.ops.object.mode_set(mode='EDIT')
+#       context.scene.tool_settings.mesh_select_mode = msm
+
+        return {'FINISHED'}
+
+
+    def eliminate_overlapping_faces(self, context):
+        mesh = context.active_object.data
+        this_face_set = self.get_boundary_faces(context)
+#       msm = context.scene.tool_settings.mesh_select_mode[0:3]
+#       context.scene.tool_settings.mesh_select_mode = (True, True, True)
+        bpy.ops.object.mode_set(mode='OBJECT')
+        for bnd in context.object.gamer.boundary_list:
+            if bnd.name != self.name:
+                overlap = this_face_set.intersection(bnd.get_boundary_faces(context))	
+                
+        bpy.ops.object.mode_set(mode='EDIT')
+#       context.scene.tool_settings.mesh_select_mode = msm
+
+        return {'FINISHED'}
 
     def destroy_boundary(self, context):
         """Remove boundary data from obj"""
@@ -466,7 +521,44 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
             len_list = len(seg_list)
           seg_idx += 1
 
+        for bnd in context.object.gamer.boundary_list:
+            if bnd.name != self.name:
+                bnd_faces = bnd.get_boundary_faces(context)
+                overlap = face_set.intersection(bnd_faces)
+                if len(overlap) > 0:
+                    bnd.unset_boundary_faces(context, overlap)
 
+
+    def unset_boundary_faces(self, context, face_set):
+        """Set the faces of a given boundary on object, given a set of faces """
+
+        obj = context.active_object
+        bnd_faces = self.get_boundary_faces(context)
+        bnd_id = self.boundary_id
+        bnd_faces = bnd_faces - face_set
+        face_list = list(bnd_faces)
+        face_list.sort()
+
+        # Clear existing faces from this id boundary
+        obj["boundaries"][bnd_id]["faces"].clear()
+
+        # segment face_list into pieces <= max_len (i.e. <= 32767)
+        #   and assign these segments to the id boundary
+        max_len = 32767
+        seg_list = face_list
+        len_list = len(seg_list)
+        seg_idx = 0
+        while len_list > 0:
+          if len_list <= 32767:
+            obj["boundaries"][bnd_id]["faces"]["F"+str(seg_idx)] = seg_list
+            len_list = 0
+          else:
+            obj["boundaries"][bnd_id]["faces"]["F"+str(seg_idx)] = seg_list[0:max_len]
+            tmp_list = seg_list[max_len:]
+            seg_list = tmp_list
+            len_list = len(seg_list)
+          seg_idx += 1
+                        
 
 class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
     boundary_list = CollectionProperty(
@@ -702,6 +794,10 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
                 sub.operator("gamer.select_boundary_faces", text="Select")
                 sub.operator("gamer.deselect_boundary_faces", text="Deselect")
                 sub.operator("gamer.select_all_boundary_faces", text="Select All")
+                row = layout.row()
+                sub = row.row(align=True)
+                sub.operator("gamer.select_overlapping_faces", text="Select Overlaps")
+                sub.operator("gamer.eliminate_overlapping_faces", text="Eliminate Overlaps")
 
 #                # Option to Get Boundary Info
 #                box = layout.box()
