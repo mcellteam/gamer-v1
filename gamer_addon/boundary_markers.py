@@ -377,15 +377,24 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
 
         return {'FINISHED'}
 
+
     def destroy_boundary(self, context):
         """Remove boundary data from obj"""
         bnd_id = self.boundary_id
 
         obj = context.active_object
-        for seg_id in obj["boundaries"][bnd_id]['faces'].keys():
-            obj["boundaries"][bnd_id]['faces'][seg_id] = []
-        obj["boundaries"][bnd_id].clear()
-        obj["boundaries"].pop(bnd_id)
+        if obj.get('boundaries'):
+          if obj['boundaries'].get(bnd_id):
+            if obj['boundaries'][bnd_id].get('faces'):
+              for seg_id in obj["boundaries"][bnd_id]['faces'].keys():
+                  obj["boundaries"][bnd_id]['faces'][seg_id] = []
+            obj["boundaries"][bnd_id].clear()
+            obj["boundaries"].pop(bnd_id)
+
+#        for seg_id in obj["boundaries"][bnd_id]['faces'].keys():
+#            obj["boundaries"][bnd_id]['faces'][seg_id] = []
+#        obj["boundaries"][bnd_id].clear()
+#        obj["boundaries"].pop(bnd_id)
 
 
     def face_in_boundary(self, context, face_index):
@@ -432,8 +441,6 @@ class GAMerBoundaryMarkersPropertyGroup(bpy.types.PropertyGroup):
           bnd_mat = mat_list[0]
         bpy.ops.object.material_slot_add()
         obj.material_slots[-1].material = bnd_mat
-        
-        
 
 
     def set_boundary_from_id_boundary(self, context, bnd_dict):
@@ -674,6 +681,18 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
             self.boundary_list.remove(0)
 
         self.active_bnd_index = 0
+
+        """Remove all crufty boundary data from obj"""
+        obj = context.active_object
+        if obj.get('boundaries'):
+          bnd_ids = obj['boundaries'].keys()
+          for bnd_id in bnd_ids:
+            if obj['boundaries'].get(bnd_id):
+              if obj['boundaries'][bnd_id].get('faces'):
+                for seg_id in obj["boundaries"][bnd_id]['faces'].keys():
+                    obj["boundaries"][bnd_id]['faces'][seg_id] = []
+              obj["boundaries"][bnd_id].clear()
+              obj["boundaries"].pop(bnd_id)
 
 
     def remove_boundary(self, context):
