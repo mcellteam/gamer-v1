@@ -487,6 +487,9 @@ def blender_to_gamer(obj=None, create_new_mesh=False, check_for_vertex_selection
     editmode = setObjectMode(obj)
 
 #    self.waitingCursor(1)
+
+    # Clean up orphan boundaries:
+    obj.gamer.remove_orphan_boundaries(bpy.context)
     
     # Grab vertices and Faces
     vertices, selected_vertices = getMeshVertices(obj, selected=True)

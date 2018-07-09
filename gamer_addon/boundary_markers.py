@@ -695,6 +695,24 @@ class GAMerBoundaryMarkersListPropertyGroup(bpy.types.PropertyGroup):
               obj["boundaries"].pop(bnd_id)
 
 
+    def remove_orphan_boundaries(self, context):
+
+        """Remove orphan boundary data from obj"""
+        obj = context.active_object
+
+        if obj.get('boundaries'):
+          bnd_ids = obj['boundaries'].keys()
+          boundary_ids = [ b.boundary_id for b in self.boundary_list ]
+          orphan_ids = [ b for b in bnd_ids if b not in boundary_ids ]
+          for bnd_id in orphan_ids:
+            if obj['boundaries'].get(bnd_id):
+              if obj['boundaries'][bnd_id].get('faces'):
+                for seg_id in obj["boundaries"][bnd_id]['faces'].keys():
+                    obj["boundaries"][bnd_id]['faces'][seg_id] = []
+              obj["boundaries"][bnd_id].clear()
+              obj["boundaries"].pop(bnd_id)
+
+
     def remove_boundary(self, context):
 
         # First remove ID prop boundary data from object:
